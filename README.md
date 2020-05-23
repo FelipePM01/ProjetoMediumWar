@@ -6,7 +6,7 @@
 * Cristiano Sampaio Pinheiro - 256352
 
 # Descrição Resumida do Projeto
-O projeto será um jogo em que cada jogador posicionará as peças de sua mão no tabuleiro e em seguida as peças atacarão as pecas do inimigo por meio de um determinado compartamento atribuído ao tipo da peça.
+O projeto será um jogo em que cada jogador posicionará as peças de sua mão no tabuleiro e em seguida as peças atacarão as peças do inimigo por meio de um determinado compartamento atribuído ao tipo da peça.Cada peça terá atributos específicos como vida , dano e alcance de ataque.A temática do jogo será baseada em classes e criaturas de um RPG.
 
 # Vídeo do Projeto
 [Link do vídeo do projeto](https://drive.google.com/open?id=12WCLHbGfRfGYytHxSpNW-8KsJQpoNzBI)
