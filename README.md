@@ -101,19 +101,29 @@ public interface IPecaJogador extends IPecaPeca,IPecaJogador,IPecaTabuleiro{};
 
 ## Detalhamento das Interfaces
 
-### Interface Peca
-Essa interface e responsável por gerenciar as peças dos jogo e sua interação com os demais componentes.
+### Interface IPecaJogador
+Essa interface e responsável pela interação entre as peças e o jogador.
 
 Método | Objetivo
 -------| --------
-mover | Move uma peça na direção da inimiga mais proxima(Recebe um vetor de inteiros indicando a direção)
-darDano | Realiza um ataque na inimiga mais proxima dentro do seu alcance(Recebe a peça que sofrerá o dano)
-receberDano | Desconta valores retirados por um ataque
-regenerar | Incrementa a vida da peça de acordo com seu deslocamento
-moverOuAtacar | Verifica se a peça realizará um ataque ou movimento e chama o metodo correspondente
-getPosition | Retorna a posição da peça no tabuleiro
 pNivel | Incrementa atributos relacionados a ataque/velocidade/vida etc
 getPrecoVenda | Retorna o valor de venda da peça
+
+### Interface IPecaPeca
+Essa interface e responsável pelas ações realizadas sobre as peças.
+
+Método | Objetivo
+-------| --------
+receberDano | Desconta valores retirados por um ataque
+getPosition | Retorna a posição da peça no tabuleiro
+
+### Interface IPecaTabuleiro
+Essa interface e responsável pela interação entre as peças e o tabuleiro.
+
+Método | Objetivo
+-------| --------
+moverOuAtacar | Verifica se a peça realizará um ataque ou movimento e chama o metodo correspondente
+getPosition | Retorna a posição da peça no tabuleiro
 
 # Componente Tabuleiro
 
