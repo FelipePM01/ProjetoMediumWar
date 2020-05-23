@@ -66,7 +66,7 @@ Campo | Valor
 ----- | -----
 Classe | peca.Peca
 Autores | Felipe Pacheco Manoel e Cristiano Sampaio Pinheiro
-Objetivo | representar cada um dos jogadores e suas relações com os outros componenetes
+Objetivo | representar cada uma das Pecas presentes no jogo
 Interface | 
 ~~~
 public interface IPecaJogador {
@@ -108,15 +108,15 @@ Método | Objetivo
 
 ## Interfaces
 
-Interfaces associadas ao componente Peca:
+Interfaces associadas ao componente Tabuleiro:
 
-![Diagrama Interfaces da Peca](interfacetabuleiro.png)
+![Diagrama Interfaces do Tabuleiro](interfacetabuleiro.png)
 
 Campo | Valor
 ----- | -----
-Classe | peca.Peca
+Classe | tabuleiro.Tabuleiro
 Autores | Felipe Pacheco Manoel e Cristiano Sampaio Pinheiro
-Objetivo | representar cada um dos jogadores e suas relações com os outros componenetes
+Objetivo | representar o tabuleiro do jogo
 Interface | 
 ~~~
 public interface ITabuleiroGame {
@@ -150,6 +150,20 @@ public interface ITabuleiro extends ITabuleiroGame,ITabuleiroPeca {}
 Método | Objetivo
 -------| --------
 `<id do método em Java>` | `<objetivo do método e descrição dos parâmetros>`
+# Componente Game
+
+![Componente do Tabuleiro](componentegame.png)
+
+
+
+![Diagrama Interface do Game](classegame.png)
+
+Campo | Valor
+----- | -----
+Classe | game.Game
+Autores | Felipe Pacheco Manoel e Cristiano Sampaio Pinheiro
+Objetivo | representar a classe que vai rodar o jogo
+Interface | ausente
 
 
 
