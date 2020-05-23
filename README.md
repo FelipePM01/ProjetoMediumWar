@@ -45,12 +45,22 @@ public interface IJogadorGame {
 
 ## Detalhamento das Interfaces
 
-### Interface `<nome da interface>`
-`<papel da interface>`.
+### Interface Jogador
+Essa interface e responsável por gerenciar as ações dos jogares e sua interação com os demais componentes do jogo.
 
 Método | Objetivo
 -------| --------
-`<id do método em Java>` | `<objetivo do método e descrição dos parâmetros>`
+addPontos | Incrementa a pontuação do jogador que ganhou a rodada
+-------| --------
+comprarPeca | Permite o jogador realiza a compra de peças
+-------| --------
+venderPeca | Permite o jogador realiza a venda de peças
+-------| --------
+uparPeca | Possibilita melhora atributos da peça e a subir de nível
+-------| --------
+receberGold | Atualiza o gold dos jogadores após uma rodada
+-------| --------
+colocarPeca | Permite o jogador posicionar suas peças no tabuleiro
 
 # Componente Peca
 
