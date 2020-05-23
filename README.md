@@ -144,12 +144,23 @@ public interface ITabuleiro extends ITabuleiroGame,ITabuleiroPeca {}
 
 ## Detalhamento das Interfaces
 
-### Interface `<nome da interface>`
-`<papel da interface>`.
+### Interface ITabuleiroGame
+Permite que Game acione(movimentar e atacar) as peças do tabuleiro e de pegar informacões da rodada referentes a quantias que os jogadores irão receber.
 
 Método | Objetivo
 -------| --------
-`<id do método em Java>` | `<objetivo do método e descrição dos parâmetros>`
+acionarPecas | realiza a interação entre as peças
+getQuantia |  recebe uma string que representa um jogador e retorna a quantia inteira que o jogador representado pela String receberá ao final de uma rodada
+
+### Interface ITabuleiroPeca
+Permite que as peças interajam entre si.
+
+Método | Objetivo
+-------| --------
+setPeca | recebe uma String e um objeto da classe Peca e coloca a peça recebida na posição representada pela String
+getPeca | recebe uma String e recupera a peça na posição representada pela String
+eliminarPeca | recebe uma String e exclui a peça na posição representada pela string passada como parâmetro
+getPecas | Recebe uma String que representa um jogador e retorna um vetor de pecas que contém as pecas do jogador ,recebido como parâmetro, que estão no tabuleiro
 # Componente Banco
 
 ![Componente do Banco](componentebanco.png)
@@ -188,12 +199,13 @@ public interface IBanco extends IBancoGame,IBancoJogador {}
 
 ## Detalhamento das Interfaces
 
-### Interface `<nome da interface>`
-`<papel da interface>`.
+### Interface IBancoJogador
+Permite que o jogador acesse as peças dissponíveis para a compra.
 
 Método | Objetivo
 -------| --------
-`<id do método em Java>` | `<objetivo do método e descrição dos parâmetros>`
+getDisponiveis | retorna um vetor de peças disponíveis para a compra
+refresh | atualiza o vetor de peças disponíveis (trocando as peças que estarão disponíveis)
 # Componente Game
 
 ![Componente do Tabuleiro](componentegame.png)
