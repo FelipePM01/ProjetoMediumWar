@@ -150,6 +150,50 @@ public interface ITabuleiro extends ITabuleiroGame,ITabuleiroPeca {}
 Método | Objetivo
 -------| --------
 `<id do método em Java>` | `<objetivo do método e descrição dos parâmetros>`
+# Componente Banco
+
+![Componente do Banco](componentebanco.png)
+
+## Interfaces
+
+Interfaces associadas ao componente Banco:
+
+![Diagrama Interfaces do Banco](interfacebanco.png)
+
+Campo | Valor
+----- | -----
+Classe | banco.Banco
+Autores | Felipe Pacheco Manoel e Cristiano Sampaio Pinheiro
+Objetivo | representar o tabuleiro do jogo
+Interface | 
+~~~
+public interface IBancoGame {
+    public Peca[] getDisponiveis(){};
+
+
+}
+public interface IBancoJogador {
+    public void refresh(){};
+
+
+
+}
+public interface IBanco extends IBancoGame,IBancoJogador {}
+
+
+
+
+~~~
+
+
+## Detalhamento das Interfaces
+
+### Interface `<nome da interface>`
+`<papel da interface>`.
+
+Método | Objetivo
+-------| --------
+`<id do método em Java>` | `<objetivo do método e descrição dos parâmetros>`
 # Componente Game
 
 ![Componente do Tabuleiro](componentegame.png)
