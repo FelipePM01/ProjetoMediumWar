@@ -29,7 +29,8 @@ Campo | Valor
 Classe | jogador.Jogador
 Autores | Felipe Pacheco Manoel e Cristiano Sampaio Pinheiro
 Objetivo | representar cada um dos jogadores e suas relações com os outros componenetes
-Interface | ~~~
+Interface | 
+~~~
 public interface IJogadorGame {
  public void addPontos(){};
 public void comprarPeca(int id){};
