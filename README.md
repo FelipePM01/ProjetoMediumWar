@@ -14,34 +14,33 @@ O projeto será um jogo em que cada jogador posicionará as peças de sua mão n
 # Diagrama Geral de Componentes
 ![Diagrama Geral](diagramageral.png)
 
-# Componente `<Nome do Componente>`
+# Componente Jogador
 
-![Componente](diagrama-componente.png)
+![Componente do Jogador](componentejogador.png)
 
 ## Interfaces
 
-Interfaces associadas a esse componente:
+Interfaces associadas ao componente Jogador:
 
-![Diagrama Interfaces](diagrama-interfaces.png)
+![Diagrama Interfaces do Jogador](diagrama-interfaces.png)
 
 Campo | Valor
 ----- | -----
-Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08componentes.s20catalog.s10ds.DataSetComponent`
-Autores | `<nome dos membros que criaram o componente>`
-Objetivo | `<objetivo do componente>`
-Interface | `<interface em Java do componente>`
+Classe | jogador.Jogador
+Autores | Felipe Pacheco Manoel e Cristiano Sampaio Pinheiro
+Objetivo | representar cada um dos jogadores e suas relações com os outros componenetes
+Interface | ~~~
+public interface IJogadorGame {
+ public void addPontos(){};
+public void comprarPeca(int id){};
+public void venderPeca(int id){};
+public void uparPeca(int id){};
+public void receberGold(int quantia){};
+public void colocarPeca(int id,String posicao){};
+}
+
 ~~~
-public interface ITableProducer {
-  String[] requestAttributes();
-  String[][] requestInstances();
-}
-public interface IDataSource {
-  public String getDataSource();
-  public void setDataSource(String dataSource);
-}
-public interface IDataSet extends ITableProducer, IDataSource {
-}
-~~~
+
 
 ## Detalhamento das Interfaces
 
