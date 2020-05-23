@@ -12,26 +12,7 @@ O projeto será um jogo em que cada jogador posicionará as peças de sua mão n
 [Link do vídeo do projeto](https://drive.google.com/open?id=12WCLHbGfRfGYytHxSpNW-8KsJQpoNzBI)
 
 # Diagrama Geral de Componentes
-
-## Exemplo 1
-
-Este é o diagrama compondo componentes para análise:
-
-![Diagrama Analise](diagrama-componentes-analise.png)
-
-## Exemplo 2
-
-Este é um diagrama inicial do projeto de jogos:
-
-![Diagrama Jogos](diagrama-componentes-jogos.png)
-
-## Exemplo 3
-
-Este é outro diagrama de um projeto de vendas:
-
-![Diagrama Vendas](diagrama-componentes-vendas.png)
-
-Para cada componente será apresentado um documento conforme o modelo a seguir:
+![Diagrama Geral](diagramageral.png)
 
 # Componente `<Nome do Componente>`
 
