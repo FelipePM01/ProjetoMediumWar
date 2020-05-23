@@ -6,7 +6,7 @@
 * Cristiano Sampaio Pinheiro - 256352
 
 # Descrição Resumida do Projeto
-`<descreva resumidamente o que fará o projeto>`
+O projeto será um jogo em que cada jogador posicionará as peças de sua mão no tabuleiro e em seguida as peças atacarão as pecas do inimigo por meio de um determinado compartamento atribuído ao tipo da peça.
 
 # Vídeo do Projeto
 `<coloque um link para o vídeo do projeto, se houver>`
