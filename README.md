@@ -32,12 +32,12 @@ Objetivo | representar cada um dos jogadores e suas relações com os outros com
 Interface | 
 ~~~
 public interface IJogadorGame {
- public void addPontos(){};
-public void comprarPeca(int id){};
-public void venderPeca(int id){};
-public void uparPeca(int id){};
-public void receberGold(int quantia){};
-public void colocarPeca(int id,String posicao){};
+    public void addPontos(){};
+    public void comprarPeca(int id){};
+    public void venderPeca(int id){};
+    public void uparPeca(int id){};
+    public void receberGold(int quantia){};
+    public void colocarPeca(int id,String posicao){};
 }
 
 ~~~
@@ -70,22 +70,71 @@ Objetivo | representar cada um dos jogadores e suas relações com os outros com
 Interface | 
 ~~~
 public interface IPecaJogador {
- private void upNivel(){};
-private int getPrecoVenda(){};
+    private void upNivel(){};
+    private int getPrecoVenda(){};
 
 }
 public interface IPecaPeca {
- public void receberDano(){};
-public String getPosition(){};
+    public void receberDano(){};    
+    public String getPosition(){};
 
 
 }
-public interface IPecaJogador {
- public void moverOuAtacar(){};
-public String getPosition(){};
+public interface IPecaTabuleiro {
+    public void moverOuAtacar(){};
+    public String getPosition(){};
 
 
 }
+public interface IPecaJogador extends IPecaPeca,IPecaJogador,IPecaTabuleiro{};
+
+
+
+
+~~~
+
+
+## Detalhamento das Interfaces
+
+### Interface `<nome da interface>`
+`<papel da interface>`.
+
+Método | Objetivo
+-------| --------
+`<id do método em Java>` | `<objetivo do método e descrição dos parâmetros>`
+# Componente Tabuleiro
+
+![Componente do Tabuleiro](componentetabuleiro.png)
+
+## Interfaces
+
+Interfaces associadas ao componente Peca:
+
+![Diagrama Interfaces da Peca](interfacetabuleiro.png)
+
+Campo | Valor
+----- | -----
+Classe | peca.Peca
+Autores | Felipe Pacheco Manoel e Cristiano Sampaio Pinheiro
+Objetivo | representar cada um dos jogadores e suas relações com os outros componenetes
+Interface | 
+~~~
+public interface ITabuleiroGame {
+    public void acionarPecas(){};
+    public int getQuantia(String quantia){};
+
+
+}
+public interface ITabuleiroPeca {
+    public void setPeca(String posicao){};
+    public Peca getPeca(String posicao){};
+    public Peca[] getPecas(String jogador){};
+    public  void eliminarPeca(String posicao){};
+
+
+
+}
+public interface ITabuleiro extends ITabuleiroGame,ITabuleiroPeca {}
 
 
 
