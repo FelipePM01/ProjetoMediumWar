@@ -75,9 +75,9 @@ Objetivo | representar cada uma das Pecas presentes no jogo
 Interface | 
 ~~~
 public interface IPecaJogador {
-    private void upNivel(){};
-    private int getPrecoVenda(){};
-
+    public void upNivel(){};
+    public int getPrecoVenda(){};
+    public int getPrecoCompra(){};
 }
 public interface IPecaPeca {
     public void receberDano(){};    
@@ -108,6 +108,7 @@ Método | Objetivo
 -------| --------
 upNivel | Incrementa atributos relacionados a ataque/velocidade/vida etc
 getPrecoVenda | Retorna o valor de venda da peça
+getPrecoCompra | Retorna o valor de compra da peça
 
 ### Interface IPecaPeca
 Essa interface e responsável pelas ações realizadas sobre as peças.
