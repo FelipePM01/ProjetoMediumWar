@@ -51,16 +51,11 @@ Essa interface e responsável por gerenciar as ações dos jogares e sua intera�
 Método | Objetivo
 -------| --------
 addPontos | Incrementa a pontuação do jogador que ganhou a rodada
--------| --------
-comprarPeca | Permite o jogador realiza a compra de peças
--------| --------
-venderPeca | Permite o jogador realiza a venda de peças
--------| --------
+comprarPeca | Permite o jogador realiza a compra de peças(Recebe a posição da peça no Banco de peças)
+venderPeca | Permite o jogador realiza a venda de peças(Recebe a posição da peça na mão do jogador)
 uparPeca | Possibilita melhora atributos da peça e a subir de nível
--------| --------
-receberGold | Atualiza o gold dos jogadores após uma rodada
--------| --------
-colocarPeca | Permite o jogador posicionar suas peças no tabuleiro
+receberGold | Atualiza o gold dos jogadores após uma rodada(Recebe inteiro para indicar a quantia)
+colocarPeca | Permite o jogador posicionar suas peças no tabuleiro(Recebe a posição(id) da peça na mão do jogador e a posição(String) que a peça ocuparar no tabuleiro)
 
 # Componente Peca
 
@@ -106,12 +101,20 @@ public interface IPecaJogador extends IPecaPeca,IPecaJogador,IPecaTabuleiro{};
 
 ## Detalhamento das Interfaces
 
-### Interface `<nome da interface>`
-`<papel da interface>`.
+### Interface Peca
+Essa interface e responsável por gerenciar as peças dos jogo e sua interação com os demais componentes.
 
 Método | Objetivo
 -------| --------
-`<id do método em Java>` | `<objetivo do método e descrição dos parâmetros>`
+mover | Move uma peça na direção da inimiga mais proxima(Recebe um vetor de inteiros indicando a direção)
+darDano | Realiza um ataque na inimiga mais proxima dentro do seu alcance(Recebe a peça que sofrerá o dano)
+receberDano | Desconta valores retirados por um ataque
+regenerar | Incrementa a vida da peça de acordo com seu deslocamento
+moverOuAtacar | Verifica se a peça realizará um ataque ou movimento e chama o metodo correspondente
+getPosition | Retorna a posição da peça no tabuleiro
+pNivel | Incrementa atributos relacionados a ataque/velocidade/vida etc
+getPrecoVenda | Retorna o valor de venda da peça
+
 # Componente Tabuleiro
 
 ![Componente do Tabuleiro](componentetabuleiro.png)
