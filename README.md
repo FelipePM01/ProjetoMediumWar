@@ -22,7 +22,7 @@ O projeto será um jogo em que cada jogador posicionará as peças de sua mão n
 
 Interfaces associadas ao componente Jogador:
 
-![Diagrama Interfaces do Jogador](diagrama-interfaces.png)
+![Diagrama Interfaces do Jogador](interfacejogador.png)
 
 Campo | Valor
 ----- | -----
@@ -52,22 +52,55 @@ Método | Objetivo
 -------| --------
 `<id do método em Java>` | `<objetivo do método e descrição dos parâmetros>`
 
-## Exemplo:
+# Componente Peca
 
-### Interface `ITableProducer`
+![Componente da Peca](componentepeca.png)
 
-Interface provida por qualquer fonte de dados que os forneça na forma de uma tabela.
+## Interfaces
+
+Interfaces associadas ao componente Peca:
+
+![Diagrama Interfaces da Peca](interfacepeca.png)
+
+Campo | Valor
+----- | -----
+Classe | peca.Peca
+Autores | Felipe Pacheco Manoel e Cristiano Sampaio Pinheiro
+Objetivo | representar cada um dos jogadores e suas relações com os outros componenetes
+Interface | 
+~~~
+public interface IPecaJogador {
+ private void upNivel(){};
+private int getPrecoVenda(){};
+
+}
+public interface IPecaPeca {
+ public void receberDano(){};
+public String getPosition(){};
+
+
+}
+public interface IPecaJogador {
+ public void moverOuAtacar(){};
+public String getPosition(){};
+
+
+}
+
+
+
+
+~~~
+
+
+## Detalhamento das Interfaces
+
+### Interface `<nome da interface>`
+`<papel da interface>`.
 
 Método | Objetivo
 -------| --------
-`requestAttributes` | Retorna um vetor com o nome de todos os atributos (colunas) da tabela.
-`requestInstances` | Retorna uma matriz em que cada linha representa uma instância e cada coluna o valor do respectivo atributo (a ordem dos atributos é a mesma daquela fornecida por `requestAttributes`.
+`<id do método em Java>` | `<objetivo do método e descrição dos parâmetros>`
 
-### Interface `IDataSetProperties`
 
-Define o recurso (usualmente o caminho para um arquivo em disco) que é a fonte de dados.
 
-Método | Objetivo
--------| --------
-`getDataSource` | Retorna o caminho da fonte de dados.
-`setDataSource` | Define o caminho da fonte de dados, informado através do parâmetro `dataSource`.
