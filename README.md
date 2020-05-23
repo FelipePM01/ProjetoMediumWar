@@ -106,7 +106,7 @@ Essa interface e responsável pela interação entre as peças e o jogador.
 
 Método | Objetivo
 -------| --------
-pNivel | Incrementa atributos relacionados a ataque/velocidade/vida etc
+upNivel | Incrementa atributos relacionados a ataque/velocidade/vida etc
 getPrecoVenda | Retorna o valor de venda da peça
 
 ### Interface IPecaPeca
