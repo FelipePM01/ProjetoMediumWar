@@ -1,6 +1,7 @@
 package game;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
@@ -9,7 +10,7 @@ public class Game extends Canvas implements Runnable{
     
     private static final long serialVersionUID = 7059646278559620203L;
 
-    public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;  //1924*586
+    public static final int WIDTH = 1920, HEIGHT = 1080;  //1024*576
     
     private Thread thread;
     private boolean running = false;
