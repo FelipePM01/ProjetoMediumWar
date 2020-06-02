@@ -11,6 +11,9 @@ O projeto será um jogo em que cada jogador posicionará as peças de sua mão n
 # Vídeo do Projeto
 [Link do vídeo do projeto](https://drive.google.com/open?id=12WCLHbGfRfGYytHxSpNW-8KsJQpoNzBI)
 
+# Apresentação do Projeto
+[Link para apresentação do projeto](https://drive.google.com/open?id=1aigs8xozY3tbv9r1LsFobk-ZYNi4p2eJKla_YFFc_GY)
+
 # Diagrama Geral de Componentes
 ![Diagrama Geral](diagramageral.png)
 
