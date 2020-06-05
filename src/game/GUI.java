@@ -1,42 +1,29 @@
 package game;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
 
-import javax.swing.JFrame;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
-public class GUI extends JFrame {
-
-	private JPanel contentPane;
+public class GUI extends JPanel {
 
 	/**
-	 * Launch the application.
+	 * 
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GUI frame = new GUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
+	private static final long serialVersionUID = -7022854761987105962L;
+	private Image background;
+	
 	public GUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+		ImageIcon refBackground=new ImageIcon("assets\\background.png");
+		background=refBackground.getImage();
+		
+	}
+	public void paint(Graphics g) {
+		Graphics2D graficos= (Graphics2D) g;
+		graficos.drawImage(background, 0, 0, null);
+		g.dispose();
 	}
 
 }
