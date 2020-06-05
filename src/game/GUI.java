@@ -26,10 +26,11 @@ public class GUI extends JPanel {
 		
 		ImageIcon refBackground=new ImageIcon("assets//background.png");
 		background=refBackground.getImage();
-		Dimension d=new Dimension(background.getWidth(null),background.getHeight(null));
-		Dimension correct=getScaledDimension(d, screenSize);
+		Dimension d1=new Dimension(background.getWidth(null),background.getHeight(null));
+		Dimension correct=getScaledDimension(d1, screenSize);
 		background=background.getScaledInstance(correct.width,correct.height, Image.SCALE_DEFAULT);
-		
+		Dimension d2=new Dimension(background.getWidth(null),background.getHeight(null));
+		Dimension scale=new Dimension(d2.width/d1.width,d2.height/d1.height);
 	}
 	public void paint(Graphics g) {
 		Graphics2D graficos= (Graphics2D) g;
@@ -48,18 +49,12 @@ public class GUI extends JPanel {
 	    // first check if we need to scale width
 	    if (original_width < bound_width) {
 	        //scale width to fit
-	        new_width = original_width;
+	        new_width = bound_width;
 	        //scale height to maintain aspect ratio
-	        new_height = (new_width * bound_height) / bound_width;
+	        new_height = (new_width * original_height) / original_width;
 	    }
 
-	    // then check if we need to scale even with the new height
-	    if (new_height < bound_height) {
-	        //scale height to fit instead
-	        new_height = bound_height;
-	        //scale width to maintain aspect ratio
-	        new_width = (new_height * original_width) / original_height;
-	    }
+
 
 	    return new Dimension(new_width, new_height);
 	}
