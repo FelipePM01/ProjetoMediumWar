@@ -1,7 +1,6 @@
 package game;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
@@ -13,10 +12,12 @@ public class Game extends Canvas implements Runnable{
     public static final int WIDTH = 1920, HEIGHT = 1080;  //1024*576
     
     private Thread thread;
+    private GUI gui;
     private boolean running = false;
 
     public Game(){
         new Window(WIDTH, HEIGHT, "MediumWar", this);
+        gui=new GUI();
     }
 
     public synchronized void start(){
@@ -75,7 +76,7 @@ public class Game extends Canvas implements Runnable{
         }
         Graphics g = bs.getDrawGraphics();
 
-        g.setColor(Color.black);
+        if(gui!=null)gui.paint(g);
         g.fillRect(0, 0, WIDTH, HEIGHT);
 
         g.dispose();
