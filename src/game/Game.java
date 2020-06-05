@@ -15,13 +15,9 @@ public class Game extends Canvas implements Runnable{
     private GUI gui;
     private boolean running = false;
 
-    private Handler handler;
-
     public Game(){
         new Window(WIDTH, HEIGHT, "MediumWar", this);
         gui=new GUI();
-
-
     }
 
     public synchronized void start(){
@@ -69,7 +65,6 @@ public class Game extends Canvas implements Runnable{
     }
 
     private void tick(){
-        handler.tick();
     }
 
     private void render(){
@@ -83,8 +78,6 @@ public class Game extends Canvas implements Runnable{
         if(gui!=null)gui.paint(g);
         g.fillRect(0, 0, WIDTH, HEIGHT);
 
-        handler.render(g);
-
         g.dispose();
         bs.show();
     }
@@ -93,5 +86,4 @@ public class Game extends Canvas implements Runnable{
         new Game();
 
     }
-
 }
