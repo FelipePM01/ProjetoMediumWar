@@ -12,7 +12,7 @@ public class Window extends JFrame {
 		frame=new JFrame(title);
 		frame.setSize(width,height);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);  
-		frame.setUndecorated(false);	//Para funcionar no linux tem que ser false
+		frame.setUndecorated(true);	//Para funcionar no linux tem que ser false
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 		

@@ -21,7 +21,6 @@ public class Game extends Canvas implements Runnable{
         window = new Window(WIDTH, HEIGHT, "MediumWar", this);
         gui=new GUI();
         banco=new Banco(gui);
-        window.frame.add(banco);
     }
 
     public synchronized void start(){
