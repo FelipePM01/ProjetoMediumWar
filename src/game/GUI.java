@@ -28,17 +28,18 @@ public class GUI extends JPanel {
 		Dimension d2=new Dimension(background.getWidth(null),background.getHeight(null));
 		
 	}
-	public void paint(Graphics g) {
-		Graphics2D graficos= (Graphics2D) g;
-		graficos.drawImage(background, 0, 0, this);
-		g.dispose();
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		
+		g.drawImage(background, 0, 0, this);
+		
 	}
 	public static Dimension getScaledDimension(Dimension imgSize, Dimension boundary) {
 
 	    int original_width = imgSize.width;
 	    int original_height = imgSize.height;
 	    int bound_width = boundary.width;
-	    int bound_height = boundary.height;
+	   
 	    int new_width = original_width;
 	    int new_height = original_height;
 
