@@ -21,7 +21,7 @@ public class Tile extends JPanel{
 	private Image tilePadrao;
 	public Tile(GUI gui,int[] position){
 		scale=gui.getScale();
-		ImageIcon refTilePadrao=new ImageIcon("assets\\tile.png");
+		ImageIcon refTilePadrao=new ImageIcon("assets\\tilePadrao.png");
 		tilePadrao=refTilePadrao.getImage();
 		tilePadrao=tilePadrao.getScaledInstance((int)(tilePadrao.getWidth(null)*scale),(int) (tilePadrao.getHeight(null)*scale), Image.SCALE_DEFAULT);
 		this.position=position;
