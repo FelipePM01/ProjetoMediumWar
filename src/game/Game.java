@@ -17,11 +17,14 @@ public class Game extends Canvas implements Runnable{
     private Thread thread;
     private GUI gui;
     private boolean running = false;
+    private Banco banco;
+    private Window window;
+
     private Tile[] tiles=new Tile[1];
     public Game(){
-    	
-        new Window(WIDTH, HEIGHT, "MediumWar", this);
+        window = new Window(WIDTH, HEIGHT, "MediumWar", this);
         gui=new GUI();
+        banco=new Banco(gui);
         int[] vet= {0,0};
         tiles[0]=new Tile(gui,vet);
     }
@@ -71,7 +74,6 @@ public class Game extends Canvas implements Runnable{
     }
 
     private void tick(){
-
     }
 
     private void render(){
@@ -83,6 +85,7 @@ public class Game extends Canvas implements Runnable{
         Graphics g = bs.getDrawGraphics();
 
         if(gui!=null)gui.paint(g);
+        if(banco!=null)banco.paint(g);
         for(int i=0;i<tiles.length;i++) {
         	if(tiles[i]!=null) {
         		Image img=tiles[i].getImage();
@@ -99,5 +102,4 @@ public class Game extends Canvas implements Runnable{
         new Game();
 
     }
-
 }
