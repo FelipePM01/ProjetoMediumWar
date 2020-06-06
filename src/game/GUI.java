@@ -5,10 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
-//import java.awt.image.BufferedImage;
-//import java.io.File;
 
-//import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -18,9 +15,8 @@ public class GUI extends JPanel {
 	 */
 	private static final long serialVersionUID = -7022854761987105962L;
 	private Image background;
-	private Window window;
-	private static double scale;
 
+	private static double scale=1.0;
 	public GUI() {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		ImageIcon refBackground=new ImageIcon("assets/background.png");
@@ -55,6 +51,9 @@ public class GUI extends JPanel {
 		scale = ((double)new_height/(double)original_height);
 
 	    return new Dimension(new_width, new_height);
+	}
+	public double getScale() {
+		return scale;
 	}
 
 }
