@@ -10,7 +10,11 @@ public class Window extends JFrame {
 		JFrame frame=new JFrame(title);
 		frame.setSize(width,height);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);  
+<<<<<<< refs/remotes/origin/Felipe
 		frame.setUndecorated(true);	//false apresenta opções no canto da janela(no linux)
+=======
+		frame.setUndecorated(true);	//Para funcionar no linux tem que ser false
+>>>>>>> Atualzando Banco
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 		

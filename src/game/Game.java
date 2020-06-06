@@ -22,8 +22,12 @@ public class Game extends Canvas implements Runnable{
     	
         new Window(WIDTH, HEIGHT, "MediumWar", this);
         gui=new GUI();
+<<<<<<< refs/remotes/origin/Felipe
         int[] vet= {0,0};
         tiles[0]=new Tile(gui,vet);
+=======
+        banco=new Banco(gui);
+>>>>>>> Atualzando Banco
     }
 
     public synchronized void start(){
