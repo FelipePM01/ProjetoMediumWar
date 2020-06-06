@@ -15,16 +15,18 @@ public class GUI extends JPanel {
 	 */
 	private static final long serialVersionUID = -7022854761987105962L;
 	private Image background;
-
+	
 	private static double scale=1.0;
+
 	public GUI() {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		ImageIcon refBackground=new ImageIcon("assets/background.png");
+		ImageIcon refBackground=new ImageIcon("assets\\background.png");
 		background=refBackground.getImage();
 		Dimension d1=new Dimension(background.getWidth(null),background.getHeight(null));
 		Dimension correct=getScaledDimension(d1, screenSize);
 		background=background.getScaledInstance(correct.width,correct.height, Image.SCALE_DEFAULT);
 		Dimension d2=new Dimension(background.getWidth(null),background.getHeight(null));
+		
 	}
 	public void paint(Graphics g) {
 		Graphics2D graficos= (Graphics2D) g;
