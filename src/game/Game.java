@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferStrategy;
 
+import tabuleiro.Tabuleiro;
 import tabuleiro.Tile;
 
 
@@ -19,14 +20,14 @@ public class Game extends Canvas implements Runnable{
     private boolean running = false;
     private Banco banco;
     private Window window;
-
+    private Tabuleiro tabuleiro;
     private Tile[] tiles=new Tile[1];
     public Game(){
         window = new Window(WIDTH, HEIGHT, "MediumWar", this);
         gui=new GUI();
         banco=new Banco(gui);
-        int[] vet= {0,0};
-        tiles[0]=new Tile(gui,vet);
+        
+        tabuleiro=new Tabuleiro(gui);
     }
 
     public synchronized void start(){
@@ -84,15 +85,13 @@ public class Game extends Canvas implements Runnable{
         }
         Graphics g = bs.getDrawGraphics();
 
-        if(gui!=null)gui.paint(g);
-        if(banco!=null)banco.paint(g);
-        for(int i=0;i<tiles.length;i++) {
-        	if(tiles[i]!=null) {
-        		Image img=tiles[i].getImage();
-        		if(tiles[i]!=null)tiles[i].paint(g,img);
-        	}
-        }
-        g.fillRect(0, 0, WIDTH, HEIGHT);
+        if(gui!=null)gui.paintComponent(g);
+        if(tabuleiro!=null)tabuleiro.paintComponent(g);
+        if(banco!=null)banco.paintComponent(g);
+       
+		
+        	
+       
 
         g.dispose();
         bs.show();
