@@ -13,7 +13,7 @@ public class Tabuleiro extends JPanel {
 	private int[] vet;
 	private double scale;
 	private Image tabuleiro;
-	private int[] startPositionScreen= {282,122};
+	private int[] startPositionScreen= {280,120};
 	public Tabuleiro(GUI gui) {
 		for(int i=0;i<10;i++) {
 			for(int j=0;j<10;j++) {
