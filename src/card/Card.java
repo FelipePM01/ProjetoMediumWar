@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import game.GUI;
+import peca.Peca;
 
 public abstract class Card extends JPanel{
 	
@@ -14,12 +15,13 @@ public abstract class Card extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 6677974077714234653L;
-	private Image img, peca;
+	private Image img, imgpeca;
 	private int WIDTH;
 	private int HEIGHT;
-	private int[] centerXY = new int[2];
+	private int[] startPoint = new int[2];
+	private int[] startPointCard = new int[2];
 	private double scale;
-    //private Peca peca;
+    private Peca peca;
 
     public Card(GUI gui, String refImagem, String refPeca){
         scale = gui.getScale();
@@ -37,23 +39,25 @@ public abstract class Card extends JPanel{
     
     public void initializeGuiPeca(String refimag){
         ImageIcon refimg=new ImageIcon(refimag);        
-        peca=refimg.getImage();
-        peca=peca.getScaledInstance((int)(4*scale*peca.getWidth(null)), (int)(4*scale*peca.getHeight(null)), Image.SCALE_DEFAULT);
+        imgpeca=refimg.getImage();
+        imgpeca=imgpeca.getScaledInstance((int)(4*scale*imgpeca.getWidth(null)), (int)(4*scale*imgpeca.getHeight(null)), Image.SCALE_DEFAULT);
       }
     
     public void paintComponent(Graphics g, int positionX, int positionY){
     	super.paintComponent(g);
     	setOpaque(false);
     	if(img!=null)g.drawImage(img, positionX, positionY, this);
-    	setCenterXY(positionX, positionY);
-    	if(peca!=null)g.drawImage(peca, positionX+25, positionY+25, this);
+    	if(imgpeca!=null)g.drawImage(imgpeca, positionX+25, positionY+25, this);
+    	startPointCard[0]=positionX;
+    	startPointCard[1]=positionY;
     	//if(peca!=null)g.drawImage(peca, centerXY[0], centerXY[1], this);
 	}
-    public void setCenterXY(int positionX, int positionY) {
-    	centerXY[0] = positionX+WIDTH/2;
-    	centerXY[1] = positionY+HEIGHT/2;
+    public int[] getStartPoint() {
+    	int[] Point = new int[2];
+    	for(int i=0;i<2;i++)
+    		Point[i]=startPointCard[i]+(int)(scale*startPoint[i]);
+    	return startPoint;
     }
-    
     public int getWidth() {
     	return WIDTH;
     }
