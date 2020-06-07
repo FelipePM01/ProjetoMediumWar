@@ -3,8 +3,6 @@ package banco;
 import card.Card;
 import game.GUI;
 
-import java.util.Random;
-
 public class CardBanco extends Card{
 	/**
 	 * 
