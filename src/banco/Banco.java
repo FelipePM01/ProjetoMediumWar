@@ -1,6 +1,5 @@
 package banco;
 
-import card.CardBanco;
 import game.GUI;
 
 import java.awt.Graphics;

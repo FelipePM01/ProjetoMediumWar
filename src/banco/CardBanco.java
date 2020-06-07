@@ -1,5 +1,6 @@
-package card;
+package banco;
 
+import card.Card;
 import game.GUI;
 
 public class CardBanco extends Card{
