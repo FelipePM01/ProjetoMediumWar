@@ -21,7 +21,7 @@ public class Banco extends JPanel{
 		scale = gui.getScale();
 		initializeGui(); 
 		for(int i=0;i<3;i++)
-        	pecasDisponiveis[i] = new CardBanco(gui, 1);
+        	pecasDisponiveis[i] = new CardBanco(gui, 0);
 	}
 	
 	public void initializeGui(){
