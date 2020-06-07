@@ -5,8 +5,11 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferStrategy;
 
+import banco.Banco;
 import tabuleiro.Tabuleiro;
+import card.Card;
 import tabuleiro.Tile;
+
 
 
 public class Game extends Canvas implements Runnable{
@@ -19,12 +22,13 @@ public class Game extends Canvas implements Runnable{
     private GUI gui;
     private boolean running = false;
     private Banco banco;
-    private Window window;
     private Tabuleiro tabuleiro;
     private Tile[] tiles=new Tile[1];
     public Game(){
-        window = new Window(WIDTH, HEIGHT, "MediumWar", this);
+    	
+        new Window(WIDTH, HEIGHT, "MediumWar", this);
         gui=new GUI();
+
         banco=new Banco(gui);
         
         tabuleiro=new Tabuleiro(gui);
@@ -75,6 +79,7 @@ public class Game extends Canvas implements Runnable{
     }
 
     private void tick(){
+
     }
 
     private void render(){
@@ -101,4 +106,5 @@ public class Game extends Canvas implements Runnable{
         new Game();
 
     }
+
 }

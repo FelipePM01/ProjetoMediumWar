@@ -58,4 +58,5 @@ public class GUI extends JPanel {
 	public double getScale() {
 		return scale;
 	}
+
 }
