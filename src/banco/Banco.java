@@ -35,8 +35,8 @@ public class Banco extends JPanel{
 		super.paintComponent(g);
 		int positionX = (int)(scale*356); //356
 		int positionY = (int)(scale*16);	//16
-		int newX = positionX+2; //Adicionada 2 para ajuste visual
-		int newY = positionY+2; //Adicionada 2 para ajuste visual
+		int newX = positionX+4; //Adicionada 4 para ajuste visual
+		int newY = positionY+4; //Adicionada 4 para ajuste visual
         g.drawImage(banco, positionX, positionY, null);	
         for(int i=0;i<3;i++){
         	pecasDisponiveis[i].paintComponent(g, newX, newY);

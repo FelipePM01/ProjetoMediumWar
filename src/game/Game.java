@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferStrategy;
 
+import Jogador.Jogador;
 import banco.Banco;
 import tabuleiro.Tabuleiro;
 import card.Card;
@@ -23,6 +24,8 @@ public class Game extends Canvas implements Runnable{
     private boolean running = false;
     private Banco banco;
     private Tabuleiro tabuleiro;
+    private Jogador jogador1;
+    private Jogador jogador2;
     private Tile[] tiles=new Tile[1];
     public Game(){
     	
@@ -32,6 +35,9 @@ public class Game extends Canvas implements Runnable{
         banco=new Banco(gui);
         
         tabuleiro=new Tabuleiro(gui);
+        
+        jogador1=new Jogador(gui,1);
+        jogador2=new Jogador(gui,2);
     }
 
     public synchronized void start(){
@@ -93,6 +99,8 @@ public class Game extends Canvas implements Runnable{
         if(gui!=null)gui.paintComponent(g);
         if(tabuleiro!=null)tabuleiro.paintComponent(g);
         if(banco!=null)banco.paintComponent(g);
+        if(jogador1!=null)jogador1.paintComponent(g);
+        if(jogador2!=null)jogador2.paintComponent(g);
        
 		
         	
