@@ -17,6 +17,7 @@ public class Card extends JPanel{
 	private Image img;
 	private int WIDTH;
 	private int HEIGHT;
+	private int[] centerXY = new int[2];
 	private double scale;
     //private Peca peca;
 
@@ -29,12 +30,12 @@ public class Card extends JPanel{
         ImageIcon refimg=new ImageIcon(refimag);        
         img=refimg.getImage();
         WIDTH = (int)(scale*img.getWidth(null));
-        HEIGHT = (int)(scale*img.getHeight(null))-2; //subtrair 2 para ajuste visual
+        HEIGHT = (int)(scale*img.getHeight(null)); //subtrair 2 para ajuste visual
         img=img.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_DEFAULT);
       }
     
     public void paintComponent(Graphics g, int positionX, int positionY){
-    	super.paintComponent(g);//Se comentar o construtor funciona
+    	super.paintComponent(g);
     	setOpaque(false);
     	if(img!=null)g.drawImage(img, positionX, positionY, this);
 	}

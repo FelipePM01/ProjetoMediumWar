@@ -21,7 +21,7 @@ public class Banco extends JPanel{
 		scale = gui.getScale();
 		initializeGui(); 
 		for(int i=0;i<3;i++)
-        	pecasDisponiveis[i] = new CardBanco(gui, 0);
+			pecasDisponiveis[i] = new CardBanco(gui, 0);
 	}
 	
 	public void initializeGui(){
@@ -33,15 +33,15 @@ public class Banco extends JPanel{
     }
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		int positionX = (int)(scale*357); //356+1
-		int positionY = (int)(scale*17);	//16+1
-		int newX = positionX+3; //Adicionada 3 para ajuste visual
-		int newY = positionY+3; //Adicionada 3 para ajuste visual
+		int positionX = (int)(scale*356); //356
+		int positionY = (int)(scale*16);	//16
+		int newX = positionX+2; //Adicionada 2 para ajuste visual
+		int newY = positionY+2; //Adicionada 2 para ajuste visual
         g.drawImage(banco, positionX, positionY, null);	
         for(int i=0;i<3;i++){
-        	//pecasDisponiveis[i].setCoordenadas ();
         	pecasDisponiveis[i].paintComponent(g, newX, newY);
         	newX = newX+pecasDisponiveis[i].getWidth();
         }
 	}
+	
 }
