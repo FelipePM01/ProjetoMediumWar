@@ -19,7 +19,7 @@ public class Tile extends JPanel{
 	private static Image tileAtual;
 	private static Image tileVermelho;
 	private static Image tileAzul;
-	private static boolean firstTime=true;
+	
 	private Image tilePadrao;
 	private Peca peca=null;
 	public Tile(GUI gui,int[] position){

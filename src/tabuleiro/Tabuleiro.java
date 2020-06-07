@@ -9,6 +9,10 @@ import javax.swing.JPanel;
 import game.GUI;
 
 public class Tabuleiro extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 407576592100509664L;
 	private Tile[][] matriz=new Tile[10][10];
 	private int[] vet;
 	private double scale;
