@@ -1,7 +1,6 @@
 package card;
 
 import java.awt.Graphics; 
-import java.awt.Graphics2D;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
@@ -11,9 +10,13 @@ import game.GUI;
 
 public class Card extends JPanel{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6677974077714234653L;
+	private Image img;
 	private int WIDTH;
 	private int HEIGHT;
-	private Image img;
 	private double scale;
     //private Peca peca;
 
@@ -23,16 +26,17 @@ public class Card extends JPanel{
     }
 
     public void initializeGui(String refimag){
-        ImageIcon refimg=new ImageIcon("refimag");        
+        ImageIcon refimg=new ImageIcon(refimag);        
         img=refimg.getImage();
-        WIDTH = (int)(img.getWidth(null)*scale);
-        HEIGHT = (int)(img.getWidth(null)*scale);
+        WIDTH = (int)(scale*img.getWidth(null));
+        HEIGHT = (int)(scale*img.getHeight(null))-2; //subtrair 2 para ajuste visual
         img=img.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_DEFAULT);
       }
     
-    public void paintComponent(Graphics g, positionX, positonY){
-    	super.paintComponent(g);
-        g.drawImage(img, positionX, positionY, this);
+    public void paintComponent(Graphics g, int positionX, int positionY){
+    	super.paintComponent(g);//Se comentar o construtor funciona
+    	setOpaque(false);
+    	if(img!=null)g.drawImage(img, positionX, positionY, this);
 	}
     
     public int getWidth() {

@@ -1,24 +1,16 @@
 package card;
 
-import java.awt.Image;
-
 import game.GUI;
 
 public class CardBanco extends Card{
-	static private Image cardVermelho;
-    static private Image cardAzul;
-    static private Image cardAmbos;
-    private String refImagem;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3151322956375756610L;
+	static private String[] refImagens = {"assets/cardPadrao.png","assets/cardAmbos.png","assets/cardAzul.png","assets/cardVermelho.png"};
     
-    
-    public CardBanco(GUI gui){
-    	super(gui, refImagem);   	
+    public CardBanco(GUI gui, int i){
+    	super(gui, refImagens[i]);
+
     }
-    public void paintCardBanco() {
-    	 super.initializeGui(refImagem);
-    }
-    	
-    
-    
-    
 }

@@ -5,9 +5,11 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferStrategy;
 
+import banco.Banco;
 import tabuleiro.Tabuleiro;
 import card.Card;
 import tabuleiro.Tile;
+
 
 
 public class Game extends Canvas implements Runnable{
@@ -20,17 +22,13 @@ public class Game extends Canvas implements Runnable{
     private GUI gui;
     private boolean running = false;
     private Banco banco;
-    private Window window;
     private Tabuleiro tabuleiro;
     private Tile[] tiles=new Tile[1];
     public Game(){
     	
         new Window(WIDTH, HEIGHT, "MediumWar", this);
         gui=new GUI();
-<<<<<<< refs/remotes/origin/Felipe
-        int[] vet= {0,0};
-        tiles[0]=new Tile(gui,vet);
-=======
+
         banco=new Banco(gui);
         
         tabuleiro=new Tabuleiro(gui);
