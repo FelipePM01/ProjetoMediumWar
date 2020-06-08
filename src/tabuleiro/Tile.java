@@ -49,4 +49,8 @@ public class Tile extends JPanel{
 	public Image getImage() {
 		return tileAtual;
 	}
+	
+	public int[] getGUIPosition() {
+		return position;
+	}
 }
