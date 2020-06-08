@@ -66,7 +66,6 @@ public abstract class Peca extends JPanel implements Cloneable{
 		return (int)(x*scale); 
 	}
 	
-	public abstract void paintCard(Graphics g,int positionX,int positionY);
-	public abstract void paintTile(Graphics g,int positionX,int positionY);
+	
 	
 }
