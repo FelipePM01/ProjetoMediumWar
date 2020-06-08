@@ -21,6 +21,9 @@ public abstract class Peca extends JPanel implements Cloneable{
 	protected int currentFrame;
 	protected GUI gui;
 	protected double scale;
+	protected double[] translation={0.0,0.0};
+	protected int[] basePosition;
+	
 	
 	public Peca(Peca peca,Tile tile) {
 		set(peca);
@@ -34,14 +37,18 @@ public abstract class Peca extends JPanel implements Cloneable{
 	}
 	public void paintComponent(Graphics g) {//corrigir com correction , posicao inicial no tile e deslocamento em relacao a ela para movimento
 		super.paintComponent(g);
-		g.drawImage(currentAnimation[currentFrame], 0, 0, this);
+		
+		if(tile!=null)basePosition=tile.getGUIPosition();
+		else basePosition=card.getGUIPosition();
+		g.drawImage(currentAnimation[currentFrame], base_position[0]+(int)(scale*correction[0])+(int)(translation[0]*scale), 0, this);
 	}
 	public void set(Peca peca) {//cria uma peca que eh uma copia de outra ja existente
 		this.animationFramesAttack=peca.animationFramesAttack;
 		this.animationFramesMove=peca.animationFramesMove;
 		this.currentAnimation=peca.currentAnimation;
 		this.currentFrame=peca.currentFrame;
-		this.correction=peca.correction;
+		this.scale=peca.scale;
+		
 	}
 	public Peca(GUI gui) {
 		this.gui=gui;

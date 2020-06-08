@@ -10,9 +10,10 @@ public class Window extends JFrame {
 		JFrame frame=new JFrame(title);
 		frame.setSize(width,height);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);  
-		frame.setUndecorated(true);	//false apresenta opções no canto da janela(no linux)
+		frame.setUndecorated(true);	//false apresenta opcoes no canto da janela(no linux)
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
+		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		frame.add(game);
 		game.start();
