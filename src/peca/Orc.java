@@ -7,6 +7,8 @@ import javax.swing.ImageIcon;
 
 import card.Card;
 import game.GUI;
+import game.Game;
+import game.IGame;
 import tabuleiro.Tile;
 
 public class Orc extends Peca{
@@ -16,8 +18,8 @@ public class Orc extends Peca{
 	private static final long serialVersionUID = -5644930813218984359L;
 	static private String[] imagens= {"assets/orc0.png","assets/orc1.png","assets/orc2.png","assets/orc3.png","assets/orc4.png","assets/orc5.png"};
 	
-	public Orc(GUI gui) {
-		super(gui);
+	public Orc(IGame game) {
+		super(game);
 		setup(4);
 	}
 	public Orc(Peca peca,Card card) {

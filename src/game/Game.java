@@ -14,7 +14,7 @@ import tabuleiro.Tile;
 
 
 
-public class Game extends Canvas implements Runnable{
+public class Game extends Canvas implements Runnable, IGame{
     
     private static final long serialVersionUID = 7059646278559620203L;
 
@@ -33,15 +33,12 @@ public class Game extends Canvas implements Runnable{
         new Window(WIDTH, HEIGHT, "MediumWar", this);
         gui=new GUI();
 
-        banco=new Banco(gui);
+        banco=new Banco(this);
         
-        tabuleiro=new Tabuleiro(gui);
-        
-       
-        
-        
-        jogador1=new Jogador(gui,1);
-        jogador2=new Jogador(gui,2);
+        tabuleiro=new Tabuleiro(this);
+
+        jogador1=new Jogador(this,1);
+        jogador2=new Jogador(this,2);
         
     }
 
@@ -92,6 +89,12 @@ public class Game extends Canvas implements Runnable{
     private void tick(){
 
     }
+    
+    public double getScale() {
+    	if(gui!=null)return gui.getScale();
+    	return 1;
+    }
+    
 
     private void render(){
         BufferStrategy bs = this.getBufferStrategy();
@@ -106,10 +109,6 @@ public class Game extends Canvas implements Runnable{
         if(banco!=null)banco.paintComponent(g);
         if(jogador1!=null)jogador1.paintComponent(g);
         if(jogador2!=null)jogador2.paintComponent(g);
-       
-		
-        	
-       
 
         g.dispose();
         bs.show();
@@ -117,7 +116,5 @@ public class Game extends Canvas implements Runnable{
 
     public static void main(String[] args) {
         new Game();
-
     }
-
 }

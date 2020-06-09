@@ -7,6 +7,8 @@ import javax.swing.ImageIcon;
 
 import card.Card;
 import game.GUI;
+import game.Game;
+import game.IGame;
 import tabuleiro.Tile;
 
 public class Knight extends Peca{
@@ -16,8 +18,8 @@ public class Knight extends Peca{
 	private static final long serialVersionUID = -5203249539608432216L;
 	static private String[] imagens= {"assets/knight0.png","assets/knight1.png","assets/knight2.png","assets/knight3.png","assets/knight4.png","assets/knight5.png"};
 			
-	public Knight(GUI gui) {
-		super(gui);
+	public Knight(IGame game) {
+		super(game);
 		setup(4);
 	}
 	public Knight(Peca peca,Card card) {

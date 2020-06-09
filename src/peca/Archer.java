@@ -7,6 +7,8 @@ import javax.swing.ImageIcon;
 
 import card.Card;
 import game.GUI;
+import game.Game;
+import game.IGame;
 import tabuleiro.Tile;
 
 public class Archer extends Peca{
@@ -16,8 +18,8 @@ public class Archer extends Peca{
 	private static final long serialVersionUID = -6369254339259024631L;
 	private static String[] refImagens= {"assets/archer0.png","assets/archer1.png","assets/archer2.png","assets/archer3.png","assets/archer4.png","assets/archer5.png","assets/archer6.png","assets/archer7.png","assets/archer8.png"};
 	
-	public Archer(GUI gui){
-		super(gui);
+	public Archer(IGame game){
+		super(game);
 		setup(4);
 	}
 	public Archer(Peca peca,Card card) {
