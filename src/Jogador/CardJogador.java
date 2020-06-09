@@ -18,8 +18,8 @@ public class CardJogador extends Card{
 	static private String[] refImagens = {"assets/cardPadrao.png","assets/cardAzul.png","assets/cardVermelho.png"};
 	//static private String[] refPeca = {"assets/archer0.png", "assets/knight0.png","assets/orc0.png"};
 	
-	public CardJogador(GUI gui, int i, Peca peca){
-		super(gui, refImagens[0],peca);
+	public CardJogador(GUI gui, int i){
+		super(gui, refImagens[0]);
 	}
 	
 	

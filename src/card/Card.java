@@ -20,9 +20,9 @@ public abstract class Card extends JPanel{
 	private int HEIGHT;
 	private int[] startPointCard = new int[2];
 	private double scale;
-    private Peca peca;
+    private Peca peca=null;
 
-    public Card(GUI gui, String refImagem, Peca peca){
+    public Card(GUI gui, String refImagem){
         scale = gui.getScale();
         this.peca = peca;
         initializeGui(refImagem);
@@ -59,5 +59,8 @@ public abstract class Card extends JPanel{
     }
     public int getHeight() {
     	return HEIGHT;
+    }
+    public void setPeca(Peca peca) {
+    	this.peca=peca;
     }
 }

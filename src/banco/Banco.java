@@ -33,10 +33,13 @@ public class Banco extends JPanel{
 		for(int i=0;i<3;i++) {
 			int x;
 			x = random.nextInt(todas.length);
-			if(i==0)pecasDisponiveis[i] = new CardBanco(gui, 0 ,new Archer(todas[x],pecasDisponiveis[i]));
-			if(i==1)pecasDisponiveis[i] = new CardBanco(gui, 0 ,new Knight(todas[x],pecasDisponiveis[i]));
-			if(i==2)pecasDisponiveis[i] = new CardBanco(gui, 0 ,new Orc(todas[x],pecasDisponiveis[i]));
-			//pecasDisponiveis[i] = new CardBanco(gui, 0 ,todas[x]);
+			pecasDisponiveis[i] = new CardBanco(gui, 0 );
+			if(x==0)pecasDisponiveis[i].setPeca(new Archer(todas[0],pecasDisponiveis[i]));
+			if(x==1)pecasDisponiveis[i].setPeca(new Knight(todas[1],pecasDisponiveis[i]));
+			if(x==2)pecasDisponiveis[i].setPeca(new Orc(todas[2],pecasDisponiveis[i]));
+			
+			
+			
 		}
 	}
 	

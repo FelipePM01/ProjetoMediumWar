@@ -38,11 +38,11 @@ public abstract class Peca extends JPanel {
 	public Peca(Peca peca,Card card) {
 		set(peca);
 		this.card=card;
-		this.gui=gui;
+		
 		inBoard=false;
-		if(card!=null)basePosition=card.getGUIPosition();
+		basePosition=card.getGUIPosition();
 	}
-	public void paintComponent(Graphics g, int positionX, int positionY) {//corrigir com correction , posicao inicial no tile e deslocamento em relacao a ela para movimento
+	public void paintComponent(Graphics g, int positionX, int positionY) {
 		super.paintComponent(g);
 		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null)g.drawImage(currentAnimation[currentFrame], basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]*scale), 0, this);
 	}

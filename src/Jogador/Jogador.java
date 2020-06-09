@@ -28,8 +28,8 @@ public class Jogador extends JPanel{
 		}
 		initializeGui();
 		
-		for(int i=0;i<8;i++)
-			mao[i]= new CardJogador(gui, i%3, new Orc(gui));
+		for(int i=0;i<8;i++) {}
+			//mao[i]= new CardJogador(gui, i%3, new Orc(gui));
 		
 	}
 	public void initializeGui(){
