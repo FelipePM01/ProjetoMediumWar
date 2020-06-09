@@ -22,6 +22,8 @@ public class Knight extends Peca{
 	}
 	public Knight(Peca peca,Card card) {
 		super(peca,card);
+		correction[0]=18;
+		correction[1]=14;
 	}
 	public void setup(int x) {
 		animationFramesMove = new Image[3];
@@ -38,14 +40,7 @@ public class Knight extends Peca{
 	public Knight(Peca peca,Tile tile){
 		super(peca, tile);
 		setup(2);	
+		correction[0]=8;
+		correction[1]=4;
 	}
-	
-	/*
-	public void paintCard(Graphics g,int positionX,int positionY) {
-		paintComponent(g,positionX+applyScale(18),positionY+applyScale(14));
-	}
-	public void paintTile(Graphics g,int positionX,int positionY) {
-		paintComponent(g,positionX+applyScale(8),positionY+applyScale(4));
-	}
-	*/
 }

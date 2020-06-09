@@ -22,6 +22,8 @@ public class Archer extends Peca{
 	}
 	public Archer(Peca peca,Card card) {
 		super(peca,card);
+		correction[0]=12;
+		correction[1]=14;
 	}
 	public void setup(int x) {
 		animationFramesMove = new Image[3];
@@ -39,13 +41,7 @@ public class Archer extends Peca{
 	public Archer(Peca peca,Tile tile){
 		super(peca, tile);
 		setup(2);	
-	}
-	
-	/*public void paintCard(Graphics g,int positionX,int positionY) {
-		paintComponent(g,positionX+applyScale(12),positionY+applyScale(14));
-	}
-	public void paintTile(Graphics g,int positionX,int positionY) {
-		paintComponent(g,positionX+applyScale(6),positionY+applyScale(4));
-	}*/
-	
+		correction[0]=6;
+		correction[1]=4;
+	}	
 }
