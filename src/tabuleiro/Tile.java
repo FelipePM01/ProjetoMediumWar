@@ -53,4 +53,8 @@ public class Tile extends JPanel{
 	public int[] getGUIPosition() {
 		return position;
 	}
+	public void setPeca(Peca peca) {
+		this.peca=peca;
+	}
+	
 }
