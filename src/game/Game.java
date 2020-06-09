@@ -27,7 +27,7 @@ public class Game extends Canvas implements Runnable{
     private Tabuleiro tabuleiro;
     private Jogador jogador1;
     private Jogador jogador2;
-    private Tile[] tiles=new Tile[1];
+    
     public Game(){
     	
         new Window(WIDTH, HEIGHT, "MediumWar", this);
@@ -37,12 +37,12 @@ public class Game extends Canvas implements Runnable{
         
         tabuleiro=new Tabuleiro(gui);
         
-        Tile aux = tabuleiro.getTile(0,0);
-        aux.setPeca(new Archer(new Archer(gui), aux));
-        //aux.setPeca(new Archer(gui));
+       
+        
         
         jogador1=new Jogador(gui,1);
         jogador2=new Jogador(gui,2);
+        
     }
 
     public synchronized void start(){
@@ -104,8 +104,8 @@ public class Game extends Canvas implements Runnable{
         if(gui!=null)gui.paintComponent(g);
         if(tabuleiro!=null)tabuleiro.paintComponent(g);
         if(banco!=null)banco.paintComponent(g);
-        //if(jogador1!=null)jogador1.paintComponent(g);
-        //if(jogador2!=null)jogador2.paintComponent(g);
+        if(jogador1!=null)jogador1.paintComponent(g);
+        if(jogador2!=null)jogador2.paintComponent(g);
        
 		
         	

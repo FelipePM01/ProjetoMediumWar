@@ -7,9 +7,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import game.GUI;
-import peca.Orc;
 
 public class Jogador extends JPanel{
+	
+	private static final long serialVersionUID = 3795017485437177600L;
 	private CardJogador[] mao=new CardJogador[8];
 	private Image imgmao;
 	private double scale;
@@ -28,9 +29,9 @@ public class Jogador extends JPanel{
 		}
 		initializeGui();
 		
-		for(int i=0;i<8;i++) {}
-			//mao[i]= new CardJogador(gui, i%3, new Orc(gui));
-		
+		for(int i=0;i<8;i++) {
+			mao[i]= new CardJogador(gui, i%3);
+		}
 	}
 	public void initializeGui(){
         ImageIcon refimgmao=new ImageIcon("assets/mao.png");        
@@ -56,4 +57,8 @@ public class Jogador extends JPanel{
         	}
         }
 	}
+	public CardJogador[] getMao() {
+		return mao;
+	}
+	
 }
