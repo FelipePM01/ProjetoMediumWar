@@ -37,6 +37,12 @@ public abstract class Card extends JPanel{
         img=img.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_DEFAULT);
       }
     
+    public void initializeGuiPeca(String refimag){
+        ImageIcon refimg=new ImageIcon(refimag);        
+        imgpeca=refimg.getImage();
+        imgpeca=imgpeca.getScaledInstance((int)(4*scale*imgpeca.getWidth(null)), (int)(4*scale*imgpeca.getHeight(null)), Image.SCALE_DEFAULT);
+      }
+    
     public void paintComponent(Graphics g, int positionX, int positionY){
     	super.paintComponent(g);
     	setOpaque(false);

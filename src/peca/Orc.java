@@ -31,11 +31,11 @@ public class Orc extends Peca{
 		currentFrame = 0;
 		currentAnimation = animationFramesMove;
 	}
-	//Para inserir a imagem dentro do card na posição correta
+	//Para inserir a imagem dentro do card na posiï¿½ï¿½o correta
 	public void paintCard(Graphics g,int positionX,int positionY) {
 		paintComponent(g,positionX+applyScale(14),positionY+applyScale(13));
 	}
-	//Para inserir a imagem dentro do tile na posição correta
+	//Para inserir a imagem dentro do tile na posiï¿½ï¿½o correta
 	public void paintTile(Graphics g,int positionX,int positionY) {
 		paintComponent(g,positionX+applyScale(7),positionY+applyScale(3));
 	}
