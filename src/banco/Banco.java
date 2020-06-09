@@ -3,9 +3,12 @@ package banco;
 import game.GUI;
 import peca.Archer;
 import peca.Knight;
+import peca.Orc;
+import peca.Peca;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -18,12 +21,23 @@ public class Banco extends JPanel{
 	private Image banco;
 	private CardBanco[] pecasDisponiveis=new CardBanco[3];
 	private double scale;
+	private Peca[] todas= new Peca[3];
+	private Random random = new Random();
 	
 	public Banco(GUI gui){
 		scale = gui.getScale();
 		initializeGui(); 
-		for(int i=0;i<3;i++)
-			pecasDisponiveis[i] = new CardBanco(gui, 0 ,new Knight(gui));
+		todas[0] = new Archer(gui);
+		todas[1] = new Knight(gui);
+		todas[2] = new Orc(gui);
+		for(int i=0;i<3;i++) {
+			int x;
+			x = random.nextInt(todas.length);
+			if(i==0)pecasDisponiveis[i] = new CardBanco(gui, 0 ,new Archer(todas[x],pecasDisponiveis[i]));
+			if(i==1)pecasDisponiveis[i] = new CardBanco(gui, 0 ,new Knight(todas[x],pecasDisponiveis[i]));
+			if(i==2)pecasDisponiveis[i] = new CardBanco(gui, 0 ,new Orc(todas[x],pecasDisponiveis[i]));
+			//pecasDisponiveis[i] = new CardBanco(gui, 0 ,todas[x]);
+		}
 	}
 	
 	public void initializeGui(){
@@ -44,6 +58,5 @@ public class Banco extends JPanel{
         	pecasDisponiveis[i].paintComponent(g, newX, newY);
         	newX = newX+pecasDisponiveis[i].getWidth();
         }
-	}
-	
+	}	
 }

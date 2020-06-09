@@ -5,6 +5,7 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+import card.Card;
 import game.GUI;
 import tabuleiro.Tile;
 
@@ -17,20 +18,29 @@ public class Orc extends Peca{
 	
 	public Orc(GUI gui) {
 		super(gui);
-		setup();
+		setup(4);
 	}
-	public void setup() {
+	public Orc(Peca peca,Card card) {
+		super(peca,card);
+	}
+	public void setup(int x) {
 		animationFramesMove = new Image[3];
 		animationFramesAttack = new Image[3];
 		for(int i=0;i<6;i++){
 			if(i<3)
-				animationFramesMove[i]=adjustScale(imagens[i]);
+				animationFramesMove[i]=adjustScale(imagens[i],x);
 			else
-				animationFramesAttack[i-3]=adjustScale(imagens[i]);
+				animationFramesAttack[i-3]=adjustScale(imagens[i],x);
 		}
 		currentFrame = 0;
 		currentAnimation = animationFramesMove;
 	}
+	
+	public Orc(Peca peca,Tile tile){
+		super(peca, tile);
+		setup(2);	
+	}
+	/*
 	//Para inserir a imagem dentro do card na posi��o correta
 	public void paintCard(Graphics g,int positionX,int positionY) {
 		paintComponent(g,positionX+applyScale(14),positionY+applyScale(13));
@@ -39,4 +49,5 @@ public class Orc extends Peca{
 	public void paintTile(Graphics g,int positionX,int positionY) {
 		paintComponent(g,positionX+applyScale(7),positionY+applyScale(3));
 	}
+	*/
 }

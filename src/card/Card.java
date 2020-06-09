@@ -18,7 +18,6 @@ public abstract class Card extends JPanel{
 	private Image img, imgpeca;
 	private int WIDTH;
 	private int HEIGHT;
-	private int[] startPoint = new int[2];
 	private int[] startPointCard = new int[2];
 	private double scale;
     private Peca peca;
@@ -49,14 +48,11 @@ public abstract class Card extends JPanel{
     	if(img!=null)g.drawImage(img, positionX, positionY, this);
     	startPointCard[0]=positionX;
     	startPointCard[1]=positionY;
-    	if(peca!=null)peca.paintCard(g, positionX, positionY);
+    	if(peca!=null)peca.paintComponent(g, positionX, positionY);
     	
 	}
-    public int[] getStartPoint() {
-    	int[] Point = new int[2];
-    	for(int i=0;i<2;i++)
-    		Point[i]=startPointCard[i]+(int)(scale*startPoint[i]);
-    	return startPoint;
+    public int[] getGUIPosition(){
+    	return startPointCard;
     }
     public int getWidth() {
     	return WIDTH;
