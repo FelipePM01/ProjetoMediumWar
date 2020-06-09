@@ -9,6 +9,7 @@ import Jogador.Jogador;
 import banco.Banco;
 import tabuleiro.Tabuleiro;
 import card.Card;
+import peca.Archer;
 import tabuleiro.Tile;
 
 
@@ -35,6 +36,10 @@ public class Game extends Canvas implements Runnable{
         banco=new Banco(gui);
         
         tabuleiro=new Tabuleiro(gui);
+        
+        Tile aux = tabuleiro.getTile(0,0);
+        aux.setPeca(new Archer(new Archer(gui), aux));
+        //aux.setPeca(new Archer(gui));
         
         jogador1=new Jogador(gui,1);
         jogador2=new Jogador(gui,2);
@@ -99,8 +104,8 @@ public class Game extends Canvas implements Runnable{
         if(gui!=null)gui.paintComponent(g);
         if(tabuleiro!=null)tabuleiro.paintComponent(g);
         if(banco!=null)banco.paintComponent(g);
-        if(jogador1!=null)jogador1.paintComponent(g);
-        if(jogador2!=null)jogador2.paintComponent(g);
+        //if(jogador1!=null)jogador1.paintComponent(g);
+        //if(jogador2!=null)jogador2.paintComponent(g);
        
 		
         	

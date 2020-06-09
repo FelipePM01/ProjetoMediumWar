@@ -44,7 +44,7 @@ public abstract class Peca extends JPanel {
 	}
 	public void paintComponent(Graphics g, int positionX, int positionY) {
 		super.paintComponent(g);
-		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null)g.drawImage(currentAnimation[currentFrame], basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]*scale),basePosition[1]+(int)(scale*correction[1])+(int)(translation[1]*scale), this);
+		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null)g.drawImage(currentAnimation[currentFrame], basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]*scale), basePosition[1]+(int)(scale*correction[1])+(int)(translation[1]*scale), this);
 	}
 	public void set(Peca peca) {//cria uma peca que eh uma copia de outra ja existente
 		this.animationFramesAttack=peca.animationFramesAttack;
