@@ -1,5 +1,6 @@
 package peca;
 
+import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
@@ -29,5 +30,13 @@ public class Orc extends Peca{
 		}
 		currentFrame = 0;
 		currentAnimation = animationFramesMove;
+	}
+	//Para inserir a imagem dentro do card na posição correta
+	public void paintCard(Graphics g,int positionX,int positionY) {
+		paintComponent(g,positionX+applyScale(14),positionY+applyScale(13));
+	}
+	//Para inserir a imagem dentro do tile na posição correta
+	public void paintTile(Graphics g,int positionX,int positionY) {
+		paintComponent(g,positionX+applyScale(7),positionY+applyScale(3));
 	}
 }

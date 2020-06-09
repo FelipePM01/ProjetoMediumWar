@@ -23,10 +23,10 @@ public abstract class Card extends JPanel{
 	private double scale;
     private Peca peca;
 
-    public Card(GUI gui, String refImagem, String refPeca){
+    public Card(GUI gui, String refImagem, Peca peca){
         scale = gui.getScale();
+        this.peca = peca;
         initializeGui(refImagem);
-        initializeGuiPeca(refPeca);
     }
 
     public void initializeGui(String refimag){
@@ -37,20 +37,14 @@ public abstract class Card extends JPanel{
         img=img.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_DEFAULT);
       }
     
-    public void initializeGuiPeca(String refimag){
-        ImageIcon refimg=new ImageIcon(refimag);        
-        imgpeca=refimg.getImage();
-        imgpeca=imgpeca.getScaledInstance((int)(4*scale*imgpeca.getWidth(null)), (int)(4*scale*imgpeca.getHeight(null)), Image.SCALE_DEFAULT);
-      }
-    
     public void paintComponent(Graphics g, int positionX, int positionY){
     	super.paintComponent(g);
     	setOpaque(false);
     	if(img!=null)g.drawImage(img, positionX, positionY, this);
-    	if(imgpeca!=null)g.drawImage(imgpeca, positionX+25, positionY+25, this);
     	startPointCard[0]=positionX;
     	startPointCard[1]=positionY;
-    	//if(peca!=null)g.drawImage(peca, centerXY[0], centerXY[1], this);
+    	if(peca!=null)peca.paintCard(g, positionX, positionY);
+    	
 	}
     public int[] getStartPoint() {
     	int[] Point = new int[2];

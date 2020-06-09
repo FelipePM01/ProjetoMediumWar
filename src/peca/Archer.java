@@ -1,5 +1,6 @@
 package peca;
 
+import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
@@ -30,4 +31,12 @@ public class Archer extends Peca{
 		currentFrame = 0;
 		currentAnimation = animationFramesMove;
 	}
+	
+	public void paintCard(Graphics g,int positionX,int positionY) {
+		paintComponent(g,positionX+applyScale(12),positionY+applyScale(14));
+	}
+	public void paintTile(Graphics g,int positionX,int positionY) {
+		paintComponent(g,positionX+applyScale(6),positionY+applyScale(4));
+	}
+	
 }

@@ -1,5 +1,6 @@
 package peca;
 
+import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
@@ -29,5 +30,11 @@ public class Knight extends Peca{
 		}
 		currentFrame = 0;
 		currentAnimation = animationFramesMove;
+	}
+	public void paintCard(Graphics g,int positionX,int positionY) {
+		paintComponent(g,positionX+applyScale(18),positionY+applyScale(14));
+	}
+	public void paintTile(Graphics g,int positionX,int positionY) {
+		paintComponent(g,positionX+applyScale(8),positionY+applyScale(4));
 	}
 }

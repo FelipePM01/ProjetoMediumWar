@@ -30,11 +30,12 @@ public abstract class Peca extends JPanel implements Cloneable{
 	public Peca(Peca peca,Card card) {
 		set(peca);
 		this.card=card;
+		this.gui=gui;
 		inBoard=false;
 	}
-	public void paintComponent(Graphics g) {//corrigir com correction , posicao inicial no tile e deslocamento em relacao a ela para movimento
+	public void paintComponent(Graphics g, int positionX, int positionY) {//corrigir com correction , posicao inicial no tile e deslocamento em relacao a ela para movimento
 		super.paintComponent(g);
-		g.drawImage(currentAnimation[currentFrame], 0, 0, this);
+		g.drawImage(currentAnimation[currentFrame], positionX, positionY, this);
 	}
 	public void set(Peca peca) {//cria uma peca que eh uma copia de outra ja existente
 		this.animationFramesAttack=peca.animationFramesAttack;
@@ -52,7 +53,14 @@ public abstract class Peca extends JPanel implements Cloneable{
 		
         ImageIcon refimg=new ImageIcon(refImg);
         Image img=refimg.getImage();
-        return img.getScaledInstance((int)(img.getWidth(null)*scale),(int)(img.getHeight(null)*scale),Image.SCALE_DEFAULT);
+        //Escala de acordo com o card
+        return img.getScaledInstance((int)(img.getWidth(null)*scale*4),(int)(img.getHeight(null)*scale*4),Image.SCALE_DEFAULT);
     }
+	public int applyScale(int x) {
+		return (int)(x*scale); 
+	}
+	
+	public abstract void paintCard(Graphics g,int positionX,int positionY);
+	public abstract void paintTile(Graphics g,int positionX,int positionY);
 	
 }
