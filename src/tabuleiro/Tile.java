@@ -25,13 +25,13 @@ public class Tile extends JPanel{
 	public Tile(GUI gui,int[] position){
 		scale=gui.getScale();
 		
-		ImageIcon refTilePadrao=new ImageIcon("assets\\tilePadrao.png");
+		ImageIcon refTilePadrao=new ImageIcon("assets/tilePadrao.png");
 		tilePadrao=refTilePadrao.getImage();
 		tilePadrao=tilePadrao.getScaledInstance((int)(tilePadrao.getWidth(null)*scale),(int) (tilePadrao.getHeight(null)*scale), Image.SCALE_DEFAULT);
-		ImageIcon refTileVermelho=new ImageIcon("assets\\tileVermelho.png");
+		ImageIcon refTileVermelho=new ImageIcon("assets/tileVermelho.png");
 		tileVermelho=refTileVermelho.getImage();
 		tileVermelho=tileVermelho.getScaledInstance((int)(tileVermelho.getWidth(null)*scale),(int) (tileVermelho.getHeight(null)*scale), Image.SCALE_DEFAULT);
-		ImageIcon refTileAzul=new ImageIcon("assets\\tileAzul.png");
+		ImageIcon refTileAzul=new ImageIcon("assets/tileAzul.png");
 		tileAzul=refTileAzul.getImage();
 		tileAzul=tileAzul.getScaledInstance((int)(tileAzul.getWidth(null)*scale),(int) (tileAzul.getHeight(null)*scale), Image.SCALE_DEFAULT);
 		
@@ -43,7 +43,7 @@ public class Tile extends JPanel{
 		
 		super.paintComponent(g);
 		setOpaque(false);
-		if(img==null)System.out.println(1);
+		
 		g.drawImage(img, (int)(scale*(startPositionScreen[0])+position[0]*img.getWidth(null)), (int)(scale*(startPositionScreen[1])+position[1]*img.getWidth(null)), this);
 		if(peca!=null)peca.paintComponent(g,0,0);
 	}

@@ -28,7 +28,7 @@ public class Tabuleiro extends JPanel {
 			}
 		}
 		scale=gui.getScale();
-		ImageIcon refTabuleiro=new ImageIcon("assets\\tabuleiro.png");
+		ImageIcon refTabuleiro=new ImageIcon("assets/tabuleiro.png");
 		tabuleiro=refTabuleiro.getImage();
 		tabuleiro=tabuleiro.getScaledInstance((int)(tabuleiro.getWidth(null)*scale),(int) (tabuleiro.getHeight(null)*scale), Image.SCALE_DEFAULT);
 	}

@@ -19,8 +19,9 @@ public class GUI extends JPanel {
 	private static double scale=1.0;
 
 	public GUI() {
+		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		ImageIcon refBackground=new ImageIcon("assets\\background.png");
+		ImageIcon refBackground=new ImageIcon("assets/background.png");
 		background=refBackground.getImage();
 		Dimension d1=new Dimension(background.getWidth(null),background.getHeight(null));
 		Dimension correct=getScaledDimension(d1, screenSize);
@@ -43,13 +44,11 @@ public class GUI extends JPanel {
 	    int new_width = original_width;
 	    int new_height = original_height;
 
-	    // first check if we need to scale width
-	    if (original_width < bound_width) {
-	        //scale width to fit
-	        new_width = bound_width;
-	        //scale height to maintain aspect ratio
-	        new_height = (new_width * original_height) / original_width;
-	    }
+	    
+        new_width = bound_width;
+        
+        new_height = (new_width * original_height) / original_width;
+	    
 
 		scale = ((double)new_height/(double)original_height);
 
