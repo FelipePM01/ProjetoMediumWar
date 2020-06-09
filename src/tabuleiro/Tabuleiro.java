@@ -29,7 +29,7 @@ public class Tabuleiro extends JPanel {
 				matriz[i][j]=new Tile(game,vet);
 			}
 		}
-		scale=gui.getScale();
+		scale=game.getScale();
 		ImageIcon refTabuleiro=new ImageIcon("assets/tabuleiro.png");
 		tabuleiro=refTabuleiro.getImage();
 		tabuleiro=tabuleiro.getScaledInstance((int)(tabuleiro.getWidth(null)*scale),(int) (tabuleiro.getHeight(null)*scale), Image.SCALE_DEFAULT);
