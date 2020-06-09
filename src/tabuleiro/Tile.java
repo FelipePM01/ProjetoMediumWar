@@ -42,16 +42,19 @@ public class Tile extends JPanel{
 	public void paintComponent(Graphics g,Image img) {
 		
 		super.paintComponent(g);
+		setOpaque(false);
 		if(img==null)System.out.println(1);
 		g.drawImage(img, (int)(scale*(startPositionScreen[0])+position[0]*img.getWidth(null)), (int)(scale*(startPositionScreen[1])+position[1]*img.getWidth(null)), this);
-		if(peca!=null)peca.paintComponent(g, position[0], position[1]);
+		if(peca!=null)peca.paintComponent(g,0,0);
 	}
 	public Image getImage() {
 		return tileAtual;
 	}
 	
 	public int[] getGUIPosition() {
-		return position;
+		int[] GUIPosition={(int)(scale*(startPositionScreen[0])+position[0]*tileAtual.getWidth(null)),(int)(scale*(startPositionScreen[1])+position[1]*tileAtual.getWidth(null))};
+		
+		return GUIPosition;
 	}
 	public void setPeca(Peca peca) {
 		this.peca=peca;
