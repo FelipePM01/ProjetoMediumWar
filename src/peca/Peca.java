@@ -10,7 +10,11 @@ import card.Card;
 import game.GUI;
 import tabuleiro.Tile;
 
-public abstract class Peca extends JPanel implements Cloneable{
+public abstract class Peca extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3059669044498752498L;
 	protected Image[] animationFramesMove;
 	protected Image[] animationFramesAttack;
 	protected Tile tile=null;
@@ -55,7 +59,7 @@ public abstract class Peca extends JPanel implements Cloneable{
 		scale=gui.getScale();
 	}
 	
-	public Image adjustScale(String refImg){
+	public Image adjustScale(String refImg, int x){
 		
         ImageIcon refimg=new ImageIcon(refImg);
         Image img=refimg.getImage();
@@ -65,7 +69,4 @@ public abstract class Peca extends JPanel implements Cloneable{
 	public int applyScale(int x) {
 		return (int)(x*scale); 
 	}
-	
-	
-	
 }
