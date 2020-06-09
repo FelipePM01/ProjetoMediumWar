@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 
 import card.Card;
 import game.GUI;
+import game.Game;
+import game.IGame;
 import tabuleiro.Tile;
 
 public abstract class Peca extends JPanel {
@@ -54,9 +56,9 @@ public abstract class Peca extends JPanel {
 		this.scale=peca.scale;
 		
 	}
-	public Peca(GUI gui) {
-		this.gui=gui;
-		scale=gui.getScale();
+	public Peca(IGame game) {
+		//this.gui=gui;
+		scale=game.getScale();
 	}
 	
 	public Image adjustScale(String refImg, int x){

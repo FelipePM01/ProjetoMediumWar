@@ -7,6 +7,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import game.GUI;
+import game.Game;
+import game.IGame;
 import peca.Peca;
 
 public abstract class Card extends JPanel{
@@ -22,8 +24,8 @@ public abstract class Card extends JPanel{
 	private double scale;
     private Peca peca=null;
 
-    public Card(GUI gui, String refImagem){
-        scale = gui.getScale();
+    public Card(IGame game, String refImagem){
+        scale = game.getScale();
         this.peca = peca;
         initializeGui(refImagem);
     }

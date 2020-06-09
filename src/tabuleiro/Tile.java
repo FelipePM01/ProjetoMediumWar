@@ -7,6 +7,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import game.GUI;
+import game.Game;
+import game.IGame;
 import peca.Peca;
 
 public class Tile extends JPanel{
@@ -22,8 +24,8 @@ public class Tile extends JPanel{
 	
 	private Image tilePadrao;
 	private Peca peca=null;
-	public Tile(GUI gui,int[] position){
-		scale=gui.getScale();
+	public Tile(IGame game,int[] position){
+		scale=game.getScale();
 		
 		ImageIcon refTilePadrao=new ImageIcon("assets/tilePadrao.png");
 		tilePadrao=refTilePadrao.getImage();

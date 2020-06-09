@@ -7,6 +7,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import game.GUI;
+import game.Game;
+import game.IGame;
 
 public class Tabuleiro extends JPanel {
 	/**
@@ -18,13 +20,13 @@ public class Tabuleiro extends JPanel {
 	private double scale;
 	private Image tabuleiro;
 	private int[] startPositionScreen= {280,120};
-	public Tabuleiro(GUI gui) {
+	public Tabuleiro(IGame game) {
 		for(int i=0;i<10;i++) {
 			for(int j=0;j<10;j++) {
 				vet=new int[2];
 				vet[0]=i;
 				vet[1]=j;
-				matriz[i][j]=new Tile(gui,vet);
+				matriz[i][j]=new Tile(game,vet);
 			}
 		}
 		scale=gui.getScale();

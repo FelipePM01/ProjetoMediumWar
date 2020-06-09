@@ -1,6 +1,8 @@
 package banco;
 
 import game.GUI;
+import game.Game;
+import game.IGame;
 import peca.Archer;
 import peca.Knight;
 import peca.Orc;
@@ -24,16 +26,16 @@ public class Banco extends JPanel{
 	private Peca[] todas= new Peca[3];
 	private Random random = new Random();
 	
-	public Banco(GUI gui){
-		scale = gui.getScale();
+	public Banco(IGame game){
+		scale = game.getScale();
 		initializeGui(); 
-		todas[0] = new Archer(gui);
-		todas[1] = new Knight(gui);
-		todas[2] = new Orc(gui);
+		todas[0] = new Archer(game);
+		todas[1] = new Knight(game);
+		todas[2] = new Orc(game);
 		for(int i=0;i<3;i++) {
 			int x;
 			x = random.nextInt(todas.length);
-			pecasDisponiveis[i] = new CardBanco(gui, 0 );
+			pecasDisponiveis[i] = new CardBanco(game, 0 );
 			if(x==0)pecasDisponiveis[i].setPeca(new Archer(todas[0],pecasDisponiveis[i]));
 			if(x==1)pecasDisponiveis[i].setPeca(new Knight(todas[1],pecasDisponiveis[i]));
 			if(x==2)pecasDisponiveis[i].setPeca(new Orc(todas[2],pecasDisponiveis[i]));

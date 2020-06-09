@@ -7,6 +7,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import game.GUI;
+import game.Game;
+import game.IGame;
 
 public class Jogador extends JPanel{
 	
@@ -17,8 +19,8 @@ public class Jogador extends JPanel{
 	private int positionX;
 	private int positionY;
 	
-	public Jogador(GUI gui, int j){
-		scale=gui.getScale();
+	public Jogador(IGame game, int j){
+		scale=game.getScale();
 		if(j==1) {
 			positionX=(int)(scale*20);
 			positionY=(int)(scale*240);
@@ -30,7 +32,7 @@ public class Jogador extends JPanel{
 		initializeGui();
 		
 		for(int i=0;i<8;i++) {
-			mao[i]= new CardJogador(gui, i%3);
+			mao[i]= new CardJogador(game, i%3);
 		}
 	}
 	public void initializeGui(){
