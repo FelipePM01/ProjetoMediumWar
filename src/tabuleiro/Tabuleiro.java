@@ -47,4 +47,7 @@ public class Tabuleiro extends JPanel {
 			}
 		}
 	}
+	public Tile getTile(int x, int y) {
+		return matriz[x][y];
+	}
 }
