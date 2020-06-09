@@ -22,6 +22,8 @@ public class Orc extends Peca{
 	}
 	public Orc(Peca peca,Card card) {
 		super(peca,card);
+		correction[0]=14;
+		correction[1]=13;
 	}
 	public void setup(int x) {
 		animationFramesMove = new Image[3];
@@ -38,16 +40,8 @@ public class Orc extends Peca{
 	
 	public Orc(Peca peca,Tile tile){
 		super(peca, tile);
-		setup(2);	
+		setup(2);
+		correction[0]=7;
+		correction[1]=3;
 	}
-	/*
-	//Para inserir a imagem dentro do card na posi��o correta
-	public void paintCard(Graphics g,int positionX,int positionY) {
-		paintComponent(g,positionX+applyScale(14),positionY+applyScale(13));
-	}
-	//Para inserir a imagem dentro do tile na posi��o correta
-	public void paintTile(Graphics g,int positionX,int positionY) {
-		paintComponent(g,positionX+applyScale(7),positionY+applyScale(3));
-	}
-	*/
 }

@@ -99,8 +99,8 @@ public class Game extends Canvas implements Runnable{
         if(gui!=null)gui.paintComponent(g);
         if(tabuleiro!=null)tabuleiro.paintComponent(g);
         if(banco!=null)banco.paintComponent(g);
-       // if(jogador1!=null)jogador1.paintComponent(g);
-        //if(jogador2!=null)jogador2.paintComponent(g);
+        if(jogador1!=null)jogador1.paintComponent(g);
+        if(jogador2!=null)jogador2.paintComponent(g);
        
 		
         	
