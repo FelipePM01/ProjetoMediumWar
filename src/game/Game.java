@@ -28,15 +28,12 @@ public class Game extends Canvas implements Runnable, IGame{
     private Jogador jogador1= null;
     private Jogador jogador2= null;
     
-    public Game(){
-    	//set backgraund 
-    	
-        new Window(WIDTH, HEIGHT, "MediumWar", this);
+    public Game(){ 
+       new Window(WIDTH, HEIGHT, "MediumWar", this);
         
         gui=new GUI();
-
         banco=new Banco(this);
-        
+  
         tabuleiro=new Tabuleiro(this);
 
         jogador1=new Jogador(this,1);
@@ -106,16 +103,14 @@ public class Game extends Canvas implements Runnable, IGame{
             return;
         }
         Graphics g = bs.getDrawGraphics();
-
-        HomeWindow home = new HomeWindow();
-		home.showPage("home", g);
         
         if(gui!=null)gui.paintComponent(g);
         if(tabuleiro!=null)tabuleiro.paintComponent(g);
         if(banco!=null)banco.paintComponent(g);
         if(jogador1!=null)jogador1.paintComponent(g);
         if(jogador2!=null)jogador2.paintComponent(g);
-
+        
+        
         g.dispose();
         bs.show();
     }
