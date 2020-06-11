@@ -36,8 +36,8 @@ public class Menu extends JPanel{
 		//Adiciona imagens usadas
 		imgPlay =new ImageIcon("assets/playButton.png");        
 		imgCreditsButton=new ImageIcon("assets/creditsButton.png");
-		imgMenu = new ImageIcon("C:\\Users\\Cristiano\\Documents\\Area de Trabalho\\maxresdefault.jpg");
-		imgCredits = new ImageIcon("C:\\Users\\Cristiano\\Documents\\Area de Trabalho\\Pink-Floyd-Wallpaper.jpg");
+		imgMenu = new ImageIcon("assets/menuBackground.png");
+		imgCredits = new ImageIcon("assets/creditsBackground.png");
 		
 		//Cria Janelas
 		menuPage = new JLabel();
