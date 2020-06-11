@@ -1,6 +1,6 @@
 package game;
 
-import java.awt.Graphics;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,6 +15,7 @@ public class Window extends JFrame implements ActionListener{
 	private static final long serialVersionUID = -4369730830015653927L;
 	public Window(int width,int height,String title,Game game) {
 		this.game=game;
+		//menu = new Menu(width, height, this);
 		menu = new Menu(width, height, this);
 
 		frame=new JFrame(title);
