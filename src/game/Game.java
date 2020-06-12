@@ -3,6 +3,11 @@ package game;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 
 import Jogador.Jogador;
@@ -14,7 +19,7 @@ import tabuleiro.Tile;
 
 
 
-public class Game extends Canvas implements Runnable, IGame{
+public class Game extends Canvas implements Runnable, IGame, KeyListener{
     
     private static final long serialVersionUID = 7059646278559620203L;
 
@@ -39,7 +44,7 @@ public class Game extends Canvas implements Runnable, IGame{
         jogador1=new Jogador(this,1);
         jogador2=new Jogador(this,2);
         
-        
+        addKeyListener(this);
     }
 
     public synchronized void start(){
@@ -73,7 +78,7 @@ public class Game extends Canvas implements Runnable, IGame{
                 delta--;
             }
             if(running){
-            render();
+            	render();
             }
             frames++;
 
@@ -118,4 +123,37 @@ public class Game extends Canvas implements Runnable, IGame{
     public static void main(String[] args) {
         new Game();
     }
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		int code = e.getKeyCode();
+		switch(code){
+		case KeyEvent.VK_1:
+			System.out.println("1");
+            break;
+		case KeyEvent.VK_2:
+			System.out.println("2");
+            break;
+		case KeyEvent.VK_3:
+			System.out.println("3");
+            break;
+		case KeyEvent.VK_SPACE:
+			System.out.println("espaço");
+            break;
+		case KeyEvent.VK_B:
+			System.out.println("B");
+            break;
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+	}
 }

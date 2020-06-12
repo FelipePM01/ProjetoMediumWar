@@ -21,7 +21,6 @@ public class Menu extends JPanel{
 	
 	public Menu(int WIDTH, int HEIGHT, Window window){
 		this.window = window;
-		
 		setMenu(WIDTH,WIDTH);
 		
 		//Cria cardLayout e adiciona janelas
@@ -83,5 +82,4 @@ public class Menu extends JPanel{
 		ImageIcon imgResize = new ImageIcon(newImg);
 		return imgResize;
 	}
-	
 }
