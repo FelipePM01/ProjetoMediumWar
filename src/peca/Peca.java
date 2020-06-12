@@ -71,4 +71,9 @@ public abstract class Peca extends JPanel {
 	public int applyScale(int x) {
 		return (int)(x*scale); 
 	}
+//	protected void tick() {
+//		if(currentAction=="moving") {
+//			
+//		}
+//	}
 }
