@@ -2,6 +2,7 @@ package Jogador;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -62,5 +63,4 @@ public class Jogador extends JPanel{
 	public CardJogador[] getMao() {
 		return mao;
 	}
-	
 }
