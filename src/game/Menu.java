@@ -1,6 +1,7 @@
 package game;
 
 import java.awt.CardLayout;
+import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -12,8 +13,8 @@ public class Menu extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 6053970674453213543L;
-	private ImageIcon imgPlay, imgCreditsButton, imgMenu, imgCredits;
-	private JButton play, credits, home;
+	private ImageIcon imgPlay, imgCreditsButton, imgExit, imgReturn, imgMenu, imgCredits;
+	private JButton play, credits, exit, home;
 	private Window window;
 	private JLabel creditsPage, menuPage;
 	private CardLayout cardLayout;
@@ -21,7 +22,7 @@ public class Menu extends JPanel{
 	public Menu(int WIDTH, int HEIGHT, Window window){
 		this.window = window;
 		
-		setMenu();
+		setMenu(WIDTH,WIDTH);
 		
 		//Cria cardLayout e adiciona janelas
 		cardLayout = new CardLayout();
@@ -32,13 +33,15 @@ public class Menu extends JPanel{
 	    
 		setVisible(true);
 	}
-	public void setMenu() {
-		//Adiciona imagens usadas
-		imgPlay =new ImageIcon("assets/playButton.png");        
-		imgCreditsButton=new ImageIcon("assets/creditsButton.png");
-		imgMenu = new ImageIcon("assets/menuBackground.png");
-		imgCredits = new ImageIcon("assets/creditsBackground.png");
-		
+	public void setMenu(int WIDTH, int HEIGHT) {
+		//Adiciona e ajusta imagens usadas    
+		imgPlay = resize(new ImageIcon("assets/playButton.png"));
+		imgCreditsButton = resize(new ImageIcon("assets/creditsButton.png"));
+		imgExit = resize(new ImageIcon("assets/exitButton.png"));
+		imgReturn = resize(new ImageIcon("assets/returnButton.png"));
+		imgMenu = resize(new ImageIcon("assets/menuBackground.png"));
+		imgCredits = resize(new ImageIcon("assets/creditsBackground.png"));
+				
 		//Cria Janelas
 		menuPage = new JLabel();
 		menuPage.setSize(WIDTH, HEIGHT);
@@ -54,18 +57,31 @@ public class Menu extends JPanel{
 		
 		//Cria Botoes
 		play=new JButton(imgPlay);
-		play.setBounds(120, 900, 216, 72);
+		play.setBounds(1400, 400, 432, 144); //216*2, 72*2
 		play.addActionListener(window);
 		menuPage.add(play);
 		
 		credits=new JButton(imgCreditsButton);
-		credits.setBounds(360, 900, 216, 72);
+		credits.setBounds(1400, 570, 432, 144);
 		credits.addActionListener(e -> cardLayout.show(this, "credits"));
 		menuPage.add(credits);
 		
-		home=new JButton("Voltar");
-		home.setBounds(120, 900, 216, 72);
+		exit=new JButton(imgExit);
+		exit.setBounds(1400, 740, 432, 144);
+		exit.addActionListener(e -> System.exit(0));
+		menuPage.add(exit);
+		
+		home=new JButton(imgReturn);
+		home.setBounds(120, 900, 432, 144);
 		home.addActionListener(e -> cardLayout.show(this, "home"));
 		creditsPage.add(home);
 	}
+	
+	public ImageIcon resize(ImageIcon img) {
+		Image auxImg = img.getImage();
+		Image newImg = auxImg.getScaledInstance((int)(img.getIconWidth()*2),(int)(img.getIconHeight()*2),java.awt.Image.SCALE_SMOOTH);
+		ImageIcon imgResize = new ImageIcon(newImg);
+		return imgResize;
+	}
+	
 }
