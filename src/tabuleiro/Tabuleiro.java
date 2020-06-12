@@ -52,4 +52,14 @@ public class Tabuleiro extends JPanel {
 	public Tile getTile(int x, int y) {
 		return matriz[x][y];
 	}
+	public void start() {
+		for(int i=0;i<10;i++) {
+			for(int j=0;j<10;j++) {
+				if(matriz[i][j].getPeca()!=null)matriz[i][j].getPeca().moveOrAttack();
+			}
+		}
+	}
+	public Tile[][] getTiles() {
+		return matriz;
+	}
 }

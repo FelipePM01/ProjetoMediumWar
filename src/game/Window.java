@@ -36,6 +36,7 @@ public class Window extends JFrame implements ActionListener{
 		 	SwingUtilities.updateComponentTreeUI(this);
 		 	
 		 	frame.add(game);
+		 	game.gameStart();
 		 	game.start();
 	   }
 }

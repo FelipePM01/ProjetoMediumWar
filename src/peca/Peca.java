@@ -2,14 +2,19 @@ package peca;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import card.Card;
 import game.GUI;
 import game.Game;
 import game.IGame;
+import tabuleiro.Tabuleiro;
 import tabuleiro.Tile;
 
 public abstract class Peca extends JPanel {
@@ -17,6 +22,7 @@ public abstract class Peca extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 3059669044498752498L;
+	public static Tabuleiro tabuleiro;
 	protected Image[] animationFramesMove;
 	protected Image[] animationFramesAttack;
 	protected Tile tile=null;
@@ -29,7 +35,12 @@ public abstract class Peca extends JPanel {
 	protected double scale;
 	protected double[] translation={0.0,0.0};
 	protected int[] basePosition = {0,0};
-	
+	protected String currentAction=null;
+	protected Tile moveTarget=null;
+	protected double speed;
+	protected int[] direction= {0,0};
+	protected int baseMoveAnimDuration;
+	protected int frameCounter=0;
 	
 	public Peca(Peca peca,Tile tile) {
 		set(peca);
@@ -54,6 +65,12 @@ public abstract class Peca extends JPanel {
 		this.currentAnimation=peca.currentAnimation;
 		this.currentFrame=0;
 		this.scale=peca.scale;
+		ActionListener taskPerformer = new ActionListener() {
+		      public void actionPerformed(ActionEvent evt) {
+		          tick();
+		      }
+		  };
+		  new Timer(1, taskPerformer).start();
 		
 	}
 	public Peca(IGame game) {
@@ -71,9 +88,40 @@ public abstract class Peca extends JPanel {
 	public int applyScale(int x) {
 		return (int)(x*scale); 
 	}
-//	protected void tick() {
-//		if(currentAction=="moving") {
-//			
-//		}
-//	}
+	protected void tick() {
+		if(currentAction=="moving") {
+			frameCounter+=1;
+			if (frameCounter>(double)animationFramesMove.length/baseMoveAnimDuration*speed) {
+				if(currentFrame==animationFramesMove.length)currentFrame=0;
+				else currentFrame++;
+			}
+			if(direction[0]!=0) {
+				translation[0]+=direction[0]*speed/1000;
+			}
+			else if(direction[1]!=0){
+				translation[1]+=direction[1]*speed/1000;
+			}
+			if(Math.abs(translation[0])>=tile.getImage().getWidth(null)||Math.abs(translation[1])>=tile.getImage().getHeight(null)){
+				tile.setPeca(null);
+				moveTarget.setPeca(this);
+				translation[0]=0;
+				translation[1]=0;
+				currentAction=null;
+				direction[0]=0;
+				direction[1]=0;
+				moveOrAttack();
+				
+			}
+		}
+	}
+	public Tile getTile() {
+		return tile;
+	}
+	public void moveOrAttack() {
+		currentAction="moving";
+		Random random=new Random();
+		direction[random.nextInt(1)]=random.nextInt(1)==0?-1:1;
+		moveTarget=tabuleiro.getTiles()[tile.getPosition()[0]+direction[0]][tile.getPosition()[1]+direction[1]];
+		
+	}
 }

@@ -10,6 +10,7 @@ import banco.Banco;
 import tabuleiro.Tabuleiro;
 import card.Card;
 import peca.Archer;
+import peca.Peca;
 import tabuleiro.Tile;
 
 
@@ -28,24 +29,30 @@ public class Game extends Canvas implements Runnable, IGame{
     private Jogador jogador1= null;
     private Jogador jogador2= null;
     
-    public Game(){ 
-       new Window(WIDTH, HEIGHT, "MediumWar", this);
+    public void gameStart(){ 
+       
         
         gui=new GUI();
         banco=new Banco(this);
   
         tabuleiro=new Tabuleiro(this);
-
+        Peca.tabuleiro=tabuleiro;
+        Peca archer=new Archer(this);
+        tabuleiro.getTiles()[5][5].setPeca(new Archer(archer,tabuleiro.getTiles()[5][5]));
         jogador1=new Jogador(this,1);
         jogador2=new Jogador(this,2);
         
         
+    }
+    public Game() {
+    	 new Window(WIDTH, HEIGHT, "MediumWar", this);
     }
 
     public synchronized void start(){
         thread = new Thread(this);
         thread.start();
         running = true;
+        tabuleiro.start();
     }
     
     public synchronized void stop() {

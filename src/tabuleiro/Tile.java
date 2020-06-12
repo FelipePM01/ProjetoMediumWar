@@ -16,7 +16,7 @@ public class Tile extends JPanel{
 	
 	private static final long serialVersionUID = 4878418849447188406L;
 	private static int[] startPositionScreen= {282,122};
-	private int[] position;
+	private int[] position=new int[2];
 	private double scale;
 	private static Image tileAtual;
 	private static Image tileVermelho;
@@ -61,5 +61,11 @@ public class Tile extends JPanel{
 	public void setPeca(Peca peca) {
 		this.peca=peca;
 	}
-	
+	public Peca getPeca() {
+		return peca;
+	}
+	public int[] getPosition() {
+		int[] pos={position[0],position[1]};
+		return pos;
+	}
 }
