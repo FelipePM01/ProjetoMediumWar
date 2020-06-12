@@ -41,7 +41,7 @@ public abstract class Peca extends JPanel {
 	protected int[] direction= {0,0};
 	protected int baseMoveAnimDuration;
 	protected int frameCounter=0;
-	
+	Timer timer;
 	public Peca(Peca peca,Tile tile) {
 		set(peca);
 		this.tile=tile;
@@ -66,11 +66,12 @@ public abstract class Peca extends JPanel {
 		this.currentFrame=0;
 		this.scale=peca.scale;
 		ActionListener taskPerformer = new ActionListener() {
-		      public void actionPerformed(ActionEvent evt) {
-		          tick();
-		      }
-		  };
-		  new Timer(1, taskPerformer).start();
+			public void actionPerformed(ActionEvent evt) {
+				tick();
+		    }
+		};
+		timer=new Timer(1, taskPerformer);
+		timer.start();
 		
 	}
 	public Peca(IGame game) {

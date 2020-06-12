@@ -41,9 +41,10 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
         banco=new Banco(this);
   
         tabuleiro=new Tabuleiro(this);
-        Peca.tabuleiro=tabuleiro;
-        Peca archer=new Archer(this);
-        tabuleiro.getTiles()[5][5].setPeca(new Archer(archer,tabuleiro.getTiles()[5][5]));
+
+        
+
+
         jogador1=new Jogador(this,1);
         jogador2=new Jogador(this,2);
         
@@ -70,32 +71,19 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
         }
     }
     public void run(){
-        long lastTime = System.nanoTime();
-        double amountOfTicks = 60.0;
-        double ns = 1000000000 / amountOfTicks; 
-        double delta = 0; 
-        long timer = System.currentTimeMillis();
-        int frames = 0;
-        while(running){ 
-            long now = System.nanoTime();
-            delta += (now - lastTime) / ns;
-            lastTime = now;
-            while(delta >= 1){
-                tick();  
-                delta--;
-            }
-            if(running){
+       
+        while(true){ 
+            
+            
             	render();
+            	
+            	
+            	
+            	
+            	
+            	
             }
-            frames++;
-
-            if(System.currentTimeMillis() - timer > 1000 ){
-                timer+= 1000;
-                System.out.println("FPS: " + frames);
-                frames = 0;
-            }
-        }
-        stop();
+        
     }
 
     private void tick(){
@@ -151,7 +139,9 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
 			System.out.println("3");
             break;
 		case KeyEvent.VK_SPACE:
-			System.out.println("espaço");
+			
+	        Peca archer=new Archer(this);
+	        tabuleiro.getTiles()[5][5].setPeca(new Archer(archer,tabuleiro.getTiles()[5][5]));
             break;
 		case KeyEvent.VK_B:
 			System.out.println("B");

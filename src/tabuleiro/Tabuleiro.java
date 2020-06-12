@@ -15,7 +15,7 @@ public class Tabuleiro extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 407576592100509664L;
-	private Tile[][] matriz=new Tile[10][10];
+	public Tile[][] matriz=new Tile[10][10];
 	private int[] vet;
 	private double scale;
 	private Image tabuleiro;
