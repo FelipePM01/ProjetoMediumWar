@@ -55,9 +55,10 @@ public abstract class Peca extends JPanel {
 		inBoard=false;
 		basePosition=card.getGUIPosition();
 	}
+	
 	public void paintComponent(Graphics g, int positionX, int positionY) {
 		super.paintComponent(g);
-		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null)g.drawImage(currentAnimation[currentFrame], basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]*scale), basePosition[1]+(int)(scale*correction[1])+(int)(translation[1]*scale), this);
+		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null)g.drawImage(currentAnimation[currentFrame], basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]), basePosition[1]+(int)(scale*correction[1])+(int)(translation[1]), this);
 	}
 	public void set(Peca peca) {//cria uma peca que eh uma copia de outra ja existente
 		this.animationFramesAttack=peca.animationFramesAttack;
@@ -65,6 +66,8 @@ public abstract class Peca extends JPanel {
 		this.currentAnimation=peca.currentAnimation;
 		this.currentFrame=0;
 		this.scale=peca.scale;
+		this.baseMoveAnimDuration=peca.baseMoveAnimDuration;
+		this.speed=peca.speed;
 		ActionListener taskPerformer = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				tick();
@@ -90,21 +93,30 @@ public abstract class Peca extends JPanel {
 		return (int)(x*scale); 
 	}
 	protected void tick() {
+		
 		if(currentAction=="moving") {
+			
 			frameCounter+=1;
 			if (frameCounter>(double)animationFramesMove.length/baseMoveAnimDuration*speed) {
 				if(currentFrame==animationFramesMove.length)currentFrame=0;
 				else currentFrame++;
 			}
 			if(direction[0]!=0) {
-				translation[0]+=direction[0]*speed/1000;
+				
+				translation[0]+=direction[0]*speed*tile.getImage().getWidth(null)/1000;
+				System.out.println((int)(translation[0]));
 			}
 			else if(direction[1]!=0){
-				translation[1]+=direction[1]*speed/1000;
+				
+				translation[1]+=direction[1]*speed*tile.getImage().getWidth(null)/1000;
+				System.out.println((int)translation[1]);
 			}
 			if(Math.abs(translation[0])>=tile.getImage().getWidth(null)||Math.abs(translation[1])>=tile.getImage().getHeight(null)){
+//				System.out.println(1);
 				tile.setPeca(null);
 				moveTarget.setPeca(this);
+				tile=moveTarget;
+				moveTarget=null;
 				translation[0]=0;
 				translation[1]=0;
 				currentAction=null;
@@ -121,6 +133,8 @@ public abstract class Peca extends JPanel {
 	public void moveOrAttack() {
 		currentAction="moving";
 		Random random=new Random();
+		direction[0]=0;
+		direction[1]=0;
 		direction[random.nextInt(1)]=random.nextInt(1)==0?-1:1;
 		moveTarget=tabuleiro.getTiles()[tile.getPosition()[0]+direction[0]][tile.getPosition()[1]+direction[1]];
 		

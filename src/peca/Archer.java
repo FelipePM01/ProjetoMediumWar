@@ -21,6 +21,8 @@ public class Archer extends Peca{
 	public Archer(IGame game){
 		super(game);
 		setup(4);
+		speed=2.0;
+		baseMoveAnimDuration=1;
 	}
 	public Archer(Peca peca,Card card) {
 		super(peca,card);

@@ -42,7 +42,7 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
   
         tabuleiro=new Tabuleiro(this);
 
-        
+        Peca.tabuleiro=tabuleiro;
 
 
         jogador1=new Jogador(this,1);
@@ -86,9 +86,6 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
         
     }
 
-    private void tick(){
-
-    }
     
     public double getScale() {
     	if(gui!=null)return gui.getScale();
@@ -136,8 +133,7 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
 			System.out.println("2");
             break;
 		case KeyEvent.VK_3:
-			System.out.println("3");
-            break;
+			tabuleiro.start();
 		case KeyEvent.VK_SPACE:
 			
 	        Peca archer=new Archer(this);
