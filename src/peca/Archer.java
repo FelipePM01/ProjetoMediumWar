@@ -21,8 +21,7 @@ public class Archer extends Peca{
 	public Archer(IGame game){
 		super(game);
 		setup(4);
-		speed=2.0;
-		baseMoveAnimDuration=1000;
+		
 	}
 	public Archer(Peca peca,Card card) {
 		super(peca,card);
@@ -40,6 +39,8 @@ public class Archer extends Peca{
 		}
 		currentFrame = 0;
 		currentAnimation = animationFramesMove;
+		speed=2.0;
+		baseMoveAnimDuration=1000;
 	}
 	
 	public Archer(Peca peca,Tile tile){
