@@ -47,7 +47,7 @@ public class Tile extends JPanel{
 		setOpaque(false);
 		
 		g.drawImage(img, (int)(scale*(startPositionScreen[0])+position[0]*img.getWidth(null)), (int)(scale*(startPositionScreen[1])+position[1]*img.getWidth(null)), this);
-		if(peca!=null)peca.paintComponent(g,0,0);
+		
 	}
 	public Image getImage() {
 		return tileAtual;

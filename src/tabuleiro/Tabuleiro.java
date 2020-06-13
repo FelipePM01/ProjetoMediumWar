@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import game.GUI;
 import game.Game;
 import game.IGame;
+import peca.Peca;
 
 public class Tabuleiro extends JPanel {
 	/**
@@ -38,15 +39,27 @@ public class Tabuleiro extends JPanel {
 	public void paintComponent(Graphics g) {
 		
 		super.paintComponent(g);
-		Graphics2D g2d=(Graphics2D)g.create();
-		g2d.drawImage(tabuleiro, (int)(scale*(startPositionScreen[0])), (int)(scale*(startPositionScreen[1])), this);
+		
+		g.drawImage(tabuleiro, (int)(scale*(startPositionScreen[0])), (int)(scale*(startPositionScreen[1])), this);
 		for(int i=0;i<10;i++) {
 			for(int j=0;j<10;j++) {
 				
 				if(matriz[i][j]!=null) {
 					Image img=matriz[i][j].getImage();
 				
-					matriz[i][j].paintComponent(g2d,img);
+					matriz[i][j].paintComponent(g,img);
+					
+				}
+			}
+		}
+		for(int i=0;i<10;i++) {
+			for(int j=0;j<10;j++) {
+				
+				if(matriz[i][j]!=null) {
+					
+					Peca peca=matriz[i][j].getPeca();
+					if(peca!=null)peca.paintComponent(g,0,0);
+					
 				}
 			}
 		}
