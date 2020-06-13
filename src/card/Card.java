@@ -45,7 +45,7 @@ public abstract class Card extends JPanel{
       }
     
     public void paintComponent(Graphics g, int positionX, int positionY){
-    	super.paintComponent(g);
+    	
     	setOpaque(false);
     	if(img!=null)g.drawImage(img, positionX, positionY, this);
     	startPointCard[0]=positionX;

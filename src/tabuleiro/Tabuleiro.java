@@ -74,6 +74,14 @@ public class Tabuleiro extends JPanel {
 			}
 		}
 	}
+	public void clear() {
+		for(int i=0;i<10;i++) {
+			for(int j=0;j<10;j++) {
+				if(matriz[i][j].getPeca()!=null)matriz[i][j].getPeca().setTarget(null);
+				if(matriz[i][j].getPeca()!=null)matriz[i][j].setPeca(null);
+			}
+		}
+	}
 	public Tile[][] getTiles() {
 		return matriz;
 	}

@@ -53,6 +53,7 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
         jogador2=new Jogador(this,2);
         
         addKeyListener(this);
+        
     }
     public Game() {
     	 new Window(WIDTH, HEIGHT, "MediumWar", this);
@@ -130,15 +131,19 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
 		switch(code){
 		case KeyEvent.VK_1:
 			 Peca knight=new Knight(this);
-		     tabuleiro.getTiles()[2][2].setPeca(new Knight(knight,tabuleiro.getTiles()[2][7]));
+		     tabuleiro.getTiles()[2][7].setPeca(new Knight(knight,tabuleiro.getTiles()[2][7]));
             break;
 		case KeyEvent.VK_2:
 			 Peca orc=new Orc(this);
-		     tabuleiro.getTiles()[2][2].setPeca(new Orc(orc,tabuleiro.getTiles()[7][7]));
+		     tabuleiro.getTiles()[7][7].setPeca(new Orc(orc,tabuleiro.getTiles()[7][7]));
             break;
 		case KeyEvent.VK_3:
 			 Peca archer=new Archer(this);
 		     tabuleiro.getTiles()[2][2].setPeca(new Archer(archer,tabuleiro.getTiles()[2][2]));
+		     break;
+		case KeyEvent.VK_4:
+			 tabuleiro.clear();
+		     break;
 		case KeyEvent.VK_SPACE:
 			
 			tabuleiro.start();

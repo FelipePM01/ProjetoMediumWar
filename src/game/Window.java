@@ -25,7 +25,7 @@ public class Window extends JFrame implements ActionListener{
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
+		setIgnoreRepaint(true);
 		frame.add(menu);
 		
 	}

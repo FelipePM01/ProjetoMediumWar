@@ -66,7 +66,7 @@ public abstract class Peca extends JPanel {
 		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null&&!flipped)g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0])), (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1])),null);
 		else if(currentAnimation!=null&&currentAnimation[currentFrame]!=null)g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]))+currentAnimation[currentFrame].getWidth(null), (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1])),-currentAnimation[currentFrame].getWidth(null),currentAnimation[currentFrame].getHeight(null),null);
 
-		repaint();
+		
 	}
 	public void set(Peca peca) {//cria uma peca que eh uma copia de outra ja existente
 		this.animationFramesAttack=peca.animationFramesAttack;
@@ -161,6 +161,9 @@ public abstract class Peca extends JPanel {
 		direction[random.nextInt(2)]=random.nextInt(2)==0?-1:1;
 		moveTarget=tabuleiro.getTiles()[tile.getPosition()[0]+direction[0]][tile.getPosition()[1]+direction[1]];
 		
+	}
+	public void setTarget(Tile tile) {
+		moveTarget=tile;
 	}
 	
 }
