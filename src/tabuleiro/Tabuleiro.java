@@ -1,6 +1,7 @@
 package tabuleiro;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
@@ -37,14 +38,15 @@ public class Tabuleiro extends JPanel {
 	public void paintComponent(Graphics g) {
 		
 		super.paintComponent(g);
-		g.drawImage(tabuleiro, (int)(scale*(startPositionScreen[0])), (int)(scale*(startPositionScreen[1])), this);
+		Graphics2D g2d=(Graphics2D)g.create();
+		g2d.drawImage(tabuleiro, (int)(scale*(startPositionScreen[0])), (int)(scale*(startPositionScreen[1])), this);
 		for(int i=0;i<10;i++) {
 			for(int j=0;j<10;j++) {
 				
 				if(matriz[i][j]!=null) {
 					Image img=matriz[i][j].getImage();
 				
-					matriz[i][j].paintComponent(g,img);
+					matriz[i][j].paintComponent(g2d,img);
 				}
 			}
 		}

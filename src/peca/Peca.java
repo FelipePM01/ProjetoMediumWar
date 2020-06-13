@@ -58,7 +58,8 @@ public abstract class Peca extends JPanel {
 	
 	public void paintComponent(Graphics g, int positionX, int positionY) {
 		super.paintComponent(g);
-		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null)g.drawImage(currentAnimation[currentFrame], basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]), basePosition[1]+(int)(scale*correction[1])+(int)(translation[1]), this);
+		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null)g.drawImage(currentAnimation[currentFrame], basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]), basePosition[1]+(int)(scale*correction[1])+(int)(translation[1]),null);
+		repaint();
 	}
 	public void set(Peca peca) {//cria uma peca que eh uma copia de outra ja existente
 		this.animationFramesAttack=peca.animationFramesAttack;
@@ -96,11 +97,11 @@ public abstract class Peca extends JPanel {
 		
 		if(currentAction=="moving") {
 			
-			frameCounter+=1;
-			if (frameCounter>(double)animationFramesMove.length/baseMoveAnimDuration*speed) {
-				if(currentFrame==animationFramesMove.length)currentFrame=0;
-				else currentFrame++;
-			}
+//			frameCounter+=1;
+//			if (frameCounter>(double)baseMoveAnimDuration/speed/animationFramesMove.length) {
+//				if(currentFrame>=animationFramesMove.length)currentFrame=0;
+//				else currentFrame++;
+//			}
 			if(direction[0]!=0) {
 				
 				translation[0]+=direction[0]*speed*tile.getImage().getWidth(null)/1000;
@@ -135,7 +136,7 @@ public abstract class Peca extends JPanel {
 		Random random=new Random();
 		direction[0]=0;
 		direction[1]=0;
-		direction[random.nextInt(1)]=random.nextInt(1)==0?-1:1;
+		direction[random.nextInt(2)]=random.nextInt(2)==0?-1:1;
 		moveTarget=tabuleiro.getTiles()[tile.getPosition()[0]+direction[0]][tile.getPosition()[1]+direction[1]];
 		
 	}

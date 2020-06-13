@@ -25,8 +25,9 @@ public class Banco extends JPanel{
 	private double scale;
 	private Peca[] todas= new Peca[3];
 	private Random random = new Random();
-	
+	private IGame game;
 	public Banco(IGame game){
+		this.game=game;
 		scale = game.getScale();
 		initializeGui(); 
 		todas[0] = new Archer(game);
@@ -63,5 +64,18 @@ public class Banco extends JPanel{
         	pecasDisponiveis[i].paintComponent(g, newX, newY);
         	newX = newX+pecasDisponiveis[i].getWidth();
         }
-	}	
+	}
+	public void refresh() {
+		for(int i=0;i<3;i++) {
+			int x;
+			x = random.nextInt(todas.length);
+			pecasDisponiveis[i] = new CardBanco(game, 0 );
+			if(x==0)pecasDisponiveis[i].setPeca(new Archer(todas[0],pecasDisponiveis[i]));
+			if(x==1)pecasDisponiveis[i].setPeca(new Knight(todas[1],pecasDisponiveis[i]));
+			if(x==2)pecasDisponiveis[i].setPeca(new Orc(todas[2],pecasDisponiveis[i]));
+			repaint();
+			
+			
+		}
+	}
 }

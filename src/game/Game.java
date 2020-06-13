@@ -10,6 +10,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 
+import javax.swing.SwingUtilities;
+
 import Jogador.Jogador;
 import banco.Banco;
 import tabuleiro.Tabuleiro;
@@ -73,10 +75,8 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
     public void run(){
        
         while(true){ 
-            
-            
-            	render();
-            	
+             	render();
+             	
             	
             	
             	
@@ -130,7 +130,7 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
 			System.out.println("1");
             break;
 		case KeyEvent.VK_2:
-			System.out.println("2");
+			banco.refresh();
             break;
 		case KeyEvent.VK_3:
 			tabuleiro.start();
