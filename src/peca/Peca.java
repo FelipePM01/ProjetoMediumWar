@@ -4,6 +4,9 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
@@ -41,7 +44,9 @@ public abstract class Peca extends JPanel {
 	protected int[] direction= {0,0};
 	protected int baseMoveAnimDuration;
 	protected int frameCounter=0;
-	Timer timer;
+	protected boolean flipped=false;
+	protected Timer timer;
+	protected int flipCorrection;
 	public Peca(Peca peca,Tile tile) {
 		set(peca);
 		this.tile=tile;
@@ -58,7 +63,9 @@ public abstract class Peca extends JPanel {
 	
 	public void paintComponent(Graphics g, int positionX, int positionY) {
 		super.paintComponent(g);
-		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null)g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0])), (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1])),null);
+		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null&&!flipped)g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0])), (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1])),null);
+		else if(currentAnimation!=null&&currentAnimation[currentFrame]!=null)g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]))+currentAnimation[currentFrame].getWidth(null), (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1])),-currentAnimation[currentFrame].getWidth(null),currentAnimation[currentFrame].getHeight(null),null);
+
 		repaint();
 	}
 	public void set(Peca peca) {//cria uma peca que eh uma copia de outra ja existente
@@ -69,6 +76,7 @@ public abstract class Peca extends JPanel {
 		this.scale=peca.scale;
 		this.baseMoveAnimDuration=peca.baseMoveAnimDuration;
 		this.speed=peca.speed;
+		
 		ActionListener taskPerformer = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				tick();
@@ -99,7 +107,7 @@ public abstract class Peca extends JPanel {
 			
 			frameCounter+=1;
 			if (frameCounter>=(double)baseMoveAnimDuration/speed/animationFramesMove.length) {
-				System.out.println(baseMoveAnimDuration);
+				
 				if(currentFrame==animationFramesMove.length-1)currentFrame=0;
 				else currentFrame++;
 				
@@ -108,7 +116,17 @@ public abstract class Peca extends JPanel {
 			if(direction[0]!=0) {
 				
 				translation[0]+=direction[0]*speed*tile.getImage().getWidth(null)/1000;
-				
+				if(direction[0]==-1 ) {
+					if(!flipped) {
+						flipped=true;
+						correction[0]-=flipCorrection;
+					}
+					
+				}
+				else if(flipped){
+					flipped=false;
+					correction[0]+=flipCorrection;
+				}
 			}
 			else if(direction[1]!=0){
 				
@@ -144,4 +162,5 @@ public abstract class Peca extends JPanel {
 		moveTarget=tabuleiro.getTiles()[tile.getPosition()[0]+direction[0]][tile.getPosition()[1]+direction[1]];
 		
 	}
+	
 }

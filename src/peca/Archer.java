@@ -47,5 +47,6 @@ public class Archer extends Peca{
 		setup(2);	
 		correction[0]=6;
 		correction[1]=4;
+		flipCorrection=6;
 	}	
 }

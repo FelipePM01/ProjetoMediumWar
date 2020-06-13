@@ -38,11 +38,14 @@ public class Knight extends Peca{
 		}
 		currentFrame = 0;
 		currentAnimation = animationFramesMove;
+		speed=1;
+		baseMoveAnimDuration=500;
 	}
 	public Knight(Peca peca,Tile tile){
 		super(peca, tile);
 		setup(2);	
 		correction[0]=8;
 		correction[1]=4;
+		flipCorrection=10;
 	}
 }

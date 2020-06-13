@@ -17,6 +17,8 @@ import banco.Banco;
 import tabuleiro.Tabuleiro;
 import card.Card;
 import peca.Archer;
+import peca.Knight;
+import peca.Orc;
 import peca.Peca;
 import tabuleiro.Tile;
 
@@ -127,20 +129,22 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
 		int code = e.getKeyCode();
 		switch(code){
 		case KeyEvent.VK_1:
-			System.out.println("1");
+			 Peca knight=new Knight(this);
+		     tabuleiro.getTiles()[2][2].setPeca(new Knight(knight,tabuleiro.getTiles()[2][7]));
             break;
 		case KeyEvent.VK_2:
-			banco.refresh();
+			 Peca orc=new Orc(this);
+		     tabuleiro.getTiles()[2][2].setPeca(new Orc(orc,tabuleiro.getTiles()[7][7]));
             break;
 		case KeyEvent.VK_3:
-			tabuleiro.start();
+			 Peca archer=new Archer(this);
+		     tabuleiro.getTiles()[2][2].setPeca(new Archer(archer,tabuleiro.getTiles()[2][2]));
 		case KeyEvent.VK_SPACE:
 			
-	        Peca archer=new Archer(this);
-	        tabuleiro.getTiles()[5][5].setPeca(new Archer(archer,tabuleiro.getTiles()[5][5]));
+			tabuleiro.start();
             break;
 		case KeyEvent.VK_B:
-			System.out.println("B");
+			banco.refresh();
             break;
 		}
 	}

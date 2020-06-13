@@ -38,6 +38,8 @@ public class Orc extends Peca{
 		}
 		currentFrame = 0;
 		currentAnimation = animationFramesMove;
+		speed=3;
+		baseMoveAnimDuration=1000;
 	}
 	
 	public Orc(Peca peca,Tile tile){
@@ -45,5 +47,6 @@ public class Orc extends Peca{
 		setup(2);
 		correction[0]=7;
 		correction[1]=3;
+		flipCorrection=8;
 	}
 }
