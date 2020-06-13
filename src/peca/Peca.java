@@ -97,23 +97,26 @@ public abstract class Peca extends JPanel {
 		
 		if(currentAction=="moving") {
 			
-//			frameCounter+=1;
-//			if (frameCounter>(double)baseMoveAnimDuration/speed/animationFramesMove.length) {
-//				if(currentFrame>=animationFramesMove.length)currentFrame=0;
-//				else currentFrame++;
-//			}
+			frameCounter+=1;
+			if (frameCounter>=(double)baseMoveAnimDuration/speed/animationFramesMove.length) {
+				System.out.println(baseMoveAnimDuration);
+				if(currentFrame==animationFramesMove.length-1)currentFrame=0;
+				else currentFrame++;
+				
+				frameCounter=0;
+			}
 			if(direction[0]!=0) {
 				
 				translation[0]+=direction[0]*speed*tile.getImage().getWidth(null)/1000;
-				System.out.println((int)(translation[0]));
+				
 			}
 			else if(direction[1]!=0){
 				
 				translation[1]+=direction[1]*speed*tile.getImage().getWidth(null)/1000;
-				System.out.println((int)translation[1]);
+				
 			}
 			if(Math.abs(translation[0])>=tile.getImage().getWidth(null)||Math.abs(translation[1])>=tile.getImage().getHeight(null)){
-//				System.out.println(1);
+
 				tile.setPeca(null);
 				moveTarget.setPeca(this);
 				tile=moveTarget;

@@ -22,7 +22,7 @@ public class Archer extends Peca{
 		super(game);
 		setup(4);
 		speed=2.0;
-		baseMoveAnimDuration=1;
+		baseMoveAnimDuration=1000;
 	}
 	public Archer(Peca peca,Card card) {
 		super(peca,card);
