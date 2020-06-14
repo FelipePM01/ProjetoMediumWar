@@ -8,15 +8,9 @@ import javax.swing.JPanel;
 
 import Jogador.IJogadorCard;
 import banco.IBancoCard;
-import game.GUI;
-import game.Game;
-import game.IGame;
 import peca.IPecaCard;
-import peca.IPecaCardBanco;
-import peca.Peca;
 
 public abstract class Card extends JPanel implements ICardPeca{
-	
 	/**
 	 * 
 	 */
@@ -30,12 +24,10 @@ public abstract class Card extends JPanel implements ICardPeca{
 
     public Card(IBancoCard banco, String refImagem){
         scale = banco.getScale();
-        
         initializeGui(refImagem);
     }
     public Card(IJogadorCard jogador, String refImagem){
         scale = jogador.getScale();
-        
         initializeGui(refImagem);
     }
 
@@ -45,22 +37,18 @@ public abstract class Card extends JPanel implements ICardPeca{
         WIDTH = (int)(scale*img.getWidth(null));
         HEIGHT = (int)(scale*img.getHeight(null));
         img=img.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_DEFAULT);
-      }
-    
+    }
     public void initializeGuiPeca(String refimag){
         ImageIcon refimg=new ImageIcon(refimag);        
         imgpeca=refimg.getImage();
         imgpeca=imgpeca.getScaledInstance((int)(4*scale*imgpeca.getWidth(null)), (int)(4*scale*imgpeca.getHeight(null)), Image.SCALE_DEFAULT);
-      }
-    
+    }
     public void paintComponent(Graphics g, int positionX, int positionY){
-    	
     	setOpaque(false);
     	if(img!=null)g.drawImage(img, positionX, positionY, this);
     	startPointCard[0]=positionX;
     	startPointCard[1]=positionY;
-    	if(peca!=null)peca.paintComponent(g, positionX, positionY);
-    	
+    	if(peca!=null)peca.paintComponent(g, positionX, positionY);	
 	}
     public int[] getGUIPosition(){
     	return startPointCard;

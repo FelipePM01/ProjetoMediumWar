@@ -1,14 +1,8 @@
 package peca;
 
-import java.awt.Graphics;
 import java.awt.Image;
 
-import javax.swing.ImageIcon;
-
 import card.Card;
-import game.GUI;
-import game.Game;
-import game.IGame;
 import tabuleiro.Tile;
 
 public class Knight extends Peca{
@@ -18,8 +12,8 @@ public class Knight extends Peca{
 	private static final long serialVersionUID = -5203249539608432216L;
 	static private String[] imagens= {"assets/knight0.png","assets/knight1.png","assets/knight2.png","assets/knight3.png","assets/knight4.png","assets/knight5.png"};
 			
-	public Knight(IGame game) {
-		super(game);
+	public Knight(double scale) {
+		super(scale);
 		setup(4);
 	}
 	public Knight(Peca peca,Card card) {
@@ -27,6 +21,14 @@ public class Knight extends Peca{
 		correction[0]=18;
 		correction[1]=14;
 	}
+	public Knight(Peca peca,Tile tile){
+		super(peca, tile);
+		setup(2);	
+		correction[0]=8;
+		correction[1]=4;
+		flipCorrection=10;
+	}
+	
 	public void setup(int x) {
 		animationFramesMove = new Image[3];
 		animationFramesAttack = new Image[3];
@@ -40,12 +42,5 @@ public class Knight extends Peca{
 		currentAnimation = animationFramesMove;
 		speed=1;
 		baseMoveAnimDuration=500;
-	}
-	public Knight(Peca peca,Tile tile){
-		super(peca, tile);
-		setup(2);	
-		correction[0]=8;
-		correction[1]=4;
-		flipCorrection=10;
 	}
 }

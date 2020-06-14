@@ -4,9 +4,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
-import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
@@ -15,8 +12,6 @@ import javax.swing.Timer;
 
 import card.Card;
 import game.GUI;
-import game.Game;
-import game.IGame;
 import tabuleiro.ITilePeca;
 import tabuleiro.Tabuleiro;
 import tabuleiro.Tile;
@@ -47,6 +42,7 @@ public abstract class Peca extends JPanel implements IPeca{
 	protected boolean flipped=false;
 	protected Timer timer;
 	protected int flipCorrection;
+	
 	public Peca(Peca peca,Tile tile) {
 		set(peca);
 		this.tile=tile;
@@ -63,10 +59,9 @@ public abstract class Peca extends JPanel implements IPeca{
 		super.paintComponent(g);
 		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null&&!flipped)g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0])), (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1])),null);
 		else if(currentAnimation!=null&&currentAnimation[currentFrame]!=null)g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]))+currentAnimation[currentFrame].getWidth(null), (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1])),-currentAnimation[currentFrame].getWidth(null),currentAnimation[currentFrame].getHeight(null),null);
-
-		
 	}
-	public void set(Peca peca) {//cria uma peca que eh uma copia de outra ja existente
+	//cria uma peca que eh uma copia de outra ja existente
+	public void set(Peca peca) {
 		this.animationFramesAttack=peca.animationFramesAttack;
 		this.animationFramesMove=peca.animationFramesMove;
 		this.currentAnimation=peca.currentAnimation;
@@ -74,32 +69,21 @@ public abstract class Peca extends JPanel implements IPeca{
 		this.scale=peca.scale;
 		this.baseMoveAnimDuration=peca.baseMoveAnimDuration;
 		this.speed=peca.speed;
-		
+	
 		ActionListener taskPerformer = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				tick();
 		    }
 		};
 		timer=new Timer(1, taskPerformer);
-		timer.start();
-		
+		timer.start();	
 	}
-	public Peca(IGame game) {
-		scale=game.getScale();
-	}
-	
 	public Image adjustScale(String refImg, int x){
-		
-        ImageIcon refimg=new ImageIcon(refImg);
+		ImageIcon refimg=new ImageIcon(refImg);
         Image img=refimg.getImage();
-        //Escala de acordo com o card
         return img.getScaledInstance((int)(img.getWidth(null)*scale*x),(int)(img.getHeight(null)*scale*x),Image.SCALE_DEFAULT);
     }
-	protected int applyScale(int x) {
-		return (int)(x*scale); 
-	}
-	 void tick() {
-		
+	void tick() {
 		if(currentAction=="moving") {
 			
 			frameCounter+=1;
@@ -118,7 +102,6 @@ public abstract class Peca extends JPanel implements IPeca{
 						flipped=true;
 						correction[0]-=flipCorrection;
 					}
-					
 				}
 				else if(flipped){
 					flipped=false;
@@ -127,8 +110,7 @@ public abstract class Peca extends JPanel implements IPeca{
 			}
 			else if(direction[1]!=0){
 				
-				translation[1]+=direction[1]*speed*tile.getImage().getWidth(null)/1000;
-				
+				translation[1]+=direction[1]*speed*tile.getImage().getWidth(null)/1000;	
 			}
 			if(Math.abs(translation[0])>=tile.getImage().getWidth(null)||Math.abs(translation[1])>=tile.getImage().getHeight(null)){
 
@@ -142,13 +124,9 @@ public abstract class Peca extends JPanel implements IPeca{
 				currentAction=null;
 				direction[0]=0;
 				direction[1]=0;
-				moveOrAttack();
-				
+				moveOrAttack();		
 			}
 		}
-	}
-	public Tile getTile() {
-		return (Tile) tile;
 	}
 	public void moveOrAttack() {
 		currentAction="moving";
@@ -157,7 +135,12 @@ public abstract class Peca extends JPanel implements IPeca{
 		direction[1]=0;
 		direction[random.nextInt(2)]=random.nextInt(2)==0?-1:1;
 		moveTarget=tile.getOtherTiles()[tile.getPosition()[0]+direction[0]][tile.getPosition()[1]+direction[1]];
-		
+	}
+	public Peca(double scale) {
+		this.scale=scale;
+	}
+	public Tile getTile() {
+		return (Tile) tile;
 	}
 	public void setTarget(Tile tile) {
 		moveTarget=tile;

@@ -2,14 +2,11 @@ package Jogador;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import card.ICardJogador;
-import game.GUI;
-import game.Game;
 import game.IGame;
 
 public class Jogador extends JPanel implements IJogador{
@@ -37,6 +34,7 @@ public class Jogador extends JPanel implements IJogador{
 			mao[i]= new CardJogador(this, i%3);
 		}
 	}
+	
 	public void initializeGui(){
         ImageIcon refimgmao=new ImageIcon("assets/mao.png");        
         imgmao=refimgmao.getImage();
@@ -44,11 +42,10 @@ public class Jogador extends JPanel implements IJogador{
         int HEIGHT = (int)(imgmao.getHeight(null)*scale);
         imgmao=imgmao.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_DEFAULT);
     }
-	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		int newX = positionX+4+(mao[0].getWidth()/2); //Adicionada 4 para ajuste visual
-		int newY = positionY+4; //Adicionada 4 para ajuste visual
+		int newX = positionX+4+(mao[0].getWidth()/2);
+		int newY = positionY+4;
         g.drawImage(imgmao, positionX, positionY, null);	
         for(int i=0;i<8;i++){
         	if(mao[i]!=null) {

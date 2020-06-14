@@ -1,16 +1,12 @@
 package tabuleiro;
 
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import game.GUI;
-import game.Game;
 import game.IGame;
-import peca.Peca;
 
 public class Tabuleiro extends JPanel implements ITabuleiro{
 	/**
@@ -22,6 +18,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	private double scale=1;
 	private Image tabuleiro;
 	private int[] startPositionScreen= {280,120};
+	
 	public Tabuleiro(IGame game) {
 		scale=game.getScale();
 		for(int i=0;i<10;i++) {
@@ -32,18 +29,16 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 				matriz[i][j]=new Tile(this,vet);
 			}
 		}
-		
 		ImageIcon refTabuleiro=new ImageIcon("assets/tabuleiro.png");
 		tabuleiro=refTabuleiro.getImage();
 		tabuleiro=tabuleiro.getScaledInstance((int)(tabuleiro.getWidth(null)*scale),(int) (tabuleiro.getHeight(null)*scale), Image.SCALE_DEFAULT);
 	}
+	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
 		g.drawImage(tabuleiro, (int)(scale*(startPositionScreen[0])), (int)(scale*(startPositionScreen[1])), this);
 		for(int i=0;i<10;i++) {
 			for(int j=0;j<10;j++) {
-				
 				if(matriz[i][j]!=null) {
 					Image img=matriz[i][j].getImage();
 					matriz[i][j].paintComponent(g,img);
@@ -58,7 +53,6 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 			}
 		}
 	}
-	
 	public void start() {
 		for(int i=0;i<10;i++) {
 			for(int j=0;j<10;j++) {

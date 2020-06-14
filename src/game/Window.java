@@ -1,6 +1,5 @@
 package game;
 
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,9 +14,7 @@ public class Window extends JFrame implements ActionListener{
 	private static final long serialVersionUID = -4369730830015653927L;
 	public Window(int width,int height,String title,Game game) {
 		this.game=game;
-		//menu = new Menu(width, height, this);
 		menu = new Menu(width, height, this);
-
 		frame=new JFrame(title);
 		frame.setSize(width,height);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);  
@@ -27,7 +24,6 @@ public class Window extends JFrame implements ActionListener{
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setIgnoreRepaint(true);
 		frame.add(menu);
-		
 	}
 	
 	 public void actionPerformed(ActionEvent evento) {
@@ -38,5 +34,5 @@ public class Window extends JFrame implements ActionListener{
 		 	frame.add(game);
 		 	game.gameStart();
 		 	game.start();
-	   }
+	 }
 }

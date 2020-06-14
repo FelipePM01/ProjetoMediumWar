@@ -1,8 +1,5 @@
 package banco;
 
-import game.GUI;
-import game.Game;
-import game.IGame;
 import peca.Archer;
 import peca.Knight;
 import peca.Orc;
@@ -26,13 +23,12 @@ public class Banco extends JPanel implements IBanco{
 	private Peca[] todas= new Peca[3];
 	private Random random = new Random();
 	
-	public Banco(IGame game){
-		
-		scale = game.getScale();
+	public Banco(double scale){
+		this.scale=scale;
 		initializeGui(); 
-		todas[0] = new Archer(game);
-		todas[1] = new Knight(game);
-		todas[2] = new Orc(game);
+		todas[0] = new Archer(scale);
+		todas[1] = new Knight(scale);
+		todas[2] = new Orc(scale);
 		refresh();
 	}
 	
@@ -45,10 +41,10 @@ public class Banco extends JPanel implements IBanco{
     }
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		int positionX = (int)(scale*356); //356
-		int positionY = (int)(scale*16);	//16
-		int newX = positionX+4; //Adicionada 4 para ajuste visual
-		int newY = positionY+4; //Adicionada 4 para ajuste visual
+		int positionX = (int)(scale*356);
+		int positionY = (int)(scale*16);
+		int newX = positionX+4;
+		int newY = positionY+4;
         g.drawImage(banco, positionX, positionY, null);	
         for(int i=0;i<3;i++){
         	pecasDisponiveis[i].paintComponent(g, newX, newY);
@@ -64,8 +60,6 @@ public class Banco extends JPanel implements IBanco{
 			if(x==1)pecasDisponiveis[i].setPeca(new Knight(todas[1],pecasDisponiveis[i]));
 			if(x==2)pecasDisponiveis[i].setPeca(new Orc(todas[2],pecasDisponiveis[i]));
 			repaint();
-			
-			
 		}
 	}
 	public double getScale() {

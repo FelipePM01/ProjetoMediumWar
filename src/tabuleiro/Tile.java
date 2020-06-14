@@ -6,9 +6,6 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import game.GUI;
-import game.Game;
-import game.IGame;
 import peca.IPecaTile;
 import peca.Peca;
 
@@ -24,6 +21,7 @@ public class Tile extends JPanel implements ITile{
 	private ITabuleiroTile tabuleiro;
 	private Image tilePadrao;
 	private IPecaTile peca=null;
+	
 	public Tile(ITabuleiroTile tabuleiro,int[] position){
 		scale=tabuleiro.getScale();
 		this.tabuleiro=tabuleiro;
@@ -41,22 +39,18 @@ public class Tile extends JPanel implements ITile{
 		tileAtual=tilePadrao;
 		
 	}
+	
 	public void paintComponent(Graphics g,Image img) {
-		
 		super.paintComponent(g);
 		setOpaque(false);
-		
 		g.drawImage(img, (int)(scale*(startPositionScreen[0])+position[0]*img.getWidth(null)), (int)(scale*(startPositionScreen[1])+position[1]*img.getWidth(null)), this);
-		
+	}
+	public int[] getGUIPosition() {
+		int[] GUIPosition={(int)(scale*(startPositionScreen[0])+position[0]*tileAtual.getWidth(null)),(int)(scale*(startPositionScreen[1])+position[1]*tileAtual.getWidth(null))};
+		return GUIPosition;
 	}
 	public Image getImage() {
 		return tileAtual;
-	}
-	
-	public int[] getGUIPosition() {
-		int[] GUIPosition={(int)(scale*(startPositionScreen[0])+position[0]*tileAtual.getWidth(null)),(int)(scale*(startPositionScreen[1])+position[1]*tileAtual.getWidth(null))};
-		
-		return GUIPosition;
 	}
 	public void paintPeca(Graphics g) {
 		if(peca!=null)peca.paintComponent(g,0,0);
@@ -83,5 +77,8 @@ public class Tile extends JPanel implements ITile{
 	}
 	public Tile[][] getOtherTiles() {
 		return tabuleiro.getTiles();
+	}
+	public double getScale() {
+		return scale;
 	}
 }
