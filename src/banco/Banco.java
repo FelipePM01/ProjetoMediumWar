@@ -25,9 +25,9 @@ public class Banco extends JPanel implements IBanco{
 	private double scale=1;
 	private Peca[] todas= new Peca[3];
 	private Random random = new Random();
-	private IGame game;
+	
 	public Banco(IGame game){
-		this.game=game;
+		
 		scale = game.getScale();
 		initializeGui(); 
 		todas[0] = new Archer(game);

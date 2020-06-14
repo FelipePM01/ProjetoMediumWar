@@ -16,7 +16,7 @@ public class Jogador extends JPanel{
 	private static final long serialVersionUID = 3795017485437177600L;
 	private CardJogador[] mao=new CardJogador[8];
 	private Image imgmao;
-	private double scale;
+	private double scale=1;
 	private int positionX;
 	private int positionY;
 	
@@ -62,5 +62,8 @@ public class Jogador extends JPanel{
 	}
 	public CardJogador[] getMao() {
 		return mao;
+	}
+	public double getScale() {
+		return scale;
 	}
 }
