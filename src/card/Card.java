@@ -6,6 +6,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import Jogador.IJogadorCard;
 import banco.IBancoCard;
 import game.GUI;
 import game.Game;
