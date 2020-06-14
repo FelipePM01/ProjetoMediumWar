@@ -12,7 +12,7 @@ import game.Game;
 import game.IGame;
 import peca.Peca;
 
-public class Tabuleiro extends JPanel {
+public class Tabuleiro extends JPanel implements ITabuleiroTabuleiro{
 	/**
 	 * 
 	 */
@@ -37,7 +37,6 @@ public class Tabuleiro extends JPanel {
 		tabuleiro=tabuleiro.getScaledInstance((int)(tabuleiro.getWidth(null)*scale),(int) (tabuleiro.getHeight(null)*scale), Image.SCALE_DEFAULT);
 	}
 	public void paintComponent(Graphics g) {
-		
 		super.paintComponent(g);
 		
 		g.drawImage(tabuleiro, (int)(scale*(startPositionScreen[0])), (int)(scale*(startPositionScreen[1])), this);
@@ -46,39 +45,30 @@ public class Tabuleiro extends JPanel {
 				
 				if(matriz[i][j]!=null) {
 					Image img=matriz[i][j].getImage();
-				
 					matriz[i][j].paintComponent(g,img);
-					
 				}
 			}
 		}
 		for(int i=0;i<10;i++) {
 			for(int j=0;j<10;j++) {
-				
 				if(matriz[i][j]!=null) {
-					
-					Peca peca=matriz[i][j].getPeca();
-					if(peca!=null)peca.paintComponent(g,0,0);
-					
+					matriz[i][j].paintPeca(g);
 				}
 			}
 		}
-	}
-	public Tile getTile(int x, int y) {
-		return matriz[x][y];
 	}
 	public void start() {
 		for(int i=0;i<10;i++) {
 			for(int j=0;j<10;j++) {
-				if(matriz[i][j].getPeca()!=null)matriz[i][j].getPeca().moveOrAttack();
+				matriz[i][j].actionPeca();
 			}
 		}
 	}
 	public void clear() {
 		for(int i=0;i<10;i++) {
 			for(int j=0;j<10;j++) {
-				if(matriz[i][j].getPeca()!=null)matriz[i][j].getPeca().setTarget(null);
-				if(matriz[i][j].getPeca()!=null)matriz[i][j].setPeca(null);
+				if(matriz[i][j].existsPeca())matriz[i][j]. nullTarget();
+				if(matriz[i][j].existsPeca())matriz[i][j].setPeca(null);
 			}
 		}
 	}

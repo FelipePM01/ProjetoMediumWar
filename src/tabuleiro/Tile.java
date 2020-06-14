@@ -9,11 +9,11 @@ import javax.swing.JPanel;
 import game.GUI;
 import game.Game;
 import game.IGame;
+import peca.IPecaTile;
 import peca.Peca;
 
-public class Tile extends JPanel{
+public class Tile extends JPanel implements ITile{
 
-	
 	private static final long serialVersionUID = 4878418849447188406L;
 	private static int[] startPositionScreen= {282,122};
 	private int[] position=new int[2];
@@ -23,7 +23,7 @@ public class Tile extends JPanel{
 	private static Image tileAzul;
 	
 	private Image tilePadrao;
-	private Peca peca=null;
+	private IPecaTile peca=null;
 	public Tile(IGame game,int[] position){
 		scale=game.getScale();
 		
@@ -58,11 +58,24 @@ public class Tile extends JPanel{
 		
 		return GUIPosition;
 	}
+	public void paintPeca(Graphics g) {
+		if(peca!=null)peca.paintComponent(g,0,0);
+	}
+	public void actionPeca() {
+		if(peca!=null)peca.moveOrAttack();
+	}
+	public boolean existsPeca() {
+		if(peca!=null)return true;
+		return false;
+	}
+	public void nullTarget() {
+		peca.setTarget(null);
+	}
 	public void setPeca(Peca peca) {
 		this.peca=peca;
 	}
 	public Peca getPeca() {
-		return peca;
+		return (Peca)peca;
 	}
 	public int[] getPosition() {
 		int[] pos={position[0],position[1]};

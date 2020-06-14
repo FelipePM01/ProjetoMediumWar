@@ -17,10 +17,11 @@ import card.Card;
 import game.GUI;
 import game.Game;
 import game.IGame;
+import tabuleiro.ITilePeca;
 import tabuleiro.Tabuleiro;
 import tabuleiro.Tile;
 
-public abstract class Peca extends JPanel {
+public abstract class Peca extends JPanel implements IPecaTile{
 	/**
 	 * 
 	 */
@@ -28,7 +29,7 @@ public abstract class Peca extends JPanel {
 	public static Tabuleiro tabuleiro;
 	protected Image[] animationFramesMove;
 	protected Image[] animationFramesAttack;
-	protected Tile tile=null;
+	protected ITilePeca tile=null;
 	protected Card card=null;
 	protected boolean inBoard;
 	protected int[] correction = {0,0};
@@ -87,7 +88,6 @@ public abstract class Peca extends JPanel {
 		
 	}
 	public Peca(IGame game) {
-		//this.gui=gui;
 		scale=game.getScale();
 	}
 	
@@ -98,10 +98,10 @@ public abstract class Peca extends JPanel {
         //Escala de acordo com o card
         return img.getScaledInstance((int)(img.getWidth(null)*scale*x),(int)(img.getHeight(null)*scale*x),Image.SCALE_DEFAULT);
     }
-	public int applyScale(int x) {
+	protected int applyScale(int x) {
 		return (int)(x*scale); 
 	}
-	protected void tick() {
+	 void tick() {
 		
 		if(currentAction=="moving") {
 			
@@ -151,7 +151,7 @@ public abstract class Peca extends JPanel {
 		}
 	}
 	public Tile getTile() {
-		return tile;
+		return (Tile) tile;
 	}
 	public void moveOrAttack() {
 		currentAction="moving";
@@ -165,5 +165,4 @@ public abstract class Peca extends JPanel {
 	public void setTarget(Tile tile) {
 		moveTarget=tile;
 	}
-	
 }
