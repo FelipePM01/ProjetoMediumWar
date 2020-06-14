@@ -6,6 +6,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import banco.IBancoCard;
 import game.GUI;
 import game.Game;
 import game.IGame;
@@ -24,9 +25,14 @@ public abstract class Card extends JPanel{
 	private double scale;
     private Peca peca=null;
 
-    public Card(IGame game, String refImagem){
-        scale = game.getScale();
-        this.peca = peca;
+    public Card(IBancoCard banco, String refImagem){
+        scale = banco.getScale();
+        
+        initializeGui(refImagem);
+    }
+    public Card(IJogadorCard jogador, String refImagem){
+        scale = jogador.getScale();
+        
         initializeGui(refImagem);
     }
 

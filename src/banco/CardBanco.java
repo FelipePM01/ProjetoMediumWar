@@ -14,8 +14,8 @@ public class CardBanco extends Card{
 	static private String[] refImagens = {"assets/cardPadrao.png","assets/cardAmbos.png","assets/cardAzul.png","assets/cardVermelho.png"};
     static private String[] refPeca = {"assets/archer0.png", "assets/knight0.png","assets/orc0.png"};
     
-	public CardBanco(IGame game, int i){
-		super(game, refImagens[i]);
+	public CardBanco(IBancoCard banco, int i){
+		super(banco, refImagens[i]);
     }
     
 }

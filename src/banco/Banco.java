@@ -15,14 +15,14 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 	
-public class Banco extends JPanel{
+public class Banco extends JPanel implements IBanco{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 8183722388713930706L;
 	private Image banco;
 	private CardBanco[] pecasDisponiveis=new CardBanco[3];
-	private double scale;
+	private double scale=1;
 	private Peca[] todas= new Peca[3];
 	private Random random = new Random();
 	private IGame game;
@@ -59,7 +59,7 @@ public class Banco extends JPanel{
 		for(int i=0;i<3;i++) {
 			int x;
 			x = random.nextInt(todas.length);
-			pecasDisponiveis[i] = new CardBanco(game, 0 );
+			pecasDisponiveis[i] = new CardBanco(this, 0 );
 			if(x==0)pecasDisponiveis[i].setPeca(new Archer(todas[0],pecasDisponiveis[i]));
 			if(x==1)pecasDisponiveis[i].setPeca(new Knight(todas[1],pecasDisponiveis[i]));
 			if(x==2)pecasDisponiveis[i].setPeca(new Orc(todas[2],pecasDisponiveis[i]));
@@ -67,5 +67,8 @@ public class Banco extends JPanel{
 			
 			
 		}
+	}
+	public double getScale() {
+		return scale;
 	}
 }

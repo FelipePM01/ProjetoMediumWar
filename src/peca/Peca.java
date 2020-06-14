@@ -159,7 +159,7 @@ public abstract class Peca extends JPanel implements IPecaTile{
 		direction[0]=0;
 		direction[1]=0;
 		direction[random.nextInt(2)]=random.nextInt(2)==0?-1:1;
-		moveTarget=tabuleiro.getTiles()[tile.getPosition()[0]+direction[0]][tile.getPosition()[1]+direction[1]];
+		moveTarget=tile.getOtherTiles()[tile.getPosition()[0]+direction[0]][tile.getPosition()[1]+direction[1]];
 		
 	}
 	public void setTarget(Tile tile) {

@@ -81,4 +81,7 @@ public class Tile extends JPanel implements ITile{
 		int[] pos={position[0],position[1]};
 		return pos;
 	}
+	public Tile[][] getOtherTiles() {
+		return tabuleiro.getTiles();
+	}
 }

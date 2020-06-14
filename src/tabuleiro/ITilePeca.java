@@ -9,4 +9,5 @@ public interface ITilePeca {
 	public void setPeca(Peca peca);
 	public int[] getGUIPosition();
 	public int[] getPosition();
+	public Tile[][] getOtherTiles();
 }

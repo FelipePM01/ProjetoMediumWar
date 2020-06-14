@@ -20,8 +20,8 @@ public class CardJogador extends Card{
 	static private String[] refImagens = {"assets/cardPadrao.png","assets/cardAzul.png","assets/cardVermelho.png"};
 	//static private String[] refPeca = {"assets/archer0.png", "assets/knight0.png","assets/orc0.png"};
 	
-	public CardJogador(IGame game, int i){
-		super(game, refImagens[0]);
+	public CardJogador(IJogadorCard jogador, int i){
+		super(jogador, refImagens[0]);
 	}
 	
 	

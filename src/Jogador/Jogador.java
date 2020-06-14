@@ -33,7 +33,7 @@ public class Jogador extends JPanel{
 		initializeGui();
 		
 		for(int i=0;i<8;i++) {
-			mao[i]= new CardJogador(game, i%3);
+			mao[i]= new CardJogador(this, i%3);
 		}
 	}
 	public void initializeGui(){

@@ -14,6 +14,7 @@ import javax.swing.SwingUtilities;
 
 import Jogador.Jogador;
 import banco.Banco;
+import banco.IBancoGame;
 import tabuleiro.ITabuleiroGame;
 import tabuleiro.Tabuleiro;
 import card.Card;
@@ -34,7 +35,7 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
     private Thread thread;
     private GUI gui;
     private boolean running = false;
-    private Banco banco = null;
+    private IBancoGame banco = null;
     private ITabuleiroGame tabuleiro= null;
     private Jogador jogador1= null;
     private Jogador jogador2= null;
@@ -78,7 +79,7 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
     }
     public void run(){
        
-        while(true){ 
+        while(running){ 
              	render();
              	
             	
