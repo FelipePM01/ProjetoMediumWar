@@ -21,12 +21,12 @@ public class Tile extends JPanel{
 	private static Image tileAtual;
 	private static Image tileVermelho;
 	private static Image tileAzul;
-	
+	private ITabuleiroTile tabuleiro;
 	private Image tilePadrao;
 	private Peca peca=null;
-	public Tile(IGame game,int[] position){
-		scale=game.getScale();
-		
+	public Tile(ITabuleiroTile tabuleiro,int[] position){
+		scale=tabuleiro.getScale();
+		this.tabuleiro=tabuleiro;
 		ImageIcon refTilePadrao=new ImageIcon("assets/tilePadrao.png");
 		tilePadrao=refTilePadrao.getImage();
 		tilePadrao=tilePadrao.getScaledInstance((int)(tilePadrao.getWidth(null)*scale),(int) (tilePadrao.getHeight(null)*scale), Image.SCALE_DEFAULT);

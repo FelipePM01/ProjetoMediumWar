@@ -12,26 +12,27 @@ import game.Game;
 import game.IGame;
 import peca.Peca;
 
-public class Tabuleiro extends JPanel {
+public class Tabuleiro extends JPanel implements ITabuleiro{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 407576592100509664L;
 	public Tile[][] matriz=new Tile[10][10];
 	private int[] vet;
-	private double scale;
+	private double scale=1;
 	private Image tabuleiro;
 	private int[] startPositionScreen= {280,120};
 	public Tabuleiro(IGame game) {
+		scale=game.getScale();
 		for(int i=0;i<10;i++) {
 			for(int j=0;j<10;j++) {
 				vet=new int[2];
 				vet[0]=i;
 				vet[1]=j;
-				matriz[i][j]=new Tile(game,vet);
+				matriz[i][j]=new Tile(this,vet);
 			}
 		}
-		scale=game.getScale();
+		
 		ImageIcon refTabuleiro=new ImageIcon("assets/tabuleiro.png");
 		tabuleiro=refTabuleiro.getImage();
 		tabuleiro=tabuleiro.getScaledInstance((int)(tabuleiro.getWidth(null)*scale),(int) (tabuleiro.getHeight(null)*scale), Image.SCALE_DEFAULT);
@@ -64,9 +65,7 @@ public class Tabuleiro extends JPanel {
 			}
 		}
 	}
-	public Tile getTile(int x, int y) {
-		return matriz[x][y];
-	}
+	
 	public void start() {
 		for(int i=0;i<10;i++) {
 			for(int j=0;j<10;j++) {
@@ -84,5 +83,8 @@ public class Tabuleiro extends JPanel {
 	}
 	public Tile[][] getTiles() {
 		return matriz;
+	}
+	public double getScale() {
+		return scale;
 	}
 }

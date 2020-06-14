@@ -46,5 +46,6 @@ public class Knight extends Peca{
 		setup(2);	
 		correction[0]=8;
 		correction[1]=4;
+		flipCorrection=10;
 	}
 }

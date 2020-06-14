@@ -14,6 +14,7 @@ import javax.swing.SwingUtilities;
 
 import Jogador.Jogador;
 import banco.Banco;
+import tabuleiro.ITabuleiroGame;
 import tabuleiro.Tabuleiro;
 import card.Card;
 import peca.Archer;
@@ -34,7 +35,7 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
     private GUI gui;
     private boolean running = false;
     private Banco banco = null;
-    private Tabuleiro tabuleiro= null;
+    private ITabuleiroGame tabuleiro= null;
     private Jogador jogador1= null;
     private Jogador jogador2= null;
     
@@ -46,7 +47,7 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
   
         tabuleiro=new Tabuleiro(this);
 
-        Peca.tabuleiro=tabuleiro;
+        Peca.tabuleiro=(Tabuleiro) tabuleiro;
 
 
         jogador1=new Jogador(this,1);
