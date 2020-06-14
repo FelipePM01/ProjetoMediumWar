@@ -10,9 +10,11 @@ import banco.IBancoCard;
 import game.GUI;
 import game.Game;
 import game.IGame;
+import peca.IPecaCard;
+import peca.IPecaCardBanco;
 import peca.Peca;
 
-public abstract class Card extends JPanel{
+public abstract class Card extends JPanel implements ICardPeca{
 	
 	/**
 	 * 
@@ -23,7 +25,7 @@ public abstract class Card extends JPanel{
 	private int HEIGHT;
 	private int[] startPointCard = new int[2];
 	private double scale;
-    private Peca peca=null;
+    private IPecaCard peca=null;
 
     public Card(IBancoCard banco, String refImagem){
         scale = banco.getScale();
@@ -68,7 +70,7 @@ public abstract class Card extends JPanel{
     public int getHeight() {
     	return HEIGHT;
     }
-    public void setPeca(Peca peca) {
+    public void setPeca(IPecaCard peca) {
     	this.peca=peca;
     }
 }

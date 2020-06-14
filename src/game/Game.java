@@ -12,6 +12,7 @@ import java.awt.image.BufferStrategy;
 
 import javax.swing.SwingUtilities;
 
+import Jogador.IJogadorGame;
 import Jogador.Jogador;
 import banco.Banco;
 import banco.IBancoGame;
@@ -37,12 +38,11 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
     private boolean running = false;
     private IBancoGame banco = null;
     private ITabuleiroGame tabuleiro= null;
-    private Jogador jogador1= null;
-    private Jogador jogador2= null;
+    private IJogadorGame jogador1= null;
+    private IJogadorGame jogador2= null;
     
     public void gameStart(){ 
        
-        
         gui=new GUI();
         banco=new Banco(this);
   

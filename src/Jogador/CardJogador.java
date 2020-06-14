@@ -6,12 +6,13 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 import card.Card;
+import card.ICardJogador;
 import game.GUI;
 import game.Game;
 import game.IGame;
 import peca.Peca;
 
-public class CardJogador extends Card{
+public class CardJogador extends Card implements ICardJogador{
 	/**
 	 * 
 	 */
