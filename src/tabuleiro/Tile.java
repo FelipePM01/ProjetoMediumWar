@@ -24,7 +24,7 @@ public class Tile extends JPanel implements ITile{
 	private ITabuleiroTile tabuleiro;
 	private Image tilePadrao;
 	private IPecaTile peca=null;
-	public Tile(IGame game,int[] position){
+	public Tile(ITabuleiroTile tabuleiro,int[] position){
 		scale=tabuleiro.getScale();
 		this.tabuleiro=tabuleiro;
 		ImageIcon refTilePadrao=new ImageIcon("assets/tilePadrao.png");
