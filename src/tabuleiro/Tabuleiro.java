@@ -17,7 +17,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	 * 
 	 */
 	private static final long serialVersionUID = 407576592100509664L;
-	public Tile[][] matriz=new Tile[10][10];
+	public ITileTabuleiro[][] matriz=new Tile[10][10];
 	private int[] vet;
 	private double scale=1;
 	private Image tabuleiro;
@@ -69,13 +69,13 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	public void clear() {
 		for(int i=0;i<10;i++) {
 			for(int j=0;j<10;j++) {
-				if(matriz[i][j].existsPeca())matriz[i][j]. nullTarget();
+				if(matriz[i][j].existsPeca())matriz[i][j].nullTarget();
 				if(matriz[i][j].existsPeca())matriz[i][j].setPeca(null);
 			}
 		}
 	}
 	public Tile[][] getTiles() {
-		return matriz;
+		return (Tile[][])matriz;
 	}
 	public double getScale() {
 		return scale;

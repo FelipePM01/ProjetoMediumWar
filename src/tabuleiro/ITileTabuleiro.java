@@ -10,6 +10,8 @@ public interface ITileTabuleiro {
 	public void setPeca(Peca peca);
 	public Peca getPeca();
 	public void paintPeca(Graphics g);
+	public Image getImage();
+	public void nullTarget();
 	public void actionPeca();
 	public boolean existsPeca();
 	

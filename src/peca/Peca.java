@@ -21,7 +21,7 @@ import tabuleiro.ITilePeca;
 import tabuleiro.Tabuleiro;
 import tabuleiro.Tile;
 
-public abstract class Peca extends JPanel implements IPecaTile{
+public abstract class Peca extends JPanel implements IPeca{
 	/**
 	 * 
 	 */
@@ -30,7 +30,6 @@ public abstract class Peca extends JPanel implements IPecaTile{
 	protected Image[] animationFramesMove;
 	protected Image[] animationFramesAttack;
 	protected ITilePeca tile=null;
-	protected Card card=null;
 	protected boolean inBoard;
 	protected int[] correction = {0,0};
 	protected Image[] currentAnimation;
@@ -40,7 +39,7 @@ public abstract class Peca extends JPanel implements IPecaTile{
 	protected double[] translation={0.0,0.0};
 	protected int[] basePosition = {0,0};
 	protected String currentAction=null;
-	protected Tile moveTarget=null;
+	protected ITilePeca moveTarget=null;
 	protected double speed;
 	protected int[] direction= {0,0};
 	protected int baseMoveAnimDuration;
@@ -55,9 +54,7 @@ public abstract class Peca extends JPanel implements IPecaTile{
 		basePosition=tile.getGUIPosition();
 	}
 	public Peca(Peca peca,Card card) {
-		set(peca);
-		this.card=card;
-		
+		set(peca);		
 		inBoard=false;
 		basePosition=card.getGUIPosition();
 	}
