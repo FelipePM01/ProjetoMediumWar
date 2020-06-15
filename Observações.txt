@@ -11,3 +11,9 @@ Controles:
 4-Limpa o tabuleiro
 B-Atualizar banco
 Espaço-Inicia interação dos perssonagens
+
+Observacoes:
+1-A classe game nao tem o acesso a peca limitada por uma interface porque na versao original a peca nao sera instanciada no game , apenas essa instaciacao eh temporaria e para fins de teste
+2-Ocorre um bug visual quando se inicia a movimentacao dos personagens em a imagem pisca duas vezes antes de normalizar , isso tambem ocorre ao se atualizar o banco
+3- quando um personagem passa no mesmo tile no qual ja havia outro personagem , o personagem que ja estava no tile , fica temporariamente invisivel , no entanto pela logica de movimento que planejamos para os personagens, os persoangens nunca estarao no mesmo tile
+4- quando o personagem tenta ir para fora do tabuleiro , ocorre um erro que trava o persoangem mas que nao atrapalha os testes, esse erro tambem nao devera ocorrer quando a movimentacao estiver com a qual planejamos
