@@ -1,0 +1,13 @@
+Ao iniciar o jogo e apresentado um menu, onde é possivel iniciar o jogo, ver os creditos e sair do jogo. Ao iniciar 
+a apresentado o banco de cartas para compra e as cartas de cada jogador nas laterais(esses em desenvolvimento ainda) e o 
+tabuleiro. Não foi usado o GridLayout, o tabuleiro e montado de forma interativa. Usando os controles a baixo e possivel 
+adicionar pessonagem e iniciar sua movimentação aleatória pelo tabuleiro, pois no nosso jogo os personagens se movimentarão
+de forma independente.
+
+Controles: 
+1-Adiciona Cavalheiro
+2-Adiciona Orc
+3-Adiciona Arqueira
+4-Limpa o tabuleiro
+B-Atualizar banco
+Espaço-Inicia interação dos perssonagens
