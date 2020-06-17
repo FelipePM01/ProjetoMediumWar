@@ -16,11 +16,11 @@ public class Tile extends JPanel implements ITile{
 	private static int[] startPositionScreen= {282,122};
 	private int[] position=new int[2];
 	private double scale;
-	private static Image tileAtual;
-	private static Image tileVermelho;
-	private static Image tileAzul;
-	private ITabuleiroTile tabuleiro;
+	private Image tileAtual;
 	private Image tilePadrao;
+	private Image tileVermelho;
+	private Image tileAzul;
+	private ITabuleiroTile tabuleiro;
 	private IPecaTile peca=null;
 	
 	public Tile(ITabuleiroTile tabuleiro,int[] position){
@@ -82,4 +82,17 @@ public class Tile extends JPanel implements ITile{
 	public double getScale() {
 		return scale;
 	}
+	public void setTileAtual(String cor) {
+		  switch(cor){
+		  case "azul":
+			  tileAtual=tileAzul;
+			  break;
+		  case "vermelho":
+			  tileAtual=tileVermelho;
+			  break;
+		  case "padrao":
+			  tileAtual=tilePadrao;
+			  break;
+		  	}
+	  }
 }

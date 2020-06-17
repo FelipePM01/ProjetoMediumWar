@@ -94,43 +94,40 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 		int code = e.getKeyCode();
 		switch(code){
 		case KeyEvent.VK_W:
-			 
-			 jogador1.pressedW();
-			 tabuleiro.pressedW();
+			 jogador1.pressedUp();
+			 //tabuleiro.pressedW();
             break;
 		case KeyEvent.VK_A:
-			jogador1.pressedA();
-			tabuleiro.pressedA();
-			banco.pressedA();
+			jogador1.pressedLeft();
+			//tabuleiro.pressedA();
+			//banco.pressedA();
             break;
 		case KeyEvent.VK_S:
-			jogador1.pressedS();
-			tabuleiro.pressedS();
+			jogador1.pressedDown();
+			//tabuleiro.pressedS();
+			break;
 		case KeyEvent.VK_D:
-			jogador1.pressedD();
-			tabuleiro.pressedD();
-			banco.pressedD();
+			jogador1.pressedRight();
+			//tabuleiro.pressedD();
+			//banco.pressedD();
 		     break;
 		case KeyEvent.VK_DOWN:
-			jogador2.pressedDOWN();
-			tabuleiro.pressedDOWN();
-			
+			jogador2.pressedDown();
+			//tabuleiro.pressedDOWN();
             break;
 		case KeyEvent.VK_UP:
-			jogador2.pressedUP();
-			tabuleiro.pressedUP();
-			
+			jogador2.pressedUp();
+			//tabuleiro.pressedUP();
             break;
 		case KeyEvent.VK_RIGHT:
-			jogador2.pressedRIGHT();
-			tabuleiro.pressedRIGHT();
-			banco.pressedRIGHT();
+			jogador2.pressedRight();
+			//tabuleiro.pressedRIGHT();
+			//banco.pressedRIGHT();
             break;
-		
 		case KeyEvent.VK_LEFT:
-			jogador2.pressedLEFT();
-			tabuleiro.pressedLEFT();
-			banco.pressedLEFT();
+			jogador2.pressedLeft();
+			//tabuleiro.pressedLEFT();
+			//banco.pressedLEFT();
 			break;
 		
 		case KeyEvent.VK_SLASH:

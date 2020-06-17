@@ -27,18 +27,27 @@ public class Jogador extends JPanel implements IJogador{
 	private int positionY;
 	private Banco banco;
 	private Tabuleiro tabuleiro;
+	private String cor;
+	private int[] cursor;
 	
 	public Jogador(IGame game, int j,Tabuleiro tabuleiro,Banco banco){
 		scale=game.getScale();
 		this.tabuleiro=tabuleiro;
 		this.banco=banco;
+		cursor=new int[2];
 		if(j==1) {
 			positionX=(int)(scale*20);
 			positionY=(int)(scale*240);
+			cor="azul";
+			cursor[0]=0;
+			cursor[1]=0;
 		}
 		else {
 			positionX=(int)(scale*696);
 			positionY=(int)(scale*240);
+			cor="vermelho";
+			cursor[0]=9;
+			cursor[1]=9;
 		}
 		initializeGui();
 		
@@ -72,11 +81,34 @@ public class Jogador extends JPanel implements IJogador{
         	}
         }
 	}
-	public CardJogador[] getMao() {
-		return (CardJogador[])mao;
+	public ICardJogador[] getMao() {
+		return mao;
 	}
 	public double getScale() {
 		return scale;
 	}
-	
+	public void pressedUp() {
+		if(cursor[1]!=0) {
+			tabuleiro.selectTile(cursor[0], cursor[1], cursor[0], cursor[1]-1, cor);
+			cursor[1]--;
+		}
+	}
+	public void pressedDown() {
+		if(cursor[1]!=9) {
+			tabuleiro.selectTile(cursor[0], cursor[1], cursor[0], cursor[1]+1, cor);
+			cursor[1]++;
+		}
+	}
+	public void pressedLeft() {
+		if(cursor[0]!=0) {
+			tabuleiro.selectTile(cursor[0], cursor[1], cursor[0]-1, cursor[1], cor);
+			cursor[0]--;
+		}
+	}
+	public void pressedRight() {
+		if(cursor[0]!=9) {
+			tabuleiro.selectTile(cursor[0], cursor[1], cursor[0]+1, cursor[1], cor);
+			cursor[0]++;
+		 }
+	}
 }

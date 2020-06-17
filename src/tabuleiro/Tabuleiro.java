@@ -74,4 +74,8 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	public double getScale() {
 		return scale;
 	}
+	public void selectTile(int xAnt, int yAnt, int x, int y, String cor) {
+		if(matriz[xAnt][yAnt]!=null)matriz[xAnt][yAnt].setTileAtual("padrao");
+		if(matriz[x][y]!=null)matriz[x][y].setTileAtual(cor);
+	}
 }
