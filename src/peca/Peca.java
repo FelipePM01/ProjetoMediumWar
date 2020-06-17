@@ -10,13 +10,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import Jogador.CardJogador;
+import banco.CardBanco;
 import card.Card;
 import game.GUI;
 import tabuleiro.ITilePeca;
 import tabuleiro.Tabuleiro;
 import tabuleiro.Tile;
 
-public abstract class Peca extends JPanel implements IPeca{
+public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	/**
 	 * 
 	 */
@@ -49,7 +51,12 @@ public abstract class Peca extends JPanel implements IPeca{
 		inBoard=true;
 		basePosition=tile.getGUIPosition();
 	}
-	public Peca(Peca peca,Card card) {
+	public Peca(IPecaCardBanco peca,CardBanco card) {
+		set(peca);		
+		inBoard=false;
+		basePosition=card.getGUIPosition();
+	}
+	public Peca(IPecaCardJogador peca,CardJogador card) {
 		set(peca);		
 		inBoard=false;
 		basePosition=card.getGUIPosition();
@@ -61,14 +68,14 @@ public abstract class Peca extends JPanel implements IPeca{
 		else if(currentAnimation!=null&&currentAnimation[currentFrame]!=null)g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]))+currentAnimation[currentFrame].getWidth(null), (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1])),-currentAnimation[currentFrame].getWidth(null),currentAnimation[currentFrame].getHeight(null),null);
 	}
 	//cria uma peca que eh uma copia de outra ja existente
-	public void set(Peca peca) {
-		this.animationFramesAttack=peca.animationFramesAttack;
-		this.animationFramesMove=peca.animationFramesMove;
-		this.currentAnimation=peca.currentAnimation;
+	public void set(IPeca peca) {
+		this.animationFramesAttack=peca.getAnimationFramesAttack();
+		this.animationFramesMove=peca.getAnimationFramesMove();
+		this.currentAnimation=peca.getCurrentAnimation();
 		this.currentFrame=0;
-		this.scale=peca.scale;
-		this.baseMoveAnimDuration=peca.baseMoveAnimDuration;
-		this.speed=peca.speed;
+		this.scale=peca.getScale();
+		this.baseMoveAnimDuration=peca.getBaseMoveAnimDuration();
+		this.speed=peca.getSpeed();
 	
 		ActionListener taskPerformer = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -128,6 +135,9 @@ public abstract class Peca extends JPanel implements IPeca{
 			}
 		}
 	}
+	
+	
+	
 	public void moveOrAttack() {
 		currentAction="moving";
 		Random random=new Random();
@@ -144,5 +154,23 @@ public abstract class Peca extends JPanel implements IPeca{
 	}
 	public void setTarget(Tile tile) {
 		moveTarget=tile;
+	}
+	public Image[] getAnimationFramesAttack() {
+		return animationFramesAttack;
+	}
+	public Image[] getAnimationFramesMove() {
+		return animationFramesMove;
+	}
+	public Image[] getCurrentAnimation(){
+		return currentAnimation;
+	}
+	public double getScale() {
+		return scale;
+	}
+	public int getBaseMoveAnimDuration() {
+		return baseMoveAnimDuration;
+	}
+	public double getSpeed() {
+		return speed;
 	}
 }

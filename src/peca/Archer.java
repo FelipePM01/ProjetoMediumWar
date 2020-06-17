@@ -2,6 +2,8 @@ package peca;
 
 import java.awt.Image;
 
+import Jogador.CardJogador;
+import banco.CardBanco;
 import card.Card;
 import tabuleiro.Tile;
 
@@ -16,7 +18,12 @@ public class Archer extends Peca{
 		super(scale);
 		setup(4);	
 	}
-	public Archer(Peca peca,Card card) {
+	public Archer(IPecaCardBanco peca,CardBanco card) {
+		super(peca,card);
+		correction[0]=12;
+		correction[1]=14;
+	}
+	public Archer(IPecaCardJogador peca,CardJogador card) {
 		super(peca,card);
 		correction[0]=12;
 		correction[1]=14;

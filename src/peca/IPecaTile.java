@@ -1,11 +1,8 @@
 package peca;
 
-import java.awt.Graphics;
-
 import tabuleiro.Tile;
 
-public interface IPecaTile {
+public interface IPecaTile extends IPeca{
 	public void moveOrAttack();
-	public void paintComponent(Graphics g, int positionX, int positionY);
 	public void setTarget(Tile tile);
 }
