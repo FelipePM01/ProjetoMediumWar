@@ -6,6 +6,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import peca.IPeca;
 import peca.IPecaTile;
 import peca.Peca;
 
@@ -65,7 +66,7 @@ public class Tile extends JPanel implements ITile{
 	public void nullTarget() {
 		peca.setTarget(null);
 	}
-	public void setPeca(Peca peca) {
+	public void setPeca(IPecaTile peca) {
 		this.peca=peca;
 	}
 	public IPecaTile getPeca() {
