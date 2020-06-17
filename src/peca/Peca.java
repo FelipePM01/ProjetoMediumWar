@@ -173,4 +173,10 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	public double getSpeed() {
 		return speed;
 	}
+	public void pressedC() {
+		;
+	}
+	public void pressedX() {
+		
+	}
 }

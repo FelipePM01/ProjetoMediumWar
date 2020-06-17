@@ -17,7 +17,7 @@ import peca.Knight;
 import peca.Orc;
 import peca.Peca;
 
-public class Game extends Canvas implements Runnable, IGame, KeyListener{
+public class Game extends Canvas implements Runnable, IGame,KeyListener{
     
     private static final long serialVersionUID = 7059646278559620203L;
 
@@ -25,10 +25,10 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
     private Thread thread;
     private GUI gui;
     private boolean running = false;
-    private IBancoGame banco = null;
-    private ITabuleiroGame tabuleiro= null;
-    private IJogadorGame jogador1= null;
-    private IJogadorGame jogador2= null;
+    private Banco banco = null;
+    private Tabuleiro tabuleiro= null;
+    private Jogador jogador1= null;
+    private Jogador jogador2= null;
         
     public Game() {
     	 new Window(WIDTH, HEIGHT, "MediumWar", this);
@@ -39,8 +39,8 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
         banco=new Banco(getScale());
         tabuleiro=new Tabuleiro(this);
         Peca.tabuleiro=(Tabuleiro) tabuleiro;
-        jogador1=new Jogador(this,1);
-        jogador2=new Jogador(this,2);
+        jogador1=new Jogador(this,1,tabuleiro,banco);
+        jogador2=new Jogador(this,2,tabuleiro,banco);
         addKeyListener(this);
     }
     public synchronized void start(){
@@ -84,7 +84,7 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
         g.dispose();
         bs.show();
     }
-	@Override
+    @Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 	}
@@ -93,28 +93,38 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
 		// TODO Auto-generated method stub
 		int code = e.getKeyCode();
 		switch(code){
-		case KeyEvent.VK_1:
-			 Peca knight=new Knight(getScale());
-		     tabuleiro.getTiles()[2][7].setPeca(new Knight(knight,tabuleiro.getTiles()[2][7]));
+		case KeyEvent.VK_W:
+			 
+			 jogador1.pressedW();
+			 tabuleiro.pressedW();
             break;
-		case KeyEvent.VK_2:
-			 Peca orc=new Orc(getScale());
-		     tabuleiro.getTiles()[7][7].setPeca(new Orc(orc,tabuleiro.getTiles()[7][7]));
+		case KeyEvent.VK_A:
+			jogador1.pressedA();
+			tabuleiro.pressedA();
+			banco.pressedA();
             break;
-		case KeyEvent.VK_3:
-			 Peca archer=new Archer(getScale());
-		     tabuleiro.getTiles()[2][2].setPeca(new Archer(archer,tabuleiro.getTiles()[2][2]));
+		case KeyEvent.VK_S:
+			jogador1.pressedS();
+			tabuleiro.pressedS();
+		case KeyEvent.VK_D:
+			jogador1.pressedD();
+			tabuleiro.pressedD();
+			banco.pressedD();
 		     break;
-		case KeyEvent.VK_4:
-			 tabuleiro.clear();
-		     break;
-		case KeyEvent.VK_SPACE:
+		case KeyEvent.VK_DOWN:
 			
-			tabuleiro.start();
+			
             break;
-		case KeyEvent.VK_B:
-			banco.refresh();
+		case KeyEvent.VK_UP:
+			
             break;
+		case KeyEvent.VK_RIGHT:
+			
+            break;
+		
+		case KeyEvent.VK_LEFT:
+			
+			break;
 		}
 	}
 	@Override
