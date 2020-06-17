@@ -72,8 +72,8 @@ public class Jogador extends JPanel implements IJogador{
         	}
         }
 	}
-	public CardJogador[] getMao() {
-		return (CardJogador[])mao;
+	public ICardJogador[] getMao() {
+		return mao;
 	}
 	public double getScale() {
 		return scale;

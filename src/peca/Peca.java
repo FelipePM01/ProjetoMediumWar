@@ -149,8 +149,8 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	public Peca(double scale) {
 		this.scale=scale;
 	}
-	public Tile getTile() {
-		return (Tile) tile;
+	public ITilePeca getTile() {
+		return tile;
 	}
 	public void setTarget(Tile tile) {
 		moveTarget=tile;
