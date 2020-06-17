@@ -59,6 +59,11 @@ public abstract class Card extends JPanel implements ICardPeca{
     public int getHeight() {
     	return HEIGHT;
     }
+    public boolean ehNulo() {
+    	boolean retorno=false;
+    	if(peca==null)retorno=true;
+    	return retorno;
+    }
     public void setPeca(IPecaCard peca) {
     	this.peca=peca;
     }

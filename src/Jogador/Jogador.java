@@ -29,6 +29,8 @@ public class Jogador extends JPanel implements IJogador{
 	private Tabuleiro tabuleiro;
 	private String cor;
 	private int[] cursor;
+	private boolean concluida=false;
+	private Peca recebido;
 	
 	public Jogador(IGame game, int j,Tabuleiro tabuleiro,Banco banco){
 		scale=game.getScale();
@@ -111,4 +113,19 @@ public class Jogador extends JPanel implements IJogador{
 			cursor[0]++;
 		 }
 	}
+	public void pressedC() {
+		
+		for(int i=0;i<8;i++) {
+			if(mao[i].ehNulo()) {
+				banco.comprar(this);
+				while(!concluida) {}
+				mao[i].setPeca(recebido);
+			}
+		}
+		
+	}
+	public void receber(Peca peca) {
+		recebido=peca;
+	}
+	
 }

@@ -11,6 +11,8 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
+import Jogador.Jogador;
 	
 public class Banco extends JPanel implements IBanco{
 	/**
@@ -22,6 +24,9 @@ public class Banco extends JPanel implements IBanco{
 	private double scale=1;
 	private Peca[] todas= new Peca[3];
 	private Random random = new Random();
+	private int cursor1=-1;
+	private int cursor2=-1;
+	private Jogador jogador1,jogador2;
 	
 	public Banco(double scale){
 		this.scale=scale;
@@ -59,10 +64,32 @@ public class Banco extends JPanel implements IBanco{
 			if(x==0)pecasDisponiveis[i].setPeca(new Archer(todas[0],pecasDisponiveis[i]));
 			if(x==1)pecasDisponiveis[i].setPeca(new Knight(todas[1],pecasDisponiveis[i]));
 			if(x==2)pecasDisponiveis[i].setPeca(new Orc(todas[2],pecasDisponiveis[i]));
-			repaint();
+			
 		}
 	}
 	public double getScale() {
 		return scale;
+	}
+	public void comprar(Jogador jogador) {
+		if(jogador==jogador1)cursor1=0;
+		else cursor2=2;
+	}
+	public void setJogador(Jogador jogador) {
+		if(jogador1==null)jogador1=jogador;
+		else jogador2=jogador;
+	}
+	public void pressedLeft() {
+		if(cursor2<0)cursor2--;
+		
+	}
+	public void pressedRight() {
+		if(cursor2!=-1&&cursor2<2)cursor2++;
+	}
+	public void pressedA() {
+		if(cursor1<0)cursor1--;
+		
+	}
+	public void pressedD() {
+		if(cursor1!=-1&&cursor1<2)cursor1++;
 	}
 }
