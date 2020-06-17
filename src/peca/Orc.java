@@ -2,6 +2,8 @@ package peca;
 
 import java.awt.Image;
 
+import Jogador.CardJogador;
+import banco.CardBanco;
 import card.Card;
 import tabuleiro.Tile;
 
@@ -16,7 +18,12 @@ public class Orc extends Peca{
 		super(scale);
 		setup(4);
 	}
-	public Orc(Peca peca,Card card) {
+	public Orc(IPecaCardBanco peca,CardBanco card) {
+		super(peca,card);
+		correction[0]=14;
+		correction[1]=13;
+	}	
+	public Orc(IPecaCardJogador peca,CardJogador card) {
 		super(peca,card);
 		correction[0]=14;
 		correction[1]=13;

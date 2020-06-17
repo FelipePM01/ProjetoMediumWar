@@ -68,8 +68,8 @@ public class Tile extends JPanel implements ITile{
 	public void setPeca(Peca peca) {
 		this.peca=peca;
 	}
-	public Peca getPeca() {
-		return (Peca)peca;
+	public IPecaTile getPeca() {
+		return peca;
 	}
 	public int[] getPosition() {
 		int[] pos={position[0],position[1]};
