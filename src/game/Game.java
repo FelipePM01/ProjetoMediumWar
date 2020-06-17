@@ -109,7 +109,6 @@ public class Game extends Canvas implements Runnable, IGame, KeyListener{
 			 tabuleiro.clear();
 		     break;
 		case KeyEvent.VK_SPACE:
-			
 			tabuleiro.start();
             break;
 		case KeyEvent.VK_B:
