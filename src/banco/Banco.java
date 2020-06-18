@@ -165,11 +165,13 @@ public class Banco extends JPanel implements IBanco{
 	public void pressedSPACE() {
 		if(cursor1!=-1) {
 			jogador1.receber(pecasDisponiveis[cursor1].getPeca());
+			hideCursor(1);
 		}
 	}
 	public void pressedENTER() {
 		if(cursor2!=-1) {
 			jogador2.receber(pecasDisponiveis[cursor2].getPeca());
+			hideCursor(2);
 		}
 	}
 }

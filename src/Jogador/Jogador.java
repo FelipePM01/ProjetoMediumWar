@@ -57,7 +57,7 @@ public class Jogador extends JPanel implements IJogador{
 		for(int i=0;i<8;i++) {
 			mao[i]= new CardJogador(this, i%3);
 		}
-		setCursor();
+		
 	}
 	
 	public void initializeGui(){
@@ -114,9 +114,10 @@ public class Jogador extends JPanel implements IJogador{
 		}
 	}
 	public void pressedC() {
-		hideCursor();
+		
 		for(int i=0;i<8;i++) {
 			if(mao[i].ehNulo()) {
+				
 				banco.comprar(this);
 				colocar=i;
 				
@@ -160,10 +161,12 @@ public class Jogador extends JPanel implements IJogador{
 			}
 		}
 	}
+	
 	public void receber(IPecaCard peca) {
 		recebido=peca;
 		
 		mao[colocar].setPeca(recebido);
+		
 		colocar=-1;
 	}
 	
