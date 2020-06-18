@@ -202,7 +202,7 @@ public class Jogador extends JPanel implements IJogador{
 			System.out.println(1);
 			remove();
 			currentAction=null;
-			hideCursor();
+			if(cursor!=-1)hideCursor();
 		}
 		else if(currentAction=="position") {
 			
@@ -215,7 +215,7 @@ public class Jogador extends JPanel implements IJogador{
 			
 			remove();
 			currentAction=null;
-			hideCursor();
+			if(cursor!=-1)hideCursor();
 		}
 		else if(currentAction=="position") {
 			
@@ -233,7 +233,7 @@ public class Jogador extends JPanel implements IJogador{
 		if(cursor>=0) {
 			if(mao[cursor].getPeca()!=null) {
 				tabuleiro.positionPeca(this,mao[cursor].getPeca());
-				hideCursor();
+				if(cursor!=-1)hideCursor();
 				 currentAction="posicionando";
 			}
 			else hideCursor();
