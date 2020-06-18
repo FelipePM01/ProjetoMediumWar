@@ -91,7 +91,7 @@ public class Jogador extends JPanel implements IJogador{
 		return scale;
 	}
 	public void hideCursor() {
-		if(mao[cursor]!=null)mao[cursor].setCardAtual("padrao");
+		if(cursor>=0&&mao[cursor]!=null)mao[cursor].setCardAtual("padrao");
 		cursor=-1;
 	}
 	public void setCursor() {
