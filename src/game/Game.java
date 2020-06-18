@@ -43,8 +43,8 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
         jogador2=new Jogador(this,2,tabuleiro,banco);
         banco.setJogador(jogador1);
         banco.setJogador(jogador2);
-        //tabuleiro.setJogador(jogador1);
-        //tabuleiro.setJogador(jogador2);
+        tabuleiro.setJogador(jogador1);
+        tabuleiro.setJogador(jogador2);
         addKeyListener(this);
     }
     public synchronized void start(){
