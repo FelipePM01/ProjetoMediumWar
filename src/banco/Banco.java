@@ -5,6 +5,7 @@ import peca.Knight;
 import peca.Orc;
 import peca.Peca;
 
+import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.Random;
@@ -24,8 +25,8 @@ public class Banco extends JPanel implements IBanco{
 	private double scale=1;
 	private Peca[] todas= new Peca[3];
 	private Random random = new Random();
-	private int cursor1=-1;
-	private int cursor2=-1;
+	protected int cursor1=-1;
+	protected int cursor2=-1;
 	private Jogador jogador1,jogador2;
 	
 	public Banco(double scale){
@@ -73,8 +74,14 @@ public class Banco extends JPanel implements IBanco{
 		return scale;
 	}
 	public void comprar(Jogador jogador) {
-		if(jogador==jogador1)setCursor(1);
-		else setCursor(2);
+		if(jogador==jogador1){
+			if(cursor1!=-1)hideCursor(1);
+			setCursor(1);
+		}
+		else {
+			if(cursor2!=-1)hideCursor(2);
+			setCursor(2);
+		}
 	}
 	public void setJogador(Jogador jogador) {
 		if(jogador1==null)jogador1=jogador;
@@ -83,27 +90,31 @@ public class Banco extends JPanel implements IBanco{
 	public void setCursor(int i) {
 		if(i==1) {
 			cursor1=0;
-			
-			pecasDisponiveis[0].setCardAtual("azul");
+			if(cursor1==cursor2)pecasDisponiveis[0].setCardAtual("ambos");
+			else pecasDisponiveis[0].setCardAtual("azul");
 		}
 		else{
 			cursor2=2;
-			pecasDisponiveis[2].setCardAtual("vermelho");
-		}
-		
+			if(cursor1==cursor2)pecasDisponiveis[2].setCardAtual("ambos");
+			else pecasDisponiveis[2].setCardAtual("vermelho");
+		}		
+	}
+	public int getCursor(int i) {
+		if(i==1)return cursor1;
+		return cursor2;
 	}
 	public void hideCursor(int i){
 		if(i==1) {
-			pecasDisponiveis[cursor1].setCardAtual("padrao");
+			if(cursor1==cursor2)pecasDisponiveis[cursor1].setCardAtual("vermelho");
+			else pecasDisponiveis[cursor1].setCardAtual("padrao");
 			cursor1=-1;
-			
 		}
 		else{
-			pecasDisponiveis[2].setCardAtual("padrao");
+			if(cursor1==cursor2)pecasDisponiveis[cursor2].setCardAtual("azul");
+			else pecasDisponiveis[cursor2].setCardAtual("padrao");
 			cursor2=-1;
 		}
 	}
-	
 	public void selectCardBanco(int xAnt, int x, String cor) {
 		if(pecasDisponiveis[xAnt]!=null&&(cursor1==cursor2)) {
 			if(cor=="vermelho")pecasDisponiveis[xAnt].setCardAtual("azul");

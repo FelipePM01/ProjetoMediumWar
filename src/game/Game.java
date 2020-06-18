@@ -43,8 +43,8 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
         jogador2=new Jogador(this,2,tabuleiro,banco);
         banco.setJogador(jogador1);
         banco.setJogador(jogador2);
-        tabuleiro.setJogador(jogador1);
-        tabuleiro.setJogador(jogador2);
+        //tabuleiro.setJogador(jogador1);
+        //tabuleiro.setJogador(jogador2);
         addKeyListener(this);
     }
     public synchronized void start(){
@@ -135,15 +135,15 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 			break;
 		
 		case KeyEvent.VK_SLASH:
-//			jogador2.pressedBARRA();
-//			
+			jogador2.pressedBARRA();
+			
 			break;
 		case KeyEvent.VK_PERIOD:
 			//jogador2.pressedPONTO();
 			
 			break;
 		case KeyEvent.VK_COMMA:
-			//jogador2.pressedVIRGULA();
+			jogador2.pressedVIRGULA();
 			
 			break;
 		case KeyEvent.VK_C:
@@ -165,7 +165,7 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 			jogador1.pressedSPACE();
 			break;
 		case KeyEvent.VK_ENTER:
-//			jogador2.pressedENTER();
+			jogador2.pressedENTER();
 //			tabuleiro.pressedENTER();
 			banco.pressedENTER();
 			break;

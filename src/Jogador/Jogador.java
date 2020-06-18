@@ -91,7 +91,7 @@ public class Jogador extends JPanel implements IJogador{
 		return scale;
 	}
 	public void hideCursor() {
-		mao[cursor].setCardAtual("padrao");
+		if(mao[cursor]!=null)mao[cursor].setCardAtual("padrao");
 		cursor=-1;
 	}
 	public void setCursor() {
@@ -115,7 +115,19 @@ public class Jogador extends JPanel implements IJogador{
 		}
 	}
 	public void pressedC() {
-		
+		if(cursor!=-1)hideCursor();
+		for(int i=0;i<8;i++) {
+			if(mao[i].ehNulo()) {
+				
+				banco.comprar(this);
+				colocar=i;
+				
+				break;
+			}
+		}
+	}
+	public void pressedBARRA() {
+		if(cursor!=-1)hideCursor();
 		for(int i=0;i<8;i++) {
 			if(mao[i].ehNulo()) {
 				
@@ -163,6 +175,7 @@ public class Jogador extends JPanel implements IJogador{
 		}
 	}
 	public void pressedZ() {
+		if(banco.getCursor(1)!=-1)banco.hideCursor(1);
 		setCursor();
 		currentAction="remove";
 	}
@@ -170,11 +183,17 @@ public class Jogador extends JPanel implements IJogador{
 		setCursor();
 		currentAction="position";
 	}
+	public void pressedVIRGULA() {
+		if(banco.getCursor(2)!=-1)banco.hideCursor(2);
+		setCursor();
+		currentAction="remove";
+	}
 	public void pressedSPACE() {
 		if(currentAction=="remove") {
 			System.out.println(1);
 			remove();
 			currentAction=null;
+			hideCursor();
 		}
 		else if(currentAction=="position") {
 			
@@ -182,6 +201,20 @@ public class Jogador extends JPanel implements IJogador{
 			
 		}
 	}
+	public void pressedENTER() {
+		if(currentAction=="remove") {
+			System.out.println(2);
+			remove();
+			currentAction=null;
+			hideCursor();
+		}
+//		else if(currentAction=="position") {
+//			System.out.println(2);
+//			position();
+//			currentAction=null;
+//		}
+	}
+	
 	public void remove() {
 		if(cursor>=0) {
 			mao[cursor].setPeca(null);
