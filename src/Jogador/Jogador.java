@@ -127,7 +127,7 @@ public class Jogador extends JPanel implements IJogador{
 			}
 		}
 	}
-	public void pressedBARRA() {
+	public void pressedVIRGULA() {
 		if(cursor!=-1)hideCursor();
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
 		for(int i=0;i<8;i++) {
@@ -177,6 +177,7 @@ public class Jogador extends JPanel implements IJogador{
 		}
 	}
 	public void pressedZ() {
+		if(cursor!=-1)hideCursor();
 		if(banco.getCursor(1)!=-1)banco.hideCursor(1);
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
 		setCursor();
@@ -189,7 +190,8 @@ public class Jogador extends JPanel implements IJogador{
 		setCursor();
 		currentAction="position";
 	}
-	public void pressedVIRGULA() {
+	public void pressedBARRA() {
+		if(cursor!=-1)hideCursor();
 		if(banco.getCursor(2)!=-1)banco.hideCursor(2);
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
 		setCursor();
