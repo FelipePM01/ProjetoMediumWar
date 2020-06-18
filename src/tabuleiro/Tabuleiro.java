@@ -187,7 +187,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		
 		if(azulPeca!=null && cAzul) {
 			System.out.println(cursorAzul[0]+" "+cursorAzul[1]);
-			matriz[cursorAzul[0]][cursorAzul[1]].setPeca(azulPeca);
+			if(!matriz[cursorAzul[0]][cursorAzul[1]].existsPeca())matriz[cursorAzul[0]][cursorAzul[1]].setPeca(azulPeca);
 			hideCursor("azul");
 			azulPeca=null;
 		}

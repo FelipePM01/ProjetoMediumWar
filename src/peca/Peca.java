@@ -91,49 +91,50 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
         return img.getScaledInstance((int)(img.getWidth(null)*scale*x),(int)(img.getHeight(null)*scale*x),Image.SCALE_DEFAULT);
     }
 	void tick() {
-//		if(currentAction=="moving") {
-//			
-//			frameCounter+=1;
-//			if (frameCounter>=(double)baseMoveAnimDuration/speed/animationFramesMove.length) {
-//				
-//				if(currentFrame==animationFramesMove.length-1)currentFrame=0;
-//				else currentFrame++;
-//				
-//				frameCounter=0;
-//			}
-//			if(direction[0]!=0) {
-//				
-//				translation[0]+=direction[0]*speed*tile.getImage().getWidth(null)/1000;
-//				if(direction[0]==-1 ) {
-//					if(!flipped) {
-//						flipped=true;
-//						correction[0]-=flipCorrection;
-//					}
-//				}
-//				else if(flipped){
-//					flipped=false;
-//					correction[0]+=flipCorrection;
-//				}
-//			}
-//			else if(direction[1]!=0){
-//				
-//				translation[1]+=direction[1]*speed*tile.getImage().getWidth(null)/1000;	
-//			}
-//			if(Math.abs(translation[0])>=tile.getImage().getWidth(null)||Math.abs(translation[1])>=tile.getImage().getHeight(null)){
-//
-//				tile.setPeca(null);
-//				moveTarget.setPeca(this);
-//				tile=moveTarget;
-//				moveTarget=null;
-//				translation[0]=0;
-//				translation[1]=0;
-//				basePosition=tile.getGUIPosition();
-//				currentAction=null;
-//				direction[0]=0;
-//				direction[1]=0;
-//				moveOrAttack();		
-//			}
+		if(currentAction=="moving") {
+			
+			frameCounter+=1;
+			if (frameCounter>=(double)baseMoveAnimDuration/speed/animationFramesMove.length) {
+				
+				if(currentFrame==animationFramesMove.length-1)currentFrame=0;
+				else currentFrame++;
+				
+				frameCounter=0;
+			}
+			if(direction[0]!=0) {
+				
+				translation[0]+=direction[0]*speed*tile.getImage().getWidth(null)/1000;
+				if(direction[0]==-1 ) {
+					if(!flipped) {
+						flipped=true;
+						correction[0]-=flipCorrection;
+					}
+				}
+				else if(flipped){
+					flipped=false;
+					correction[0]+=flipCorrection;
+				}
+			}
+			else if(direction[1]!=0){
+				
+				translation[1]+=direction[1]*speed*tile.getImage().getWidth(null)/1000;	
+			}
+			if(Math.abs(translation[0])>=tile.getImage().getWidth(null)||Math.abs(translation[1])>=tile.getImage().getHeight(null)){
+
+				tile.setNull();
+				moveTarget.setPeca(this);
+				tile=moveTarget;
+				moveTarget=null;
+				translation[0]=0;
+				translation[1]=0;
+				basePosition=tile.getGUIPosition();
+				currentAction=null;
+				direction[0]=0;
+				direction[1]=0;
+				moveOrAttack();		
+			}
 		}
+	}
 
 	
 	

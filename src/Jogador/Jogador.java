@@ -203,16 +203,16 @@ public class Jogador extends JPanel implements IJogador{
 	}
 	public void pressedENTER() {
 		if(currentAction=="remove") {
-			System.out.println(2);
+			
 			remove();
 			currentAction=null;
 			hideCursor();
 		}
-//		else if(currentAction=="position") {
-//			System.out.println(2);
-//			position();
-//			currentAction=null;
-//		}
+		else if(currentAction=="position") {
+			
+			position();
+			currentAction=null;
+		}
 	}
 	
 	public void remove() {
@@ -222,9 +222,12 @@ public class Jogador extends JPanel implements IJogador{
 	}
 	public void position() {
 		if(cursor>=0) {
-			tabuleiro.positionPeca(this,mao[cursor].getPeca());
-			hideCursor();
-			 currentAction="posicionando";
+			if(mao[cursor].getPeca()!=null) {
+				tabuleiro.positionPeca(this,mao[cursor].getPeca());
+				hideCursor();
+				 currentAction="posicionando";
+			}
+			else hideCursor();
 		}
 	}
 	public void receber(IPecaCard peca) {

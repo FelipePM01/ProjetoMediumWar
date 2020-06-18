@@ -105,11 +105,14 @@ public class Tile extends JPanel implements ITile{
 		  	}
 	  }
 
-//	@Override
-//	public void setPeca(IPecaTile peca) {
-//		this.peca=peca;
-//		
-//	}
+	
+	public void setPeca(Peca peca) {
+		this.peca=peca;
+		
+	}
+	public void setNull() {
+		peca=null;
+	}
 
 	
 }
