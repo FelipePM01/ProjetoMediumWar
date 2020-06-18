@@ -93,15 +93,15 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
     }
     @Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
+		
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
+		
 		int code = e.getKeyCode();
 		switch(code){
 		case KeyEvent.VK_W:
-			 //jogador1.pressedUp();
+			
 			 tabuleiro.pressedW();
             break;
 		case KeyEvent.VK_A:
@@ -110,7 +110,7 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 			banco.pressedA();
             break;
 		case KeyEvent.VK_S:
-			//jogador1.pressedDown();
+			
 			tabuleiro.pressedW();
 			break;
 		case KeyEvent.VK_D:
@@ -119,11 +119,11 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 			banco.pressedD();
 		     break;
 		case KeyEvent.VK_DOWN:
-			//jogador2.pressedDOWN();
+			
 			tabuleiro.pressedDOWN();
             break;
 		case KeyEvent.VK_UP:
-			//jogador2.pressedU();
+			
 			tabuleiro.pressedUP();
             break;
 		case KeyEvent.VK_RIGHT:

@@ -75,7 +75,7 @@ public class Banco extends JPanel implements IBanco{
 	public double getScale() {
 		return scale;
 	}
-	public void comprar(Jogador jogador) {
+	public void comprar(IJogador jogador) {
 		if(jogador==jogador1){
 			if(cursor1!=-1)hideCursor(1);
 			setCursor(1);
@@ -188,11 +188,7 @@ public class Banco extends JPanel implements IBanco{
 		}
 	}
 
-	@Override
-	public void comprar(IJogadorBanco jogador) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	
 }

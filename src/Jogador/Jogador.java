@@ -5,7 +5,6 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import banco.Banco;
 import banco.IBanco;
 import banco.IBancoJogador;
 import card.ICardJogador;
@@ -13,12 +12,6 @@ import game.IGame;
 import peca.IPecaCard;
 import tabuleiro.ITabuleiro;
 import tabuleiro.ITabuleiroJogador;
-import peca.IPecaCardJogador;
-import peca.Knight;
-import peca.Orc;
-import peca.Peca;
-import tabuleiro.ITabuleiroJogador;
-import tabuleiro.Tabuleiro;
 
 public class Jogador extends JPanel implements IJogador{
 	
