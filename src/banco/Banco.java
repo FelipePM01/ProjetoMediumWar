@@ -5,6 +5,7 @@ import peca.Knight;
 import peca.Orc;
 import peca.Peca;
 
+import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.Random;
@@ -24,8 +25,8 @@ public class Banco extends JPanel implements IBanco{
 	private double scale=1;
 	private Peca[] todas= new Peca[3];
 	private Random random = new Random();
-	private int cursor1=-1;
-	private int cursor2=-1;
+	protected int cursor1=-1;
+	protected int cursor2=-1;
 	private Jogador jogador1,jogador2;
 	
 	public Banco(double scale){
@@ -97,6 +98,10 @@ public class Banco extends JPanel implements IBanco{
 			if(cursor1==cursor2)pecasDisponiveis[2].setCardAtual("ambos");
 			else pecasDisponiveis[2].setCardAtual("vermelho");
 		}		
+	}
+	public int getCursor(int i) {
+		if(i==1)return cursor1;
+		return cursor2;
 	}
 	public void hideCursor(int i){
 		if(i==1) {
