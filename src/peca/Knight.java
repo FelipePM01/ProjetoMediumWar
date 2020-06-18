@@ -7,7 +7,7 @@ import banco.CardBanco;
 import card.Card;
 import tabuleiro.Tile;
 
-public class Knight extends Peca{
+public class Knight extends Melee{
 	/**
 	 * 
 	 */
