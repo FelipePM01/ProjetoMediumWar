@@ -109,10 +109,10 @@ public class Jogador extends JPanel implements IJogador{
 		}
 	}
 	public void pressedRight() {
-		if(cursor[0]!=9) {
-			tabuleiro.selectTile(cursor[0], cursor[1], cursor[0]+1, cursor[1], cor);
-			cursor[0]++;
-		 }
+//		if(cursor[0]!=9) {
+//			tabuleiro.selectTile(cursor[0], cursor[1], cursor[0]+1, cursor[1], cor);
+//			cursor[0]++;
+//		 }
 	}
 	public void pressedC() {
 		
@@ -122,6 +122,9 @@ public class Jogador extends JPanel implements IJogador{
 				while(!concluida) {}
 				mao[i].setPeca(recebido);
 				break;
+			}
+		}
+	}
 	public void pressedD() {
 		if(cursor>=0) {
 			if(cursor++>5) {

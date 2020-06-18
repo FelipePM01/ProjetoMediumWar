@@ -40,7 +40,7 @@ public class CardJogador extends Card implements ICardJogador{
 			  break;
 		  }
 	}
-	}
+
 
 	@Override
 	public void setPeca(IPecaCard peca) {

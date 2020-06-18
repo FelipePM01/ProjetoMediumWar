@@ -45,8 +45,9 @@ public class Banco extends JPanel implements IBanco{
         banco=banco.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_DEFAULT);
     }
 	public void paintComponent(Graphics g){
-		atualizar();
+		
 		super.paintComponent(g);
+		atualizar();
 		int positionX = (int)(scale*356);
 		int positionY = (int)(scale*16);
 		int newX = positionX+4;
@@ -58,7 +59,7 @@ public class Banco extends JPanel implements IBanco{
         }
 	}
 	public void atualizar() {
-		for(int i=0;i<2;i++) {
+		for(int i=0;i<3;i++) {
 			if(cursor1!=i&&cursor2!=i)pecasDisponiveis[i].attImage("assets/cardPadrao.png");
 			else if(cursor2!=i)pecasDisponiveis[i].attImage("assets/cardAzul.png");
 			else if(cursor1!=i)pecasDisponiveis[i].attImage("assets/cardVermelho.png");
@@ -73,6 +74,7 @@ public class Banco extends JPanel implements IBanco{
 			if(x==0)pecasDisponiveis[i].setPeca(new Archer(todas[0],pecasDisponiveis[i]));
 			if(x==1)pecasDisponiveis[i].setPeca(new Knight(todas[1],pecasDisponiveis[i]));
 			if(x==2)pecasDisponiveis[i].setPeca(new Orc(todas[2],pecasDisponiveis[i]));
+			
 			
 		}
 	}
