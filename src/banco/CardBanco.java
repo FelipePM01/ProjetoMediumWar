@@ -1,12 +1,13 @@
 package banco;
 
 import card.Card;
+import card.ICardBanco;
 import peca.Archer;
 import peca.IPecaCard;
 import peca.Knight;
 import peca.Orc;
 
-public class CardBanco extends Card{
+public class CardBanco extends Card implements ICardBanco{
 	/**
 	 * 
 	 */

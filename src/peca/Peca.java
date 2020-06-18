@@ -13,6 +13,7 @@ import javax.swing.Timer;
 import Jogador.CardJogador;
 import banco.CardBanco;
 import card.Card;
+import card.ICardBanco;
 import card.ICardPeca;
 import game.GUI;
 import tabuleiro.ITilePeca;

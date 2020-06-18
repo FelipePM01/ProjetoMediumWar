@@ -5,6 +5,7 @@ import java.awt.Image;
 import Jogador.CardJogador;
 import banco.CardBanco;
 import card.Card;
+import card.ICardBanco;
 import tabuleiro.Tile;
 
 public class Archer extends Ranged{
