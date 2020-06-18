@@ -34,6 +34,7 @@ public class Jogador extends JPanel implements IJogador{
 	private int cursor = -1;
 	private int colocar=-1;
 	private IPecaCard recebido;
+	private String currentAction;
 	
 	public Jogador(IGame game, int j,Tabuleiro tabuleiro,Banco banco){
 		scale=game.getScale();
@@ -161,7 +162,36 @@ public class Jogador extends JPanel implements IJogador{
 			}
 		}
 	}
-	
+	public void pressedZ() {
+		setCursor();
+		currentAction="remove";
+	}
+//	public void pressedX() {
+//		setCursor();
+//		currentAction="position";
+//	}
+	public void pressedSPACE() {
+		if(currentAction=="remove") {
+			System.out.println(1);
+			remove();
+			currentAction=null;
+		}
+//		else if(currentAction=="position") {
+//			System.out.println(1);
+//			position();
+//			currentAction=null;
+//		}
+	}
+	public void remove() {
+		if(cursor>=0) {
+			mao[cursor].setPeca(null);
+		}
+	}
+//	public void position() {
+//		if(cursor>=0) {
+//			tabuleiro.positionPeca(this,mao[cursor]);
+//		}
+//	}
 	public void receber(IPecaCard peca) {
 		recebido=peca;
 		
