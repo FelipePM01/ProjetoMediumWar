@@ -126,6 +126,18 @@ public class Jogador extends JPanel implements IJogador{
 			}
 		}
 	}
+	public void pressedBARRA() {
+		
+		for(int i=0;i<8;i++) {
+			if(mao[i].ehNulo()) {
+				
+				banco.comprar(this);
+				colocar=i;
+				
+				break;
+			}
+		}
+	}
 	public void pressedD() {
 		if(cursor>=0) {
 			if(cursor+1>7) {

@@ -135,8 +135,8 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 			break;
 		
 		case KeyEvent.VK_SLASH:
-//			jogador2.pressedBARRA();
-//			
+			jogador2.pressedBARRA();
+			
 			break;
 		case KeyEvent.VK_PERIOD:
 			//jogador2.pressedPONTO();
