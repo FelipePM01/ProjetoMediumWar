@@ -1,24 +1,18 @@
 package Jogador;
 
-import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import banco.Banco;
+import banco.IBanco;
+import banco.IBancoJogador;
 import card.ICardJogador;
 import game.IGame;
-import peca.Archer;
 import peca.IPecaCard;
-import peca.IPecaCardJogador;
-import peca.Knight;
-import peca.Orc;
-import peca.Peca;
-import tabuleiro.Tabuleiro;
+import tabuleiro.ITabuleiro;
+import tabuleiro.ITabuleiroJogador;
 
 public class Jogador extends JPanel implements IJogador{
 	
@@ -28,15 +22,15 @@ public class Jogador extends JPanel implements IJogador{
 	private double scale=1;
 	private int positionX;
 	private int positionY;
-	private Banco banco;
-	private Tabuleiro tabuleiro;
+	private IBancoJogador banco;
+	private ITabuleiroJogador tabuleiro;
 	private String cor;
 	private int cursor = -1;
 	private int colocar=-1;
 	private IPecaCard recebido;
 	private String currentAction;
 	
-	public Jogador(IGame game, int j,Tabuleiro tabuleiro,Banco banco){
+	public Jogador(IGame game, int j,ITabuleiro tabuleiro,IBanco banco){
 		scale=game.getScale();
 		this.tabuleiro=tabuleiro;
 		this.banco=banco;
@@ -178,7 +172,7 @@ public class Jogador extends JPanel implements IJogador{
 	}
 	public void pressedZ() {
 		if(cursor!=-1)hideCursor();
-		if(banco.getCursor(1)!=-1)banco.hideCursor(1);
+		if(banco.getCursor(1)!=-1)banco.getCursor(1);
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
 		setCursor();
 		currentAction="remove";
@@ -186,20 +180,20 @@ public class Jogador extends JPanel implements IJogador{
 	public void pressedX() {
 		if(cursor!=-1)hideCursor();
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
-		if(banco.getCursor(1)!=-1)banco.hideCursor(1);
+		if(banco.getCursor(1)!=-1)banco.getCursor(1);
 		setCursor();
 		currentAction="position";
 	}
 	public void pressedPONTO() {
 		if(cursor!=-1)hideCursor();
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
-		if(banco.getCursor(2)!=-1)banco.hideCursor(2);
+		if(banco.getCursor(2)!=-1)banco.getCursor(2);
 		setCursor();
 		currentAction="position";
 	}
 	public void pressedBARRA() {
 		if(cursor!=-1)hideCursor();
-		if(banco.getCursor(2)!=-1)banco.hideCursor(2);
+		if(banco.getCursor(2)!=-1)banco.getCursor(2);
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
 		setCursor();
 		currentAction="remove";

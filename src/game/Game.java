@@ -6,10 +6,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 
+import Jogador.IJogador;
 import Jogador.IJogadorGame;
 import Jogador.Jogador;
 import banco.Banco;
+import banco.IBanco;
 import banco.IBancoGame;
+import tabuleiro.ITabuleiro;
 import tabuleiro.ITabuleiroGame;
 import tabuleiro.Tabuleiro;
 import peca.Archer;
@@ -25,10 +28,10 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
     private Thread thread;
     private GUI gui;
     private boolean running = false;
-    private Banco banco = null;
-    private Tabuleiro tabuleiro= null;
-    private Jogador jogador1= null;
-    private Jogador jogador2= null;
+    private IBanco banco = null;
+    private ITabuleiro tabuleiro= null;
+    private IJogador jogador1= null;
+    private IJogador jogador2= null;
         
     public Game() {
     	 new Window(WIDTH, HEIGHT, "MediumWar", this);
@@ -108,7 +111,7 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
             break;
 		case KeyEvent.VK_S:
 			//jogador1.pressedDown();
-			tabuleiro.pressedS();
+			tabuleiro.pressedW();
 			break;
 		case KeyEvent.VK_D:
 			jogador1.pressedD();

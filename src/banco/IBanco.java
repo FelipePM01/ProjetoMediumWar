@@ -1,5 +1,18 @@
 package banco;
 
-public interface IBanco extends IBancoGame,IBancoCard {
+import Jogador.IJogador;
+
+public interface IBanco extends IBancoGame,IBancoCard,IBancoJogador {
+
+	void setJogador(IJogador jogador1);
+
+	
+
+	public void pressedLEFT() ;
+	public void pressedRIGHT() ;
+	public void pressedA();
+	public void pressedD() ;
+	public void pressedSPACE() ;
+	public void pressedENTER() ;
 
 }

@@ -6,6 +6,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import Jogador.IJogador;
 import Jogador.Jogador;
 import game.IGame;
 import peca.IPecaCard;
@@ -22,7 +23,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	private Image tabuleiro;
 	private int[] startPositionScreen= {280,120};
 	private int[] cursorAzul;
-	private Jogador jogador1=null, jogador2=null;
+	private IJogador jogador1=null, jogador2=null;
 	private int[] cursorVermelho;
 	private boolean cAzul = false;
 	private boolean cVermelho = false;
@@ -181,7 +182,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 			vermelhoPeca=peca;
 		}
 	}
-	public void setJogador(Jogador jogador) {
+	public void setJogador(IJogador jogador) {
 		if(jogador1==null)jogador1=jogador;
 		else jogador2=jogador;
 	}
@@ -205,4 +206,8 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		}
 		
 	}
+
+	
+
+	
 }

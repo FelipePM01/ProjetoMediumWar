@@ -6,7 +6,6 @@ import peca.Knight;
 import peca.Orc;
 import peca.Peca;
 
-import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.Random;
@@ -14,6 +13,7 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import Jogador.IJogador;
 import Jogador.IJogadorBanco;
 import Jogador.Jogador;
 	
@@ -84,7 +84,7 @@ public class Banco extends JPanel implements IBanco{
 			setCursor(2);
 		}
 	}
-	public void setJogador(Jogador jogador) {
+	public void setJogador(IJogador jogador) {
 		if(jogador1==null)jogador1=jogador;
 		else jogador2=jogador;
 	}
@@ -186,4 +186,12 @@ public class Banco extends JPanel implements IBanco{
 			hideCursor(2);
 		}
 	}
+
+	@Override
+	public void comprar(IJogadorBanco jogador) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }
