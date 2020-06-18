@@ -9,6 +9,6 @@ public interface ICardJogador {
 	public void paintComponent(Graphics g, int positionX, int positionY);
 	public int getHeight();
 	public boolean ehNulo();
-	public void setPeca(Peca peca);
+	//public void setPeca(Peca peca);
 	
 }
