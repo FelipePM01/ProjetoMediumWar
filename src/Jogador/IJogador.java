@@ -1,5 +1,5 @@
 package Jogador;
 
-public interface IJogador extends IJogadorCard, IJogadorGame{
+public interface IJogador extends IJogadorCard, IJogadorGame,IJogadorBanco{
 
 }
