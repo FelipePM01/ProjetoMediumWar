@@ -100,7 +100,7 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 		case KeyEvent.VK_A:
 			jogador1.pressedA();
 			tabuleiro.pressedA();
-			//banco.pressedA();
+			banco.pressedA();
             break;
 		case KeyEvent.VK_S:
 			//jogador1.pressedDown();
@@ -109,7 +109,7 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 		case KeyEvent.VK_D:
 			jogador1.pressedD();
 			tabuleiro.pressedD();
-			//banco.pressedD();
+			banco.pressedD();
 		     break;
 		case KeyEvent.VK_DOWN:
 			//jogador2.pressedDOWN();
@@ -122,12 +122,12 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 		case KeyEvent.VK_RIGHT:
 			jogador2.pressedRIGHT();
 			tabuleiro.pressedRIGHT();
-			//banco.pressedRIGHT();
+			banco.pressedRIGHT();
             break;
 		case KeyEvent.VK_LEFT:
 			jogador2.pressedLeft();
 			tabuleiro.pressedLEFT();
-			//banco.pressedLEFT();
+			banco.pressedLEFT();
 			break;
 		
 		case KeyEvent.VK_SLASH:

@@ -50,13 +50,14 @@ public class Jogador extends JPanel implements IJogador{
 			positionY=(int)(scale*240);
 			cor="vermelho";
 		}
-		setCursor();
+		
 		
 		initializeGui();
 		
 		for(int i=0;i<8;i++) {
 			mao[i]= new CardJogador(this, i%3);
 		}
+		//setCursor();
 	}
 	
 	public void initializeGui(){

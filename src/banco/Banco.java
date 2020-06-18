@@ -35,6 +35,7 @@ public class Banco extends JPanel implements IBanco{
 		todas[1] = new Knight(scale);
 		todas[2] = new Orc(scale);
 		refresh();
+		setCursor();
 	}
 	
 	public void initializeGui(){
@@ -47,7 +48,6 @@ public class Banco extends JPanel implements IBanco{
 	public void paintComponent(Graphics g){
 		
 		super.paintComponent(g);
-		atualizar();
 		int positionX = (int)(scale*356);
 		int positionY = (int)(scale*16);
 		int newX = positionX+4;
@@ -58,14 +58,6 @@ public class Banco extends JPanel implements IBanco{
         	newX = newX+pecasDisponiveis[i].getWidth();
         }
 	}
-	public void atualizar() {
-		for(int i=0;i<3;i++) {
-			if(cursor1!=i&&cursor2!=i)pecasDisponiveis[i].attImage("assets/cardPadrao.png");
-			else if(cursor2!=i)pecasDisponiveis[i].attImage("assets/cardAzul.png");
-			else if(cursor1!=i)pecasDisponiveis[i].attImage("assets/cardVermelho.png");
-			else pecasDisponiveis[i].attImage("assets/cardAmbos.png");
-		}
-	}
 	public void refresh() {
 		for(int i=0;i<3;i++) {
 			int x;
@@ -73,9 +65,7 @@ public class Banco extends JPanel implements IBanco{
 			pecasDisponiveis[i] = new CardBanco(this, 0 );
 			if(x==0)pecasDisponiveis[i].setPeca(new Archer(todas[0],pecasDisponiveis[i]));
 			if(x==1)pecasDisponiveis[i].setPeca(new Knight(todas[1],pecasDisponiveis[i]));
-			if(x==2)pecasDisponiveis[i].setPeca(new Orc(todas[2],pecasDisponiveis[i]));
-			
-			
+			if(x==2)pecasDisponiveis[i].setPeca(new Orc(todas[2],pecasDisponiveis[i]));			
 		}
 	}
 	public double getScale() {
@@ -89,19 +79,70 @@ public class Banco extends JPanel implements IBanco{
 		if(jogador1==null)jogador1=jogador;
 		else jogador2=jogador;
 	}
-	public void pressedLeft() {
-		if(cursor2<0)cursor2--;
-		
+	public void setCursor() {
+		cursor1=0;
+		cursor2=2;
+		pecasDisponiveis[0].setCardAtual("azul");
+		pecasDisponiveis[2].setCardAtual("vermelho");
 	}
-	public void pressedRight() {
-		if(cursor2!=-1&&cursor2<2)cursor2++;
+	
+	public void selectCardBanco(int xAnt, int x, String cor) {
+		if(pecasDisponiveis[xAnt]!=null&&(cursor1==cursor2)) {
+			if(cor=="vermelho")pecasDisponiveis[xAnt].setCardAtual("azul");
+			else if(cor=="azul")pecasDisponiveis[xAnt].setCardAtual("vermelho");
+		}
+		else if(pecasDisponiveis[xAnt]!=null)pecasDisponiveis[xAnt].setCardAtual("padrao");
+		
+		if(pecasDisponiveis[x]!=null&&(x==cursor1||x==cursor2))pecasDisponiveis[x].setCardAtual("ambos");
+		else if(pecasDisponiveis[x]!=null)pecasDisponiveis[x].setCardAtual(cor);
+	}
+	public void pressedLEFT() {
+		if(cursor2>=0) {
+			if(cursor2-1<0) {
+				selectCardBanco(cursor2, 2, "vermelho");
+				cursor2=2;
+			}
+			else {
+				selectCardBanco(cursor2, cursor2-1,"vermelho");
+				cursor2--;
+			}	
+		}		
+	}
+	public void pressedRIGHT() {
+		if(cursor2>=0) {
+			if(cursor2+1>2) {
+				selectCardBanco(cursor2, 0, "vermelho");
+				cursor2=0;
+			}
+			else {
+				selectCardBanco(cursor2, cursor2+1,"vermelho");
+				cursor2++;
+			}
+		}
 	}
 	public void pressedA() {
-		if(cursor1<0)cursor1--;
-		
+		if(cursor1>=0) {
+			if(cursor1-1<0) {
+				selectCardBanco(cursor1, 2, "azul");
+				cursor1=2;
+			}
+			else {
+				selectCardBanco(cursor1, cursor1-1,"azul");
+				cursor1--;
+			}	
+		}
 	}
 	public void pressedD() {
-		if(cursor1!=-1&&cursor1<2)cursor1++;
+		if(cursor1>=0) {
+			if(cursor1+1>2) {
+				selectCardBanco(cursor1, 0, "azul");
+				cursor1=0;
+			}
+			else {
+				selectCardBanco(cursor1, cursor1+1,"azul");
+				cursor1++;
+			}
+		}
 	}
 	public void pressedSPACE() {
 		if(cursor1!=-1) {

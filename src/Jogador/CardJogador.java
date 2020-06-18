@@ -36,7 +36,6 @@ public class CardJogador extends Card implements ICardJogador{
 			  attImage(refImagens[2]);
 			  break;
 		  case "padrao":
-			  System.out.println("teste");
 			  attImage(refImagens[0]);
 			  break;
 		  }
