@@ -24,21 +24,12 @@ public class CardJogador extends Card implements ICardJogador{
 	static private String[] refImagens = {"assets/cardPadrao.png","assets/cardAzul.png","assets/cardVermelho.png"};
 	
 	public CardJogador(IJogadorCard jogador, int i){
-		
 		super(jogador, refImagens[0]);
 	}
+	
 	public void setCardAtual(String cor) {
-		  switch(cor){
-		  case "azul":
-			  attImage(refImagens[1]);
-			  break;
-		  case "vermelho":
-			  attImage(refImagens[2]);
-			  break;
-		  case "padrao":
-			  attImage(refImagens[0]);
-			  break;
-		  }
+		 attImage(cor);
+
 	}
 
 

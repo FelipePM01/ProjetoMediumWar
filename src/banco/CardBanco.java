@@ -16,23 +16,10 @@ public class CardBanco extends Card{
 	public CardBanco(IBancoCard banco, int i){
 		super(banco, refImagens[i]);
     } 
+
 	
 	public void setCardAtual(String cor) {
-		  switch(cor){
-		  case "ambos":
-			  attImage(refImagens[1]);
-			  break;
-		  case "azul":
-			  System.out.println("aqui");
-			  attImage(refImagens[2]);
-			  break;
-		  case "vermelho":
-			  attImage(refImagens[3]);
-			  break;
-		  case "padrao":
-			  attImage(refImagens[0]);
-			  break;
-		  }
+		 attImage(cor);
 	}
 	
 	@Override

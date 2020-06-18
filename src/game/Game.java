@@ -125,7 +125,7 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 			banco.pressedRIGHT();
             break;
 		case KeyEvent.VK_LEFT:
-			jogador2.pressedLeft();
+			jogador2.pressedLEFT();
 			tabuleiro.pressedLEFT();
 			banco.pressedLEFT();
 			break;

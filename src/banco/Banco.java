@@ -35,7 +35,7 @@ public class Banco extends JPanel implements IBanco{
 		todas[1] = new Knight(scale);
 		todas[2] = new Orc(scale);
 		refresh();
-		setCursor();
+		//setCursor();
 	}
 	
 	public void initializeGui(){
@@ -84,6 +84,12 @@ public class Banco extends JPanel implements IBanco{
 		cursor2=2;
 		pecasDisponiveis[0].setCardAtual("azul");
 		pecasDisponiveis[2].setCardAtual("vermelho");
+	}
+	public void hideCursor(){
+		pecasDisponiveis[cursor1].setCardAtual("padrao");
+		cursor1=-1;
+		pecasDisponiveis[cursor2].setCardAtual("padrao");
+		cursor2=-1;
 	}
 	
 	public void selectCardBanco(int xAnt, int x, String cor) {
