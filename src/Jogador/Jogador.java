@@ -166,38 +166,44 @@ public class Jogador extends JPanel implements IJogador{
 		setCursor();
 		currentAction="remove";
 	}
-//	public void pressedX() {
-//		setCursor();
-//		currentAction="position";
-//	}
+	public void pressedX() {
+		setCursor();
+		currentAction="position";
+	}
 	public void pressedSPACE() {
 		if(currentAction=="remove") {
 			System.out.println(1);
 			remove();
 			currentAction=null;
 		}
-//		else if(currentAction=="position") {
-//			System.out.println(1);
-//			position();
-//			currentAction=null;
-//		}
+		else if(currentAction=="position") {
+			
+			position();
+			
+		}
 	}
 	public void remove() {
 		if(cursor>=0) {
 			mao[cursor].setPeca(null);
 		}
 	}
-//	public void position() {
-//		if(cursor>=0) {
-//			tabuleiro.positionPeca(this,mao[cursor]);
-//		}
-//	}
+	public void position() {
+		if(cursor>=0) {
+			tabuleiro.positionPeca(this,mao[cursor].getPeca());
+			hideCursor();
+			 currentAction="posicionando";
+		}
+	}
 	public void receber(IPecaCard peca) {
 		recebido=peca;
 		
 		mao[colocar].setPeca(recebido);
 		
 		colocar=-1;
+	}
+	public void posicionado() {
+		currentAction=null;
+		setCursor();
 	}
 	
 }

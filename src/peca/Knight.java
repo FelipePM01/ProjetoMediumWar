@@ -28,7 +28,7 @@ public class Knight extends Peca{
 		correction[0]=18;
 		correction[1]=14;
 	}
-	public Knight(Peca peca,Tile tile){
+	public Knight(IPecaCard peca,Tile tile){
 		super(peca, tile);
 		setup(2);	
 		correction[0]=8;

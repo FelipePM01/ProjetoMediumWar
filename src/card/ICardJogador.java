@@ -13,5 +13,6 @@ public interface ICardJogador {
 	public boolean ehNulo();
 	public void setCardAtual(String cor);
 	public void setPeca(IPecaCard recebido);
+	public Peca getPeca();
 	
 }

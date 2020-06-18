@@ -28,7 +28,7 @@ public class Orc extends Peca{
 		correction[0]=14;
 		correction[1]=13;
 	}	
-	public Orc(Peca peca,Tile tile){
+	public Orc(IPecaCard peca,Tile tile){
 		super(peca, tile);
 		setup(2);
 		correction[0]=7;

@@ -22,7 +22,7 @@ public abstract class Card extends JPanel implements ICardPeca{
 	private int HEIGHT;
 	private int[] startPointCard = new int[2];
 	private double scale;
-    protected IPecaCard peca=null;
+    protected Peca peca=null;
 
     public Card(IBancoCard banco, String refImagem){
         scale = banco.getScale();

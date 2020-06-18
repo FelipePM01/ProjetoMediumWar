@@ -6,8 +6,12 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import peca.Archer;
 import peca.IPeca;
+import peca.IPecaCard;
 import peca.IPecaTile;
+import peca.Knight;
+import peca.Orc;
 import peca.Peca;
 
 public class Tile extends JPanel implements ITile{
@@ -66,8 +70,13 @@ public class Tile extends JPanel implements ITile{
 	public void nullTarget() {
 		peca.setTarget(null);
 	}
-	public void setPeca(IPecaTile peca) {
-		this.peca=peca;
+	public void setPeca(IPecaCard peca) {
+	
+		if (peca instanceof Archer)this.peca=new Archer(peca,this);
+		else if (peca instanceof Knight)this.peca=new Knight(peca,this);
+		else if (peca instanceof Orc)this.peca=new Orc(peca,this);
+		else if(peca==null)this.peca=null;
+		
 	}
 	public IPecaTile getPeca() {
 		return peca;
@@ -95,4 +104,12 @@ public class Tile extends JPanel implements ITile{
 			  break;
 		  	}
 	  }
+
+//	@Override
+//	public void setPeca(IPecaTile peca) {
+//		this.peca=peca;
+//		
+//	}
+
+	
 }

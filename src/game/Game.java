@@ -151,7 +151,7 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 			
 			break;
 		case KeyEvent.VK_X:
-			//jogador1.pressedX();
+			jogador1.pressedX();
 			
 			break;
 		case KeyEvent.VK_Z:
@@ -159,9 +159,10 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 			
 			break;
 		case KeyEvent.VK_SPACE:
-			jogador1.pressedSPACE();
-//			tabuleiro.pressedSPACE();
+			
+			tabuleiro.pressedSPACE();
 			banco.pressedSPACE();
+			jogador1.pressedSPACE();
 			break;
 		case KeyEvent.VK_ENTER:
 //			jogador2.pressedENTER();

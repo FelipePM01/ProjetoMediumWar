@@ -41,7 +41,9 @@ public class CardJogador extends Card implements ICardJogador{
 		else if(peca==null)this.peca=null;
 	}
 
-	
+	public Peca getPeca() {
+    	return peca;
+    }
 
 	
 }

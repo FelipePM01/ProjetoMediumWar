@@ -28,7 +28,7 @@ public class Archer extends Peca{
 		correction[0]=12;
 		correction[1]=14;
 	}
-	public Archer(Peca peca,Tile tile){
+	public Archer(IPecaCard peca,Tile tile){
 		super(peca, tile);
 		setup(2);	
 		correction[0]=6;
