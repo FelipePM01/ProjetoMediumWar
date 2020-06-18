@@ -122,7 +122,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		}
 	}
 	public void pressedS() {
-		if(cAzul&&cursorAzul[1]!=2) {
+		if(cAzul&&cursorAzul[1]!=9) {
 			selectTile(cursorAzul[0], cursorAzul[1], cursorAzul[0], cursorAzul[1]+1, "azul");
 			cursorAzul[1]++;
 		}
@@ -134,13 +134,13 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		}
 	}
 	public void pressedD() {
-		if(cAzul&&cursorAzul[0]!=9) {
+		if(cAzul&&cursorAzul[0]!=2) {
 			selectTile(cursorAzul[0], cursorAzul[1], cursorAzul[0]+1, cursorAzul[1], "azul");
 			cursorAzul[0]++;
 		 }
 	}
 	public void pressedUP() {
-		if(cVermelho&&cursorVermelho[1]!=7) {
+		if(cVermelho&&cursorVermelho[1]!=0) {
 			selectTile(cursorVermelho[0], cursorVermelho[1], cursorVermelho[0], cursorVermelho[1]-1, "vermelho");
 			cursorVermelho[1]--;
 		}
@@ -152,7 +152,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		}
 	}
 	public void pressedLEFT() {
-		if(cVermelho&&cursorVermelho[0]!=0) {
+		if(cVermelho&&cursorVermelho[0]!=7) {
 			selectTile(cursorVermelho[0], cursorVermelho[1], cursorVermelho[0]-1, cursorVermelho[1],"vermelho");
 			cursorVermelho[0]--;
 		}
