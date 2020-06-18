@@ -45,18 +45,18 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	protected Timer timer;
 	protected int flipCorrection;
 	
-	public Peca(IPecaCard peca,Tile tile) {
+	public Peca(IPecaCardJogador peca,Tile tile) {
 		set(peca);
 		this.tile=tile;
 		inBoard=true;
 		basePosition=tile.getGUIPosition();
 	}
-	public Peca(IPecaCardBanco peca,CardBanco card) {
+	public Peca(IPeca peca,CardBanco card) {
 		set(peca);		
 		inBoard=false;
 		basePosition=card.getGUIPosition();
 	}
-	public Peca(IPecaCardJogador peca,CardJogador card) {
+	public Peca(IPecaCardBanco peca,CardJogador card) {
 		set(peca);		
 		inBoard=false;
 		basePosition=card.getGUIPosition();

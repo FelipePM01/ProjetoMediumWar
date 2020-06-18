@@ -18,15 +18,15 @@ public class Melee extends Peca {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Melee(IPecaCardBanco peca,CardBanco card) {
+	public Melee(IPeca peca,CardBanco card) {
 		super(peca,card);
 		
 	}
-	public Melee(IPecaCardJogador peca,CardJogador card) {
+	public Melee(IPecaCardBanco peca,CardJogador card) {
 		super(peca,card);
 		
 	}
-	public Melee(IPecaCard peca,Tile tile){
+	public Melee(IPecaCardJogador peca,Tile tile){
 		super(peca, tile);
 		
 	}

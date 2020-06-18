@@ -18,17 +18,17 @@ public class Knight extends Melee{
 		super(scale);
 		setup(4);
 	}
-	public Knight(IPecaCardBanco peca,CardBanco card) {
+	public Knight(IPeca peca,CardBanco card) {
 		super(peca,card);
 		correction[0]=18;
 		correction[1]=14;
 	}
-	public Knight(IPecaCardJogador peca,CardJogador card) {
+	public Knight(IPecaCardBanco peca,CardJogador card) {
 		super(peca,card);
 		correction[0]=18;
 		correction[1]=14;
 	}
-	public Knight(IPecaCard peca,Tile tile){
+	public Knight(IPecaCardJogador peca,Tile tile){
 		super(peca, tile);
 		setup(2);	
 		correction[0]=8;

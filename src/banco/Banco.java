@@ -1,6 +1,7 @@
 package banco;
 
 import peca.Archer;
+import peca.IPeca;
 import peca.Knight;
 import peca.Orc;
 import peca.Peca;
@@ -13,6 +14,7 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import Jogador.IJogadorBanco;
 import Jogador.Jogador;
 	
 public class Banco extends JPanel implements IBanco{
@@ -23,11 +25,11 @@ public class Banco extends JPanel implements IBanco{
 	private Image banco;
 	private CardBanco[] pecasDisponiveis=new CardBanco[3];
 	private double scale=1;
-	private Peca[] todas= new Peca[3];
+	private IPeca[] todas= new Peca[3];
 	private Random random = new Random();
 	protected int cursor1=-1;
 	protected int cursor2=-1;
-	private Jogador jogador1,jogador2;
+	private IJogadorBanco jogador1,jogador2;
 	
 	public Banco(double scale){
 		this.scale=scale;
@@ -36,8 +38,7 @@ public class Banco extends JPanel implements IBanco{
 		todas[1] = new Knight(scale);
 		todas[2] = new Orc(scale);
 		refresh();
-//		setCursor(1);
-//		setCursor(2);
+
 	}
 	
 	public void initializeGui(){

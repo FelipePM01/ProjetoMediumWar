@@ -18,23 +18,24 @@ public class Archer extends Ranged{
 		super(scale);
 		setup(4);	
 	}
-	public Archer(IPecaCardBanco peca,CardBanco card) {
+	public Archer(IPeca peca,CardBanco card) {
 		super(peca,card);
 		correction[0]=12;
 		correction[1]=14;
 	}
-	public Archer(IPecaCardJogador peca,CardJogador card) {
+	public Archer(IPecaCardBanco peca,CardJogador card) {
 		super(peca,card);
 		correction[0]=12;
 		correction[1]=14;
 	}
-	public Archer(IPecaCard peca,Tile tile){
+	public Archer(IPecaCardJogador peca,Tile tile){
 		super(peca, tile);
 		setup(2);	
 		correction[0]=6;
 		correction[1]=4;
 		flipCorrection=6;
 	}
+	
 	
 	public void setup(int x) {
 		animationFramesMove = new Image[3];
