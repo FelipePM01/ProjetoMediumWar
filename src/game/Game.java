@@ -94,66 +94,66 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 		int code = e.getKeyCode();
 		switch(code){
 		case KeyEvent.VK_W:
-			 jogador1.pressedUp();
-			 //tabuleiro.pressedW();
+			 //jogador1.pressedUp();
+			 tabuleiro.pressedW();
             break;
 		case KeyEvent.VK_A:
-			jogador1.pressedLeft();
-			//tabuleiro.pressedA();
+			//jogador1.pressedLeft();
+			tabuleiro.pressedA();
 			//banco.pressedA();
             break;
 		case KeyEvent.VK_S:
-			jogador1.pressedDown();
-			//tabuleiro.pressedS();
+			//jogador1.pressedDown();
+			tabuleiro.pressedS();
 			break;
 		case KeyEvent.VK_D:
-			jogador1.pressedRight();
-			//tabuleiro.pressedD();
+			//jogador1.pressedRight();
+			tabuleiro.pressedD();
 			//banco.pressedD();
 		     break;
 		case KeyEvent.VK_DOWN:
-			jogador2.pressedDown();
-			//tabuleiro.pressedDOWN();
+			//jogador2.pressedDOWN();
+			tabuleiro.pressedDOWN();
             break;
 		case KeyEvent.VK_UP:
-			jogador2.pressedUp();
-			//tabuleiro.pressedUP();
+			//jogador2.pressedU();
+			tabuleiro.pressedUP();
             break;
 		case KeyEvent.VK_RIGHT:
-			jogador2.pressedRight();
-			//tabuleiro.pressedRIGHT();
+			//jogador2.pressedRIGHT();
+			tabuleiro.pressedRIGHT();
 			//banco.pressedRIGHT();
             break;
 		case KeyEvent.VK_LEFT:
-			jogador2.pressedLeft();
-			//tabuleiro.pressedLEFT();
+			//jogador2.pressedLeft();
+			tabuleiro.pressedLEFT();
 			//banco.pressedLEFT();
 			break;
 		
-//		case KeyEvent.VK_SLASH:
-//			jogador2.pressedBARRA();
-//			
-//			break;
-//		case KeyEvent.VK_PERIOD:
-//			jogador2.pressedPONTO();
-//			
-//			break;
-//		case KeyEvent.VK_COMMA:
-//			jogador2.pressedVIRGULA();
-//			
-//			break;
-//		case KeyEvent.VK_C:
-//			jogador1.pressedC();
-//			
-//			break;
-//		case KeyEvent.VK_X:
-//			jogador1.pressedX();
-//			
-//			break;
-//		case KeyEvent.VK_Z:
-//			jogador1.pressedZ();
-//			
-//			break;
+		case KeyEvent.VK_SLASH:
+			//jogador2.pressedBARRA();
+			
+			break;
+		case KeyEvent.VK_PERIOD:
+			//jogador2.pressedPONTO();
+			
+			break;
+		case KeyEvent.VK_COMMA:
+			//jogador2.pressedVIRGULA();
+			
+			break;
+		case KeyEvent.VK_C:
+			//jogador1.pressedC();
+			
+			break;
+		case KeyEvent.VK_X:
+			//jogador1.pressedX();
+			
+			break;
+		case KeyEvent.VK_Z:
+			//jogador1.pressedZ();
+			
+			break;
 		}
 	}
 	@Override

@@ -89,43 +89,4 @@ public class Jogador extends JPanel implements IJogador{
 	public double getScale() {
 		return scale;
 	}
-	public void pressedUp() {
-		if(cursor[1]!=0) {
-			tabuleiro.selectTile(cursor[0], cursor[1], cursor[0], cursor[1]-1, cor);
-			cursor[1]--;
-		}
-	}
-	public void pressedDown() {
-		if(cursor[1]!=9) {
-			tabuleiro.selectTile(cursor[0], cursor[1], cursor[0], cursor[1]+1, cor);
-			cursor[1]++;
-		}
-	}
-	public void pressedLeft() {
-		if(cursor[0]!=0) {
-			tabuleiro.selectTile(cursor[0], cursor[1], cursor[0]-1, cursor[1], cor);
-			cursor[0]--;
-		}
-	}
-	public void pressedRight() {
-		if(cursor[0]!=9) {
-			tabuleiro.selectTile(cursor[0], cursor[1], cursor[0]+1, cursor[1], cor);
-			cursor[0]++;
-		 }
-	}
-	public void pressedC() {
-		
-		for(int i=0;i<8;i++) {
-			if(mao[i].ehNulo()) {
-				banco.comprar(this);
-				while(!concluida) {}
-				mao[i].setPeca(recebido);
-			}
-		}
-		
-	}
-	public void receber(Peca peca) {
-		recebido=peca;
-	}
-	
 }
