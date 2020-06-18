@@ -20,6 +20,8 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	private int[] startPositionScreen= {280,120};
 	private int[] cursorAzul;
 	private int[] cursorVermelho;
+	private boolean cAzul = false;
+	private boolean cVermelho = false;
 	
 	public Tabuleiro(IGame game) {
 		scale=game.getScale();
@@ -81,12 +83,14 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	public void setCursor(String cor) {
 		if (cor=="azul") {
 			cursorAzul=new int[2];
+			cAzul=true;
 			cursorAzul[0]=0;
 			cursorAzul[1]=0;
 			selectTile(0,0,0,0,"azul");
 		}
 		else if(cor=="vermelho") {
 			cursorVermelho=new int[2];
+			cVermelho=true;
 			cursorVermelho[0]=9;
 			cursorVermelho[1]=9;
 			selectTile(9,9,9,9,"vermelho");
@@ -95,12 +99,14 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	public void hideCursor(String cor) {
 		if (cor=="azul") {
 			selectTile(cursorAzul[0],cursorAzul[1],0,0,"padrao");
+			cAzul=false;
 			cursorAzul[0]=0;
 			cursorAzul[1]=0;
 			
 		}
 		else if(cor=="vermelho") {
 			selectTile(cursorVermelho[0],cursorVermelho[1],9,9,"padrao");
+			cVermelho=false;
 			cursorVermelho[0]=9;
 			cursorVermelho[1]=9;
 		}
@@ -110,49 +116,49 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		if(matriz[x][y]!=null)matriz[x][y].setTileAtual(cor);
 	}
 	public void pressedW() {
-		if(cursorAzul[1]!=0) {
+		if(cAzul&&cursorAzul[1]!=0) {
 			selectTile(cursorAzul[0], cursorAzul[1], cursorAzul[0], cursorAzul[1]-1, "azul");
 			cursorAzul[1]--;
 		}
 	}
 	public void pressedS() {
-		if(cursorAzul[1]!=2) {
+		if(cAzul&&cursorAzul[1]!=2) {
 			selectTile(cursorAzul[0], cursorAzul[1], cursorAzul[0], cursorAzul[1]+1, "azul");
 			cursorAzul[1]++;
 		}
 	}
 	public void pressedA() {
-		if(cursorAzul[0]!=0) {
+		if(cAzul&&cursorAzul[0]!=0) {
 			selectTile(cursorAzul[0], cursorAzul[1], cursorAzul[0]-1, cursorAzul[1],"azul");
 			cursorAzul[0]--;
 		}
 	}
 	public void pressedD() {
-		if(cursorAzul[0]!=9) {
+		if(cAzul&&cursorAzul[0]!=9) {
 			selectTile(cursorAzul[0], cursorAzul[1], cursorAzul[0]+1, cursorAzul[1], "azul");
 			cursorAzul[0]++;
 		 }
 	}
 	public void pressedUP() {
-		if(cursorVermelho[1]!=7) {
+		if(cVermelho&&cursorVermelho[1]!=7) {
 			selectTile(cursorVermelho[0], cursorVermelho[1], cursorVermelho[0], cursorVermelho[1]-1, "vermelho");
 			cursorVermelho[1]--;
 		}
 	}
 	public void pressedDOWN() {
-		if(cursorVermelho[1]!=9) {
+		if(cVermelho&&cursorVermelho[1]!=9) {
 			selectTile(cursorVermelho[0], cursorVermelho[1], cursorVermelho[0], cursorVermelho[1]+1, "vermelho");
 			cursorVermelho[1]++;
 		}
 	}
 	public void pressedLEFT() {
-		if(cursorVermelho[0]!=0) {
+		if(cVermelho&&cursorVermelho[0]!=0) {
 			selectTile(cursorVermelho[0], cursorVermelho[1], cursorVermelho[0]-1, cursorVermelho[1],"vermelho");
 			cursorVermelho[0]--;
 		}
 	}
 	public void pressedRIGHT() {
-		if(cursorVermelho[0]!=9) {
+		if(cVermelho&&cursorVermelho[0]!=9) {
 			selectTile(cursorVermelho[0], cursorVermelho[1], cursorVermelho[0]+1, cursorVermelho[1], "vermelho");
 			cursorVermelho[0]++;
 		 }

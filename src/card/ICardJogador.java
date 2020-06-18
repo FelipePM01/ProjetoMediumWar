@@ -10,6 +10,6 @@ public interface ICardJogador {
 	public int getHeight();
 	public boolean ehNulo();
 	public void setCardAtual(String cor);
-	//public void setPeca(Peca peca);
+	public void setPeca(Peca peca);
 	
 }
