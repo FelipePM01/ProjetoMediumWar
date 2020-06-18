@@ -18,6 +18,7 @@ import peca.IPecaCardJogador;
 import peca.Knight;
 import peca.Orc;
 import peca.Peca;
+import tabuleiro.ITabuleiroJogador;
 import tabuleiro.Tabuleiro;
 
 public class Jogador extends JPanel implements IJogador{
@@ -29,14 +30,14 @@ public class Jogador extends JPanel implements IJogador{
 	private int positionX;
 	private int positionY;
 	private Banco banco;
-	private Tabuleiro tabuleiro;
+	private ITabuleiroJogador tabuleiro;
 	private String cor;
 	private int cursor = -1;
 	private int colocar=-1;
 	private IPecaCard recebido;
 	private String currentAction;
 	
-	public Jogador(IGame game, int j,Tabuleiro tabuleiro,Banco banco){
+	public Jogador(IGame game, int j,ITabuleiroJogador tabuleiro,Banco banco){
 		scale=game.getScale();
 		this.tabuleiro=tabuleiro;
 		this.banco=banco;

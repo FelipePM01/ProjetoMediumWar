@@ -1,5 +1,5 @@
 package tabuleiro;
 
-public interface ITabuleiro extends ITabuleiroTile,ITabuleiroGame {
+public interface ITabuleiro extends ITabuleiroTile,ITabuleiroGame,ITabuleiroJogador {
 
 }
