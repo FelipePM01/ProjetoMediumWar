@@ -32,7 +32,7 @@ public class Jogador extends JPanel implements IJogador{
 	private Tabuleiro tabuleiro;
 	private String cor;
 	private int cursor = -1;
-	private boolean concluida=false;
+	private int colocar=-1;
 	private IPecaCard recebido;
 	
 	public Jogador(IGame game, int j,Tabuleiro tabuleiro,Banco banco){
@@ -114,12 +114,12 @@ public class Jogador extends JPanel implements IJogador{
 		}
 	}
 	public void pressedC() {
-		
+		hideCursor();
 		for(int i=0;i<8;i++) {
 			if(mao[i].ehNulo()) {
 				banco.comprar(this);
-				while(!concluida) {}
-				mao[i].setPeca(recebido);
+				colocar=i;
+				
 				break;
 			}
 		}
@@ -162,7 +162,9 @@ public class Jogador extends JPanel implements IJogador{
 	}
 	public void receber(IPecaCard peca) {
 		recebido=peca;
-		concluida=true;
+		
+		mao[colocar].setPeca(recebido);
+		colocar=-1;
 	}
 	
 }

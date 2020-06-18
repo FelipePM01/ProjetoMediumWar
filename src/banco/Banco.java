@@ -35,7 +35,8 @@ public class Banco extends JPanel implements IBanco{
 		todas[1] = new Knight(scale);
 		todas[2] = new Orc(scale);
 		refresh();
-		//setCursor();
+//		setCursor(1);
+//		setCursor(2);
 	}
 	
 	public void initializeGui(){
@@ -72,24 +73,35 @@ public class Banco extends JPanel implements IBanco{
 		return scale;
 	}
 	public void comprar(Jogador jogador) {
-		if(jogador==jogador1)cursor1=0;
-		else cursor2=2;
+		if(jogador==jogador1)setCursor(1);
+		else setCursor(2);
 	}
 	public void setJogador(Jogador jogador) {
 		if(jogador1==null)jogador1=jogador;
 		else jogador2=jogador;
 	}
-	public void setCursor() {
-		cursor1=0;
-		cursor2=2;
-		pecasDisponiveis[0].setCardAtual("azul");
-		pecasDisponiveis[2].setCardAtual("vermelho");
+	public void setCursor(int i) {
+		if(i==1) {
+			cursor1=0;
+			
+			pecasDisponiveis[0].setCardAtual("azul");
+		}
+		else{
+			cursor2=2;
+			pecasDisponiveis[2].setCardAtual("vermelho");
+		}
+		
 	}
-	public void hideCursor(){
-		pecasDisponiveis[cursor1].setCardAtual("padrao");
-		cursor1=-1;
-		pecasDisponiveis[cursor2].setCardAtual("padrao");
-		cursor2=-1;
+	public void hideCursor(int i){
+		if(i==1) {
+			pecasDisponiveis[cursor1].setCardAtual("padrao");
+			cursor1=-1;
+			
+		}
+		else{
+			pecasDisponiveis[2].setCardAtual("padrao");
+			cursor2=-1;
+		}
 	}
 	
 	public void selectCardBanco(int xAnt, int x, String cor) {
@@ -104,7 +116,7 @@ public class Banco extends JPanel implements IBanco{
 	}
 	public void pressedLEFT() {
 		if(cursor2>=0) {
-			if(cursor2-1<0) {
+			if(cursor2==0) {
 				selectCardBanco(cursor2, 2, "vermelho");
 				cursor2=2;
 			}
@@ -116,7 +128,7 @@ public class Banco extends JPanel implements IBanco{
 	}
 	public void pressedRIGHT() {
 		if(cursor2>=0) {
-			if(cursor2+1>2) {
+			if(cursor2==2) {
 				selectCardBanco(cursor2, 0, "vermelho");
 				cursor2=0;
 			}
@@ -128,7 +140,7 @@ public class Banco extends JPanel implements IBanco{
 	}
 	public void pressedA() {
 		if(cursor1>=0) {
-			if(cursor1-1<0) {
+			if(cursor1==0) {
 				selectCardBanco(cursor1, 2, "azul");
 				cursor1=2;
 			}
@@ -140,7 +152,7 @@ public class Banco extends JPanel implements IBanco{
 	}
 	public void pressedD() {
 		if(cursor1>=0) {
-			if(cursor1+1>2) {
+			if(cursor1==2) {
 				selectCardBanco(cursor1, 0, "azul");
 				cursor1=0;
 			}
@@ -156,7 +168,7 @@ public class Banco extends JPanel implements IBanco{
 		}
 	}
 	public void pressedENTER() {
-		if(cursor1!=-1) {
+		if(cursor2!=-1) {
 			jogador2.receber(pecasDisponiveis[cursor2].getPeca());
 		}
 	}
