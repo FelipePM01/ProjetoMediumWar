@@ -13,6 +13,7 @@ import javax.swing.Timer;
 import Jogador.CardJogador;
 import banco.CardBanco;
 import card.Card;
+import card.ICardPeca;
 import game.GUI;
 import tabuleiro.ITilePeca;
 import tabuleiro.Tabuleiro;
@@ -51,12 +52,12 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		inBoard=true;
 		basePosition=tile.getGUIPosition();
 	}
-	public Peca(IPecaCardBanco peca,CardBanco card) {
+	public Peca(IPecaCardBanco peca,ICardPeca card) {
 		set(peca);		
 		inBoard=false;
 		basePosition=card.getGUIPosition();
 	}
-	public Peca(IPecaCardJogador peca,CardJogador card) {
+	public Peca(IPecaCardJogador peca,ICardPeca card) {
 		set(peca);		
 		inBoard=false;
 		basePosition=card.getGUIPosition();
