@@ -2,6 +2,7 @@ package peca;
 
 import Jogador.CardJogador;
 import banco.CardBanco;
+import card.ICardBanco;
 import tabuleiro.Tile;
 
 public class Melee extends Peca {
@@ -18,7 +19,7 @@ public class Melee extends Peca {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Melee(IPecaCardBanco peca,CardBanco card) {
+	public Melee(IPecaCardBanco peca,ICardBanco card) {
 		super(peca,card);
 		
 	}

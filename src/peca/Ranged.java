@@ -2,6 +2,7 @@ package peca;
 
 import Jogador.CardJogador;
 import banco.CardBanco;
+import card.ICardBanco;
 import tabuleiro.Tile;
 
 public class Ranged extends Peca {
@@ -15,7 +16,7 @@ public class Ranged extends Peca {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Ranged(IPecaCardBanco peca,CardBanco card) {
+	public Ranged(IPecaCardBanco peca,ICardBanco card) {
 		super(peca,card);
 		
 	}

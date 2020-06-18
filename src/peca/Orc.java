@@ -5,6 +5,7 @@ import java.awt.Image;
 import Jogador.CardJogador;
 import banco.CardBanco;
 import card.Card;
+import card.ICardBanco;
 import tabuleiro.Tile;
 
 public class Orc extends Melee{
@@ -18,7 +19,7 @@ public class Orc extends Melee{
 		super(scale);
 		setup(4);
 	}
-	public Orc(IPecaCardBanco peca,CardBanco card) {
+	public Orc(IPecaCardBanco peca,ICardBanco card) {
 		super(peca,card);
 		correction[0]=14;
 		correction[1]=13;

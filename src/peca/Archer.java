@@ -5,6 +5,7 @@ import java.awt.Image;
 import Jogador.CardJogador;
 import banco.CardBanco;
 import card.Card;
+import card.ICardBanco;
 import tabuleiro.Tile;
 
 public class Archer extends Ranged{
@@ -18,7 +19,7 @@ public class Archer extends Ranged{
 		super(scale);
 		setup(4);	
 	}
-	public Archer(IPecaCardBanco peca,CardBanco card) {
+	public Archer(IPecaCardBanco peca,ICardBanco card) {
 		super(peca,card);
 		correction[0]=12;
 		correction[1]=14;

@@ -1,6 +1,7 @@
 package banco;
 
 import peca.Archer;
+import peca.IPeca;
 import peca.Knight;
 import peca.Orc;
 import peca.Peca;
@@ -14,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import Jogador.Jogador;
+import card.ICardBanco;
 	
 public class Banco extends JPanel implements IBanco{
 	/**
@@ -21,7 +23,7 @@ public class Banco extends JPanel implements IBanco{
 	 */
 	private static final long serialVersionUID = 8183722388713930706L;
 	private Image banco;
-	private CardBanco[] pecasDisponiveis=new CardBanco[3];
+	private ICardBanco[] pecasDisponiveis=new CardBanco[3];
 	private double scale=1;
 	private Peca[] todas= new Peca[3];
 	private Random random = new Random();
