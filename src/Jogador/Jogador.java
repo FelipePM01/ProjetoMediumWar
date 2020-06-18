@@ -30,7 +30,7 @@ public class Jogador extends JPanel implements IJogador{
 	private Banco banco;
 	private Tabuleiro tabuleiro;
 	private String cor;
-	private int[] cursor;
+	private int cursor = -1;
 	private boolean concluida=false;
 	private IPecaCard recebido;
 	
@@ -38,28 +38,23 @@ public class Jogador extends JPanel implements IJogador{
 		scale=game.getScale();
 		this.tabuleiro=tabuleiro;
 		this.banco=banco;
-		cursor=new int[2];
 		if(j==1) {
 			positionX=(int)(scale*20);
 			positionY=(int)(scale*240);
 			cor="azul";
-			cursor[0]=0;
-			cursor[1]=0;
+
 		}
 		else {
 			positionX=(int)(scale*696);
 			positionY=(int)(scale*240);
 			cor="vermelho";
-			cursor[0]=9;
-			cursor[1]=9;
 		}
+		setCursor();
 		initializeGui();
 		
 		for(int i=0;i<8;i++) {
 			mao[i]= new CardJogador(this, i%3);
 		}
-		
-		
 	}
 	
 	public void initializeGui(){
@@ -91,22 +86,26 @@ public class Jogador extends JPanel implements IJogador{
 	public double getScale() {
 		return scale;
 	}
-	public void pressedUp() {
-		if(cursor[1]!=0) {
-			tabuleiro.selectTile(cursor[0], cursor[1], cursor[0], cursor[1]-1, cor);
-			cursor[1]--;
-		}
+	public void hideCursor() {
+		cursor=-1;
 	}
-	public void pressedDown() {
-		if(cursor[1]!=9) {
-			tabuleiro.selectTile(cursor[0], cursor[1], cursor[0], cursor[1]+1, cor);
-			cursor[1]++;
-		}
+	public void setCursor() {
+		cursor=0;
 	}
-	public void pressedLeft() {
-		if(cursor[0]!=0) {
-			tabuleiro.selectTile(cursor[0], cursor[1], cursor[0]-1, cursor[1], cor);
-			cursor[0]--;
+	
+	public void selectCardJogador(int xAnt, int x, String cor) {
+		if(mao[xAnt]!=null)mao[xAnt].setCardAtual("padrao");
+		if(mao[x]!=null)mao[x].setCardAtual(cor);
+	}
+	
+	public void pressedA() {
+		if(cursor>=0) {
+			if(cursor--<0) {
+				selectCardJogador(cursor, 5, cor);
+				cursor=5;
+			}
+			selectCardJogador(cursor, cursor--,cor);
+			cursor--;
 		}
 	}
 	public void pressedRight() {
@@ -123,9 +122,15 @@ public class Jogador extends JPanel implements IJogador{
 				while(!concluida) {}
 				mao[i].setPeca(recebido);
 				break;
+	public void pressedD() {
+		if(cursor>=0) {
+			if(cursor++>5) {
+				selectCardJogador(cursor, 0, cor);
+				cursor=0;
 			}
+			selectCardJogador(cursor, cursor++,cor);
+			cursor++;
 		}
-		
 	}
 	public void receber(IPecaCard peca) {
 		recebido=peca;
