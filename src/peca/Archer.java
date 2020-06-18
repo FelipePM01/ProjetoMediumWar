@@ -7,7 +7,7 @@ import banco.CardBanco;
 import card.Card;
 import tabuleiro.Tile;
 
-public class Archer extends Peca{
+public class Archer extends Ranged{
 	/**
 	 * 
 	 */
