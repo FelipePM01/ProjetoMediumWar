@@ -67,4 +67,7 @@ public abstract class Card extends JPanel implements ICardPeca{
     public void setPeca(IPecaCard peca) {
     	this.peca=peca;
     }
+    public void attImage(String refImgAtual) {
+    	initializeGui(refImgAtual);
+    }
 }

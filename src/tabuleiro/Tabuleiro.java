@@ -20,8 +20,6 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	private int[] startPositionScreen= {280,120};
 	private int[] cursorAzul;
 	private int[] cursorVermelho;
-	boolean cAzul = false;
-	boolean cVermelho = false;
 	
 	public Tabuleiro(IGame game) {
 		scale=game.getScale();
@@ -58,8 +56,8 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		}
 	}
 	public void start() {
-		setCursor("azul");
-		setCursor("vermelho");
+		//setCursor("azul");
+		//setCursor("vermelho");
 		for(int i=0;i<10;i++) {
 			for(int j=0;j<10;j++) {
 				matriz[i][j].actionPeca();
@@ -83,14 +81,12 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	public void setCursor(String cor) {
 		if (cor=="azul") {
 			cursorAzul=new int[2];
-			cAzul = true;
 			cursorAzul[0]=0;
 			cursorAzul[1]=0;
 			selectTile(0,0,0,0,"azul");
 		}
 		else if(cor=="vermelho") {
 			cursorVermelho=new int[2];
-			cVermelho = true;
 			cursorVermelho[0]=9;
 			cursorVermelho[1]=9;
 			selectTile(9,9,9,9,"vermelho");
@@ -99,74 +95,66 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	public void hideCursor(String cor) {
 		if (cor=="azul") {
 			selectTile(cursorAzul[0],cursorAzul[1],0,0,"padrao");
-			cAzul=false;
 			cursorAzul[0]=0;
 			cursorAzul[1]=0;
 			
 		}
 		else if(cor=="vermelho") {
 			selectTile(cursorVermelho[0],cursorVermelho[1],9,9,"padrao");
-			cVermelho=false;
 			cursorVermelho[0]=9;
 			cursorVermelho[1]=9;
 		}
-	}
-	public int[] getCursor(String cor) {
-		if(cor=="azul")
-			return cursorAzul;
-		return cursorVermelho;
 	}
 	public void selectTile(int xAnt, int yAnt, int x, int y, String cor) {
 		if(matriz[xAnt][yAnt]!=null)matriz[xAnt][yAnt].setTileAtual("padrao");
 		if(matriz[x][y]!=null)matriz[x][y].setTileAtual(cor);
 	}
 	public void pressedW() {
-		if(cursorAzul[1]!=0&&cAzul) {
+		if(cursorAzul[1]!=0) {
 			selectTile(cursorAzul[0], cursorAzul[1], cursorAzul[0], cursorAzul[1]-1, "azul");
 			cursorAzul[1]--;
 		}
 	}
 	public void pressedS() {
-		if(cursorAzul[1]!=2&&cAzul) {
+		if(cursorAzul[1]!=2) {
 			selectTile(cursorAzul[0], cursorAzul[1], cursorAzul[0], cursorAzul[1]+1, "azul");
 			cursorAzul[1]++;
 		}
 	}
 	public void pressedA() {
-		if(cursorAzul[0]!=0&&cAzul) {
+		if(cursorAzul[0]!=0) {
 			selectTile(cursorAzul[0], cursorAzul[1], cursorAzul[0]-1, cursorAzul[1],"azul");
 			cursorAzul[0]--;
 		}
 	}
 	public void pressedD() {
-		if(cursorAzul[0]!=9&&cAzul) {
+		if(cursorAzul[0]!=9) {
 			selectTile(cursorAzul[0], cursorAzul[1], cursorAzul[0]+1, cursorAzul[1], "azul");
 			cursorAzul[0]++;
 		 }
 	}
 	public void pressedUP() {
-		if(cursorVermelho[1]!=7&&cVermelho) {
+		if(cursorVermelho[1]!=7) {
 			selectTile(cursorVermelho[0], cursorVermelho[1], cursorVermelho[0], cursorVermelho[1]-1, "vermelho");
 			cursorVermelho[1]--;
 		}
 	}
 	public void pressedDOWN() {
-		if(cursorVermelho[1]!=9&&cVermelho) {
+		if(cursorVermelho[1]!=9) {
 			selectTile(cursorVermelho[0], cursorVermelho[1], cursorVermelho[0], cursorVermelho[1]+1, "vermelho");
 			cursorVermelho[1]++;
 		}
 	}
 	public void pressedLEFT() {
-		if(cursorVermelho[0]!=0&&cVermelho) {
+		if(cursorVermelho[0]!=0) {
 			selectTile(cursorVermelho[0], cursorVermelho[1], cursorVermelho[0]-1, cursorVermelho[1],"vermelho");
 			cursorVermelho[0]--;
 		}
 	}
 	public void pressedRIGHT() {
-		if(cursorVermelho[0]!=9&&cVermelho) {
+		if(cursorVermelho[0]!=9) {
 			selectTile(cursorVermelho[0], cursorVermelho[1], cursorVermelho[0]+1, cursorVermelho[1], "vermelho");
 			cursorVermelho[0]++;
 		 }
 	}
-	
 }
