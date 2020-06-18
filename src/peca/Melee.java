@@ -19,7 +19,7 @@ public class Melee extends Peca {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Melee(IPeca peca,CardBanco card) {
+	public Melee(IPeca peca,ICardBanco card) {
 		super(peca,card);
 		
 	}

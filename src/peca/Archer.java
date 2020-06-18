@@ -19,7 +19,7 @@ public class Archer extends Ranged{
 		super(scale);
 		setup(4);	
 	}
-	public Archer(IPeca peca,CardBanco card) {
+	public Archer(IPeca peca,ICardBanco card) {
 		super(peca,card);
 		correction[0]=12;
 		correction[1]=14;

@@ -19,7 +19,7 @@ public class Knight extends Melee{
 		super(scale);
 		setup(4);
 	}
-	public Knight(IPeca peca,CardBanco card) {
+	public Knight(IPeca peca,ICardBanco card) {
 		super(peca,card);
 		correction[0]=18;
 		correction[1]=14;

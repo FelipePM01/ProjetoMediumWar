@@ -16,7 +16,7 @@ public class Ranged extends Peca {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Ranged(IPeca peca,CardBanco card) {
+	public Ranged(IPeca peca,ICardBanco card) {
 		super(peca,card);
 		
 	}

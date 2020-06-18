@@ -53,7 +53,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		inBoard=true;
 		basePosition=tile.getGUIPosition();
 	}
-	public Peca(IPeca peca,CardBanco card) {
+	public Peca(IPeca peca,ICardBanco card) {
 		set(peca);		
 		inBoard=false;
 		basePosition=card.getGUIPosition();
