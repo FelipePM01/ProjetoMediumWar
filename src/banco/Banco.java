@@ -45,6 +45,7 @@ public class Banco extends JPanel implements IBanco{
         banco=banco.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_DEFAULT);
     }
 	public void paintComponent(Graphics g){
+		atualizar();
 		super.paintComponent(g);
 		int positionX = (int)(scale*356);
 		int positionY = (int)(scale*16);
@@ -55,6 +56,14 @@ public class Banco extends JPanel implements IBanco{
         	pecasDisponiveis[i].paintComponent(g, newX, newY);
         	newX = newX+pecasDisponiveis[i].getWidth();
         }
+	}
+	public void atualizar() {
+		for(int i=0;i<2;i++) {
+			if(cursor1!=i&&cursor2!=i)pecasDisponiveis[i].attImage("assets/cardPadrao.png");
+			else if(cursor2!=i)pecasDisponiveis[i].attImage("assets/cardAzul.png");
+			else if(cursor1!=i)pecasDisponiveis[i].attImage("assets/cardVermelho.png");
+			else pecasDisponiveis[i].attImage("assets/cardAmbos.png");
+		}
 	}
 	public void refresh() {
 		for(int i=0;i<3;i++) {
@@ -91,5 +100,15 @@ public class Banco extends JPanel implements IBanco{
 	}
 	public void pressedD() {
 		if(cursor1!=-1&&cursor1<2)cursor1++;
+	}
+	public void pressedSPACE() {
+		if(cursor1!=-1) {
+			jogador1.receber(pecasDisponiveis[cursor1].getPeca());
+		}
+	}
+	public void pressedENTER() {
+		if(cursor1!=-1) {
+			jogador2.receber(pecasDisponiveis[cursor2].getPeca());
+		}
 	}
 }

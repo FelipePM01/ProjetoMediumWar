@@ -154,6 +154,15 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 //			jogador1.pressedZ();
 //			
 //			break;
+//		case KeyEvent.VK_SPACE:
+//			jogador1.pressedSPACE();
+//			banco.pressedSPACE();
+//			tabuleiro.pressedSPACE();
+//		case KeyEvent.VK_ENTER:
+//			jogador2.pressedENTER();
+//			banco.pressedENTER();
+//			tabuleiro.pressedENTER();
+			
 		}
 	}
 	@Override

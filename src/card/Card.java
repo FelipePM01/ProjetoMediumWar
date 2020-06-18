@@ -8,7 +8,9 @@ import javax.swing.JPanel;
 
 import Jogador.IJogadorCard;
 import banco.IBancoCard;
+import peca.Archer;
 import peca.IPecaCard;
+import peca.Peca;
 
 public abstract class Card extends JPanel implements ICardPeca{
 	/**
@@ -20,7 +22,7 @@ public abstract class Card extends JPanel implements ICardPeca{
 	private int HEIGHT;
 	private int[] startPointCard = new int[2];
 	private double scale;
-    private IPecaCard peca=null;
+    protected IPecaCard peca=null;
 
     public Card(IBancoCard banco, String refImagem){
         scale = banco.getScale();
@@ -64,7 +66,8 @@ public abstract class Card extends JPanel implements ICardPeca{
     	if(peca==null)retorno=true;
     	return retorno;
     }
-    public void setPeca(IPecaCard peca) {
-    	this.peca=peca;
+    public abstract void setPeca(IPecaCard peca) ;
+    public IPecaCard getPeca() {
+    	return peca;
     }
 }

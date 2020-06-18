@@ -1,6 +1,10 @@
 package banco;
 
 import card.Card;
+import peca.Archer;
+import peca.IPecaCard;
+import peca.Knight;
+import peca.Orc;
 
 public class CardBanco extends Card{
 	/**
@@ -12,4 +16,11 @@ public class CardBanco extends Card{
 	public CardBanco(IBancoCard banco, int i){
 		super(banco, refImagens[i]);
     } 
+	@Override
+	public void setPeca(IPecaCard peca) {
+		if (peca instanceof Archer)this.peca=new Archer(peca,this);
+		else if (peca instanceof Knight)this.peca=new Knight(peca,this);
+		else if (peca instanceof Orc)this.peca=new Orc(peca,this);
+		
+	}
 }

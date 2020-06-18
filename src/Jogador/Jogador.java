@@ -12,6 +12,8 @@ import banco.Banco;
 import card.ICardJogador;
 import game.IGame;
 import peca.Archer;
+import peca.IPecaCard;
+import peca.IPecaCardJogador;
 import peca.Knight;
 import peca.Orc;
 import peca.Peca;
@@ -30,7 +32,7 @@ public class Jogador extends JPanel implements IJogador{
 	private String cor;
 	private int[] cursor;
 	private boolean concluida=false;
-	private Peca recebido;
+	private IPecaCard recebido;
 	
 	public Jogador(IGame game, int j,Tabuleiro tabuleiro,Banco banco){
 		scale=game.getScale();
@@ -120,12 +122,14 @@ public class Jogador extends JPanel implements IJogador{
 				banco.comprar(this);
 				while(!concluida) {}
 				mao[i].setPeca(recebido);
+				break;
 			}
 		}
 		
 	}
-	public void receber(Peca peca) {
+	public void receber(IPecaCard peca) {
 		recebido=peca;
+		concluida=true;
 	}
 	
 }

@@ -2,6 +2,8 @@ package card;
 
 import java.awt.Graphics;
 
+import peca.IPecaCard;
+import peca.IPecaCardJogador;
 import peca.Peca;
 
 public interface ICardJogador {
@@ -9,6 +11,6 @@ public interface ICardJogador {
 	public void paintComponent(Graphics g, int positionX, int positionY);
 	public int getHeight();
 	public boolean ehNulo();
-	public void setPeca(Peca peca);
+	public void setPeca(IPecaCard recebido);
 	
 }
