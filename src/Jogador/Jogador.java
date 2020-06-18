@@ -1,5 +1,6 @@
 package Jogador;
 
+import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -50,6 +51,7 @@ public class Jogador extends JPanel implements IJogador{
 			cor="vermelho";
 		}
 		setCursor();
+		
 		initializeGui();
 		
 		for(int i=0;i<8;i++) {
@@ -87,25 +89,27 @@ public class Jogador extends JPanel implements IJogador{
 		return scale;
 	}
 	public void hideCursor() {
+		selectCardJogador(0,0,"padrao");
 		cursor=-1;
 	}
 	public void setCursor() {
 		cursor=0;
+		selectCardJogador(0,0,cor);
 	}
-	
 	public void selectCardJogador(int xAnt, int x, String cor) {
 		if(mao[xAnt]!=null)mao[xAnt].setCardAtual("padrao");
 		if(mao[x]!=null)mao[x].setCardAtual(cor);
 	}
-	
 	public void pressedA() {
 		if(cursor>=0) {
-			if(cursor--<0) {
-				selectCardJogador(cursor, 5, cor);
-				cursor=5;
+			if(cursor-1<0) {
+				selectCardJogador(cursor, 7, cor);
+				cursor=7;
 			}
-			selectCardJogador(cursor, cursor--,cor);
-			cursor--;
+			else {
+				selectCardJogador(cursor, cursor-1,cor);
+				cursor--;
+			}	
 		}
 	}
 	public void pressedRight() {
@@ -127,12 +131,38 @@ public class Jogador extends JPanel implements IJogador{
 	}
 	public void pressedD() {
 		if(cursor>=0) {
-			if(cursor++>5) {
+			if(cursor+1>7) {
 				selectCardJogador(cursor, 0, cor);
 				cursor=0;
 			}
-			selectCardJogador(cursor, cursor++,cor);
-			cursor++;
+			else {
+				selectCardJogador(cursor, cursor+1,cor);
+				cursor++;
+			}
+		}
+	}
+	public void pressedLeft() {
+		if(cursor>=0) {
+			if(cursor-1<0) {
+				selectCardJogador(cursor, 7, cor);
+				cursor=7;
+			}
+			else {
+				selectCardJogador(cursor, cursor-1,cor);
+				cursor--;
+			}	
+		}
+	}
+	public void pressedRIGHT() {
+		if(cursor>=0) {
+			if(cursor+1>7) {
+				selectCardJogador(cursor, 0, cor);
+				cursor=0;
+			}
+			else {
+				selectCardJogador(cursor, cursor+1,cor);
+				cursor++;
+			}
 		}
 	}
 	public void receber(IPecaCard peca) {

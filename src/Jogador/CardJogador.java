@@ -28,7 +28,7 @@ public class CardJogador extends Card implements ICardJogador{
 		super(jogador, refImagens[0]);
 	}
 	public void setCardAtual(String cor) {
-		 switch(cor){
+		  switch(cor){
 		  case "azul":
 			  attImage(refImagens[1]);
 			  break;
@@ -36,6 +36,7 @@ public class CardJogador extends Card implements ICardJogador{
 			  attImage(refImagens[2]);
 			  break;
 		  case "padrao":
+			  System.out.println("teste");
 			  attImage(refImagens[0]);
 			  break;
 		  }
