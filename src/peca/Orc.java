@@ -33,7 +33,7 @@ public class Orc extends Peca{
 		setup(2);
 		correction[0]=7;
 		correction[1]=3;
-		flipCorrection=8;
+		flipCorrection=7;
 	}
 	
 	public void setup(int x) {

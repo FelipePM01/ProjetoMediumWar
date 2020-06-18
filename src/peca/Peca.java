@@ -135,7 +135,10 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 			}
 		}
 	}
-
+	public void flip(){
+		flipped=true;
+        correction[0]-=flipCorrection;
+	}
 	
 	
 	

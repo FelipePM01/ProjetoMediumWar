@@ -190,6 +190,13 @@ public class Jogador extends JPanel implements IJogador{
 		setCursor();
 		currentAction="position";
 	}
+	public void pressedPONTO() {
+		if(cursor!=-1)hideCursor();
+		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
+		if(banco.getCursor(2)!=-1)banco.hideCursor(2);
+		setCursor();
+		currentAction="position";
+	}
 	public void pressedBARRA() {
 		if(cursor!=-1)hideCursor();
 		if(banco.getCursor(2)!=-1)banco.hideCursor(2);
@@ -199,7 +206,6 @@ public class Jogador extends JPanel implements IJogador{
 	}
 	public void pressedSPACE() {
 		if(currentAction=="remove") {
-			System.out.println(1);
 			remove();
 			currentAction=null;
 			if(cursor!=-1)hideCursor();
@@ -207,20 +213,17 @@ public class Jogador extends JPanel implements IJogador{
 		else if(currentAction=="position") {
 			
 			position();
-			
 		}
 	}
 	public void pressedENTER() {
 		if(currentAction=="remove") {
-			
 			remove();
 			currentAction=null;
 			if(cursor!=-1)hideCursor();
 		}
 		else if(currentAction=="position") {
-			
 			position();
-			currentAction=null;
+			//currentAction=null;
 		}
 	}
 	

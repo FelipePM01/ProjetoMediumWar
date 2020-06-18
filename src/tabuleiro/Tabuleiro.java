@@ -64,8 +64,6 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		}
 	}
 	public void start() {
-		//setCursor("azul");
-		//setCursor("vermelho");
 		for(int i=0;i<10;i++) {
 			for(int j=0;j<10;j++) {
 				matriz[i][j].actionPeca();
@@ -188,12 +186,22 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		else jogador2=jogador;
 	}
 	public void pressedSPACE() {
-		
 		if(azulPeca!=null && cAzul) {
-			System.out.println(cursorAzul[0]+" "+cursorAzul[1]);
 			if(!matriz[cursorAzul[0]][cursorAzul[1]].existsPeca())matriz[cursorAzul[0]][cursorAzul[1]].setPeca(azulPeca);
 			hideCursor("azul");
 			azulPeca=null;
+		}
+		
+	}
+	public void pressedENTER() {
+		if(vermelhoPeca!=null && cVermelho) {
+			if(!matriz[cursorVermelho[0]][cursorVermelho[1]].existsPeca()) {
+				matriz[cursorVermelho[0]][cursorVermelho[1]].setPeca(vermelhoPeca);
+				matriz[cursorVermelho[0]][cursorVermelho[1]].getPeca().flip();
+			}
+			
+			hideCursor("vermelho");
+			vermelhoPeca=null;
 		}
 		
 	}

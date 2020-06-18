@@ -133,13 +133,13 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 			tabuleiro.pressedLEFT();
 			banco.pressedLEFT();
 			break;
-		
+
 		case KeyEvent.VK_SLASH:
 			jogador2.pressedBARRA();
 			
 			break;
 		case KeyEvent.VK_PERIOD:
-			//jogador2.pressedPONTO();
+			jogador2.pressedPONTO();
 			
 			break;
 		case KeyEvent.VK_COMMA:
@@ -159,15 +159,14 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 			
 			break;
 		case KeyEvent.VK_SPACE:
-			
 			tabuleiro.pressedSPACE();
 			banco.pressedSPACE();
 			jogador1.pressedSPACE();
 			break;
 		case KeyEvent.VK_ENTER:
-			jogador2.pressedENTER();
-//			tabuleiro.pressedENTER();
+			tabuleiro.pressedENTER();
 			banco.pressedENTER();
+			jogador2.pressedENTER();
 			break;
 		}
 	}
