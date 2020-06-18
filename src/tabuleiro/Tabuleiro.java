@@ -102,6 +102,10 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 			selectTile(9,9,9,9,"vermelho");
 		}
 	}
+	public boolean getCursor(String cor) {
+		if(cor=="azul")return cAzul;
+		return cVermelho;
+	}
 	public void hideCursor(String cor) {
 		if (cor=="azul") {
 			selectTile(cursorAzul[0],cursorAzul[1],0,0,"padrao");
