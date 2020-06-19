@@ -5,6 +5,7 @@ import peca.IPeca;
 import peca.Knight;
 import peca.Orc;
 import peca.Peca;
+import peca.Wizard;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -38,6 +39,7 @@ public class Banco extends JPanel implements IBanco{
 		todas[0] = new Archer(scale);
 		todas[1] = new Knight(scale);
 		todas[2] = new Orc(scale);
+		todas[3]=new Wizard(scale);
 		refresh();
 	}
 	
@@ -68,7 +70,8 @@ public class Banco extends JPanel implements IBanco{
 			pecasDisponiveis[i] = new CardBanco(this, 0 );
 			if(x==0)pecasDisponiveis[i].setPeca(new Archer(todas[0],pecasDisponiveis[i]));
 			if(x==1)pecasDisponiveis[i].setPeca(new Knight(todas[1],pecasDisponiveis[i]));
-			if(x==2)pecasDisponiveis[i].setPeca(new Orc(todas[2],pecasDisponiveis[i]));			
+			if(x==2)pecasDisponiveis[i].setPeca(new Orc(todas[2],pecasDisponiveis[i]));
+			if(x==3)pecasDisponiveis[i].setPeca(new Wizard(todas[3],pecasDisponiveis[i]));
 		}
 	}
 	public double getScale() {
