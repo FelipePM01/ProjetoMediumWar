@@ -58,4 +58,7 @@ public class Wizard extends Ranged {
 		baseAttackAnimDuration=1000;
 		attackDamage=50;
 	}	
+	public double[] getCenterPosition() {
+		return getCenterPosition(7,20);
+	}
 }
