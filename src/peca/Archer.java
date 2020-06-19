@@ -35,6 +35,8 @@ public class Archer extends Ranged{
 		correction[0]=6;
 		correction[1]=4;
 		flipCorrection=6;
+		projectileCorrection[0]=22;
+		projectileCorrection[1]=16;
 	}
 	
 	
