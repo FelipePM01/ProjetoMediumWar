@@ -51,5 +51,9 @@ public class Archer extends Ranged{
 		currentAnimation = animationFramesMove;
 		speed=2.0;
 		baseMoveAnimDuration=1000;
+		alcance=6;
+		attackSpeed=2;
+		baseAttackAnimDuration=1000;
+		attackDamage=10;
 	}	
 }

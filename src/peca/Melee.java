@@ -35,9 +35,19 @@ public class Melee extends Peca {
 	
 	protected void attack() {
 		frameCounter+=1;
-		if (frameCounter>=(double)baseMoveAnimDuration/speed/animationFramesMove.length) {
+		if (frameCounter>=(double)baseAttackAnimDuration/attackSpeed/animationFramesAttack.length) {
 			
-			if(currentFrame==animationFramesMove.length-1)currentFrame=0;
+			if(currentFrame==animationFramesAttack.length-1) {
+				currentFrame=0;
+				if(attackTarget!=null) {
+					attackTarget.receberDano(attackDamage);
+					if(Tile.dist(getTile(),attackTarget.getTile())>alcance) {
+						currentAction=null;
+						moveOrAttack();
+					}
+				}
+				
+			}
 			else currentFrame++;
 			
 			frameCounter=0;

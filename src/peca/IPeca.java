@@ -11,4 +11,8 @@ public interface IPeca {
 	public double getScale();
 	public int getBaseMoveAnimDuration();
 	public double getSpeed();
+	public double getAttackSpeed();
+	public double getAttackDamage();
+	public int getBaseAttackAnimDuration();
+	public double getAlcance();
 }

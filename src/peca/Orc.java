@@ -50,5 +50,9 @@ public class Orc extends Melee{
 		currentAnimation = animationFramesMove;
 		speed=3;
 		baseMoveAnimDuration=1000;
+		alcance=1;
+		attackDamage=15;
+		attackSpeed=1.8;
+		baseAttackAnimDuration=900;
 	}
 }

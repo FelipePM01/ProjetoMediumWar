@@ -46,7 +46,11 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	protected boolean flipped=false;
 	protected Timer timer;
 	protected int flipCorrection;
-	
+	protected int baseAttackAnimDuration;
+	protected double attackSpeed;
+	protected double attackDamage;
+	protected Peca attackTarget;
+	protected double alcance;
 	public Peca(IPecaCardJogador peca,Tile tile) {
 		set(peca);
 		this.tile=tile;
@@ -78,6 +82,10 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		this.scale=peca.getScale();
 		this.baseMoveAnimDuration=peca.getBaseMoveAnimDuration();
 		this.speed=peca.getSpeed();
+		this.baseAttackAnimDuration=peca.getBaseAttackAnimDuration();
+		this.attackSpeed=peca.getAttackSpeed();
+		this.attackDamage=peca.getAttackDamage();
+		this.alcance=peca.getAlcance();
 	
 		ActionListener taskPerformer = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -180,5 +188,17 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	}
 	public double getSpeed() {
 		return speed;
+	}
+	public double getAttackSpeed() {
+		return attackSpeed;
+	}
+	public double getAttackDamage() {
+		return attackDamage;
+	}
+	public int getBaseAttackAnimDuration() {
+		return baseAttackAnimDuration;
+	}
+	public double getAlcance() {
+		return alcance;
 	}
 }

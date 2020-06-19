@@ -113,6 +113,10 @@ public class Tile extends JPanel implements ITile{
 	public void setNull() {
 		peca=null;
 	}
-
+	public static double dist(ITilePeca tile1,ITilePeca tile2) {
+		int[] pos1=tile1.getPosition(),pos2=tile2.getPosition();
+		return Math.sqrt(Math.pow(pos1[0]-pos2[0],2)+Math.pow(pos1[1]-pos2[1],2));
+		
+	}
 	
 }
