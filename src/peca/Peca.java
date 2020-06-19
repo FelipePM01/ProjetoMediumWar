@@ -40,7 +40,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	protected int[] basePosition = {0,0};
 	protected String currentAction=null;
 	protected ITilePeca moveTarget=null;
-	protected double speed;
+	protected double speed;;
 	protected int[] direction= {0,0};
 	protected int baseMoveAnimDuration;
 	protected int frameCounter=0;
@@ -160,6 +160,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
         correction[0]-=flipCorrection;
 	}
 	protected abstract void attack();
+	protected abstract double[] getCenterPosition();
 	
 	public void moveOrAttack() {
 		ITilePeca[][] matriz=tile.getOtherTiles();
@@ -242,6 +243,18 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	}
 	public double getAlcance() {
 		return alcance;
+	}
+	public double[] getCenterPosition(int x, int y){
+		double[] centerPosition=new double[2];
+		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null&&!flipped) {
+			centerPosition[0]=(basePosition[0]+(scale*correction[0])+(translation[0])+(scale*x));
+			centerPosition[1]=(basePosition[1]+(scale*correction[1])+(translation[1])+(scale*y));
+		}
+		else if(currentAnimation!=null&&currentAnimation[currentFrame]!=null) {
+			centerPosition[0]=(basePosition[0]+(scale*correction[0])+(translation[0])+currentAnimation[currentFrame].getWidth(null)+(scale*x));
+			centerPosition[1]=(basePosition[1]+(scale*correction[1])+(translation[1])-currentAnimation[currentFrame].getWidth(null)+(scale*y));
+		}
+		return centerPosition;
 	}
 	public Jogador getJogador() {
 		return jogador;

@@ -58,6 +58,9 @@ public class Wizard extends Ranged {
 		baseAttackAnimDuration=1000;
 		attackDamage=50;
 	}	
+	public double[] getCenterPosition() {
+		return getCenterPosition(7,20);
+	}
 	public Projectile create(double scale,double[] posicao,Peca target,double dano) {
 		return new Magic(scale,posicao,target,dano);
 	}

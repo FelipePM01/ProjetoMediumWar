@@ -20,12 +20,14 @@ public abstract class Projectile extends JPanel{
 	private double[] translation={0.0,0.0};
 	private double[] basePosition = {0,0};
 	private double[] currentPosition;
-	private int[] alvoPosition;
+	private double[] alvoPosition;
 	private double scale;
 	private double speed;
 	private double dano;
+	private int[] centerCorrection = new int[2];
 	private Timer timer;
 	private Peca alvo;
+	private int[] imgEdge = new int[2];
 	
 	AffineTransform identity = new AffineTransform();
 	
@@ -59,7 +61,7 @@ public abstract class Projectile extends JPanel{
 
 	
 	public void track() {
-		alvoPosition=alvo.getTile().getPosition();
+		alvoPosition=alvo.getCenterPosition();
 		//Calcula translação 
 		translation[0]=speed*(alvoPosition[0]-currentPosition[0])*(alvo.getTile().getImage().getWidth(null)/1000);
 		translation[1]=speed*(alvoPosition[1]-currentPosition[1])*(alvo.getTile().getImage().getHeight(null)/1000);
@@ -67,7 +69,7 @@ public abstract class Projectile extends JPanel{
 		currentPosition[0]+=translation[0];
 		currentPosition[1]+=translation[1];		
 		
-		if(getDistancia()<10) {
+		if(currentPosition[0]<alvoPosition[0]+imgEdge[0]&&currentPosition[1]<alvoPosition[1]+imgEdge[1]) {
 			alvo.receberDano(dano);
 		}
 	}
@@ -83,7 +85,14 @@ public abstract class Projectile extends JPanel{
 		double cAdjascente = alvoPosition[1]-currentPosition[1];
 		return Math.sqrt(Math.pow(cOposto, 2)+Math.pow(cAdjascente,2));
 	}
+	public void setCenterCorrection(int x, int y) {
+		centerCorrection[0]=x;
+		centerCorrection[1]=y;
+	}
 	public void setDano(double dano) {
 		this.dano=dano;
+	}
+	public void setImgEdge(int[] imgEdge) {
+		this.imgEdge=imgEdge;	
 	}
 }
