@@ -31,12 +31,12 @@ public abstract class Projectile extends JPanel{
 	
 	AffineTransform identity = new AffineTransform();
 	
-	public Projectile(double scale, double[] position, Peca alvo) {
+	public Projectile(double scale, double[] position, Peca alvo, double dano) {
 		this.scale=scale;
 		this.basePosition=position;
 		this.currentPosition=position;
 		this.alvo=alvo;
-		dano = 30;
+		this.dano=dano;
 		ActionListener taskPerformer = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				track();

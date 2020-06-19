@@ -60,6 +60,9 @@ public class Archer extends Ranged{
 		baseAttackAnimDuration=1000;
 		attackDamage=10;
 	}	
+	public double[] getCenterPosition() {
+		return getCenterPosition(12,19);
+	}
 	public Projectile create(double scale,double[] posicao,Peca target,double dano) {
 		return new Arrow(scale,posicao,target,dano);
 	}

@@ -9,4 +9,5 @@ public interface IPecaTile extends IPeca{
 	public void flip();
 	public boolean getInBoard();
 	public Jogador getJogador();
+
 }

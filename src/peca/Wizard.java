@@ -64,4 +64,7 @@ public class Wizard extends Ranged {
 	public Projectile create(double scale,double[] posicao,Peca target,double dano) {
 		return new Magic(scale,posicao,target,dano);
 	}
+	public double[] getCenterPosition() {
+		return getCenterPosition(7,20);
+	}
 }
