@@ -49,7 +49,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	protected int flipCorrection;
 	protected double life;
 	protected double endurance;
-	public Jogador jogador=null;
+	public IJogador jogador=null;
 	
 	protected int baseAttackAnimDuration;
 	protected double attackSpeed;
@@ -175,10 +175,11 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 				}
 			}
 		}
-		if(dist<=alcance) {
+		if(dist<=alcance&&dist!=0) {
 			currentAction="attacking";
 			moveTarget=null;
-			attackTarget=alvo.getPeca();
+			if(alvo!=null)attackTarget=alvo.getPeca();
+			currentAnimation=animationFramesAttack;
 		}
 	}
 	

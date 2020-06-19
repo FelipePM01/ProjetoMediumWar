@@ -40,7 +40,7 @@ public class Wizard extends Ranged {
 	
 	public void setup(int x) {
 		animationFramesMove = new Image[3];
-		animationFramesAttack = new Image[6];
+		animationFramesAttack = new Image[4];
 		for(int i=0;i<7;i++){
 			if(i<3)
 				animationFramesMove[i]=adjustScale(refImagens[i],x);

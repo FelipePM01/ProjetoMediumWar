@@ -20,11 +20,13 @@ public class CardJogador extends Card implements ICardJogador{
 	private Image cardPadrao;
 	private Image cardVermelho;
 	private Image cardAzul;
+	private IJogadorCard jogador;
 	
 	static private String[] refImagens = {"assets/cardPadrao.png","assets/cardAzul.png","assets/cardVermelho.png"};
 	
 	public CardJogador(IJogadorCard jogador, int i){
 		super(jogador, refImagens[0]);
+		this.jogador=jogador;
 	}
 	
 	public void setCardAtual(String cor) {
@@ -35,9 +37,9 @@ public class CardJogador extends Card implements ICardJogador{
 
 	@Override
 	public void setPeca(IPecaCard peca) {
-		if (peca instanceof Archer)this.peca=new Archer(peca,this);
-		else if (peca instanceof Knight)this.peca=new Knight(peca,this);
-		else if (peca instanceof Orc)this.peca=new Orc(peca,this);
+		if (peca instanceof Archer)this.peca=new Archer(peca,this,jogador);
+		else if (peca instanceof Knight)this.peca=new Knight(peca,this,jogador);
+		else if (peca instanceof Orc)this.peca=new Orc(peca,this,jogador);
 		else if(peca==null)this.peca=null;
 	}
 
