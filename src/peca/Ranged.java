@@ -28,6 +28,7 @@ public class Ranged extends Peca {
 		super(peca, tile);
 		
 	}
+	
 
 	
 	protected void attack() {

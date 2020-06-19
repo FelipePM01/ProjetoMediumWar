@@ -50,5 +50,7 @@ public class Knight extends Melee{
 		currentAnimation = animationFramesMove;
 		speed=1;
 		baseMoveAnimDuration=500;
+		setLife(250);
+		setEndurance(20);
 	}
 }

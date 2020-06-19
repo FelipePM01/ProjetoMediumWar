@@ -58,7 +58,7 @@ public class Tile extends JPanel implements ITile{
 		return tileAtual;
 	}
 	public void paintPeca(Graphics g) {
-		if(peca!=null)peca.paintComponent(g,0,0);
+		if(peca!=null&&peca.getInBoard())peca.paintComponent(g,0,0);
 	}
 	public void actionPeca() {
 		if(peca!=null)peca.moveOrAttack();
@@ -70,6 +70,12 @@ public class Tile extends JPanel implements ITile{
 	public void nullTarget() {
 		peca.setTarget(null);
 	}
+	
+	public void clearTile() {
+		nullTarget();
+		setNull();
+	}
+	
 	public void setPeca(IPecaCard peca) {
 	
 		if (peca instanceof Archer)this.peca=new Archer(peca,this);

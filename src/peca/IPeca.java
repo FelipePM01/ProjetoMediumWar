@@ -11,4 +11,6 @@ public interface IPeca {
 	public double getScale();
 	public int getBaseMoveAnimDuration();
 	public double getSpeed();
+	public double getLife();
+	public double getEndurance();
 }

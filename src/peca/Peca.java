@@ -46,6 +46,8 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	protected boolean flipped=false;
 	protected Timer timer;
 	protected int flipCorrection;
+	protected double life;
+	protected double endurance;
 	
 	public Peca(IPecaCardJogador peca,Tile tile) {
 		set(peca);
@@ -78,6 +80,8 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		this.scale=peca.getScale();
 		this.baseMoveAnimDuration=peca.getBaseMoveAnimDuration();
 		this.speed=peca.getSpeed();
+		this.life=peca.getLife();
+		this.endurance=peca.getEndurance();
 	
 		ActionListener taskPerformer = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -154,6 +158,16 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		direction[random.nextInt(2)]=random.nextInt(2)==0?-1:1;
 		moveTarget=tile.getOtherTiles()[tile.getPosition()[0]+direction[0]][tile.getPosition()[1]+direction[1]];
 	}
+	
+	public void receberDano(double dano) {
+		life=life-(dano-(dano*(endurance/100)));
+
+		if(life<0) {
+			inBoard=false;
+			tile.clearTile();
+		}
+	}
+	
 	public Peca(double scale) {
 		this.scale=scale;
 	}
@@ -177,6 +191,21 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	}
 	public int getBaseMoveAnimDuration() {
 		return baseMoveAnimDuration;
+	}
+	public boolean getInBoard() {
+		return inBoard;
+	}
+	public void setLife(double life) {
+		this.life=life;
+	}
+	public double getLife() {
+		return life;
+	}
+	public void setEndurance(double endurance) {
+		this.endurance=endurance;
+	}
+	public double getEndurance() {
+		return endurance;
 	}
 	public double getSpeed() {
 		return speed;

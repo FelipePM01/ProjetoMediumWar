@@ -13,4 +13,5 @@ public interface ITilePeca {
 	public Tile[][] getOtherTiles();
 	public void setNull();
 	public void setPeca(Peca peca);
+	public void clearTile();
 }
