@@ -124,5 +124,15 @@ public class Tile extends JPanel implements ITile{
 		return Math.sqrt(Math.pow(pos1[0]-pos2[0],2)+Math.pow(pos1[1]-pos2[1],2));
 		
 	}
+	public static double distX(ITilePeca tile1,ITilePeca tile2) {
+		int[] pos1=tile1.getPosition(),pos2=tile2.getPosition();
+		return pos2[0]-pos1[0];
+		
+	}
+	public static double distY(ITilePeca tile1,ITilePeca tile2) {
+		int[] pos1=tile1.getPosition(),pos2=tile2.getPosition();
+		return pos2[1]-pos1[1];
+		
+	}
 	
 }

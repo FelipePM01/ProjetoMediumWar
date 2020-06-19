@@ -54,7 +54,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	protected int baseAttackAnimDuration;
 	protected double attackSpeed;
 	protected double attackDamage;
-	protected Peca attackTarget;
+	protected IPecaTile attackTarget;
 	protected double alcance;
 	public Peca(IPecaCardJogador peca,Tile tile) {
 		set(peca);
@@ -165,12 +165,12 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	public void moveOrAttack() {
 		ITilePeca[][] matriz=tile.getOtherTiles();
 		double dist=0;
-		Tile alvo=null;
+		ITilePeca alvo=null;
 		for(int i=0;i<matriz.length;i++) {
 			for(int j=0;j<matriz[0].length;j++) {
 				if(matriz[i][j].existsPeca()&&matriz[i][j].getPeca().getJogador()!=this.getJogador()&&Tile.dist(matriz[i][j], tile)>dist) {
 					dist=Tile.dist(matriz[i][j], tile);
-					matriz[i][j]=alvo;
+					alvo=matriz[i][j];
 				}
 			}
 		}
