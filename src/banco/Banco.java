@@ -39,7 +39,6 @@ public class Banco extends JPanel implements IBanco{
 		todas[1] = new Knight(scale);
 		todas[2] = new Orc(scale);
 		refresh();
-
 	}
 	
 	public void initializeGui(){

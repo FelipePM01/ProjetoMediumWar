@@ -5,6 +5,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import banco.Banco;
 import banco.IBanco;
 import banco.IBancoJogador;
 import card.ICardJogador;
@@ -12,6 +13,12 @@ import game.IGame;
 import peca.IPecaCard;
 import tabuleiro.ITabuleiro;
 import tabuleiro.ITabuleiroJogador;
+import peca.IPecaCardJogador;
+import peca.Knight;
+import peca.Orc;
+import peca.Peca;
+import tabuleiro.ITabuleiroJogador;
+import tabuleiro.Tabuleiro;
 
 public class Jogador extends JPanel implements IJogador{
 	
@@ -112,10 +119,8 @@ public class Jogador extends JPanel implements IJogador{
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
 		for(int i=0;i<8;i++) {
 			if(mao[i].ehNulo()) {
-				
 				banco.comprar(this);
 				colocar=i;
-				
 				break;
 			}
 		}
@@ -171,7 +176,7 @@ public class Jogador extends JPanel implements IJogador{
 	}
 	public void pressedZ() {
 		if(cursor!=-1)hideCursor();
-		if(banco.getCursor(1)!=-1)banco.getCursor(1);
+		if(banco.getCursor(1)!=-1)banco.hideCursor(1);
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
 		setCursor();
 		currentAction="remove";
@@ -179,20 +184,20 @@ public class Jogador extends JPanel implements IJogador{
 	public void pressedX() {
 		if(cursor!=-1)hideCursor();
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
-		if(banco.getCursor(1)!=-1)banco.getCursor(1);
+		if(banco.getCursor(1)!=-1)banco.hideCursor(1);
 		setCursor();
 		currentAction="position";
 	}
 	public void pressedPONTO() {
 		if(cursor!=-1)hideCursor();
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
-		if(banco.getCursor(2)!=-1)banco.getCursor(2);
+		if(banco.getCursor(2)!=-1)banco.hideCursor(2);
 		setCursor();
 		currentAction="position";
 	}
 	public void pressedBARRA() {
 		if(cursor!=-1)hideCursor();
-		if(banco.getCursor(2)!=-1)banco.getCursor(2);
+		if(banco.getCursor(2)!=-1)banco.hideCursor(2);
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
 		setCursor();
 		currentAction="remove";

@@ -16,5 +16,7 @@ public interface ITabuleiro extends ITabuleiroTile,ITabuleiroGame,ITabuleiroJoga
 	public void pressedDOWN();
 	public void pressedLEFT() ;
 	public void pressedRIGHT() ;
+	public void pressedQ();
+	public void pressedAspas();
 
 }

@@ -29,6 +29,8 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	private boolean cVermelho = false;
 	private IPecaCard azulPeca;
 	private IPecaCard vermelhoPeca;
+	boolean start1 = false;
+	boolean start2 = false;
 	
 	public Tabuleiro(IGame game) {
 		scale=game.getScale();
@@ -79,6 +81,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 			}
 		}
 	}
+	
 	public Tile[][] getTiles() {
 		return (Tile[][])matriz;
 	}
@@ -206,8 +209,14 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		}
 		
 	}
-
-	
-
-	
+	public void pressedQ() {
+		start1=true;
+		if(start1&&start2)start();
+		start1=false;
+	}
+	public void pressedAspas() {
+		start2=true;
+		if(start1&&start2)start();
+		start2=false;
+	}
 }
