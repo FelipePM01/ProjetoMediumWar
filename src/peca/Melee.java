@@ -5,7 +5,7 @@ import banco.CardBanco;
 import card.ICardBanco;
 import tabuleiro.Tile;
 
-public class Melee extends Peca {
+public abstract class Melee extends Peca {
 	
 	
 	/**

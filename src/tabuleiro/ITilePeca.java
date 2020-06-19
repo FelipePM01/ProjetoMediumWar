@@ -14,4 +14,6 @@ public interface ITilePeca {
 	public void setNull();
 	public void setPeca(Peca peca);
 	public void clearTile();
+	public boolean existsPeca();
+	public IPecaTile getPeca();
 }

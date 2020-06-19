@@ -1,5 +1,6 @@
 package peca;
 
+import Jogador.Jogador;
 import tabuleiro.Tile;
 
 public interface IPecaTile extends IPeca{
@@ -7,4 +8,5 @@ public interface IPecaTile extends IPeca{
 	public void setTarget(Tile tile);
 	public void flip();
 	public boolean getInBoard();
+	public Jogador getJogador();
 }

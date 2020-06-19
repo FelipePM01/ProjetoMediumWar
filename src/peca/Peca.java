@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import Jogador.CardJogador;
+import Jogador.Jogador;
 import banco.CardBanco;
 import card.Card;
 import card.ICardBanco;
@@ -48,6 +49,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	protected int flipCorrection;
 	protected double life;
 	protected double endurance;
+	public Jogador jogador=null;
 	
 	protected int baseAttackAnimDuration;
 	protected double attackSpeed;
@@ -160,12 +162,22 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	protected abstract void attack();
 	
 	public void moveOrAttack() {
-		currentAction="moving";
-		Random random=new Random();
-		direction[0]=0;
-		direction[1]=0;
-		direction[random.nextInt(2)]=random.nextInt(2)==0?-1:1;
-		moveTarget=tile.getOtherTiles()[tile.getPosition()[0]+direction[0]][tile.getPosition()[1]+direction[1]];
+		ITilePeca[][] matriz=tile.getOtherTiles();
+		double dist=0;
+		Tile alvo=null;
+		for(int i=0;i<matriz.length;i++) {
+			for(int j=0;j<matriz[0].length;j++) {
+				if(matriz[i][j].existsPeca()&&matriz[i][j].getPeca().getJogador()!=this.getJogador()&&Tile.dist(matriz[i][j], tile)>dist) {
+					dist=Tile.dist(matriz[i][j], tile);
+					matriz[i][j]=alvo;
+				}
+			}
+		}
+		if(dist<=alcance) {
+			currentAction="attacking";
+			moveTarget=null;
+			attackTarget=alvo.getPeca();
+		}
 	}
 	
 	public void receberDano(double dano) {
@@ -230,5 +242,8 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	}
 	public double getAlcance() {
 		return alcance;
+	}
+	public Jogador getJogador() {
+		return jogador;
 	}
 }

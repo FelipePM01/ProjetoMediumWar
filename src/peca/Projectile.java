@@ -47,7 +47,7 @@ public abstract class Projectile extends JPanel{
 	public void paintComponent(Graphics g, Image img) {
 		//super.paintComponent(g);
 		//g.drawImage(img, (int)(scale*positionX), (int)(scale*positionY), this);
-		Graphics2D g2d = (Graphics2D)g;
+		Graphics2D g2d = (Graphics2D)g.create();
 		AffineTransform trans = new AffineTransform();
 		trans.setTransform(identity);
 		trans.rotate(getAngulo());

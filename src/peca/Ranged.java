@@ -5,7 +5,7 @@ import banco.CardBanco;
 import card.ICardBanco;
 import tabuleiro.Tile;
 
-public class Ranged extends Peca {
+public abstract class Ranged extends Peca {
 
 	private static final long serialVersionUID = 4784160407718901744L;
 
@@ -53,9 +53,17 @@ public class Ranged extends Peca {
 
 	}
 	protected void fire() {
-		double[] position= {basePosition[0]+(scale*correction[0])+(translation[0])+scale*projectileCorrection[0], basePosition[1]+(scale*correction[1])+(translation[1])+scale*projectileCorrection[1]};
-		tabuleiro.add(create(scale,position,attackTarget));
+		
+		if(!flipped) {
+			double[] position= {basePosition[0]+(scale*correction[0])+(translation[0])+scale*projectileCorrection[0], basePosition[1]+(scale*correction[1])+(translation[1])+scale*projectileCorrection[1]};
+			tabuleiro.add(create(scale,position,attackTarget,attackDamage));
+		}
+		else {
+			double[] position= {basePosition[0]+(scale*correction[0])+(translation[0])+scale*projectileCorrection[0], basePosition[1]+(scale*correction[1])+(translation[1])+scale*projectileCorrection[1]};
+			tabuleiro.add(create(scale,position,attackTarget,attackDamage));
+		}
+		
 	}
-	protected abstract Projectile create(double scale,double[] posicao,Peca target);
+	protected abstract Projectile create(double scale,double[] posicao,Peca target,double dano);
 
 }
