@@ -160,9 +160,10 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
         correction[0]-=flipCorrection;
 	}
 	protected abstract void attack();
-	protected abstract double[] getCenterPosition();
+	public abstract double[] getCenterPosition();
 	
 	public void moveOrAttack() {
+		System.out.println(1);
 		ITilePeca[][] matriz=tile.getOtherTiles();
 		double dist=0;
 		ITilePeca alvo=null;

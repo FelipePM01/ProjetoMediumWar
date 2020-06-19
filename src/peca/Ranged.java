@@ -26,7 +26,7 @@ public abstract class Ranged extends Peca {
 	}
 	public Ranged(IPecaCardJogador peca,Tile tile){
 		super(peca, tile);
-		
+		projectileCorrection=new int[2];
 	}
 	
 
@@ -64,6 +64,6 @@ public abstract class Ranged extends Peca {
 		}
 		
 	}
-	protected abstract Projectile create(double scale,double[] posicao,Peca target,double dano);
+	protected abstract Projectile create(double scale,double[] posicao,IPecaTile attackTarget,double dano);
 
 }

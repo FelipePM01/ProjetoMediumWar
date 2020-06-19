@@ -27,7 +27,7 @@ public class Banco extends JPanel implements IBanco{
 	private Image banco;
 	private ICardBanco[] pecasDisponiveis=new CardBanco[3];
 	private double scale=1;
-	private IPeca[] todas= new Peca[3];
+	private IPeca[] todas= new Peca[4];
 	private Random random = new Random();
 	protected int cursor1=-1;
 	protected int cursor2=-1;

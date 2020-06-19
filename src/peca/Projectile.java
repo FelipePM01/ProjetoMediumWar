@@ -26,16 +26,16 @@ public abstract class Projectile extends JPanel{
 	private double dano;
 	private int[] centerCorrection = new int[2];
 	private Timer timer;
-	private Peca alvo;
+	private IPecaTile alvo;
 	private int[] imgEdge = new int[2];
 	
 	AffineTransform identity = new AffineTransform();
 	
-	public Projectile(double scale, double[] position, Peca alvo, double dano) {
+	public Projectile(double scale, double[] position, IPecaTile target, double dano) {
 		this.scale=scale;
 		this.basePosition=position;
 		this.currentPosition=position;
-		this.alvo=alvo;
+		this.alvo=target;
 		this.dano=dano;
 		ActionListener taskPerformer = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
