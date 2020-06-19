@@ -57,4 +57,7 @@ public class Knight extends Melee{
 		attackDamage=12;
 		baseAttackAnimDuration=1200;
 	}
+	public double[] getCenterPosition() {
+		return getCenterPosition(11,19);
+	}
 }
