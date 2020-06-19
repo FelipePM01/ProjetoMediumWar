@@ -27,6 +27,7 @@ public abstract class Projectile extends JPanel{
 	private int[] centerCorrection = new int[2];
 	private Timer timer;
 	private Peca alvo;
+	private int[] imgEdge = new int[2];
 	
 	AffineTransform identity = new AffineTransform();
 	
@@ -68,7 +69,7 @@ public abstract class Projectile extends JPanel{
 		currentPosition[0]+=translation[0];
 		currentPosition[1]+=translation[1];		
 		
-		if(getDistancia()<(Math.sqrt(Math.pow(centerCorrection[0], 2)+Math.pow(centerCorrection[1],2)))) {
+		if(currentPosition[0]<alvoPosition[0]+imgEdge[0]&&currentPosition[1]<alvoPosition[1]+imgEdge[1]) {
 			alvo.receberDano(dano);
 		}
 	}
@@ -90,5 +91,8 @@ public abstract class Projectile extends JPanel{
 	}
 	public void setDano(double dano) {
 		this.dano=dano;
+	}
+	public void setImgEdge(int[] imgEdge) {
+		this.imgEdge=imgEdge;	
 	}
 }
