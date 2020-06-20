@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
@@ -54,6 +55,8 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	protected double endurance;
 	protected IPecaCardJogador origem;
 	protected String cor=null;
+	protected ArrayList<int[]> triedDirections=null;
+	protected int[] lastPositionDirection=null;
 	
 	protected int baseAttackAnimDuration;
 	protected double attackSpeed;
@@ -172,7 +175,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	public abstract double[] getCenterPosition();
 	
 	public void moveOrAttack() {
-		System.out.println(1);
+		
 		ITilePeca[][] matriz=tile.getOtherTiles();
 		double dist=0;
 		ITilePeca alvo=null;
@@ -189,6 +192,10 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 			moveTarget=null;
 			if(alvo!=null)attackTarget=alvo.getPeca();
 			currentAnimation=animationFramesAttack;
+		}
+		else if(dist!=0) {
+			currentAction="moving";
+			
 		}
 	}
 	

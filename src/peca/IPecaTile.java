@@ -2,11 +2,12 @@ package peca;
 
 import Jogador.IJogadorCard;
 import Jogador.Jogador;
+import excecoes.MovimentoInvalido;
 import tabuleiro.ITilePeca;
 import tabuleiro.Tile;
 
 public interface IPecaTile extends IPeca{
-	public void moveOrAttack();
+	public void moveOrAttack() throws MovimentoInvalido;
 	public void setTarget(Tile tile);
 	public void flip();
 	public boolean getInBoard();
