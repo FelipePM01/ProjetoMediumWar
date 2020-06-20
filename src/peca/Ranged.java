@@ -44,6 +44,9 @@ public abstract class Ranged extends Peca {
 						moveOrAttack();
 					}
 				}
+				else {
+					moveOrAttack();
+				}
 				
 			}
 			else currentFrame++;

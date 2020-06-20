@@ -17,4 +17,5 @@ public interface IPeca {
 	public double getAttackDamage();
 	public int getBaseAttackAnimDuration();
 	public double getAlcance();
+	public String getCor();
 }

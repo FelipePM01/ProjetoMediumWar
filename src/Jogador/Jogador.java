@@ -251,5 +251,11 @@ public class Jogador extends JPanel implements IJogador{
 		currentAction=null;
 		setCursor();
 	}
+
+	@Override
+	public String getCor() {
+		
+		return cor;
+	}
 	
 }

@@ -37,15 +37,19 @@ public class CardJogador extends Card implements ICardJogador{
 
 	@Override
 	public void setPeca(IPecaCard peca) {
-		if (peca instanceof Archer)this.peca=new Archer(peca,this,jogador);
-		else if (peca instanceof Knight)this.peca=new Knight(peca,this,jogador);
-		else if (peca instanceof Orc)this.peca=new Orc(peca,this,jogador);
+		if (peca instanceof Archer)this.peca=new Archer(peca,this);
+		else if (peca instanceof Knight)this.peca=new Knight(peca,this);
+		else if (peca instanceof Orc)this.peca=new Orc(peca,this);
 		else if(peca==null)this.peca=null;
 	}
 
 	public Peca getPeca() {
     	return peca;
     }
+
+	public IJogadorCard getJogador() {
+		return jogador;
+	}
 
 	
 }

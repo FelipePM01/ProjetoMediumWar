@@ -11,10 +11,12 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import Jogador.CardJogador;
+import Jogador.IJogadorCard;
 import Jogador.Jogador;
 import banco.CardBanco;
 import card.Card;
 import card.ICardBanco;
+import card.ICardJogador;
 import card.ICardPeca;
 import game.GUI;
 import tabuleiro.ITilePeca;
@@ -29,7 +31,8 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	public static Tabuleiro tabuleiro;
 	protected Image[] animationFramesMove;
 	protected Image[] animationFramesAttack;
-	protected ITilePeca tile=null;
+	protected ITilePeca tile=null; 
+	protected CardJogador card;
 	protected boolean inBoard;
 	protected int[] correction = {0,0};
 	protected Image[] currentAnimation;
@@ -40,7 +43,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	protected int[] basePosition = {0,0};
 	protected String currentAction=null;
 	protected ITilePeca moveTarget=null;
-	protected double speed;;
+	protected double speed;
 	protected int[] direction= {0,0};
 	protected int baseMoveAnimDuration;
 	protected int frameCounter=0;
@@ -49,7 +52,8 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	protected int flipCorrection;
 	protected double life;
 	protected double endurance;
-	public IJogador jogador=null;
+	protected IPecaCardJogador origem;
+	protected String cor=null;
 	
 	protected int baseAttackAnimDuration;
 	protected double attackSpeed;
@@ -61,6 +65,8 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		this.tile=tile;
 		inBoard=true;
 		basePosition=tile.getGUIPosition();
+		origem=peca;
+		
 	}
 	public Peca(IPeca peca,ICardBanco card) {
 		set(peca);		
@@ -71,6 +77,8 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		set(peca);		
 		inBoard=false;
 		basePosition=card.getGUIPosition();
+		this.card=card;
+		cor=card.getJogador().getCor();
 	}
 	
 	public void paintComponent(Graphics g, int positionX, int positionY) {
@@ -93,6 +101,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		this.attackSpeed=peca.getAttackSpeed();
 		this.attackDamage=peca.getAttackDamage();
 		this.alcance=peca.getAlcance();
+		this.cor=peca.getCor();
 	
 		ActionListener taskPerformer = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -169,7 +178,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		ITilePeca alvo=null;
 		for(int i=0;i<matriz.length;i++) {
 			for(int j=0;j<matriz[0].length;j++) {
-				if(matriz[i][j].existsPeca()&&matriz[i][j].getPeca().getJogador()!=this.getJogador()&&Tile.dist(matriz[i][j], tile)>dist) {
+				if(matriz[i][j].existsPeca()&&matriz[i][j].getPeca().getCor()!=this.cor&&Tile.dist(matriz[i][j], tile)>dist) {
 					dist=Tile.dist(matriz[i][j], tile);
 					alvo=matriz[i][j];
 				}
@@ -258,7 +267,16 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		}
 		return centerPosition;
 	}
-	public Jogador getJogador() {
+	public IJogadorCard getJogador() {
+		 IJogadorCard jogador=null;
+		 if(card!=null)jogador=card.getJogador();
 		return jogador;
 	}
+	public IPecaCardJogador getOrigem() {
+		return origem;
+	}
+	public String getCor() {
+		return cor;
+	}
+	
 }
