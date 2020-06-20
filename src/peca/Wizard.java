@@ -19,7 +19,7 @@ public class Wizard extends Ranged {
 	}
 	public Wizard(IPeca peca,ICardBanco card) {
 		super(peca,card);
-		correction[0]=12;
+		correction[0]=24;
 		correction[1]=14;
 	}
 	public Wizard(IPecaCardBanco peca,CardJogador card) {
