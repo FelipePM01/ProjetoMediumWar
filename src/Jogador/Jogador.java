@@ -35,6 +35,7 @@ public class Jogador extends JPanel implements IJogador{
 	private int colocar=-1;
 	private IPecaCard recebido;
 	private String currentAction;
+	private int cash = 10;
 	
 	public Jogador(IGame game, int j,ITabuleiro tabuleiro,IBanco banco){
 		scale=game.getScale();
@@ -257,5 +258,10 @@ public class Jogador extends JPanel implements IJogador{
 		
 		return cor;
 	}
-	
+	public int getCash() {
+		return cash;
+	}
+	public void addCash(int valor) {
+		cash+=valor;
+	}
 }

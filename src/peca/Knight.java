@@ -56,8 +56,17 @@ public class Knight extends Melee{
 		attackSpeed=1;
 		attackDamage=12;
 		baseAttackAnimDuration=1200;
+		purchaseValue=2;
+		saleValue=1;
+		//giftValue=2
 	}
 	public double[] getCenterPosition() {
 		return getCenterPosition(11,19);
+	}
+
+	@Override
+	public String getCor() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -56,6 +56,9 @@ public class Orc extends Melee{
 		attackDamage=15;
 		attackSpeed=1.8;
 		baseAttackAnimDuration=900;
+		purchaseValue=4;
+		saleValue=3;
+		//giftValue=3;
 	}
 	public double[] getCenterPosition() {
 		return getCenterPosition(13,18);

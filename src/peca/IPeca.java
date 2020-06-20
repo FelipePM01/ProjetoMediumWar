@@ -18,4 +18,7 @@ public interface IPeca {
 	public int getBaseAttackAnimDuration();
 	public double getAlcance();
 	public String getCor();
+	public int getPurchaseValue();
+	public int getSaleValue();
+	public int getGiftValue();
 }

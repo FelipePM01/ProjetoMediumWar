@@ -59,6 +59,9 @@ public class Archer extends Ranged{
 		attackSpeed=2;
 		baseAttackAnimDuration=1000;
 		attackDamage=10;
+		purchaseValue=3;
+		saleValue=2;
+		//giftValue=2;
 	}	
 	public double[] getCenterPosition() {
 		return getCenterPosition(12,19);

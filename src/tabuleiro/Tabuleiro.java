@@ -31,6 +31,8 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	private IPecaCard vermelhoPeca;
 	boolean start1 = false;
 	boolean start2 = false;
+	private int[] points = {0,0};
+	private int[] inTab = {0,0};
 	
 	public Tabuleiro(IGame game) {
 		scale=game.getScale();
@@ -191,7 +193,10 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	}
 	public void pressedSPACE() {
 		if(azulPeca!=null && cAzul) {
-			if(!matriz[cursorAzul[0]][cursorAzul[1]].existsPeca())matriz[cursorAzul[0]][cursorAzul[1]].setPeca(azulPeca);
+			if(!matriz[cursorAzul[0]][cursorAzul[1]].existsPeca()) {
+				matriz[cursorAzul[0]][cursorAzul[1]].setPeca(azulPeca);
+				inTab[0]+=1;
+			}
 			hideCursor("azul");
 			azulPeca=null;
 		}
@@ -202,6 +207,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 			if(!matriz[cursorVermelho[0]][cursorVermelho[1]].existsPeca()) {
 				matriz[cursorVermelho[0]][cursorVermelho[1]].setPeca(vermelhoPeca);
 				matriz[cursorVermelho[0]][cursorVermelho[1]].getPeca().flip();
+				inTab[0]+=1;
 			}
 			
 			hideCursor("vermelho");
@@ -219,4 +225,5 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		if(start1&&start2)start();
 		
 	}
+	
 }

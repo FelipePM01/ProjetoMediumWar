@@ -57,6 +57,9 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	protected String cor=null;
 	protected ArrayList<int[]> triedDirections=null;
 	protected int[] lastPositionDirection=null;
+	protected int purchaseValue;
+	protected int saleValue;
+	protected int giftValue;
 	
 	protected int baseAttackAnimDuration;
 	protected double attackSpeed;
@@ -84,10 +87,15 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		cor=card.getJogador().getCor();
 	}
 	
-	public void paintComponent(Graphics g, int positionX, int positionY) {
+	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null&&!flipped)g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0])), (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1])),null);
 		else if(currentAnimation!=null&&currentAnimation[currentFrame]!=null)g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]))+currentAnimation[currentFrame].getWidth(null), (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1])),-currentAnimation[currentFrame].getWidth(null),currentAnimation[currentFrame].getHeight(null),null);
+	}
+	public void paintComponent(Graphics g, int positionX, int positionY) {
+		super.paintComponent(g);
+		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null&&!flipped)g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]))+positionX, (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1]))+positionY,null);
+		else if(currentAnimation!=null&&currentAnimation[currentFrame]!=null)g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]))+currentAnimation[currentFrame].getWidth(null)+positionX, (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1]))+positionY,-currentAnimation[currentFrame].getWidth(null),currentAnimation[currentFrame].getHeight(null),null);
 	}
 	//cria uma peca que eh uma copia de outra ja existente
 	public void set(IPeca peca) {
@@ -105,6 +113,10 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		this.attackDamage=peca.getAttackDamage();
 		this.alcance=peca.getAlcance();
 		this.cor=peca.getCor();
+		this.giftValue=peca.getGiftValue();
+		this.purchaseValue=peca.getPurchaseValue();
+		this.saleValue=peca.getSaleValue();
+		this.giftValue=peca.getGiftValue();
 	
 		ActionListener taskPerformer = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -285,5 +297,13 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	public String getCor() {
 		return cor;
 	}
-	
+	public int getPurchaseValue() {
+		return purchaseValue;
+	}
+	public int getSaleValue() {
+		return saleValue;
+	}
+	public int getGiftValue() {
+		return giftValue;
+	}
 }
