@@ -189,23 +189,23 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	public void moveOrAttack() {
 		
 		ITilePeca[][] matriz=tile.getOtherTiles();
-		double dist=0;
+		double dist=100;
 		ITilePeca alvo=null;
 		for(int i=0;i<matriz.length;i++) {
 			for(int j=0;j<matriz[0].length;j++) {
-				if(matriz[i][j].existsPeca()&&matriz[i][j].getPeca().getCor()!=this.cor&&Tile.dist(matriz[i][j], tile)>dist) {
+				if(matriz[i][j].existsPeca()&&matriz[i][j].getPeca().getCor()!=this.cor&&Tile.dist(matriz[i][j], tile)<dist) {
 					dist=Tile.dist(matriz[i][j], tile);
 					alvo=matriz[i][j];
 				}
 			}
 		}
-		if(dist<=alcance&&dist!=0) {
+		if(dist<=alcance&&dist!=100) {
 			currentAction="attacking";
 			moveTarget=null;
 			if(alvo!=null)attackTarget=alvo.getPeca();
 			currentAnimation=animationFramesAttack;
 		}
-		else if(dist!=0) {
+		else if(dist!=100) {
 			currentAction="moving";
 			
 		}

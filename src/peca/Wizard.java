@@ -32,7 +32,7 @@ public class Wizard extends Ranged {
 		setup(2);	
 		correction[0]=11;
 		correction[1]=4;
-		flipCorrection=9;
+		flipCorrection=15;
 		projectileCorrection[0]=18;
 		projectileCorrection[1]=14;
 	}
