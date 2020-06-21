@@ -34,7 +34,6 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	private IPecaCard vermelhoPeca;
 	boolean start1 = false;
 	boolean start2 = false;
-	private int[] points = {0,0};
 	private int[] inTab = {0,0};
 	protected ArrayList<Projectile> projectiles=new ArrayList<Projectile>();
 	

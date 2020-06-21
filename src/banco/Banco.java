@@ -179,13 +179,19 @@ public class Banco extends JPanel implements IBanco{
 	}
 	public void pressedSPACE() {
 		if(cursor1!=-1) {
-			jogador1.receber(pecasDisponiveis[cursor1].getPeca());
+			if(jogador1.getCash()>=pecasDisponiveis[cursor1].getPeca().getPurchaseValue()) {
+				jogador1.setCash(jogador1.getCash()-pecasDisponiveis[cursor1].getPeca().getPurchaseValue());
+				jogador1.receber(pecasDisponiveis[cursor1].getPeca());
+			}
 			hideCursor(1);
 		}
 	}
 	public void pressedENTER() {
 		if(cursor2!=-1) {
-			jogador2.receber(pecasDisponiveis[cursor2].getPeca());
+			if(jogador2.getCash()>=pecasDisponiveis[cursor2].getPeca().getPurchaseValue()) {
+				jogador2.setCash(jogador2.getCash()-pecasDisponiveis[cursor2].getPeca().getPurchaseValue());
+				jogador2.receber(pecasDisponiveis[cursor2].getPeca());
+			}			
 			hideCursor(2);
 		}
 	}

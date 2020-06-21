@@ -1,5 +1,6 @@
 package Jogador;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -24,7 +25,7 @@ public class Jogador extends JPanel implements IJogador{
 	
 	private static final long serialVersionUID = 3795017485437177600L;
 	private ICardJogador[] mao=new CardJogador[8];
-	private Image imgmao;
+	private Image imgmao, imgCoin, imgTrophy;
 	private double scale=1;
 	private int positionX;
 	private int positionY;
@@ -36,6 +37,7 @@ public class Jogador extends JPanel implements IJogador{
 	private IPecaCard recebido;
 	private String currentAction;
 	private int cash = 10;
+	private int points = 3;
 	
 	
 	public Jogador(IGame game, int j,ITabuleiro tabuleiro,IBanco banco){
@@ -54,13 +56,10 @@ public class Jogador extends JPanel implements IJogador{
 			cor="vermelho";
 		}
 		
-		
 		initializeGui();
-		
 		for(int i=0;i<8;i++) {
 			mao[i]= new CardJogador(this, i%3);
 		}
-		
 	}
 	
 	public void initializeGui(){
@@ -69,12 +68,39 @@ public class Jogador extends JPanel implements IJogador{
         int WIDTH = (int)(imgmao.getWidth(null)*scale);
         int HEIGHT = (int)(imgmao.getHeight(null)*scale);
         imgmao=imgmao.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_DEFAULT);
-    }
+        
+        ImageIcon refCoin=new ImageIcon("assets/coin.png");
+		imgCoin=refCoin.getImage();
+    	imgCoin=imgCoin.getScaledInstance((int)(1.6*scale*imgCoin.getWidth(null)), (int)(1.5*scale*imgCoin.getHeight(null)), Image.SCALE_DEFAULT);    	
+    
+    	ImageIcon refTrophy=new ImageIcon("assets/trophy.png");
+ 		imgTrophy=refTrophy.getImage();
+     	imgTrophy=imgTrophy.getScaledInstance((int)(1.6*scale*imgTrophy.getWidth(null)), (int)(1.5*scale*imgTrophy.getHeight(null)), Image.SCALE_DEFAULT);    	
+     
+	}
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
+		
+		if(imgCoin!=null)g.drawImage(imgCoin,10,10,this);	
+		if(imgCoin!=null)g.drawImage(imgCoin,1920-10-imgCoin.getWidth(null),10,this);
+		
+		//(38*String.valueOf(cash).length()+imgCoin.getWidth(null)
+		g.setFont(new Font("Arial",1, 55));
+		if(cor=="azul") {
+			g.drawString(String.valueOf(cash), (int)(15+imgCoin.getWidth(null)),imgCoin.getHeight(null)+6);
+			for(int i=0;i<points;i++)
+				 g.drawImage(imgTrophy,5+i*(5+imgTrophy.getWidth(null)),20+imgCoin.getHeight(null),this);
+		}
+		if(cor=="vermelho") {
+			g.drawString(String.valueOf(cash),(int)(1920-(g.getFontMetrics().stringWidth(String.valueOf(cash))+imgCoin.getWidth(null)+15)),imgCoin.getHeight(null)+6);
+			for(int i=1;i<=points;i++)
+				 g.drawImage(imgTrophy,1920-i*(5+imgTrophy.getWidth(null)),20+imgCoin.getHeight(null),this);
+		}
+		
 		int newX = positionX+4+(mao[0].getWidth()/2);
 		int newY = positionY+4;
-        g.drawImage(imgmao, positionX, positionY, null);	
+        g.drawImage(imgmao, positionX, positionY, null);
+  
         for(int i=0;i<8;i++){
         	if(mao[i]!=null) {
         		mao[i].paintComponent(g, newX, newY);
@@ -262,7 +288,10 @@ public class Jogador extends JPanel implements IJogador{
 	public int getCash() {
 		return cash;
 	}
-	public void addCash(int valor) {
-		cash+=valor;
+	public void setCash(int valor) {
+		cash=valor;
+	}
+	public void addPoint() {
+		points+=1;
 	}
 }

@@ -121,8 +121,7 @@ public abstract class Projectile extends JPanel{
 		currentPosition[1]+=translation[1];
 
 		if(dano!=0&&Math.abs(currentPosition[0]-alvoPosition[0])<(scale*imgEdge[0])&&Math.abs(currentPosition[1]-alvoPosition[1])<(scale*imgEdge[1])) {
-			System.out.println(dano);
-			alvo.receberDanoRanged(dano,this);
+			alvo.receberDano(dano);
 			dano=0;
 			tabuleiro.removeProjectiles(this);
 		}
