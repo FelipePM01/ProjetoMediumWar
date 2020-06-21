@@ -1,5 +1,6 @@
 package Jogador;
 
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -255,7 +256,7 @@ public class Jogador extends JPanel implements IJogador{
 	}
 	
 	public void remove() {
-		if(cursor>=0) {
+		if(cursor>=0&&mao[cursor].getNaoColocado()) {
 			addCash(mao[cursor].getPeca().getSaleValue());
 			mao[cursor].setPeca(null);
 		}
@@ -287,6 +288,7 @@ public class Jogador extends JPanel implements IJogador{
 		
 		return cor;
 	}
+
 	public int getCash() {
 		return cash;
 	}
@@ -295,5 +297,8 @@ public class Jogador extends JPanel implements IJogador{
 	}
 	public void addPoint() {
 		points+=1;
+	}
+	public int getPoints() {
+		return points;
 	}
 }

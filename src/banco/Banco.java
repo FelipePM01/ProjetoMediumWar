@@ -194,9 +194,5 @@ public class Banco extends JPanel implements IBanco{
 			}			
 			hideCursor(2);
 		}
-	}
-
-	
-
-	
+	}	
 }

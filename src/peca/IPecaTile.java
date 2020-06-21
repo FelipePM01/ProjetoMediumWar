@@ -22,4 +22,5 @@ public interface IPecaTile extends IPeca{
 	public void receberDanoRanged(double dano,Projectile projetil);
 	public CardJogador getCard();
 	public IPecaCardJogador getOrigem();
+	public void setInBoard(boolean inBoard);
 }

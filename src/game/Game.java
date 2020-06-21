@@ -33,6 +33,8 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
     private ITabuleiro tabuleiro= null;
     private IJogador jogador1= null;
     private IJogador jogador2= null;
+    private boolean commands1=true;
+    private boolean commands2=true;
         
     public Game() {
     	 new Window(WIDTH, HEIGHT, "MediumWar", this);
@@ -99,87 +101,99 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
-		
 		int code = e.getKeyCode();
 		switch(code){
 		case KeyEvent.VK_W:
-			
-			 tabuleiro.pressedW();
+			if(commands1)tabuleiro.pressedW();
             break;
 		case KeyEvent.VK_A:
-			jogador1.pressedA();
-			tabuleiro.pressedA();
-			banco.pressedA();
+			if(commands1) {
+				jogador1.pressedA();
+				tabuleiro.pressedA();
+				banco.pressedA();
+			}
             break;
 		case KeyEvent.VK_S:
 			
-			tabuleiro.pressedS();
+			if(commands1)tabuleiro.pressedS();
 			break;
 		case KeyEvent.VK_D:
-			jogador1.pressedD();
-			tabuleiro.pressedD();
-			banco.pressedD();
+			if(commands1) {
+				jogador1.pressedD();
+				tabuleiro.pressedD();
+				banco.pressedD();
+			}
 		     break;
 		case KeyEvent.VK_DOWN:
 			
-			tabuleiro.pressedDOWN();
+			if(commands2)tabuleiro.pressedDOWN();
             break;
 		case KeyEvent.VK_UP:
 			
-			tabuleiro.pressedUP();
+			if(commands2)tabuleiro.pressedUP();
             break;
 		case KeyEvent.VK_RIGHT:
-			jogador2.pressedRIGHT();
-			tabuleiro.pressedRIGHT();
-			banco.pressedRIGHT();
+			if(commands2) {
+				jogador2.pressedRIGHT();
+				tabuleiro.pressedRIGHT();
+				banco.pressedRIGHT();
+				}
             break;
 		case KeyEvent.VK_LEFT:
-			jogador2.pressedLEFT();
-			tabuleiro.pressedLEFT();
-			banco.pressedLEFT();
+			if(commands2) {
+				jogador2.pressedLEFT();
+				tabuleiro.pressedLEFT();
+				banco.pressedLEFT();
+				}
 			break;
 
 		case KeyEvent.VK_SLASH:
-			jogador2.pressedBARRA();
+			if(commands2)jogador2.pressedBARRA();
 			
 			break;
 		case KeyEvent.VK_PERIOD:
-			jogador2.pressedPONTO();
+			if(commands2)jogador2.pressedPONTO();
 			
 			break;
 		case KeyEvent.VK_COMMA:
-			jogador2.pressedVIRGULA();
+			if(commands2)jogador2.pressedVIRGULA();
 			
 			break;
 		case KeyEvent.VK_C:
-			jogador1.pressedC();
+			if(commands1)jogador1.pressedC();
 			
 			break;
 		case KeyEvent.VK_X:
-			jogador1.pressedX();
+			if(commands1)jogador1.pressedX();
 			
 			break;
 		case KeyEvent.VK_Z:
-			jogador1.pressedZ();
+			if(commands1)jogador1.pressedZ();
 			
 			break;
 		case KeyEvent.VK_SPACE:
-			tabuleiro.pressedSPACE();
-			banco.pressedSPACE();
-			jogador1.pressedSPACE();
+			if(commands1) {
+				tabuleiro.pressedSPACE();
+				banco.pressedSPACE();
+				jogador1.pressedSPACE();
+			}
 			break;
 		case KeyEvent.VK_ENTER:
-			tabuleiro.pressedENTER();
-			banco.pressedENTER();
-			jogador2.pressedENTER();
+			if(commands2) {
+				tabuleiro.pressedENTER();
+				banco.pressedENTER();
+				jogador2.pressedENTER();
+			}
 			break;
 		
 		case KeyEvent.VK_Q:
+			commands1=false;
 			tabuleiro.pressedQ();
 			//banco.pressedENTER();
 			//jogador2.pressedENTER();
 			break;
 		case KeyEvent.VK_QUOTE:
+			commands2=false;
 			tabuleiro.pressedAspas();
 			//banco.pressedENTER();
 			//jogador2.pressedENTER();
@@ -190,7 +204,14 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 	}
-	
+	public void newRound() {
+		tabuleiro.clear();
+		jogador1.addCash(3);
+		jogador2.addCash(3);
+		banco.refresh();
+		commands1=true;
+		commands2=true;
+	}
 	public static void main(String[] args) {
         new Game();
     }

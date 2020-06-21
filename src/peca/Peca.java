@@ -570,7 +570,6 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	}
 	public void receberDano(double dano,Peca peca) {
 		life=life-(dano-(dano*(endurance/100)));
-		
 		if(life<0&&!morto) {
 			peca.recompensar(giftValue);
 			morto=true;
@@ -625,6 +624,9 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	}
 	public boolean getInBoard() {
 		return inBoard;
+	}
+	public void setInBoard(boolean inBoard) {
+		this.inBoard=inBoard;
 	}
 	public void setLife(double life) {
 		this.life=life;
