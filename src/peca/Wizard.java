@@ -58,14 +58,14 @@ public class Wizard extends Ranged {
 		baseAttackAnimDuration=1000;
 		attackDamage=50;
 		purchaseValue=5;
-		saleValue=4;
-		//giftValue=3;
+		saleValue=2;
+		giftValue=3;
 	}	
 	public double[] getCenterPosition() {
 		return getCenterPosition(7,20);
 	}
-	public Projectile create(double scale,double[] posicao,IPecaTile target,double dano) {
-		return new Magic(scale,posicao,target,dano,tabuleiro);
+	public Projectile create(double scale,double[] posicao,IPecaTile target,double dano,IPecaCardJogador origem) {
+		return new Magic(scale,posicao,target,dano,tabuleiro,origem);
 	}
 	
 }

@@ -288,8 +288,8 @@ public class Jogador extends JPanel implements IJogador{
 	public int getCash() {
 		return cash;
 	}
-	public void setCash(int valor) {
-		cash=valor;
+	public void addCash(int valor) {
+		cash+=valor;
 	}
 	public void addPoint() {
 		points+=1;

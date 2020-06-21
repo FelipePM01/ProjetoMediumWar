@@ -536,6 +536,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		
 		if(life<0) {
 			peca.recompensar(giftValue);
+			
 			morto=true;
 			tile.clearTile();
 			inBoard=false;
@@ -544,8 +545,14 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	}
 	
 	public void recompensar(int giftValue) {
-		if(origem!=null)origem.recompensar(giftValue);
-		else if (card!=null)card.recompensar(giftValue);
+		if(origem!=null) {
+			origem.recompensar(giftValue);
+			
+		}
+		else if (card!=null) {
+			card.recompensar(giftValue);
+			
+		}
 		
 	}
 	public Peca(double scale) {

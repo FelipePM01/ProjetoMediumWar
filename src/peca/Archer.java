@@ -61,14 +61,14 @@ public class Archer extends Ranged{
 		baseAttackAnimDuration=1000;
 		attackDamage=10;
 		purchaseValue=3;
-		saleValue=2;
-		//giftValue=2;
+		saleValue=1;
+		giftValue=2;
 	}	
 	public double[] getCenterPosition() {
 		return getCenterPosition(12,19);
 	}
 	public Projectile create(double scale,double[] posicao,IPecaTile target,double dano,IPecaCardJogador origem) {
-		return new Arrow(scale,posicao,target,dano,tabuleiro);
+		return new Arrow(scale,posicao,target,dano,tabuleiro,origem);
 	}
 	
 	

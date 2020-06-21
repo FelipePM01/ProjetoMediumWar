@@ -58,7 +58,7 @@ public class Knight extends Melee{
 		baseAttackAnimDuration=1200;
 		purchaseValue=2;
 		saleValue=1;
-		//giftValue=2
+		giftValue=1;
 	}
 	public double[] getCenterPosition() {
 		return getCenterPosition(11,19);
