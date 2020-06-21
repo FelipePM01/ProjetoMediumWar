@@ -523,9 +523,9 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		life=life-(dano-(dano*(endurance/100)));
 
 		if(life<0) {
-			inBoard=false;
 			morto=true;
 			tile.clearTile();
+			inBoard=false;
 		}
 		if(currentAction=="moving")moveOrAttack();
 	}
@@ -596,8 +596,8 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 			centerPosition[1]=(basePosition[1]+(scale*correction[1])+(translation[1])+(scale*y));
 		}
 		else if(currentAnimation!=null&&currentAnimation[currentFrame]!=null) {
-			centerPosition[0]=(basePosition[0]+(scale*correction[0])+(translation[0])+currentAnimation[currentFrame].getWidth(null)+(scale*x));
-			centerPosition[1]=(basePosition[1]+(scale*correction[1])+(translation[1])-currentAnimation[currentFrame].getWidth(null)+(scale*y));
+			centerPosition[0]=(basePosition[0]+(scale*correction[0])+(translation[0])+(scale*currentAnimation[currentFrame].getWidth(null)/2)-(scale*x));
+			centerPosition[1]=(basePosition[1]+(scale*correction[1])+(translation[1])+(scale*currentAnimation[currentFrame].getWidth(null)/2)-(scale*y));
 		}
 		return centerPosition;
 	}
