@@ -6,6 +6,7 @@ import Jogador.CardJogador;
 import banco.CardBanco;
 import card.Card;
 import card.ICardBanco;
+import tabuleiro.Tabuleiro;
 import tabuleiro.Tile;
 
 public class Archer extends Ranged{
@@ -67,7 +68,7 @@ public class Archer extends Ranged{
 		return getCenterPosition(12,19);
 	}
 	public Projectile create(double scale,double[] posicao,IPecaTile target,double dano) {
-		return new Arrow(scale,posicao,target,dano);
+		return new Arrow(scale,posicao,target,dano,tabuleiro);
 	}
 	
 	

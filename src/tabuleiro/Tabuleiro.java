@@ -1,7 +1,9 @@
 package tabuleiro;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -11,6 +13,7 @@ import Jogador.Jogador;
 import game.IGame;
 import peca.IPecaCard;
 import peca.Peca;
+import peca.Projectile;
 
 public class Tabuleiro extends JPanel implements ITabuleiro{
 	/**
@@ -33,6 +36,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	boolean start2 = false;
 	private int[] points = {0,0};
 	private int[] inTab = {0,0};
+	protected ArrayList<Projectile> projectiles=new ArrayList<Projectile>();
 	
 	public Tabuleiro(IGame game) {
 		scale=game.getScale();
@@ -52,7 +56,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(tabuleiro, (int)(scale*(startPositionScreen[0])), (int)(scale*(startPositionScreen[1])), this);
-		for(int i=0;i<10;i++) {
+	for(int i=0;i<10;i++) {
 			for(int j=0;j<10;j++) {
 				if(matriz[i][j]!=null) {
 					Image img=matriz[i][j].getImage();
@@ -66,6 +70,9 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 					matriz[i][j].paintPeca(g);
 				}
 			}
+		}
+		for(int i=0;i<projectiles.size();i++) {
+			projectiles.get(i).paintComponent(g);
 		}
 	}
 	public void start() {
@@ -225,5 +232,16 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		if(start1&&start2)start();
 		
 	}
-	
+	public void addProjectiles(Projectile projectile) {
+		projectiles.add(projectile);
+	}
+	public void removeProjectiles(Projectile projectile) {
+		projectiles.remove(projectile);
+		/*for(int i=0;i<projectiles.size();i++) {
+			if(projectiles.get(i)==projectile) {
+				projectile.remove(i);
+				break;
+			}
+		}*/
+	}
 }

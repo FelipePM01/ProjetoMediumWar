@@ -2,6 +2,7 @@ package game;
 
 import java.awt.Canvas;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
@@ -81,6 +82,7 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
             return;
         }
         Graphics g = bs.getDrawGraphics();
+
         
         if(gui!=null)gui.paintComponent(g);
         if(tabuleiro!=null)tabuleiro.paintComponent(g);

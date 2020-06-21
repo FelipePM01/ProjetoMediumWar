@@ -69,7 +69,7 @@ public class Tile extends JPanel implements ITile{
 		return false;
 	}
 	public void nullTarget() {
-		peca.setTarget(null);
+		if(peca!=null)peca.setTarget(null);
 	}
 	
 	public void clearTile() {
