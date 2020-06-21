@@ -29,8 +29,8 @@ public class BarraDeVida extends JPanel{
 	}
 	public void paintComponent(Graphics g,int[] startPosition) {
 		super.paintComponent(g);
-		g.drawImage(imgBorda, (int)(startPosition[0]-imgBorda.getWidth(null)/1.5),(int) (startPosition[1]-3*scale), null);
-		g.drawImage(imgConteudo,(int)( startPosition[0]-imgBorda.getWidth(null)/1.5+scale),(int)( startPosition[1]-2*scale), null);
+		g.drawImage(imgBorda, (int)(startPosition[0]),(int) (startPosition[1]-3*scale), null);
+		g.drawImage(imgConteudo,(int)( startPosition[0]+scale),(int)( startPosition[1]-2*scale), null);
 		
 	}
 	public void atualizar(double perCent) {

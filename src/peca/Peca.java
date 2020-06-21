@@ -112,8 +112,8 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 			start[0]=(basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]));
 			start[1]=(int)(basePosition[1]+scale*correction[1]+scale*translation[1]);
 			g.drawImage(currentAnimation[currentFrame], start[0]+currentAnimation[currentFrame].getWidth(null),start[1],-currentAnimation[currentFrame].getWidth(null),currentAnimation[currentFrame].getHeight(null),null);
+			
 			if(tile!=null) {
-				
 				barraDeVida.paintComponent(g,start);
 			}
 		}
@@ -125,7 +125,10 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		start[0]=(basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]))+positionX;
 		start[1]=(basePosition[1]+(int)(scale*correction[1])+(int)(translation[1]))+positionY;
 		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null&&!flipped)g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]))+positionX, (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1]))+positionY,null);
-		else if(currentAnimation!=null&&currentAnimation[currentFrame]!=null)g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]))+currentAnimation[currentFrame].getWidth(null)+positionX, (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1]))+positionY,-currentAnimation[currentFrame].getWidth(null),currentAnimation[currentFrame].getHeight(null),null);
+		else if(currentAnimation!=null&&currentAnimation[currentFrame]!=null) {
+			g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]))+currentAnimation[currentFrame].getWidth(null)+positionX, (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1]))+positionY,-currentAnimation[currentFrame].getWidth(null),currentAnimation[currentFrame].getHeight(null),null);
+			start[0]+=flipCorrection;
+		}
 		if(tile!=null) {
 			
 			barraDeVida.paintComponent(g,start);
