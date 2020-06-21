@@ -15,7 +15,7 @@ public class Arrow extends Projectile{
 	private Image imgArrow;
 	//ponto central da flecha antes da escala 4x2, margem x � 5 e margem y � 1
 	public Arrow(double scale, double[] position, IPecaTile target, double dano,Tabuleiro tabuleiro){
-		super(scale, position, target, dano, tabuleiro,10);
+		super(scale, position, target, dano, tabuleiro,20);
 		setCenterCorrection(4,2);
 		setGUI(scale, "assets/arrow.png");
 		int[] edge = {5,3};
