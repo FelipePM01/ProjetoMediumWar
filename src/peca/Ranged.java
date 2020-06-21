@@ -1,7 +1,6 @@
 package peca;
 
 import Jogador.CardJogador;
-import banco.CardBanco;
 import card.ICardBanco;
 import tabuleiro.Tile;
 

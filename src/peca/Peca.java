@@ -519,6 +519,16 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		return direction;
 	}
 	
+	public void receberDanoRanged(double dano) {
+		life=life-(dano-(dano*(endurance/100)));
+
+		if(life<0) {
+			morto=true;
+			tile.clearTile();
+			inBoard=false;
+		}
+		
+	}
 	public void receberDano(double dano) {
 		life=life-(dano-(dano*(endurance/100)));
 
