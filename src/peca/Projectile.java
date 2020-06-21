@@ -70,26 +70,30 @@ public abstract class Projectile extends JPanel{
 		alvoPosition=alvo.getCenterPosition();
 		
 		if(alvoPosition[0]-currentPosition[0]<0&&alvoPosition[1]-currentPosition[1]<0) {
-			angulo=getAnguloOA()+Math.PI;
+			
 			translation[0]=-Math.abs((speed)*((alvoPosition[0]-currentPosition[0])/(alvoPosition[1]-currentPosition[1])));
 			translation[1]=-Math.abs((speed)*((alvoPosition[1]-currentPosition[1])/(alvoPosition[0]-currentPosition[0])));
+			angulo=Math.atan2(translation[1], translation[0]);
 		}
 		
 		else if(alvoPosition[0]-currentPosition[0]<0&&alvoPosition[1]-currentPosition[1]>=0){
-			angulo=getAnguloOA()+(Math.PI/2);
+			
 			translation[0]=-Math.abs((speed)*((alvoPosition[0]-currentPosition[0])/(alvoPosition[1]-currentPosition[1])));
 			translation[1]=Math.abs((speed)*((alvoPosition[1]-currentPosition[1])/(alvoPosition[0]-currentPosition[0])));
+			angulo=Math.atan2(translation[1], translation[0]);
 		}
 		
 		else if(alvoPosition[0]-currentPosition[0]>=0&&alvoPosition[1]-currentPosition[1]<0) {
-			angulo=getAnguloOA()-(Math.PI/2);
+			
 			translation[0]=Math.abs((speed)*((alvoPosition[0]-currentPosition[0])/(alvoPosition[1]-currentPosition[1])));
 			translation[1]=-Math.abs((speed)*((alvoPosition[1]-currentPosition[1])/(alvoPosition[0]-currentPosition[0])));
+			angulo=Math.atan2(translation[1], translation[0]);
 		}
 		else if(alvoPosition[0]-currentPosition[0]>=0&&alvoPosition[1]-currentPosition[1]>=0) {
-			angulo=getAnguloOA();
+			
 			translation[0]=Math.abs((speed)*((alvoPosition[0]-currentPosition[0])/(alvoPosition[1]-currentPosition[1])));
 			translation[1]=Math.abs((speed)*((alvoPosition[1]-currentPosition[1])/(alvoPosition[0]-currentPosition[0])));
+			angulo=Math.atan2(translation[1], translation[0]);
 		}
 		
 		//Atualiza a currentPosition para a nova posicao
@@ -103,13 +107,7 @@ public abstract class Projectile extends JPanel{
 			tabuleiro.removeProjectiles(this);
 		}
 	}
-	public double getAnguloOA() {
-		double cOposto = alvoPosition[1]-currentPosition[1];
-		double cAdjascente = alvoPosition[0]-currentPosition[0];
-		//double deg = Math.toDegrees(Math.atan(cOposto/cAdjascente)); 
-		double deg = Math.atan2(Math.abs(cAdjascente),Math.abs(cOposto)); 
-		return deg;
-	}
+	
 	public double getDistancia() {
 		double cOposto = alvoPosition[0]-currentPosition[0];
 		double cAdjascente = alvoPosition[1]-currentPosition[1];
