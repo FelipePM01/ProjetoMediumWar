@@ -35,4 +35,12 @@ public class Window extends JFrame implements ActionListener{
 		 	game.gameStart();
 		 	game.start();
 	 }
+	 
+	 public void endGame() {
+		 	frame.remove(game);
+		 	
+		 	frame.add(menu);
+		 	menu.cardLayout.show(menu,"end");
+		 	menu.setVisible(true);
+	 }
 }

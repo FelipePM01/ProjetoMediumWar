@@ -13,11 +13,11 @@ public class Menu extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 6053970674453213543L;
-	private ImageIcon imgPlay, imgCreditsButton, imgExit, imgReturn, imgMenu, imgCredits;
-	private JButton play, credits, exit, home;
+	private ImageIcon imgPlay, imgCreditsButton, imgExit, imgReturn, imgMenu, imgCredits, imgEnd;
+	private JButton play, credits, exit, home, endHome;
 	private Window window;
-	private JLabel creditsPage, menuPage;
-	private CardLayout cardLayout;
+	private JLabel creditsPage, menuPage, endPage;
+	protected CardLayout cardLayout;
 	
 	public Menu(int WIDTH, int HEIGHT, Window window){
 		this.window = window;
@@ -28,7 +28,7 @@ public class Menu extends JPanel{
 	    this.setLayout(cardLayout);
 		this.add(menuPage, "home");
 		this.add(creditsPage, "credits");
-	    
+		this.add(endPage, "end");
 	    
 		setVisible(true);
 	}
@@ -40,13 +40,14 @@ public class Menu extends JPanel{
 		imgReturn = resize(new ImageIcon("assets/returnButton.png"));
 		imgMenu = resize(new ImageIcon("assets/menuBackground.png"));
 		imgCredits = resize(new ImageIcon("assets/creditsBackground.png"));
+		imgEnd = resize(new ImageIcon("C:\\Users\\Cristiano\\Documents\\Area de Trabalho\\maxresdefault.jpg"));
 				
 		//Cria Janelas
 		menuPage = new JLabel();
 		menuPage.setSize(WIDTH, HEIGHT);
 		menuPage.setLayout(null);
 		menuPage.setIcon(imgMenu);
-		menuPage.setVisible(true);
+		menuPage.setVisible(false);
 		
 		creditsPage = new JLabel();
 		creditsPage.setSize(WIDTH, HEIGHT);
@@ -54,9 +55,15 @@ public class Menu extends JPanel{
 		creditsPage.setIcon(imgCredits);
 		creditsPage.setVisible(false);
 		
+		endPage = new JLabel();
+		endPage.setSize(WIDTH, HEIGHT);
+		endPage.setLayout(null);
+		endPage.setIcon(imgEnd);
+		endPage.setVisible(false);
+		
 		//Cria Botoes
 		play=new JButton(imgPlay);
-		play.setBounds(1400, 400, 432, 144); //216*2, 72*2
+		play.setBounds(1400, 400, 432, 144);
 		play.addActionListener(window);
 		menuPage.add(play);
 		
@@ -74,6 +81,11 @@ public class Menu extends JPanel{
 		home.setBounds(120, 900, 432, 144);
 		home.addActionListener(e -> cardLayout.show(this, "home"));
 		creditsPage.add(home);
+		
+		endHome=new JButton(imgReturn);
+		endHome.setBounds(120, 900, 432, 144);
+		endHome.addActionListener(e -> cardLayout.show(this, "home"));
+		endPage.add(endHome);
 	}
 	
 	public ImageIcon resize(ImageIcon img) {

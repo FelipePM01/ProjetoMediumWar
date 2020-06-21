@@ -78,11 +78,9 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		}
 	}
 	public void start() {
-		if(jogador1.getPoints()<5&&jogador2.getPoints()<5) {
-			for(int i=0;i<10;i++) {
-				for(int j=0;j<10;j++) {
-					matriz[i][j].actionPeca();
-				}
+		for(int i=0;i<10;i++) {
+			for(int j=0;j<10;j++) {
+				matriz[i][j].actionPeca();
 			}
 		}
 	}
@@ -255,6 +253,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		if(inTab[i]==0) {
 			if(i==0)jogador2.addPoint();
 			if(i==1)jogador1.addPoint();
+			if(jogador1.getPoints()>0||jogador2.getPoints()>0)game.endGame();	
 			game.newRound();
 		}
 	}

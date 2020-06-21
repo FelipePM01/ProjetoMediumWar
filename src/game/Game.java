@@ -33,11 +33,12 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
     private ITabuleiro tabuleiro= null;
     private IJogador jogador1= null;
     private IJogador jogador2= null;
+    private static Window window;
     private boolean commands1=true;
     private boolean commands2=true;
         
     public Game() {
-    	 new Window(WIDTH, HEIGHT, "MediumWar", this);
+    	 window = new Window(WIDTH, HEIGHT, "MediumWar", this);
     }
     
     public void gameStart(){ 
@@ -61,7 +62,7 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
     }
     public synchronized void stop() {
         try{
-            thread.join();
+            //thread.join();
             running = false;
         }
         catch(Exception e){
@@ -214,7 +215,12 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 		commands1=true;
 		commands2=true;
 	}
+	public void endGame() {
+		window.endGame();
+		stop();	
+		System.out.println("endGame");
+	}
 	public static void main(String[] args) {
-        new Game();
+        new Game();  
     }
 }
