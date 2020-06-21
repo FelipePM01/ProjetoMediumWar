@@ -98,20 +98,22 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null&&!flipped) {
-			g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0])), (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1])),null);
+			int[] start=new int[2];
+			start[0]=(basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]));
+			start[1]=(int)(basePosition[1]+scale*correction[1]+scale*translation[1]);
+			g.drawImage(currentAnimation[currentFrame], start[0], start[1],null);
 			if(tile!=null) {
-				int[] start=new int[2];
-				start[0]=(basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]));
-				start[1]=(basePosition[1]+(int)(scale*correction[1])+(int)(scale*translation[1]));
+				
 				barraDeVida.paintComponent(g,start);
 			}
 		}
 		else if(currentAnimation!=null&&currentAnimation[currentFrame]!=null) {
-			g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]))+currentAnimation[currentFrame].getWidth(null), (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1])),-currentAnimation[currentFrame].getWidth(null),currentAnimation[currentFrame].getHeight(null),null);
+			int[] start=new int[2];
+			start[0]=(basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]));
+			start[1]=(int)(basePosition[1]+scale*correction[1]+scale*translation[1]);
+			g.drawImage(currentAnimation[currentFrame], start[0]+currentAnimation[currentFrame].getWidth(null),start[1],-currentAnimation[currentFrame].getWidth(null),currentAnimation[currentFrame].getHeight(null),null);
 			if(tile!=null) {
-				int[] start=new int[2];
-				start[0]=(basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]));
-				start[1]=(int)(basePosition[1]+scale*correction[1]+scale*translation[1]);
+				
 				barraDeVida.paintComponent(g,start);
 			}
 		}
@@ -119,12 +121,13 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	}
 	public void paintComponent(Graphics g, int positionX, int positionY) {
 		super.paintComponent(g);
+		int[] start=new int[2];
+		start[0]=(basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]))+positionX;
+		start[1]=(basePosition[1]+(int)(scale*correction[1])+(int)(translation[1]))+positionY;
 		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null&&!flipped)g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]))+positionX, (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1]))+positionY,null);
 		else if(currentAnimation!=null&&currentAnimation[currentFrame]!=null)g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]))+currentAnimation[currentFrame].getWidth(null)+positionX, (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1]))+positionY,-currentAnimation[currentFrame].getWidth(null),currentAnimation[currentFrame].getHeight(null),null);
 		if(tile!=null) {
-			int[] start=new int[2];
-			start[0]=(int)(getCenterPosition()[0]+correction[0]*scale+scale*translation[0]);
-			start[1]=(int)(basePosition[1]+scale*correction[1]+scale*translation[1]);
+			
 			barraDeVida.paintComponent(g,start);
 		}
 	}
