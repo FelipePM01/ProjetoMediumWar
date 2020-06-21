@@ -16,13 +16,15 @@ public class BarraDeVida extends JPanel{
 	private Image imgConteudo;
 	private int sizeConteudo;
 	private double scale;
-	public BarraDeVida(int[] startPosition,double scale) {
+	public BarraDeVida(int[] startPosition,double scale,String cor) {
 		this.scale=scale;
-		
+		String path;
+		if(cor=="vermelho")path="assets/vidaVermelho.png";
+		else path="assets/vidaAzul.png";
 		ImageIcon refImgBorda=new ImageIcon("assets/barraBorda.png");
 		imgBorda=refImgBorda.getImage();
 		imgBorda=imgBorda.getScaledInstance((int)(scale*imgBorda.getWidth(null)),(int)(scale*imgBorda.getHeight(null)),Image.SCALE_DEFAULT);
-		ImageIcon refImgConteudo=new ImageIcon("assets/barraConteudo.png");
+		ImageIcon refImgConteudo=new ImageIcon(path);
 		imgConteudo=refImgConteudo.getImage();
 		imgConteudo=imgConteudo.getScaledInstance((int)(scale*imgConteudo.getWidth(null)),(int)(scale*imgConteudo.getHeight(null)),Image.SCALE_DEFAULT);
 		sizeConteudo=imgConteudo.getWidth(null);

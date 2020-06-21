@@ -79,7 +79,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		start[0]=(int)(getCenterPosition()[0]+correction[0]*scale+scale*translation[0]);
 		start[1]=(int)(basePosition[1]+scale*correction[1]+scale*translation[1]);
 		
-		barraDeVida=new BarraDeVida(start,scale);
+		barraDeVida=new BarraDeVida(start,scale,cor);
 		
 	}
 	public Peca(IPeca peca,ICardBanco card) {
