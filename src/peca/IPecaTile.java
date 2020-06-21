@@ -15,5 +15,6 @@ public interface IPecaTile extends IPeca{
 	public ITilePeca getTile();
 	public void receberDano(double dano);
 	public double[] getCenterPosition();
-
+	public void setTargetNull();
+	public boolean getMorto();
 }

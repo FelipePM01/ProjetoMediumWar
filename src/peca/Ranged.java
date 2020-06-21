@@ -39,7 +39,7 @@ public abstract class Ranged extends Peca {
 				currentFrame=0;
 				if(attackTarget!=null) {
 					fire();
-					if(Tile.dist(getTile(),attackTarget.getTile())>alcance) {
+					if(Tile.dist(getTile(),attackTarget.getTile())>alcance||attackTarget.getMorto()) {
 						currentAction=null;
 						moveOrAttack();
 					}

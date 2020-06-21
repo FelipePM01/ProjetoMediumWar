@@ -64,9 +64,5 @@ public class Knight extends Melee{
 		return getCenterPosition(11,19);
 	}
 
-	@Override
-	public String getCor() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 }

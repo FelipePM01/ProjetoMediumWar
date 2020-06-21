@@ -39,9 +39,9 @@ public abstract class Melee extends Peca {
 			
 			if(currentFrame==animationFramesAttack.length-1) {
 				currentFrame=0;
-				if(attackTarget!=null) {
+				if(attackTarget.getTile()!=null) {
 					attackTarget.receberDano(attackDamage);
-					if(Tile.dist(getTile(),attackTarget.getTile())>alcance) {
+					if(Tile.dist(getTile(),attackTarget.getTile())>alcance||attackTarget.getMorto()) {
 						currentAction=null;
 						moveOrAttack();
 					}

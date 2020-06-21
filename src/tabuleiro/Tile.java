@@ -7,7 +7,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import peca.Archer;
-import peca.IPeca;
 import peca.IPecaCard;
 import peca.IPecaTile;
 import peca.Knight;
@@ -27,6 +26,7 @@ public class Tile extends JPanel implements ITile{
 	private Image tileAzul;
 	private ITabuleiroTile tabuleiro;
 	private IPecaTile peca=null;
+	private boolean marcado;
 	
 	public Tile(ITabuleiroTile tabuleiro,int[] position){
 		scale=tabuleiro.getScale();
@@ -69,7 +69,7 @@ public class Tile extends JPanel implements ITile{
 		return false;
 	}
 	public void nullTarget() {
-		peca.setTarget(null);
+		if(peca!=null)peca.setTargetNull();
 	}
 	
 	public void clearTile() {
@@ -126,15 +126,21 @@ public class Tile extends JPanel implements ITile{
 		return Math.sqrt(Math.pow(pos1[0]-pos2[0],2)+Math.pow(pos1[1]-pos2[1],2));
 		
 	}
-	public static double distX(ITilePeca tile1,ITilePeca tile2) {
+	public static int distX(ITilePeca tile1,ITilePeca tile2) {
 		int[] pos1=tile1.getPosition(),pos2=tile2.getPosition();
 		return pos2[0]-pos1[0];
 		
 	}
-	public static double distY(ITilePeca tile1,ITilePeca tile2) {
+	public static int distY(ITilePeca tile1,ITilePeca tile2) {
 		int[] pos1=tile1.getPosition(),pos2=tile2.getPosition();
 		return pos2[1]-pos1[1];
 		
+	}
+	public void setMarcado() {
+		marcado=!marcado;
+	}
+	public boolean getMarcado() {
+		return marcado;
 	}
 	
 }
