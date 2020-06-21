@@ -3,6 +3,8 @@ package Jogador;
 public interface IJogador extends IJogadorCard, IJogadorGame,IJogadorBanco{
 	public void addPoint();
 	public int getPoints();
+	public int obtainCursor();
+	public void hideCursor();
 	
 	public void pressedA() ;
 	public void pressedC() ;

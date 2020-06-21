@@ -301,4 +301,7 @@ public class Jogador extends JPanel implements IJogador{
 	public int getPoints() {
 		return points;
 	}
+	public int obtainCursor() {
+		return cursor;
+	}
 }

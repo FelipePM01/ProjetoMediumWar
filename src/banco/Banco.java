@@ -195,4 +195,8 @@ public class Banco extends JPanel implements IBanco{
 			hideCursor(2);
 		}
 	}	
+	public int obtainCursor(String cor){
+		if(cor=="azul")return cursor1;
+		return cursor2;
+	}
 }

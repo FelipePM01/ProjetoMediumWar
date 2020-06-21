@@ -229,14 +229,17 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		
 	}
 	public void pressedQ() {
+		if(cAzul!=false)hideCursor("azul");
+		if(jogador1.obtainCursor()!=-1)jogador1.hideCursor();
 		start1=true;
 		if(start1&&start2)start();
 		
 	}
 	public void pressedAspas() {
+		if(cVermelho!=false)hideCursor("vermelho");
+		if(jogador2.obtainCursor()!=-1)jogador2.hideCursor();
 		start2=true;
 		if(start1&&start2)start();
-		
 	}
 	public void addProjectiles(Projectile projectile) {
 		projectiles.add(projectile);

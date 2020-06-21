@@ -188,12 +188,14 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 		
 		case KeyEvent.VK_Q:
 			commands1=false;
+			if(banco.obtainCursor("azul")!=-1)banco.hideCursor(1);
 			tabuleiro.pressedQ();
 			//banco.pressedENTER();
 			//jogador2.pressedENTER();
 			break;
 		case KeyEvent.VK_QUOTE:
 			commands2=false;
+			if(banco.obtainCursor("vermelho")!=-1)banco.hideCursor(2);
 			tabuleiro.pressedAspas();
 			//banco.pressedENTER();
 			//jogador2.pressedENTER();
