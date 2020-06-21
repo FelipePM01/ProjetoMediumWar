@@ -1,7 +1,7 @@
 package Jogador;
 
 public interface IJogador extends IJogadorCard, IJogadorGame,IJogadorBanco{
-
+	public void addPoint();
 	
 	public void pressedA() ;
 	public void pressedC() ;
