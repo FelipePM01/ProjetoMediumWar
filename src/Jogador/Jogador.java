@@ -37,6 +37,7 @@ public class Jogador extends JPanel implements IJogador{
 	private String currentAction;
 	private int cash = 10;
 	
+	
 	public Jogador(IGame game, int j,ITabuleiro tabuleiro,IBanco banco){
 		scale=game.getScale();
 		this.tabuleiro=tabuleiro;
@@ -233,7 +234,7 @@ public class Jogador extends JPanel implements IJogador{
 	}
 	public void position() {
 		if(cursor>=0) {
-			if(mao[cursor].getPeca()!=null) {
+			if(mao[cursor].getPeca()!=null&&mao[cursor].getNaoColocado()) {
 				tabuleiro.positionPeca(this,mao[cursor].getPeca());
 				if(cursor!=-1)hideCursor();
 				 currentAction="posicionando";

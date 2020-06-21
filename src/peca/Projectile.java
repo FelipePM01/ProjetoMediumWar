@@ -39,9 +39,11 @@ public abstract class Projectile extends JPanel{
 	private int[] imgEdge = new int[2];
 	private Tabuleiro tabuleiro;
 	private double angulo=0;
+	private IPecaCardJogador origem;
 	
-	public Projectile(double scale, double[] position, IPecaTile target, double dano,Tabuleiro tabuleiro, double speed) {
+	public Projectile(double scale, double[] position, IPecaTile target, double dano,Tabuleiro tabuleiro, double speed,IPecaCardJogador origem) {
 		this.scale=scale;
+		this.origem=origem;
 		this.basePosition=position;
 		this.currentPosition=position;
 		this.alvo=target;
@@ -120,7 +122,7 @@ public abstract class Projectile extends JPanel{
 
 		if(dano!=0&&Math.abs(currentPosition[0]-alvoPosition[0])<(scale*imgEdge[0])&&Math.abs(currentPosition[1]-alvoPosition[1])<(scale*imgEdge[1])) {
 			System.out.println(dano);
-			alvo.receberDano(dano);
+			alvo.receberDanoRanged(dano,this);
 			dano=0;
 			tabuleiro.removeProjectiles(this);
 		}
@@ -146,5 +148,8 @@ public abstract class Projectile extends JPanel{
 	}
 	public void setImgEdge(int[] imgEdge) {
 		this.imgEdge=imgEdge;	
+	}
+	public void recompensar(int value) {
+		origem.recompensar(value);
 	}
 }

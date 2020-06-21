@@ -73,6 +73,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		inBoard=true;
 		basePosition=tile.getGUIPosition();
 		origem=peca;
+		peca.getCard().setNaoColocado(false);
 		
 	}
 	public Peca(IPeca peca,ICardBanco card) {
@@ -519,20 +520,22 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		return direction;
 	}
 	
-	public void receberDanoRanged(double dano) {
+	public void receberDanoRanged(double dano,Projectile projetil) {
 		life=life-(dano-(dano*(endurance/100)));
 
 		if(life<0) {
+			projetil.recompensar(giftValue);
 			morto=true;
 			tile.clearTile();
 			inBoard=false;
 		}
 		
 	}
-	public void receberDano(double dano) {
+	public void receberDano(double dano,Peca peca) {
 		life=life-(dano-(dano*(endurance/100)));
-
+		
 		if(life<0) {
+			peca.recompensar(giftValue);
 			morto=true;
 			tile.clearTile();
 			inBoard=false;
@@ -540,6 +543,11 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		if(currentAction=="moving")moveOrAttack();
 	}
 	
+	public void recompensar(int giftValue) {
+		if(origem!=null)origem.recompensar(giftValue);
+		else if (card!=null)card.recompensar(giftValue);
+		
+	}
 	public Peca(double scale) {
 		this.scale=scale;
 	}
@@ -633,5 +641,8 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	}
 	public boolean getMorto() {
 		return morto;
+	}
+	public CardJogador getCard() {
+		return card;
 	}
 }

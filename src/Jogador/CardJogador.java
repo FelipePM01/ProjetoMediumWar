@@ -22,6 +22,7 @@ public class CardJogador extends Card implements ICardJogador{
 	private Image cardVermelho;
 	private Image cardAzul;
 	private IJogadorCard jogador;
+	private boolean naoColocado=true;
 	
 	static private String[] refImagens = {"assets/cardPadrao.png","assets/cardAzul.png","assets/cardVermelho.png"};
 	
@@ -51,6 +52,17 @@ public class CardJogador extends Card implements ICardJogador{
 
 	public IJogadorCard getJogador() {
 		return jogador;
+	}
+	public boolean getNaoColocado() {
+		return naoColocado;
+	}
+	public void setNaoColocado(boolean naoColocado) {
+		this.naoColocado=naoColocado;
+	}
+
+	public void recompensar(int value) {
+		jogador.addCash(value);
+		
 	}
 
 	
