@@ -523,9 +523,12 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	public void receberDanoRanged(double dano,Projectile projetil) {
 		life=life-(dano-(dano*(endurance/100)));
 
-		if(life<0) {
+		if(life<0&&!morto) {
 			projetil.recompensar(giftValue);
 			morto=true;
+			if(cor=="azul")tabuleiro.eliminateInTab(0);
+			if(cor=="vermelho")tabuleiro.eliminateInTab(1);
+			origem.getCard().setNaoColocado(true);
 			tile.clearTile();
 			inBoard=false;
 		}
@@ -534,10 +537,12 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	public void receberDano(double dano,Peca peca) {
 		life=life-(dano-(dano*(endurance/100)));
 		
-		if(life<0) {
+		if(life<0&&!morto) {
 			peca.recompensar(giftValue);
-			
 			morto=true;
+			if(cor=="azul")tabuleiro.eliminateInTab(0);
+			if(cor=="vermelho")tabuleiro.eliminateInTab(1);
+			origem.getCard().setNaoColocado(true);
 			tile.clearTile();
 			inBoard=false;
 		}

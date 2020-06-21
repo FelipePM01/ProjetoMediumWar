@@ -55,7 +55,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(tabuleiro, (int)(scale*(startPositionScreen[0])), (int)(scale*(startPositionScreen[1])), this);
-	for(int i=0;i<10;i++) {
+		for(int i=0;i<10;i++) {
 			for(int j=0;j<10;j++) {
 				if(matriz[i][j]!=null) {
 					Image img=matriz[i][j].getImage();
@@ -82,8 +82,11 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		}
 	}
 	public void clear() {
+		jogador1.addCash(3);
+		jogador2.addCash(3);
 		for(int i=0;i<10;i++) {
 			for(int j=0;j<10;j++) {
+				if(matriz[i][j].existsPeca()&&matriz[i][j].getPeca().getOrigem().getCard()!=null)matriz[i][j].getPeca().getOrigem().getCard().setNaoColocado(true);
 				if(matriz[i][j].existsPeca())matriz[i][j].nullTarget();
 				if(matriz[i][j].existsPeca())matriz[i][j].setPeca(null);
 			}
@@ -213,7 +216,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 			if(!matriz[cursorVermelho[0]][cursorVermelho[1]].existsPeca()) {
 				matriz[cursorVermelho[0]][cursorVermelho[1]].setPeca(vermelhoPeca);
 				matriz[cursorVermelho[0]][cursorVermelho[1]].getPeca().flip();
-				inTab[0]+=1;
+				inTab[1]+=1;
 			}
 			
 			hideCursor("vermelho");
@@ -236,11 +239,18 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	}
 	public void removeProjectiles(Projectile projectile) {
 		projectiles.remove(projectile);
-		/*for(int i=0;i<projectiles.size();i++) {
-			if(projectiles.get(i)==projectile) {
-				projectile.remove(i);
-				break;
-			}
-		}*/
+	}
+	public int[] getIntab() {
+		return inTab;
+	}
+	public void eliminateInTab(int i) {
+		System.out.println(inTab[i]);
+		if(inTab[i]!=0)inTab[i]=inTab[i]-1;
+		if(inTab[i]==0)newRound();
+	}
+	public void newRound() {
+		if(inTab[0]==0)jogador2.addPoint();
+		if(inTab[1]==0)jogador1.addPoint();
+		clear();
 	}
 }

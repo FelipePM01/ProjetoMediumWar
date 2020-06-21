@@ -37,7 +37,7 @@ public class Jogador extends JPanel implements IJogador{
 	private IPecaCard recebido;
 	private String currentAction;
 	private int cash = 10;
-	private int points = 3;
+	private int points = 0;
 	
 	
 	public Jogador(IGame game, int j,ITabuleiro tabuleiro,IBanco banco){
