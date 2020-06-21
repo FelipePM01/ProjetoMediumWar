@@ -232,6 +232,7 @@ public class Jogador extends JPanel implements IJogador{
 	}
 	public void pressedSPACE() {
 		if(currentAction=="remove") {
+			
 			remove();
 			currentAction=null;
 			if(cursor!=-1)hideCursor();
@@ -255,6 +256,7 @@ public class Jogador extends JPanel implements IJogador{
 	
 	public void remove() {
 		if(cursor>=0) {
+			addCash(mao[cursor].getPeca().getSaleValue());
 			mao[cursor].setPeca(null);
 		}
 	}
