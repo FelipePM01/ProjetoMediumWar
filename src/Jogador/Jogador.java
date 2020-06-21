@@ -84,7 +84,7 @@ public class Jogador extends JPanel implements IJogador{
 		if(imgCoin!=null)g.drawImage(imgCoin,10,10,this);	
 		if(imgCoin!=null)g.drawImage(imgCoin,1920-10-imgCoin.getWidth(null),10,this);
 		
-		//(38*String.valueOf(cash).length()+imgCoin.getWidth(null)
+		
 		g.setFont(new Font("Arial",1, 55));
 		if(cor=="azul") {
 			g.drawString(String.valueOf(cash), (int)(15+imgCoin.getWidth(null)),imgCoin.getHeight(null)+6);

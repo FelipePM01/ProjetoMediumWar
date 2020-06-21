@@ -52,12 +52,12 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	protected double endurance;
 	protected IPecaCardJogador origem;
 	protected String cor=null;
-	protected ArrayList<int[]> triedDirections=null;
+	
 	protected int[] lastPositionDirection=null;
 	protected int purchaseValue;
 	protected int saleValue;
 	protected int giftValue;
-	ArrayList<int[]> tried=new ArrayList<int[]>();
+	protected ArrayList<int[]> tried=new ArrayList<int[]>();
 	protected int baseAttackAnimDuration;
 	protected double attackSpeed;
 	protected double attackDamage;
@@ -66,7 +66,8 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	protected boolean esperando=false;
 	protected int[] lastPosition=null;
 	protected boolean morto=false;
-	
+	protected BarraDeVida barraDeVida;
+	protected double maxLife;
 	public Peca(IPecaCardJogador peca,Tile tile) {
 		set(peca);
 		this.tile=tile;
@@ -74,6 +75,11 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		basePosition=tile.getGUIPosition();
 		origem=peca;
 		peca.getCard().setNaoColocado(false);
+		int[] start=new int[2];
+		start[0]=(int)(getCenterPosition()[0]+correction[0]*scale+scale*translation[0]);
+		start[1]=(int)(basePosition[1]+scale*correction[1]+scale*translation[1]);
+		
+		barraDeVida=new BarraDeVida(start,scale);
 		
 	}
 	public Peca(IPeca peca,ICardBanco card) {
@@ -91,13 +97,36 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null&&!flipped)g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0])), (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1])),null);
-		else if(currentAnimation!=null&&currentAnimation[currentFrame]!=null)g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]))+currentAnimation[currentFrame].getWidth(null), (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1])),-currentAnimation[currentFrame].getWidth(null),currentAnimation[currentFrame].getHeight(null),null);
+		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null&&!flipped) {
+			g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0])), (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1])),null);
+			if(tile!=null) {
+				int[] start=new int[2];
+				start[0]=(basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]));
+				start[1]=(basePosition[1]+(int)(scale*correction[1])+(int)(scale*translation[1]));
+				barraDeVida.paintComponent(g,start);
+			}
+		}
+		else if(currentAnimation!=null&&currentAnimation[currentFrame]!=null) {
+			g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]))+currentAnimation[currentFrame].getWidth(null), (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1])),-currentAnimation[currentFrame].getWidth(null),currentAnimation[currentFrame].getHeight(null),null);
+			if(tile!=null) {
+				int[] start=new int[2];
+				start[0]=(basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]));
+				start[1]=(int)(basePosition[1]+scale*correction[1]+scale*translation[1]);
+				barraDeVida.paintComponent(g,start);
+			}
+		}
+		
 	}
 	public void paintComponent(Graphics g, int positionX, int positionY) {
 		super.paintComponent(g);
 		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null&&!flipped)g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]))+positionX, (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1]))+positionY,null);
 		else if(currentAnimation!=null&&currentAnimation[currentFrame]!=null)g.drawImage(currentAnimation[currentFrame], (basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]))+currentAnimation[currentFrame].getWidth(null)+positionX, (basePosition[1]+(int)(scale*correction[1])+(int)(translation[1]))+positionY,-currentAnimation[currentFrame].getWidth(null),currentAnimation[currentFrame].getHeight(null),null);
+		if(tile!=null) {
+			int[] start=new int[2];
+			start[0]=(int)(getCenterPosition()[0]+correction[0]*scale+scale*translation[0]);
+			start[1]=(int)(basePosition[1]+scale*correction[1]+scale*translation[1]);
+			barraDeVida.paintComponent(g,start);
+		}
 	}
 	//cria uma peca que eh uma copia de outra ja existente
 	public void set(IPeca peca) {
@@ -160,6 +189,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		if(direction[0]!=0) {
 			
 			translation[0]+=direction[0]*speed*tile.getImage().getWidth(null)/1000;
+			
 			if(direction[0]==-1 ) {
 				if(!flipped) {
 					flipped=true;
@@ -174,6 +204,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		else if(direction[1]!=0){
 			
 			translation[1]+=direction[1]*speed*tile.getImage().getWidth(null)/1000;	
+			
 		}
 		if(Math.abs(translation[0])>=tile.getImage().getWidth(null)||Math.abs(translation[1])>=tile.getImage().getHeight(null)){
 			moveTarget.setPeca(this);
@@ -617,8 +648,8 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	public double[] getCenterPosition(int x, int y){
 		double[] centerPosition=new double[2];
 		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null&&!flipped) {
-			centerPosition[0]=(basePosition[0]+(scale*correction[0])+(translation[0])+(scale*x));
-			centerPosition[1]=(basePosition[1]+(scale*correction[1])+(translation[1])+(scale*y));
+			centerPosition[0]=(basePosition[0]+(scale*correction[0])+(scale*translation[0])+(scale*x));
+			centerPosition[1]=(basePosition[1]+(scale*correction[1])+(scale*translation[1])+(scale*y));
 		}
 		else if(currentAnimation!=null&&currentAnimation[currentFrame]!=null) {
 			centerPosition[0]=(basePosition[0]+(scale*correction[0])+(translation[0])+(scale*currentAnimation[currentFrame].getWidth(null)/2)-(scale*x));
