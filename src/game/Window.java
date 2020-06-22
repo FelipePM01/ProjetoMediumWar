@@ -3,12 +3,18 @@ package game;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
 public class Window extends JFrame implements ActionListener{
 	public JFrame frame;
 	private Game game;
+	private ImageIcon imgEndRed, imgEndBlue,imgReturn;
+	private JButton endHome;
+	private JLabel endPageBlue,endPageRed;
 	Menu menu;
 
 	private static final long serialVersionUID = -4369730830015653927L;
@@ -36,11 +42,12 @@ public class Window extends JFrame implements ActionListener{
 		 	game.start();
 	 }
 	 
-	 public void endGame() {
+	 public void endGame(String cor) {
 		 	frame.remove(game);
-		 	
-		 	frame.add(menu);
-		 	menu.cardLayout.show(menu,"end");
-		 	menu.setVisible(true);
+
+			
+		 	//frame.add(menu);
+		 	//menu.cardLayout.show(menu,cor);
+		 	//menu.setVisible(true);
 	 }
 }
