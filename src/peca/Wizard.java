@@ -60,6 +60,7 @@ public class Wizard extends Ranged {
 		purchaseValue=5;
 		saleValue=2;
 		giftValue=3;
+		maxLife=life;
 	}	
 	public double[] getCenterPosition() {
 		return getCenterPosition(7,20);

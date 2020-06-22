@@ -59,6 +59,7 @@ public class Knight extends Melee{
 		purchaseValue=2;
 		saleValue=1;
 		giftValue=1;
+		maxLife=life;
 	}
 	public double[] getCenterPosition() {
 		return getCenterPosition(11,19);
