@@ -59,6 +59,7 @@ public class Orc extends Melee{
 		purchaseValue=4;
 		saleValue=2;
 		giftValue=3;
+		maxLife=life;
 	}
 	public double[] getCenterPosition() {
 		return getCenterPosition(13,18);

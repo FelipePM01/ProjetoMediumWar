@@ -63,6 +63,7 @@ public class Archer extends Ranged{
 		purchaseValue=3;
 		saleValue=1;
 		giftValue=2;
+		maxLife=life;
 	}	
 	public double[] getCenterPosition() {
 		return getCenterPosition(12,19);

@@ -16,6 +16,7 @@ public class BarraDeVida extends JPanel{
 	private Image imgConteudo;
 	private int sizeConteudo;
 	private double scale;
+	private boolean setted=false;
 	public BarraDeVida(int[] startPosition,double scale,String cor) {
 		this.scale=scale;
 		String path;
@@ -27,7 +28,8 @@ public class BarraDeVida extends JPanel{
 		ImageIcon refImgConteudo=new ImageIcon(path);
 		imgConteudo=refImgConteudo.getImage();
 		imgConteudo=imgConteudo.getScaledInstance((int)(scale*imgConteudo.getWidth(null)),(int)(scale*imgConteudo.getHeight(null)),Image.SCALE_DEFAULT);
-		sizeConteudo=imgConteudo.getWidth(null);
+	
+		
 	}
 	public void paintComponent(Graphics g,int[] startPosition) {
 		super.paintComponent(g);
@@ -36,8 +38,11 @@ public class BarraDeVida extends JPanel{
 		
 	}
 	public void atualizar(double perCent) {
-		
-		imgConteudo=imgConteudo.getScaledInstance((int)(perCent*sizeConteudo),imgConteudo.getHeight(null),Image.SCALE_DEFAULT);
+		if(!setted) {
+			sizeConteudo=imgConteudo.getWidth(null);
+			setted=true;
+		}
+		if(perCent>0&&sizeConteudo>0)imgConteudo=imgConteudo.getScaledInstance((int)(perCent*sizeConteudo),imgConteudo.getHeight(null),Image.SCALE_DEFAULT);
 	}
 	
 	

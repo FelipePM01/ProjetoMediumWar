@@ -559,6 +559,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	
 	public void receberDanoRanged(double dano,Projectile projetil) {
 		life=life-(dano-(dano*(endurance/100)));
+		
 
 		if(life<0&&!morto) {
 			projetil.recompensar(giftValue);
@@ -568,6 +569,9 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 			origem.getCard().setNaoColocado(true);
 			tile.clearTile();
 			inBoard=false;
+		}
+		else if(!morto) {
+			barraDeVida.atualizar(life/maxLife);
 		}
 		
 	}
@@ -581,6 +585,9 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 			origem.getCard().setNaoColocado(true);
 			tile.clearTile();
 			inBoard=false;
+		}
+		else if(!morto&&life!=0) {
+			barraDeVida.atualizar(life/maxLife);
 		}
 		if(currentAction=="moving")moveOrAttack();
 	}
