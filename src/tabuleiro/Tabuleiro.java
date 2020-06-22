@@ -92,7 +92,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 				if(matriz[i][j].existsPeca()&&matriz[i][j].getPeca().getOrigem().getCard()!=null)matriz[i][j].getPeca().getOrigem().getCard().setNaoColocado(true);
 				if(matriz[i][j].existsPeca()&&matriz[i][j].getPeca().getOrigem().getCard()!=null)matriz[i][j].getPeca().setInBoard(false);
 				if(matriz[i][j].existsPeca())matriz[i][j].nullTarget();
-				if(matriz[i][j].existsPeca())matriz[i][j].setPeca(null);
+				if(matriz[i][j].existsPeca())matriz[i][j].setNull();
 			}
 		}
 	}

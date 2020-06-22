@@ -19,4 +19,5 @@ public interface ITileTabuleiro {
 	public boolean existsPeca();
 	public void setTileAtual(String cor);
 	public void setPeca(IPecaCard peca);
+	public void setNull();
 }
