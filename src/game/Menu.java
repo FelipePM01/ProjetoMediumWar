@@ -18,12 +18,12 @@ public class Menu extends JPanel{
 	private ImageIcon imgPlay, imgCreditsButton, imgExit, imgReturn, imgMenu, imgCredits;
 	private JButton play, credits, exit, home;
 	private Window window;
-	private JLabel creditsPage, menuPage, endPageBlue, endPageRed;
+	private JLabel creditsPage, menuPage;
 	protected CardLayout cardLayout;
 	
-	public Menu(int WIDTH, int HEIGHT, Window window){
+	public Menu(Window window){
 		this.window = window;
-		setMenu(WIDTH,WIDTH);
+		setMenu();
 		
 		//Cria cardLayout e adiciona janelas
 		cardLayout = new CardLayout();
@@ -33,7 +33,7 @@ public class Menu extends JPanel{
 	    
 		setVisible(true);
 	}
-	public void setMenu(int WIDTH, int HEIGHT) {
+	public void setMenu() {
 		//Adiciona e ajusta imagens usadas    
 		imgPlay = resize(new ImageIcon("assets/playButton.png"));
 		imgCreditsButton = resize(new ImageIcon("assets/creditsButton.png"));
@@ -44,14 +44,12 @@ public class Menu extends JPanel{
 		
 		//Cria Janelas
 		menuPage = new JLabel();
-		menuPage.setSize(WIDTH, HEIGHT);
 		menuPage.setLayout(null);
 		menuPage.setIcon(imgMenu);
 		menuPage.setVisible(false);
 		
 		creditsPage = new JLabel();
 		creditsPage.setOpaque(false);
-		creditsPage.setSize(WIDTH, HEIGHT);
 		creditsPage.setLayout(null);
 		creditsPage.setIcon(imgCredits);
 		creditsPage.setVisible(false);

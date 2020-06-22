@@ -25,7 +25,6 @@ public abstract class Projectile extends JPanel{
 	 */
 	private static final long serialVersionUID = -8344947528531167804L;
 	protected Image img;
-	//private BufferedImage img = new BufferedImage(200, 200,BufferedImage.TYPE_BYTE_INDEXED);;
 	private double[] translation={0.0,0.0};
 	private double[] basePosition = {0,0};
 	private double[] currentPosition;

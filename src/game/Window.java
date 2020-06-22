@@ -22,7 +22,7 @@ public class Window extends JFrame implements ActionListener{
 	private static final long serialVersionUID = -4369730830015653927L;
 	public Window(int width,int height,String title,Game game) {
 		this.game=game;
-		menu = new Menu(width, height, this);
+		menu = new Menu(this);
 		
 		frame=new JFrame(title);
 		frame.setSize(width,height);
@@ -39,7 +39,6 @@ public class Window extends JFrame implements ActionListener{
 	 public void actionPerformed(ActionEvent evento) {
 		 	principal=new JPanel();
 			principal.setOpaque(false);
-			principal.setSize(WIDTH, HEIGHT);
 			principal.setLayout(null);
 			principal.setVisible(true);
 			
@@ -59,8 +58,8 @@ public class Window extends JFrame implements ActionListener{
 	 }
 	 
 	 public void endGame() {
-		    endHome.setVisible(true);
-		    SwingUtilities.updateComponentTreeUI(this);
+		 endHome.setVisible(true);
+		 SwingUtilities.updateComponentTreeUI(this);
 	 }
 	 public void setMenu() {
 		 game.stop();

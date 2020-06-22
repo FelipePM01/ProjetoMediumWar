@@ -87,6 +87,9 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		}
 	}
 	public void clear() {
+		projectiles.clear();
+		inTab[0]=0;
+		inTab[1]=0;
 		for(int i=0;i<10;i++) {
 			for(int j=0;j<10;j++) {
 				if(matriz[i][j].existsPeca()&&matriz[i][j].getPeca().getOrigem().getCard()!=null)matriz[i][j].getPeca().getOrigem().getCard().setNaoColocado(true);
@@ -229,14 +232,22 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		if(cAzul!=false)hideCursor("azul");
 		if(jogador1.obtainCursor()!=-1)jogador1.hideCursor();
 		start1=true;
-		if(start1&&start2)start();
+		if(start1&&start2) {
+			start();
+			start1=false;
+			start2=false;
+		}
 		
 	}
 	public void pressedAspas() {
 		if(cVermelho!=false)hideCursor("vermelho");
 		if(jogador2.obtainCursor()!=-1)jogador2.hideCursor();
 		start2=true;
-		if(start1&&start2)start();
+		if(start1&&start2) {
+			start();
+			start1=false;
+			start2=false;
+		}
 	}
 	public void addProjectiles(Projectile projectile) {
 		projectiles.add(projectile);
@@ -248,22 +259,19 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		return inTab;
 	}
 	public void eliminateInTab(int i) {
+		System.out.println("i: "+i);
 		if(inTab[i]!=0)inTab[i]=inTab[i]-1;
 		if(inTab[i]==0) {
-			if(i==0) {
+			if(i==0){
 				jogador2.addPoint();
-				if(jogador2.getPoints()>0) {
-					game.endGame("vermelho");
-				}
+				if(jogador2.getPoints()>4)game.endGame("vermelho");
+				else game.newRound();
 			}
-			if(i==1) {
+			else if(i==1) {
 				jogador1.addPoint();
-				if(jogador1.getPoints()>0) {
-					
-					game.endGame("azul");
-				}
+				if(jogador1.getPoints()>4)game.endGame("azul");
+				else game.newRound();
 			}
-			//game.newRound();
 		}
 	}
 }

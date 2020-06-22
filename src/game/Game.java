@@ -248,17 +248,10 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 		commands1=true;
 		commands2=true;
 	}
-	public ImageIcon resize(ImageIcon img) {
-		Image auxImg = img.getImage();
-		Image newImg = auxImg.getScaledInstance((int)(img.getIconWidth()*2),(int)(img.getIconHeight()*2),java.awt.Image.SCALE_SMOOTH);
-		ImageIcon imgResize = new ImageIcon(newImg);
-		return imgResize;
-	}
 	public void endGame(String cor) {
 		if(cor=="azul")blueWins=true;
 		else if(cor=="vermelho")redWins=true;
-		window.endGame();
-		//stop();	
+		window.endGame();	
 	}
 	public static void main(String[] args) {
         new Game();
