@@ -35,7 +35,7 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
     public static final int WIDTH = 1920, HEIGHT = 1080;
     private Thread thread;
     private GUI gui;
-	private Image imgEndRed, imgEndBlue;
+	private Image imgEndRed, imgEndBlue, imgEndEmpate;
     private boolean running = false;
     private IBanco banco = null;
     private Tabuleiro tabuleiro= null;
@@ -75,12 +75,16 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 		imgEndBlue=refimgEndBlue.getImage();
 		imgEndBlue=imgEndBlue.getScaledInstance((int)(imgEndBlue.getWidth(null)*gui.getScale()),(int) (imgEndBlue.getHeight(null)*gui.getScale()), Image.SCALE_DEFAULT);
 		
+
+		ImageIcon refimgEmpate=new ImageIcon("assets/empate.png");
+		imgEndEmpate=refimgEmpate.getImage();
+		imgEndEmpate=imgEndEmpate.getScaledInstance((int)(imgEndEmpate.getWidth(null)*gui.getScale()),(int) (imgEndEmpate.getHeight(null)*gui.getScale()), Image.SCALE_DEFAULT);
+		
+		
 		commands1=true;
 	    commands2=true;
 	    redWins=false;
 	    blueWins=false;
-		
-//        addKeyListener(this);
     }
     public synchronized void start(){
         thread = new Thread(this);
@@ -119,8 +123,9 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
         if(banco!=null)banco.paintComponent(g);
         if(jogador1!=null)jogador1.paintComponent(g);
         if(jogador2!=null)jogador2.paintComponent(g);
-        if(redWins)g.drawImage(imgEndRed,((int)(this.getWidth()/2)-(imgEndRed.getWidth(null)/2)), ((int)(this.getHeight()/2)-(imgEndRed.getHeight(null)/2))-250, this);
-        if(blueWins)g.drawImage(imgEndBlue,((int) (this.getWidth()/2)-(imgEndBlue.getWidth(null)/2)),((int) (this.getHeight()/2)-(imgEndBlue.getHeight(null)/2))-250, this);
+        if(redWins&&blueWins)g.drawImage(imgEndEmpate,((int)(this.getWidth()/2)-(imgEndEmpate.getWidth(null)/2)), ((int)(this.getHeight()/2)-(imgEndEmpate.getHeight(null)/2))-250, this);
+        else if(redWins)g.drawImage(imgEndRed,((int)(this.getWidth()/2)-(imgEndRed.getWidth(null)/2)), ((int)(this.getHeight()/2)-(imgEndRed.getHeight(null)/2))-250, this);
+        else if(blueWins)g.drawImage(imgEndBlue,((int) (this.getWidth()/2)-(imgEndBlue.getWidth(null)/2)),((int) (this.getHeight()/2)-(imgEndBlue.getHeight(null)/2))-250, this);
 
         g.dispose();
         bs.show();

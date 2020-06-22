@@ -37,9 +37,6 @@ public class Window extends JFrame implements ActionListener{
 	}
 	
 	 public void actionPerformed(ActionEvent evento) {
-		    menu.setVisible(false);
-		 	frame.remove(menu);
-			
 		 	principal=new JPanel();
 			principal.setOpaque(false);
 			principal.setSize(WIDTH, HEIGHT);
@@ -54,7 +51,8 @@ public class Window extends JFrame implements ActionListener{
 			principal.add(endHome);
 			principal.add(game);
 			
-			frame.add(principal);
+			menu.add(principal,"principal");
+			menu.cardLayout.show(menu,"principal");
 		 	
 		 	game.gameStart();
 		 	game.start(); 	
@@ -66,10 +64,6 @@ public class Window extends JFrame implements ActionListener{
 	 }
 	 public void setMenu() {
 		 game.stop();
-		 frame.remove(principal);
-		 frame.add(menu);
 		 menu.cardLayout.show(menu,"home");
-		 menu.setVisible(true);
-		 menu.setFocusable(true);
 	 }
 }
