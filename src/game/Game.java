@@ -42,15 +42,16 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
     private IJogador jogador1= null;
     private IJogador jogador2= null;
     protected static Window window;
-    private boolean commands1=true;
-    private boolean commands2=true;
-    private boolean redWins=false;
-    private boolean blueWins=false;
+    private boolean commands1;
+    private boolean commands2;
+    private boolean redWins;
+    private boolean blueWins;
 
         
     public Game() {
     	window = new Window(WIDTH, HEIGHT, "MediumWar", this);
     	this.setBounds(0,0,WIDTH,HEIGHT);
+        addKeyListener(this);
     }
     
     public void gameStart(){ 
@@ -74,7 +75,12 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 		imgEndBlue=refimgEndBlue.getImage();
 		imgEndBlue=imgEndBlue.getScaledInstance((int)(imgEndBlue.getWidth(null)*gui.getScale()),(int) (imgEndBlue.getHeight(null)*gui.getScale()), Image.SCALE_DEFAULT);
 		
-        addKeyListener(this);
+		commands1=true;
+	    commands2=true;
+	    redWins=false;
+	    blueWins=false;
+		
+//        addKeyListener(this);
     }
     public synchronized void start(){
         thread = new Thread(this);
