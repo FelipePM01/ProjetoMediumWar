@@ -27,7 +27,6 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	private int[] vet;
 	private double scale=1;
 	private Image tabuleiro;
-	private ImageIcon imgReturn;
 	private int[] startPositionScreen= {280,120};
 	private int[] cursorAzul;
 	private IJogador jogador1=null, jogador2=null;
@@ -37,7 +36,6 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	private IPecaCard azulPeca;
 	private IPecaCard vermelhoPeca;
 	private Game game;
-	private JButton home;
 	boolean start1 = false;
 	boolean start2 = false;
 	private int[] inTab = {0,0};
@@ -57,8 +55,6 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		ImageIcon refTabuleiro=new ImageIcon("assets/tabuleiro.png");
 		tabuleiro=refTabuleiro.getImage();
 		tabuleiro=tabuleiro.getScaledInstance((int)(tabuleiro.getWidth(null)*scale),(int) (tabuleiro.getHeight(null)*scale), Image.SCALE_DEFAULT);
-
-		imgReturn = (new ImageIcon("assets/returnButton.png"));
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -217,7 +213,6 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 			hideCursor("azul");
 			azulPeca=null;
 		}
-		
 	}
 	public void pressedENTER() {
 		if(vermelhoPeca!=null && cVermelho) {
@@ -225,12 +220,10 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 				matriz[cursorVermelho[0]][cursorVermelho[1]].setPeca(vermelhoPeca);
 				matriz[cursorVermelho[0]][cursorVermelho[1]].getPeca().flip();
 				inTab[1]+=1;
-			}
-			
+			}		
 			hideCursor("vermelho");
 			vermelhoPeca=null;
-		}
-		
+		}	
 	}
 	public void pressedQ() {
 		if(cAzul!=false)hideCursor("azul");
@@ -260,23 +253,12 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 			if(i==0) {
 				jogador2.addPoint();
 				if(jogador2.getPoints()>0) {
-					home=new JButton(imgReturn);
-					home.setBounds(0, 0, 432, 144);
-					home.addActionListener(e -> System.out.println("aqui"));
-					home.setVisible(true);
-					this.add(home);
-					
 					game.endGame("vermelho");
 				}
 			}
 			if(i==1) {
 				jogador1.addPoint();
 				if(jogador1.getPoints()>0) {
-					home=new JButton(imgReturn);
-					home.setBounds(120, 900, 432, 144);
-					home.addActionListener(e -> System.out.println("aqui"));
-					home.setVisible(true);
-					this.add(home);
 					
 					game.endGame("azul");
 				}

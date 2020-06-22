@@ -1,10 +1,12 @@
 package game;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -16,7 +18,7 @@ public class Menu extends JPanel{
 	private ImageIcon imgPlay, imgCreditsButton, imgExit, imgReturn, imgMenu, imgCredits;
 	private JButton play, credits, exit, home;
 	private Window window;
-	private JLabel creditsPage, menuPage;
+	private JLabel creditsPage, menuPage, endPageBlue, endPageRed;
 	protected CardLayout cardLayout;
 	
 	public Menu(int WIDTH, int HEIGHT, Window window){
@@ -48,6 +50,7 @@ public class Menu extends JPanel{
 		menuPage.setVisible(false);
 		
 		creditsPage = new JLabel();
+		creditsPage.setOpaque(false);
 		creditsPage.setSize(WIDTH, HEIGHT);
 		creditsPage.setLayout(null);
 		creditsPage.setIcon(imgCredits);

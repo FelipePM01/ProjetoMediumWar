@@ -1,5 +1,6 @@
 package game;
 
+import java.awt.Button;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -35,7 +36,6 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
     private Thread thread;
     private GUI gui;
 	private Image imgEndRed, imgEndBlue;
-	private ImageIcon imgReturn;
     private boolean running = false;
     private IBanco banco = null;
     private Tabuleiro tabuleiro= null;
@@ -46,10 +46,11 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
     private boolean commands2=true;
     private boolean redWins=false;
     private boolean blueWins=false;
-    private JButton home;
+
         
     public Game() {
     	window = new Window(WIDTH, HEIGHT, "MediumWar", this);
+    	this.setBounds(0,0,WIDTH,HEIGHT);
     }
     
     public void gameStart(){ 
@@ -72,8 +73,6 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 		ImageIcon refimgEndBlue=new ImageIcon("assets/vitoriaAzul.png");
 		imgEndBlue=refimgEndBlue.getImage();
 		imgEndBlue=imgEndBlue.getScaledInstance((int)(imgEndBlue.getWidth(null)*gui.getScale()),(int) (imgEndBlue.getHeight(null)*gui.getScale()), Image.SCALE_DEFAULT);
-		
-		imgReturn = resize(new ImageIcon("assets/returnButton.png"));
 		
         addKeyListener(this);
     }
@@ -210,7 +209,6 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 				jogador2.pressedENTER();
 			}
 			break;
-		
 		case KeyEvent.VK_Q:
 			commands1=false;
 			if(banco.obtainCursor("azul")!=-1)banco.hideCursor(1);
@@ -248,19 +246,10 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 	public void endGame(String cor) {
 		if(cor=="azul")blueWins=true;
 		else if(cor=="vermelho")redWins=true;
-		
-//		JPanel teste = new JPanel();
-//		JButton home=new JButton(imgReturn);
-//		home.setBounds(0, 0, 432, 144);
-//		home.addActionListener(e -> window.menu.cardLayout.show(window, "home"));
-//		home.setVisible(true);
-//		teste.add(home);
-//		teste.setVisible(true);
-
+		window.endGame();
 		//stop();	
-		System.out.println("endGame");
 	}
 	public static void main(String[] args) {
-        new Game();  
+        new Game();
     }
 }
