@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -26,6 +27,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	private int[] vet;
 	private double scale=1;
 	private Image tabuleiro;
+	private ImageIcon imgReturn;
 	private int[] startPositionScreen= {280,120};
 	private int[] cursorAzul;
 	private IJogador jogador1=null, jogador2=null;
@@ -35,6 +37,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	private IPecaCard azulPeca;
 	private IPecaCard vermelhoPeca;
 	private Game game;
+	private JButton home;
 	boolean start1 = false;
 	boolean start2 = false;
 	private int[] inTab = {0,0};
@@ -55,6 +58,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		tabuleiro=refTabuleiro.getImage();
 		tabuleiro=tabuleiro.getScaledInstance((int)(tabuleiro.getWidth(null)*scale),(int) (tabuleiro.getHeight(null)*scale), Image.SCALE_DEFAULT);
 
+		imgReturn = (new ImageIcon("assets/returnButton.png"));
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -255,11 +259,27 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		if(inTab[i]==0) {
 			if(i==0) {
 				jogador2.addPoint();
-				if(jogador2.getPoints()>0)game.endGame("azul");
+				if(jogador2.getPoints()>0) {
+					home=new JButton(imgReturn);
+					home.setBounds(0, 0, 432, 144);
+					home.addActionListener(e -> System.out.println("aqui"));
+					home.setVisible(true);
+					this.add(home);
+					
+					game.endGame("vermelho");
+				}
 			}
 			if(i==1) {
 				jogador1.addPoint();
-				if(jogador1.getPoints()>0)game.endGame("vermelho");
+				if(jogador1.getPoints()>0) {
+					home=new JButton(imgReturn);
+					home.setBounds(120, 900, 432, 144);
+					home.addActionListener(e -> System.out.println("aqui"));
+					home.setVisible(true);
+					this.add(home);
+					
+					game.endGame("azul");
+				}
 			}
 			//game.newRound();
 		}

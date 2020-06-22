@@ -11,6 +11,7 @@ import java.awt.image.BufferStrategy;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import Jogador.IJogador;
 import Jogador.IJogadorGame;
@@ -33,15 +34,19 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
     public static final int WIDTH = 1920, HEIGHT = 1080;
     private Thread thread;
     private GUI gui;
-	private Image imgEndRed, imgEndBlue,imgReturn;;
+	private Image imgEndRed, imgEndBlue;
+	private ImageIcon imgReturn;
     private boolean running = false;
     private IBanco banco = null;
-    private ITabuleiro tabuleiro= null;
+    private Tabuleiro tabuleiro= null;
     private IJogador jogador1= null;
     private IJogador jogador2= null;
-    private static Window window;
+    protected static Window window;
     private boolean commands1=true;
     private boolean commands2=true;
+    private boolean redWins=false;
+    private boolean blueWins=false;
+    private JButton home;
         
     public Game() {
     	window = new Window(WIDTH, HEIGHT, "MediumWar", this);
@@ -51,6 +56,7 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
     	gui=new GUI();
         banco=new Banco(getScale());
         tabuleiro=new Tabuleiro(this);
+        window.add(tabuleiro);
         Peca.tabuleiro=(Tabuleiro) tabuleiro;
         jogador1=new Jogador(this,1,tabuleiro,banco);
         jogador2=new Jogador(this,2,tabuleiro,banco);
@@ -59,13 +65,15 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
         tabuleiro.setJogador(jogador1);
         tabuleiro.setJogador(jogador2);
         
-        ImageIcon refimgEndRed=new ImageIcon("assets/tabuleiro.png");
+        ImageIcon refimgEndRed=new ImageIcon("assets/vitoriaVermelho.png");
 		imgEndRed=refimgEndRed.getImage();
 		imgEndRed=imgEndRed.getScaledInstance((int)(imgEndRed.getWidth(null)*gui.getScale()),(int) (imgEndRed.getHeight(null)*gui.getScale()), Image.SCALE_DEFAULT);
 		
-		ImageIcon refimgEndBlue=new ImageIcon("assets/tabuleiro.png");
+		ImageIcon refimgEndBlue=new ImageIcon("assets/vitoriaAzul.png");
 		imgEndBlue=refimgEndBlue.getImage();
 		imgEndBlue=imgEndBlue.getScaledInstance((int)(imgEndBlue.getWidth(null)*gui.getScale()),(int) (imgEndBlue.getHeight(null)*gui.getScale()), Image.SCALE_DEFAULT);
+		
+		imgReturn = resize(new ImageIcon("assets/returnButton.png"));
 		
         addKeyListener(this);
     }
@@ -100,15 +108,15 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
             return;
         }
         Graphics g = bs.getDrawGraphics();
-
-        if(jogador1.getPoints()>0)g.drawImage(imgEndRed, 1920-(imgEndRed.getWidth(null)/2), 1080-(imgEndRed.getHeight(null)/2), this);
-        if(jogador2.getPoints()>0)g.drawImage(imgEndBlue, 1920-(imgEndBlue.getWidth(null)/2), 1080-(imgEndBlue.getHeight(null)/2), this);
+        
         if(gui!=null)gui.paintComponent(g);
         if(tabuleiro!=null)tabuleiro.paintComponent(g);
         if(banco!=null)banco.paintComponent(g);
         if(jogador1!=null)jogador1.paintComponent(g);
         if(jogador2!=null)jogador2.paintComponent(g);
-        
+        if(redWins)g.drawImage(imgEndRed,((int)(this.getWidth()/2)-(imgEndRed.getWidth(null)/2)), ((int)(this.getHeight()/2)-(imgEndRed.getHeight(null)/2))-250, this);
+        if(blueWins)g.drawImage(imgEndBlue,((int) (this.getWidth()/2)-(imgEndBlue.getWidth(null)/2)),((int) (this.getHeight()/2)-(imgEndBlue.getHeight(null)/2))-250, this);
+
         g.dispose();
         bs.show();
     }
@@ -238,8 +246,18 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 		return imgResize;
 	}
 	public void endGame(String cor) {
-		//stop();
-		//window.endGame(cor);	
+		if(cor=="azul")blueWins=true;
+		else if(cor=="vermelho")redWins=true;
+		
+//		JPanel teste = new JPanel();
+//		JButton home=new JButton(imgReturn);
+//		home.setBounds(0, 0, 432, 144);
+//		home.addActionListener(e -> window.menu.cardLayout.show(window, "home"));
+//		home.setVisible(true);
+//		teste.add(home);
+//		teste.setVisible(true);
+
+		//stop();	
 		System.out.println("endGame");
 	}
 	public static void main(String[] args) {
