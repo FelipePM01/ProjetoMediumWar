@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Jogador.IJogador;
@@ -53,6 +54,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		ImageIcon refTabuleiro=new ImageIcon("assets/tabuleiro.png");
 		tabuleiro=refTabuleiro.getImage();
 		tabuleiro=tabuleiro.getScaledInstance((int)(tabuleiro.getWidth(null)*scale),(int) (tabuleiro.getHeight(null)*scale), Image.SCALE_DEFAULT);
+
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -78,11 +80,9 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		}
 	}
 	public void start() {
-		if(jogador1.getPoints()<5&&jogador2.getPoints()<5) {
-			for(int i=0;i<10;i++) {
-				for(int j=0;j<10;j++) {
-					matriz[i][j].actionPeca();
-				}
+		for(int i=0;i<10;i++) {
+			for(int j=0;j<10;j++) {
+				matriz[i][j].actionPeca();
 			}
 		}
 	}
@@ -253,9 +253,15 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	public void eliminateInTab(int i) {
 		if(inTab[i]!=0)inTab[i]=inTab[i]-1;
 		if(inTab[i]==0) {
-			if(i==0)jogador2.addPoint();
-			if(i==1)jogador1.addPoint();
-			game.newRound();
+			if(i==0) {
+				jogador2.addPoint();
+				if(jogador2.getPoints()>0)game.endGame("azul");
+			}
+			if(i==1) {
+				jogador1.addPoint();
+				if(jogador1.getPoints()>0)game.endGame("vermelho");
+			}
+			//game.newRound();
 		}
 	}
 }

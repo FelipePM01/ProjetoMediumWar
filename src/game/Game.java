@@ -3,9 +3,14 @@ package game;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 import Jogador.IJogador;
 import Jogador.IJogadorGame;
@@ -28,16 +33,18 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
     public static final int WIDTH = 1920, HEIGHT = 1080;
     private Thread thread;
     private GUI gui;
+	private Image imgEndRed, imgEndBlue,imgReturn;;
     private boolean running = false;
     private IBanco banco = null;
     private ITabuleiro tabuleiro= null;
     private IJogador jogador1= null;
     private IJogador jogador2= null;
+    private static Window window;
     private boolean commands1=true;
     private boolean commands2=true;
         
     public Game() {
-    	 new Window(WIDTH, HEIGHT, "MediumWar", this);
+    	window = new Window(WIDTH, HEIGHT, "MediumWar", this);
     }
     
     public void gameStart(){ 
@@ -51,6 +58,15 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
         banco.setJogador(jogador2);
         tabuleiro.setJogador(jogador1);
         tabuleiro.setJogador(jogador2);
+        
+        ImageIcon refimgEndRed=new ImageIcon("assets/tabuleiro.png");
+		imgEndRed=refimgEndRed.getImage();
+		imgEndRed=imgEndRed.getScaledInstance((int)(imgEndRed.getWidth(null)*gui.getScale()),(int) (imgEndRed.getHeight(null)*gui.getScale()), Image.SCALE_DEFAULT);
+		
+		ImageIcon refimgEndBlue=new ImageIcon("assets/tabuleiro.png");
+		imgEndBlue=refimgEndBlue.getImage();
+		imgEndBlue=imgEndBlue.getScaledInstance((int)(imgEndBlue.getWidth(null)*gui.getScale()),(int) (imgEndBlue.getHeight(null)*gui.getScale()), Image.SCALE_DEFAULT);
+		
         addKeyListener(this);
     }
     public synchronized void start(){
@@ -61,7 +77,7 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
     }
     public synchronized void stop() {
         try{
-            thread.join();
+            //thread.join();
             running = false;
         }
         catch(Exception e){
@@ -85,7 +101,8 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
         }
         Graphics g = bs.getDrawGraphics();
 
-        
+        if(jogador1.getPoints()>0)g.drawImage(imgEndRed, 1920-(imgEndRed.getWidth(null)/2), 1080-(imgEndRed.getHeight(null)/2), this);
+        if(jogador2.getPoints()>0)g.drawImage(imgEndBlue, 1920-(imgEndBlue.getWidth(null)/2), 1080-(imgEndBlue.getHeight(null)/2), this);
         if(gui!=null)gui.paintComponent(g);
         if(tabuleiro!=null)tabuleiro.paintComponent(g);
         if(banco!=null)banco.paintComponent(g);
@@ -214,7 +231,18 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 		commands1=true;
 		commands2=true;
 	}
+	public ImageIcon resize(ImageIcon img) {
+		Image auxImg = img.getImage();
+		Image newImg = auxImg.getScaledInstance((int)(img.getIconWidth()*2),(int)(img.getIconHeight()*2),java.awt.Image.SCALE_SMOOTH);
+		ImageIcon imgResize = new ImageIcon(newImg);
+		return imgResize;
+	}
+	public void endGame(String cor) {
+		//stop();
+		//window.endGame(cor);	
+		System.out.println("endGame");
+	}
 	public static void main(String[] args) {
-        new Game();
+        new Game();  
     }
 }

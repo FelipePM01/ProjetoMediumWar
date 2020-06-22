@@ -17,7 +17,7 @@ public class Menu extends JPanel{
 	private JButton play, credits, exit, home;
 	private Window window;
 	private JLabel creditsPage, menuPage;
-	private CardLayout cardLayout;
+	protected CardLayout cardLayout;
 	
 	public Menu(int WIDTH, int HEIGHT, Window window){
 		this.window = window;
@@ -29,7 +29,6 @@ public class Menu extends JPanel{
 		this.add(menuPage, "home");
 		this.add(creditsPage, "credits");
 	    
-	    
 		setVisible(true);
 	}
 	public void setMenu(int WIDTH, int HEIGHT) {
@@ -40,13 +39,13 @@ public class Menu extends JPanel{
 		imgReturn = resize(new ImageIcon("assets/returnButton.png"));
 		imgMenu = resize(new ImageIcon("assets/menuBackground.png"));
 		imgCredits = resize(new ImageIcon("assets/creditsBackground.png"));
-				
+		
 		//Cria Janelas
 		menuPage = new JLabel();
 		menuPage.setSize(WIDTH, HEIGHT);
 		menuPage.setLayout(null);
 		menuPage.setIcon(imgMenu);
-		menuPage.setVisible(true);
+		menuPage.setVisible(false);
 		
 		creditsPage = new JLabel();
 		creditsPage.setSize(WIDTH, HEIGHT);
@@ -56,7 +55,7 @@ public class Menu extends JPanel{
 		
 		//Cria Botoes
 		play=new JButton(imgPlay);
-		play.setBounds(1400, 400, 432, 144); //216*2, 72*2
+		play.setBounds(1400, 400, 432, 144);
 		play.addActionListener(window);
 		menuPage.add(play);
 		
