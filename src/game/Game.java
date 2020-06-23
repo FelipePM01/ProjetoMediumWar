@@ -238,10 +238,16 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 	}
-	public void newRound() {
+	public void newRound(String cor) {
 		tabuleiro.clear();
-		jogador1.addCash(3);
-		jogador2.addCash(3);
+		if(cor=="azul") {
+			jogador1.addCash(1);
+			jogador2.addCash(3);
+		}
+		else if(cor=="vermelho") {
+			jogador1.addCash(3);
+			jogador2.addCash(1);
+		}
 		banco.refresh();
 		commands1=true;
 		commands2=true;
