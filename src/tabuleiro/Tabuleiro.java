@@ -259,18 +259,18 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		return inTab;
 	}
 	public void eliminateInTab(int i) {
-		System.out.println("i: "+i);
+		
 		if(inTab[i]!=0)inTab[i]=inTab[i]-1;
 		if(inTab[i]==0) {
 			if(i==0){
 				jogador2.addPoint();
 				if(jogador2.getPoints()>4)game.endGame("vermelho");
-				else game.newRound();
+				else game.newRound("vermelho");
 			}
 			else if(i==1) {
 				jogador1.addPoint();
 				if(jogador1.getPoints()>4)game.endGame("azul");
-				else game.newRound();
+				else game.newRound("azul");
 			}
 		}
 	}
