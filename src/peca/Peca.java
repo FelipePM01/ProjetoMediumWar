@@ -252,8 +252,16 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		}
 		if(dist<=alcance&&dist!=100) {
 			currentAction="attacking";
+			
 			moveTarget=null;
-			if(alvo!=null)attackTarget=alvo.getPeca();
+			
+			if(alvo!=null) {
+				attackTarget=alvo.getPeca();
+				if(alvo.getPosition()[0]>tile.getPosition()[0]&&flipped)flipped=false;
+				if(alvo.getPosition()[0]<tile.getPosition()[0]&&!flipped)flipped=true;
+				
+			}
+			
 			currentAnimation=animationFramesAttack;
 			currentFrame=0;
 		}
@@ -338,7 +346,13 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 				
 			}
 			else {
-				pronto=true;
+				boolean jaTestado=false;
+				for(int i=0;i<tried.size();i++) {
+					
+					if(Arrays.equals(tried.get(i),direction))jaTestado=true;
+					
+				}
+				if(!jaTestado)pronto=true;
 			}
 			if(!pronto) {
 				
@@ -367,7 +381,13 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 					}
 				}
 				else {
-					pronto=true;
+					boolean jaTestado=false;
+					for(int i=0;i<tried.size();i++) {
+						
+						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
+						
+					}
+					if(!jaTestado)pronto=true;
 				}
 			}
 			if(!pronto) {
@@ -397,7 +417,13 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 					}
 				}
 				else {
-					pronto=true;
+					boolean jaTestado=false;
+					for(int i=0;i<tried.size();i++) {
+						
+						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
+						
+					}
+					if(!jaTestado)pronto=true;
 				}
 			}
 			if(!pronto) {
@@ -428,7 +454,13 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 					
 				}
 				else {
-					pronto=true;
+					boolean jaTestado=false;
+					for(int i=0;i<tried.size();i++) {
+						
+						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
+						
+					}
+					if(!jaTestado)pronto=true;
 				}
 			}
 		}
@@ -462,7 +494,13 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 				
 			}
 			else {
-				pronto=true;
+				boolean jaTestado=false;
+				for(int i=0;i<tried.size();i++) {
+					
+					if(Arrays.equals(tried.get(i),direction))jaTestado=true;
+					
+				}
+				if(!jaTestado)pronto=true;
 			}
 			if(!pronto) {
 				
@@ -491,7 +529,13 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 					}
 				}
 				else {
-					pronto=true;
+					boolean jaTestado=false;
+					for(int i=0;i<tried.size();i++) {
+						
+						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
+						
+					}
+					if(!jaTestado)pronto=true;
 				}
 			}
 			if(!pronto) {
@@ -521,7 +565,13 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 					}
 				}
 				else {
-					pronto=true;
+					boolean jaTestado=false;
+					for(int i=0;i<tried.size();i++) {
+						
+						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
+						
+					}
+					if(!jaTestado)pronto=true;
 				}
 			}
 			if(!pronto) {
@@ -551,11 +601,17 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 					}
 				}
 				else {
-					pronto=true;
+					boolean jaTestado=false;
+					for(int i=0;i<tried.size();i++) {
+						
+						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
+						
+					}
+					if(!jaTestado)pronto=true;
 				}
 			}
 		}
-		
+		if(pronto==false)throw new MovimentoInvalido();
 		return direction;
 	}
 	
@@ -570,6 +626,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 			if(cor=="vermelho")tabuleiro.eliminateInTab(1);
 			origem.getCard().setNaoColocado(true);
 			tile.clearTile();
+			tile=null;
 			inBoard=false;
 		}
 		else if(!morto) {
@@ -587,11 +644,16 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 			origem.getCard().setNaoColocado(true);
 			tile.clearTile();
 			inBoard=false;
+			tile=null;
 		}
 		else if(!morto&&life!=0) {
 			barraDeVida.atualizar(life/maxLife);
 		}
-		if(currentAction=="moving")moveOrAttack();
+		if(currentAction=="moving") {
+			if(moveTarget!=null)moveTarget.setMarcado();
+			moveOrAttack();
+			
+		}
 	}
 	
 	public void recompensar(int giftValue) {
