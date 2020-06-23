@@ -27,7 +27,7 @@ public class Jogador extends JPanel implements IJogador{
 	private static final long serialVersionUID = 3795017485437177600L;
 	private ICardJogador[] mao=new CardJogador[8];
 	private Image imgTrophy;
-	private static Image imgmao,imgCoin,imgInfo;
+	private static Image imgmao,imgCoin;
 	private double scale=1;
 	private int positionX;
 	private int positionY;
@@ -78,10 +78,11 @@ public class Jogador extends JPanel implements IJogador{
     	ImageIcon refTrophy=new ImageIcon("assets/trophy.png");
  		imgTrophy=refTrophy.getImage();
      	imgTrophy=imgTrophy.getScaledInstance((int)(1.6*scale*imgTrophy.getWidth(null)), (int)(1.5*scale*imgTrophy.getHeight(null)), Image.SCALE_DEFAULT);    	
-     
-     	ImageIcon refStats=new ImageIcon("assets/stats.png");
- 		imgInfo=refStats.getImage();
-     	imgInfo=imgInfo.getScaledInstance((int)(5*scale*imgInfo.getWidth(null)), (int)(3.5*scale*imgInfo.getHeight(null)), Image.SCALE_DEFAULT);    	
+//     
+//     	ImageIcon refStats=new ImageIcon("assets/stats.png");
+// 		imgInfo=refStats.getImage();
+//     	imgInfo=imgInfo.getScaledInstance((int)(5*scale*imgInfo.getWidth(null)), (int)(3.5*scale*imgInfo.getHeight(null)), Image.SCALE_DEFAULT);    	
+//	
 	}
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
@@ -102,8 +103,8 @@ public class Jogador extends JPanel implements IJogador{
 		}
 		
 		if(currentAction=="info"&&cursor!=-1&&mao[cursor].getPeca()!=null) {
-			if(cor=="azul")g.drawImage(imgInfo,50,100,null);
-			if(cor=="vermelho")g.drawImage(imgInfo,1380,100,null);
+//			if(cor=="azul")g.drawImage(imgInfo,50,100,null);
+//			if(cor=="vermelho")g.drawImage(imgInfo,1380,100,null);
 			mao[cursor].getPeca().printFeature(g, cor);
 		}
 		
@@ -214,7 +215,7 @@ public class Jogador extends JPanel implements IJogador{
 	}
 	public void pressedZ() {
 		if(cursor!=-1)hideCursor();
-		if(banco.getCursor(1)!=-1)banco.hideCursor(1);
+		if(banco.obtainCursor(cor)!=-1)banco.hideCursor(1);
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
 		setCursor();
 		currentAction="remove";
@@ -222,27 +223,27 @@ public class Jogador extends JPanel implements IJogador{
 	public void pressedX() {
 		if(cursor!=-1)hideCursor();
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
-		if(banco.getCursor(1)!=-1)banco.hideCursor(1);
+		if(banco.obtainCursor(cor)!=-1)banco.hideCursor(1);
 		setCursor();
 		currentAction="position";
 	}
 	public void pressedPONTO() {
 		if(cursor!=-1)hideCursor();
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
-		if(banco.getCursor(2)!=-1)banco.hideCursor(2);
+		if(banco.obtainCursor(cor)!=-1)banco.hideCursor(2);
 		setCursor();
 		currentAction="position";
 	}
 	public void pressedBARRA() {
 		if(cursor!=-1)hideCursor();
-		if(banco.getCursor(2)!=-1)banco.hideCursor(2);
+		if(banco.obtainCursor(cor)!=-1)banco.hideCursor(2);
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
 		setCursor();
 		currentAction="remove";
 	}
 	public void pressedDoisPontos() {
 		if(cursor!=-1)hideCursor();
-		if(banco.getCursor(2)!=-1)banco.hideCursor(2);
+		if(banco.obtainCursor(cor)!=-1)banco.hideCursor(2);
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
 		setCursor();
 		if(currentAction!="info")currentAction="info";
@@ -253,7 +254,7 @@ public class Jogador extends JPanel implements IJogador{
 	}
 	public void pressedE() {
 		if(cursor!=-1)hideCursor();
-		if(banco.getCursor(1)!=-1)banco.hideCursor(1);
+		if(banco.obtainCursor(cor)!=-1)banco.hideCursor(1);
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
 		setCursor();
 		if(currentAction!="info")currentAction="info";

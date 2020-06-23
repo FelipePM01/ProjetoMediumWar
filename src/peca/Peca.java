@@ -27,6 +27,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	 */
 	private static final long serialVersionUID = 3059669044498752498L;
 	public static Tabuleiro tabuleiro;
+	public static Image imgInfo;
 	protected Image[] animationFramesMove;
 	protected Image[] animationFramesAttack;
 	protected ITilePeca tile=null; 
@@ -81,6 +82,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		start[1]=(int)(basePosition[1]+scale*correction[1]+scale*translation[1]);
 		
 		barraDeVida=new BarraDeVida(start,scale,cor);
+		
 		
 	}
 	public Peca(IPeca peca,ICardBanco card) {
@@ -155,6 +157,10 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		this.purchaseValue=peca.getPurchaseValue();
 		this.saleValue=peca.getSaleValue();
 		this.giftValue=peca.getGiftValue();
+		
+		ImageIcon refStats=new ImageIcon("assets/stats.png");
+ 		imgInfo=refStats.getImage();
+     	imgInfo=imgInfo.getScaledInstance((int)(5*scale*imgInfo.getWidth(null)), (int)(3.5*scale*imgInfo.getHeight(null)), Image.SCALE_DEFAULT);    	
 	
 		ActionListener taskPerformer = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -675,6 +681,8 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 		Font font = new Font("Arial",1, 50);
 		g.setFont(font);
 		if(cor=="azul") {
+			g.drawImage(imgInfo,50,100,null);
+			
 			g.drawString(toString()/*+" level "+String.valueOf(level)*/,70,150);
 			g.setFont(font.deriveFont(40));
 			g.drawString("Life: "+String.valueOf(life),70,200);
@@ -686,6 +694,8 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 			g.drawString("Sale Value: "+String.valueOf(saleValue),70,440);
 		}
 		if(cor=="vermelho") {
+			g.drawImage(imgInfo,1380,100,null);
+			
 			g.drawString(toString()/*+" level "+String.valueOf(level)*/,1400,150);
 			g.setFont(font.deriveFont(40));
 			g.drawString("Life: "+String.valueOf(life),1400,200);
