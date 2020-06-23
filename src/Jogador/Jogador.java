@@ -26,7 +26,8 @@ public class Jogador extends JPanel implements IJogador{
 	
 	private static final long serialVersionUID = 3795017485437177600L;
 	private ICardJogador[] mao=new CardJogador[8];
-	private Image imgmao, imgCoin, imgTrophy;
+	private Image imgTrophy;
+	private static Image imgmao,imgCoin,imgInfo;
 	private double scale=1;
 	private int positionX;
 	private int positionY;
@@ -78,13 +79,15 @@ public class Jogador extends JPanel implements IJogador{
  		imgTrophy=refTrophy.getImage();
      	imgTrophy=imgTrophy.getScaledInstance((int)(1.6*scale*imgTrophy.getWidth(null)), (int)(1.5*scale*imgTrophy.getHeight(null)), Image.SCALE_DEFAULT);    	
      
+     	ImageIcon refStats=new ImageIcon("assets/stats.png");
+ 		imgInfo=refStats.getImage();
+     	imgInfo=imgInfo.getScaledInstance((int)(5*scale*imgInfo.getWidth(null)), (int)(3.5*scale*imgInfo.getHeight(null)), Image.SCALE_DEFAULT);    	
 	}
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		
 		if(imgCoin!=null)g.drawImage(imgCoin,10,10,this);	
 		if(imgCoin!=null)g.drawImage(imgCoin,1920-10-imgCoin.getWidth(null),10,this);
-		
 		
 		g.setFont(new Font("Arial",1, 55));
 		if(cor=="azul") {
@@ -96,6 +99,12 @@ public class Jogador extends JPanel implements IJogador{
 			g.drawString(String.valueOf(cash),(int)(1920-(g.getFontMetrics().stringWidth(String.valueOf(cash))+imgCoin.getWidth(null)+15)),imgCoin.getHeight(null)+6);
 			for(int i=1;i<=points;i++)
 				 g.drawImage(imgTrophy,1920-i*(5+imgTrophy.getWidth(null)),20+imgCoin.getHeight(null),this);
+		}
+		
+		if(currentAction=="info"&&cursor!=-1&&mao[cursor].getPeca()!=null) {
+			if(cor=="azul")g.drawImage(imgInfo,50,100,null);
+			if(cor=="vermelho")g.drawImage(imgInfo,1380,100,null);
+			mao[cursor].getPeca().printFeature(g, cor);
 		}
 		
 		int newX = positionX+4+(mao[0].getWidth()/2);
@@ -231,6 +240,28 @@ public class Jogador extends JPanel implements IJogador{
 		setCursor();
 		currentAction="remove";
 	}
+	public void pressedDoisPontos() {
+		if(cursor!=-1)hideCursor();
+		if(banco.getCursor(2)!=-1)banco.hideCursor(2);
+		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
+		setCursor();
+		if(currentAction!="info")currentAction="info";
+		else {
+			currentAction=null;
+			hideCursor();
+		}
+	}
+	public void pressedE() {
+		if(cursor!=-1)hideCursor();
+		if(banco.getCursor(1)!=-1)banco.hideCursor(1);
+		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
+		setCursor();
+		if(currentAction!="info")currentAction="info";
+		else {
+			currentAction=null;
+			hideCursor();
+		}
+	}
 	public void pressedSPACE() {
 		if(currentAction=="remove") {
 			
@@ -242,6 +273,10 @@ public class Jogador extends JPanel implements IJogador{
 			
 			position();
 		}
+		else if(currentAction=="info") {
+			hideCursor();
+			currentAction=null;
+		}
 	}
 	public void pressedENTER() {
 		if(currentAction=="remove") {
@@ -252,6 +287,10 @@ public class Jogador extends JPanel implements IJogador{
 		else if(currentAction=="position") {
 			position();
 			//currentAction=null;
+		}
+		else if(currentAction=="info") {
+			hideCursor();
+			currentAction=null;
 		}
 	}
 	

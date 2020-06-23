@@ -36,7 +36,9 @@ public class Wizard extends Ranged {
 		projectileCorrection[0]=18;
 		projectileCorrection[1]=14;
 	}
-	
+	public String toString(){
+		return "Wizard ";
+	}
 	
 	public void setup(int x) {
 		animationFramesMove = new Image[3];

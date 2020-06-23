@@ -39,8 +39,9 @@ public class Archer extends Ranged{
 		projectileCorrection[0]=22;
 		projectileCorrection[1]=16;
 	}
-	
-	
+	public String toString(){
+		return "Archer ";
+	}
 	public void setup(int x) {
 		animationFramesMove = new Image[3];
 		animationFramesAttack = new Image[6];
@@ -71,8 +72,4 @@ public class Archer extends Ranged{
 	public Projectile create(double scale,double[] posicao,IPecaTile target,double dano,IPecaCardJogador origem) {
 		return new Arrow(scale,posicao,target,dano,tabuleiro,origem);
 	}
-	
-	
-	
-	
 }
