@@ -8,11 +8,12 @@ public interface IBanco extends IBancoGame,IBancoCard,IBancoJogador {
 	public int obtainCursor(String cor);
 	public void hideCursor(int i);
 
-	public void pressedLEFT() ;
-	public void pressedRIGHT() ;
+	public void pressedLEFT();
+	public void pressedRIGHT();
 	public void pressedA();
-	public void pressedD() ;
-	public void pressedSPACE() ;
-	public void pressedENTER() ;
-
+	public void pressedD();
+	public void pressedSPACE();
+	public void pressedENTER();
+	public void pressedE();
+	public void pressedDoisPontos();
 }

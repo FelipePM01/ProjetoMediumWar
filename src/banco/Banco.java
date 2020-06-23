@@ -32,6 +32,8 @@ public class Banco extends JPanel implements IBanco{
 	protected int cursor1=-1;
 	protected int cursor2=-1;
 	private IJogadorBanco jogador1,jogador2;
+	private String[] currentAction=new String[2];
+
 	
 	public Banco(double scale){
 		this.scale=scale;
@@ -62,6 +64,9 @@ public class Banco extends JPanel implements IBanco{
         	pecasDisponiveis[i].paintComponent(g, newX, newY);
         	newX = newX+pecasDisponiveis[i].getWidth();
         }
+        
+        if(currentAction[0]=="info"&&cursor1!=-1)pecasDisponiveis[cursor1].getPeca().printFeature(g,"azul");
+        else if(currentAction[1]=="info"&&cursor2!=-1)pecasDisponiveis[cursor2].getPeca().printFeature(g,"vermelho");
 	}
 	public void refresh() {
 		for(int i=0;i<3;i++) {
@@ -177,6 +182,14 @@ public class Banco extends JPanel implements IBanco{
 			}
 		}
 	}
+	public void pressedE() {
+		if(cursor1!=-1&&currentAction[0]!="info")currentAction[0]="info";
+		else if(cursor1!=-1)currentAction[0]=null;
+	}
+	public void pressedDoisPontos() {
+		if(cursor2!=-1&&currentAction[1]!="info")currentAction[1]="info";
+		else if(cursor2!=-1)currentAction[1]=null;
+	}
 	public void pressedSPACE() {
 		if(cursor1!=-1) {
 			if(jogador1.getCash()>=pecasDisponiveis[cursor1].getPeca().getPurchaseValue()) {
@@ -185,6 +198,7 @@ public class Banco extends JPanel implements IBanco{
 			}
 			hideCursor(1);
 		}
+		currentAction[0]=null;
 	}
 	public void pressedENTER() {
 		if(cursor2!=-1) {
@@ -194,6 +208,7 @@ public class Banco extends JPanel implements IBanco{
 			}			
 			hideCursor(2);
 		}
+		currentAction[1]=null;
 	}	
 	public int obtainCursor(String cor){
 		if(cor=="azul")return cursor1;

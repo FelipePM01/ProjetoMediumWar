@@ -149,7 +149,6 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 			}
             break;
 		case KeyEvent.VK_S:
-			
 			if(commands1)tabuleiro.pressedS();
 			break;
 		case KeyEvent.VK_D:
@@ -160,11 +159,9 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 			}
 		     break;
 		case KeyEvent.VK_DOWN:
-			
 			if(commands2)tabuleiro.pressedDOWN();
             break;
 		case KeyEvent.VK_UP:
-			
 			if(commands2)tabuleiro.pressedUP();
             break;
 		case KeyEvent.VK_RIGHT:
@@ -181,38 +178,31 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 				banco.pressedLEFT();
 				}
 			break;
-
 		case KeyEvent.VK_SLASH:
 			if(commands2)jogador2.pressedBARRA();
-			
 			break;
 		case KeyEvent.VK_PERIOD:
 			if(commands2)jogador2.pressedPONTO();
-			
 			break;
 		case KeyEvent.VK_COMMA:
 			if(commands2)jogador2.pressedVIRGULA();
-			
 			break;
 		case KeyEvent.VK_SEMICOLON:
-			if(commands2)jogador2.pressedDoisPontos();
-			
+			if(commands2&&banco.obtainCursor("vermelho")!=-1)banco.pressedDoisPontos();
+			else if(commands2)jogador2.pressedDoisPontos();
 			break;
 		case KeyEvent.VK_C:
 			if(commands1)jogador1.pressedC();
-			
 			break;
 		case KeyEvent.VK_X:
 			if(commands1)jogador1.pressedX();
-			
 			break;
 		case KeyEvent.VK_Z:
 			if(commands1)jogador1.pressedZ();
-			
 			break;
 		case KeyEvent.VK_E:
-			if(commands1)jogador1.pressedE();
-			
+			if(commands1&&banco.obtainCursor("azul")!=-1)banco.pressedE();
+			else if(commands1)jogador1.pressedE();
 			break;
 		case KeyEvent.VK_SPACE:
 			if(commands1) {

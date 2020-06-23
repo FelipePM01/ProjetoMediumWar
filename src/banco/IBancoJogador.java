@@ -11,4 +11,5 @@ public interface IBancoJogador {
 	
 	public void hideCursor(int i);
 
+	public int obtainCursor(String cor);
 }
