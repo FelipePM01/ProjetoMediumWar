@@ -42,7 +42,7 @@ public class BarraDeVida extends JPanel{
 			sizeConteudo=imgConteudo.getWidth(null);
 			setted=true;
 		}
-		if(perCent>0&&sizeConteudo>0&&imgConteudo.getHeight(null)>0)imgConteudo=imgConteudo.getScaledInstance((int)(perCent*sizeConteudo),imgConteudo.getHeight(null),Image.SCALE_DEFAULT);
+		if((int)(perCent*sizeConteudo)>0&&imgConteudo.getHeight(null)>0)imgConteudo=imgConteudo.getScaledInstance((int)(perCent*sizeConteudo),imgConteudo.getHeight(null),Image.SCALE_DEFAULT);
 	}
 	
 	
