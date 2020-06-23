@@ -289,6 +289,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 					esperando=true;
 					tried=new ArrayList<int[]>();
 					if(lastPosition!=null)tried.add(lastPosition);
+					
 				}
 				
 			}
