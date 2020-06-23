@@ -632,7 +632,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 			if(cor=="vermelho")tabuleiro.eliminateInTab(1);
 			origem.getCard().setNaoColocado(true);
 			tile.clearTile();
-			tile=null;
+			
 			inBoard=false;
 		}
 		else if(!morto) {
@@ -650,7 +650,7 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 			origem.getCard().setNaoColocado(true);
 			tile.clearTile();
 			inBoard=false;
-			tile=null;
+			
 		}
 		else if(!morto&&life!=0) {
 			barraDeVida.atualizar(life/maxLife);

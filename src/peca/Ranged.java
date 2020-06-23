@@ -33,10 +33,10 @@ public abstract class Ranged extends Peca {
 	protected void attack() {
 		frameCounter+=1;
 		if (frameCounter>=(double)baseAttackAnimDuration/attackSpeed/animationFramesAttack.length) {
-			
+			if(attackTarget==null||attackTarget.getTile()==null||attackTarget.getTile().getPeca()!=attackTarget)moveOrAttack();
 			if(currentFrame==animationFramesAttack.length-1) {
 				currentFrame=0;
-				if(attackTarget!=null&&attackTarget.getTile()!=null) {
+				if(attackTarget!=null) {
 					fire();
 					if(Tile.dist(getTile(),attackTarget.getTile())>alcance||attackTarget.getMorto()) {
 						currentAction=null;

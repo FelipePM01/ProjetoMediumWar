@@ -61,68 +61,72 @@ public abstract class Projectile extends JPanel{
 	}
 
 	public void paintComponent(Graphics g) {
-		Graphics2D g2d =(Graphics2D) g.create();
-		g2d.translate((int)(currentPosition[0]),(int)(currentPosition[1]));
-		g2d.rotate(angulo);  
-		g2d.drawImage(img,0,0,null);
+		if(alvo.getTile().getPeca()!=null) {
+			Graphics2D g2d =(Graphics2D) g.create();
+			g2d.translate((int)(currentPosition[0]),(int)(currentPosition[1]));
+			g2d.rotate(angulo);  
+			g2d.drawImage(img,0,0,null);
+		}
 	}
 	
 	public void track() {
-		alvoPosition=alvo.getCenterPosition();
-		
-		if(alvoPosition[0]-currentPosition[0]<0&&alvoPosition[1]-currentPosition[1]<0) {
+		if(alvo.getTile().getPeca()!=null) {
+			alvoPosition=alvo.getCenterPosition();
 			
-			translation[0]=-Math.abs(((alvoPosition[0]-currentPosition[0])/(alvoPosition[1]-currentPosition[1])));
-			translation[1]=-Math.abs(((alvoPosition[1]-currentPosition[1])/(alvoPosition[0]-currentPosition[0])));
-			angulo=Math.atan2(translation[1], translation[0]);
-		}
-		
-		else if(alvoPosition[0]-currentPosition[0]<0&&alvoPosition[1]-currentPosition[1]>0){
-			
-			translation[0]=-Math.abs(((alvoPosition[0]-currentPosition[0])/(alvoPosition[1]-currentPosition[1])));
-			translation[1]=Math.abs(((alvoPosition[1]-currentPosition[1])/(alvoPosition[0]-currentPosition[0])));
-			angulo=Math.atan2(translation[1], translation[0]);
-		}
-		
-		else if(alvoPosition[0]-currentPosition[0]>0&&alvoPosition[1]-currentPosition[1]<0) {
-			
-			translation[0]=Math.abs(((alvoPosition[0]-currentPosition[0])/(alvoPosition[1]-currentPosition[1])));
-			translation[1]=-Math.abs(((alvoPosition[1]-currentPosition[1])/(alvoPosition[0]-currentPosition[0])));
-			angulo=Math.atan2(translation[1], translation[0]);
-		}
-		else if(alvoPosition[0]-currentPosition[0]>0&&alvoPosition[0]-currentPosition[0]>0) {
-			
-			translation[0]=Math.abs(((alvoPosition[0]-currentPosition[0])/(alvoPosition[1]-currentPosition[1])));
-			translation[1]=Math.abs(((alvoPosition[1]-currentPosition[1])/(alvoPosition[0]-currentPosition[0])));
-			angulo=Math.atan2(translation[1], translation[0]);
-		}
-		else if(alvoPosition[0]-currentPosition[0]==0) {
-			if(alvoPosition[1]-currentPosition[1]>0) {
-				translation[1]=1;
+			if(alvoPosition[0]-currentPosition[0]<0&&alvoPosition[1]-currentPosition[1]<0) {
+				
+				translation[0]=-Math.abs(((alvoPosition[0]-currentPosition[0])/(alvoPosition[1]-currentPosition[1])));
+				translation[1]=-Math.abs(((alvoPosition[1]-currentPosition[1])/(alvoPosition[0]-currentPosition[0])));
+				angulo=Math.atan2(translation[1], translation[0]);
 			}
-			else translation[1]=-1;
-			translation[0]=0;
-			angulo=Math.atan2(translation[1], translation[0]);
-		}
-		else if(alvoPosition[1]-currentPosition[1]==0) {
-			if(alvoPosition[0]-currentPosition[0]>0) {
-				translation[0]=speed;
+			
+			else if(alvoPosition[0]-currentPosition[0]<0&&alvoPosition[1]-currentPosition[1]>0){
+				
+				translation[0]=-Math.abs(((alvoPosition[0]-currentPosition[0])/(alvoPosition[1]-currentPosition[1])));
+				translation[1]=Math.abs(((alvoPosition[1]-currentPosition[1])/(alvoPosition[0]-currentPosition[0])));
+				angulo=Math.atan2(translation[1], translation[0]);
 			}
-			else translation[0]=-speed;
-			translation[1]=0;
-			angulo=Math.atan2(translation[1], translation[0]);
-		}
-		double dist=Math.sqrt(Math.pow(translation[0],2)+Math.pow(translation[1], 2));
-		translation[0]*=speed/dist;
-		translation[1]*=speed/dist;
-		//Atualiza a currentPosition para a nova posicao
-		currentPosition[0]+=translation[0];
-		currentPosition[1]+=translation[1];
-
-		if(dano!=0&&Math.abs(currentPosition[0]-alvoPosition[0])<(scale*imgEdge[0])&&Math.abs(currentPosition[1]-alvoPosition[1])<(scale*imgEdge[1])) {
-			alvo.receberDanoRanged(dano,this);
-			dano=0;
-			tabuleiro.removeProjectiles(this);
+			
+			else if(alvoPosition[0]-currentPosition[0]>0&&alvoPosition[1]-currentPosition[1]<0) {
+				
+				translation[0]=Math.abs(((alvoPosition[0]-currentPosition[0])/(alvoPosition[1]-currentPosition[1])));
+				translation[1]=-Math.abs(((alvoPosition[1]-currentPosition[1])/(alvoPosition[0]-currentPosition[0])));
+				angulo=Math.atan2(translation[1], translation[0]);
+			}
+			else if(alvoPosition[0]-currentPosition[0]>0&&alvoPosition[0]-currentPosition[0]>0) {
+				
+				translation[0]=Math.abs(((alvoPosition[0]-currentPosition[0])/(alvoPosition[1]-currentPosition[1])));
+				translation[1]=Math.abs(((alvoPosition[1]-currentPosition[1])/(alvoPosition[0]-currentPosition[0])));
+				angulo=Math.atan2(translation[1], translation[0]);
+			}
+			else if(alvoPosition[0]-currentPosition[0]==0) {
+				if(alvoPosition[1]-currentPosition[1]>0) {
+					translation[1]=1;
+				}
+				else translation[1]=-1;
+				translation[0]=0;
+				angulo=Math.atan2(translation[1], translation[0]);
+			}
+			else if(alvoPosition[1]-currentPosition[1]==0) {
+				if(alvoPosition[0]-currentPosition[0]>0) {
+					translation[0]=speed;
+				}
+				else translation[0]=-speed;
+				translation[1]=0;
+				angulo=Math.atan2(translation[1], translation[0]);
+			}
+			double dist=Math.sqrt(Math.pow(translation[0],2)+Math.pow(translation[1], 2));
+			translation[0]*=speed/dist;
+			translation[1]*=speed/dist;
+			//Atualiza a currentPosition para a nova posicao
+			currentPosition[0]+=translation[0];
+			currentPosition[1]+=translation[1];
+	
+			if(dano!=0&&Math.abs(currentPosition[0]-alvoPosition[0])<(scale*imgEdge[0])&&Math.abs(currentPosition[1]-alvoPosition[1])<(1.3*scale*imgEdge[1])) {
+				alvo.receberDanoRanged(dano,this);
+				dano=0;
+				tabuleiro.removeProjectiles(this);
+			}
 		}
 	}
 	
