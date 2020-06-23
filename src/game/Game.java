@@ -194,6 +194,10 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 			if(commands2)jogador2.pressedVIRGULA();
 			
 			break;
+		case KeyEvent.VK_SEMICOLON:
+			if(commands2)jogador2.pressedDoisPontos();
+			
+			break;
 		case KeyEvent.VK_C:
 			if(commands1)jogador1.pressedC();
 			
@@ -204,6 +208,10 @@ public class Game extends Canvas implements Runnable, IGame,KeyListener{
 			break;
 		case KeyEvent.VK_Z:
 			if(commands1)jogador1.pressedZ();
+			
+			break;
+		case KeyEvent.VK_E:
+			if(commands1)jogador1.pressedE();
 			
 			break;
 		case KeyEvent.VK_SPACE:

@@ -1,5 +1,6 @@
 package peca;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -606,6 +607,34 @@ public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
 	public Peca(double scale) {
 		this.scale=scale;
 	}
+	
+	public void printFeature(Graphics g, String cor) {
+		Font font = new Font("Arial",1, 50);
+		g.setFont(font);
+		if(cor=="azul") {
+			g.drawString(toString()/*+" level "+String.valueOf(level)*/,70,150);
+			g.setFont(font.deriveFont(40));
+			g.drawString("Life: "+String.valueOf(life),70,200);
+			g.drawString("Endurance: "+String.valueOf(endurance),70,240);
+			g.drawString("Reach: "+String.valueOf(alcance),70,280);
+			g.drawString("Speed: "+String.valueOf(speed),70,320);
+			g.drawString("Damage: "+String.valueOf(attackDamage),70,360);
+			g.drawString("Attack Speed: "+String.valueOf(attackSpeed),70,400);
+			g.drawString("Sale Value: "+String.valueOf(saleValue),70,440);
+		}
+		if(cor=="vermelho") {
+			g.drawString(toString()/*+" level "+String.valueOf(level)*/,1400,150);
+			g.setFont(font.deriveFont(40));
+			g.drawString("Life: "+String.valueOf(life),1400,200);
+			g.drawString("Endurance: "+String.valueOf(endurance),1400,240);
+			g.drawString("Reach: "+String.valueOf(alcance),1400,280);
+			g.drawString("Speed: "+String.valueOf(speed),1400,320);
+			g.drawString("Damage: "+String.valueOf(attackDamage),1400,360);
+			g.drawString("Attack Speed: "+String.valueOf(attackSpeed),1400,400);
+			g.drawString("Sale Value: "+String.valueOf(saleValue),1400,440);
+		}
+	}
+	
 	public ITilePeca getTile() {
 		return tile;
 	}

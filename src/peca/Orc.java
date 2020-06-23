@@ -36,7 +36,9 @@ public class Orc extends Melee{
 		correction[1]=3;
 		flipCorrection=7;
 	}
-	
+	public String toString(){
+		return "Orc ";
+	}
 	public void setup(int x) {
 		animationFramesMove = new Image[3];
 		animationFramesAttack = new Image[3];

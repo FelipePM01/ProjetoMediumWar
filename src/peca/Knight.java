@@ -36,7 +36,9 @@ public class Knight extends Melee{
 		correction[1]=4;
 		flipCorrection=10;
 	}
-	
+	public String toString(){
+		return "Knight ";
+	}
 	public void setup(int x) {
 		animationFramesMove = new Image[3];
 		animationFramesAttack = new Image[3];
