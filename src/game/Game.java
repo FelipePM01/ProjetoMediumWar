@@ -28,7 +28,7 @@ import peca.Knight;
 import peca.Orc;
 import peca.Peca;
 
-public class Game extends Canvas implements Runnable, IGame,KeyListener{
+public class Game extends Canvas implements Runnable, IGameTabuleiro,KeyListener{
     
     private static final long serialVersionUID = 7059646278559620203L;
 

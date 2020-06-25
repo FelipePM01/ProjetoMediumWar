@@ -14,6 +14,7 @@ import Jogador.IJogador;
 import Jogador.Jogador;
 import game.Game;
 import game.IGame;
+import game.IGameTabuleiro;
 import peca.IPecaCard;
 import peca.IPecaCardJogador;
 import peca.Peca;
@@ -34,15 +35,15 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	private int[] cursorVermelho;
 	private boolean cAzul = false;
 	private boolean cVermelho = false;
-	private IPecaCardJogador azulPeca;
 	private IPecaCardJogador vermelhoPeca;
-	private Game game;
+	private IPecaCardJogador azulPeca;
+	private IGameTabuleiro game;
 	boolean start1 = false;
 	boolean start2 = false;
 	private int[] inTab = {0,0};
 	protected ArrayList<Projectile> projectiles=new ArrayList<Projectile>();
 	
-	public Tabuleiro(Game game) {
+	public Tabuleiro(IGameTabuleiro game) {
 		scale=game.getScale();
 		this.game=game;
 		for(int i=0;i<10;i++) {
