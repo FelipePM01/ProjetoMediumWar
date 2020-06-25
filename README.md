@@ -190,7 +190,7 @@ eliminarPeca | recebe uma String e exclui a peça na posição representada pela
 getPecas | Recebe uma String que representa um jogador e retorna um vetor de pecas que contém as pecas do jogador ,recebido como parâmetro, que estão no tabuleiro
 # Componente Banco
 
-![Componente do Banco](README_Images/ComponentBanco.png)
+![Componente do Banco](README_Images/ComponenteBanco.png)
 
 ## Interfaces
 
