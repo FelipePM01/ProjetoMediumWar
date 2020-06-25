@@ -22,7 +22,6 @@ public abstract class Card extends JPanel implements ICardPeca{
 	private int HEIGHT;
 	private int[] startPointCard = new int[2];
 	protected double scale;
-    protected Peca peca=null;
 
     public Card(IBancoCard banco, String refImagem){
         scale = banco.getScale();
@@ -69,8 +68,8 @@ public abstract class Card extends JPanel implements ICardPeca{
     	if(img!=null)g.drawImage(img, positionX, positionY, this);
     	startPointCard[0]=positionX;
     	startPointCard[1]=positionY;
-    	if(peca!=null&&positionY<300)peca.paintComponent(g, 0, -20);
-    	else if(peca!=null)peca.paintComponent(g);
+    	if(getPeca()!=null&&positionY<300)getPeca().paintComponent(g, 0, -20);
+    	else if(getPeca()!=null)getPeca().paintComponent(g);
 	}
     public int[] getGUIPosition(){
     	return startPointCard;
@@ -83,7 +82,7 @@ public abstract class Card extends JPanel implements ICardPeca{
     }
     public boolean ehNulo() {
     	boolean retorno=false;
-    	if(peca==null)retorno=true;
+    	if(getPeca()==null)retorno=true;
     	return retorno;
     }
 //    public abstract void setPeca(IPecaCard peca) ;
@@ -105,4 +104,7 @@ public abstract class Card extends JPanel implements ICardPeca{
 			  break;
 		  }
     }
+    protected abstract <t extends IPecaCard> t getPeca();
+    	
+    
 }

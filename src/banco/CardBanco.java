@@ -16,9 +16,7 @@ import peca.Orc;
 import peca.Wizard;
 
 public class CardBanco extends Card implements ICardBanco{
-	/**
-	 * 
-	 */
+	IPecaCardBanco peca=null;
 	private static final long serialVersionUID = 3151322956375756610L;
 	static private String[] refImagens = {"assets/cardPadrao.png","assets/cardAmbos.png","assets/cardAzul.png","assets/cardVermelho.png"};
     private Image imgCoin;
