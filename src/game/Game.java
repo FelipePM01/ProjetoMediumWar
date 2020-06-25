@@ -1,32 +1,19 @@
 package game;
 
-import java.awt.Button;
 import java.awt.Canvas;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import Jogador.IJogador;
-import Jogador.IJogadorGame;
 import Jogador.Jogador;
 import banco.Banco;
 import banco.IBanco;
-import banco.IBancoGame;
 import tabuleiro.ITabuleiro;
-import tabuleiro.ITabuleiroGame;
 import tabuleiro.Tabuleiro;
-import peca.Archer;
-import peca.Knight;
-import peca.Orc;
-import peca.Peca;
 import peca.Projectile;
 
 public class Game extends Canvas implements Runnable, IGameTabuleiro,KeyListener{
