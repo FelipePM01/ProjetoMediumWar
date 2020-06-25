@@ -205,18 +205,39 @@ Autores | Felipe Pacheco Manoel e Cristiano Sampaio Pinheiro
 Objetivo | representar o tabuleiro do jogo
 Interface | 
 ~~~
-public interface IBancoGame {
-    public Peca[] getDisponiveis(){};
+public interface IBanco extends IBancoCard,IBancoJogador {
 
+	void setJogador(IJogador jogador1);
+	public int obtainCursor(String cor);
+	public void hideCursor(int i);
 
+	public void pressedLEFT();
+	public void pressedRIGHT();
+	public void pressedA();
+	public void pressedD();
+	public void pressedSPACE();
+	public void pressedENTER();
+	public void pressedE();
+	public void pressedDoisPontos();
+	public void refresh();
+	public void paintComponent(Graphics g);
+}
+
+public interface IBancoCard {
+	public double getScale();
 }
 public interface IBancoJogador {
-    public void refresh(){};
 
+	public void comprar(IJogador jogador);
 
+	public int getCursor(int i);
+	
+	public void hideCursor(int i);
 
+	public int obtainCursor(String cor);
 }
-public interface IBanco extends IBancoGame,IBancoJogador {}
+
+
 
 
 
