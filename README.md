@@ -15,7 +15,7 @@ O projeto será um jogo em que cada jogador posicionará as peças de sua mão n
 [Link para apresentação do projeto](https://drive.google.com/open?id=1aigs8xozY3tbv9r1LsFobk-ZYNi4p2eJKla_YFFc_GY)
 
 # Diagrama Geral de Componentes
-![Diagrama Geral](diagramageral.png)
+![Diagrama Geral](README_Images/DiagramaGeralComponentes.png)
 
 # Componente Jogador
 
