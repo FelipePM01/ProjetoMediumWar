@@ -24,7 +24,7 @@ public class Knight extends Melee{
 		correction[0]=18;
 		correction[1]=14;
 	}
-	public Knight(IPecaCardBanco peca,CardJogador card) {
+	public Knight(IPecaCardBanco peca,ICardJogadorPeca card) {
 		super(peca,card);
 		correction[0]=18;
 		correction[1]=14;

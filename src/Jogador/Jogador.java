@@ -13,6 +13,7 @@ import banco.IBancoJogador;
 import card.ICardJogador;
 import game.IGame;
 import peca.IPecaCard;
+import peca.IPecaCardBanco;
 import tabuleiro.ITabuleiro;
 import tabuleiro.ITabuleiroJogador;
 import peca.IPecaCardJogador;
@@ -36,7 +37,7 @@ public class Jogador extends JPanel implements IJogador{
 	private String cor;
 	private int cursor = -1;
 	private int colocar=-1;
-	private IPecaCard recebido;
+	private IPecaCardBanco recebido;
 	private String currentAction;
 	private int cash = 10;
 	private int points = 0;
@@ -311,7 +312,7 @@ public class Jogador extends JPanel implements IJogador{
 			else hideCursor();
 		}
 	}
-	public void receber(IPecaCard peca) {
+	public void receber(IPecaCardBanco peca) {
 		recebido=peca;
 		
 		mao[colocar].setPeca(recebido);

@@ -15,6 +15,7 @@ import Jogador.Jogador;
 import game.Game;
 import game.IGame;
 import peca.IPecaCard;
+import peca.IPecaCardJogador;
 import peca.Peca;
 import peca.Projectile;
 
@@ -33,8 +34,8 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	private int[] cursorVermelho;
 	private boolean cAzul = false;
 	private boolean cVermelho = false;
-	private IPecaCard azulPeca;
-	private IPecaCard vermelhoPeca;
+	private IPecaCardJogador azulPeca;
+	private IPecaCardJogador vermelhoPeca;
 	private Game game;
 	boolean start1 = false;
 	boolean start2 = false;
@@ -193,7 +194,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 			cursorVermelho[0]++;
 		 }
 	}
-	public void positionPeca(Jogador jogador,IPecaCard peca) {
+	public void positionPeca(Jogador jogador,IPecaCardJogador peca) {
 		if(jogador1==jogador) {
 			setCursor("azul");  
 			azulPeca=peca;

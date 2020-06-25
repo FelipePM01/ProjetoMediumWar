@@ -3,6 +3,7 @@ package card;
 import java.awt.Graphics;
 
 import peca.IPecaCard;
+import peca.IPecaCardBanco;
 import peca.IPecaCardJogador;
 import peca.Peca;
 
@@ -12,8 +13,8 @@ public interface ICardJogador {
 	public int getHeight();
 	public boolean ehNulo();
 	public void setCardAtual(String cor);
-	public void setPeca(IPecaCard recebido);
-	public Peca getPeca();
+	public void setPeca(IPecaCardBanco recebido);
+	public IPecaCardJogador getPeca();
 	public boolean getNaoColocado();
 	
 }

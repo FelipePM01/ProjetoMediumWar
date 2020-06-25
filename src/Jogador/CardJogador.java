@@ -5,14 +5,16 @@ import java.awt.Image;
 import card.Card;
 import card.ICardJogador;
 import peca.Archer;
+import peca.ICardJogadorPeca;
 import peca.IPecaCard;
+import peca.IPecaCardBanco;
 import peca.IPecaCardJogador;
 import peca.Knight;
 import peca.Orc;
 import peca.Peca;
 import peca.Wizard;
 
-public class CardJogador extends Card implements ICardJogador{
+public class CardJogador extends Card implements ICardJogador,ICardJogadorPeca{
 	/**
 	 * 
 	 */
@@ -37,8 +39,8 @@ public class CardJogador extends Card implements ICardJogador{
 	}
 
 
-	@Override
-	public void setPeca(IPecaCard peca) {
+	
+	public void setPeca(IPecaCardBanco peca) {
 		if (peca instanceof Archer)this.peca=new Archer(peca,this);
 		else if (peca instanceof Knight)this.peca=new Knight(peca,this);
 		else if (peca instanceof Orc)this.peca=new Orc(peca,this);
@@ -46,9 +48,7 @@ public class CardJogador extends Card implements ICardJogador{
 		else if(peca==null)this.peca=null;
 	}
 
-	public Peca getPeca() {
-    	return peca;
-    }
+	
 
 	public IJogadorCard getJogador() {
 		return jogador;
@@ -64,6 +64,10 @@ public class CardJogador extends Card implements ICardJogador{
 		jogador.addCash(value);
 		
 	}
+
+	 public IPecaCardJogador getPeca() {
+	    	return peca;
+	    }
 
 	
 }

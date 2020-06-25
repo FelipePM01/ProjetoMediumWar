@@ -10,6 +10,7 @@ import card.Card;
 import card.ICardBanco;
 import peca.Archer;
 import peca.IPecaCard;
+import peca.IPecaCardBanco;
 import peca.Knight;
 import peca.Orc;
 import peca.Wizard;
@@ -40,6 +41,9 @@ public class CardBanco extends Card implements ICardBanco{
 		g.setFont(new Font("Arial",1, 30));
 		g.drawString(String.valueOf(peca.getPurchaseValue()), positionX+(getWidth()/2)+10,(int)(positionY+getHeight())-10);
 	}
+	 public IPecaCardBanco getPeca() {
+	    	return peca;
+	    }
 	
 	@Override
 	public void setPeca(IPecaCard peca) {

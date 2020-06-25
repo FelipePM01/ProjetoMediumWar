@@ -23,7 +23,7 @@ public abstract class Melee extends Peca {
 		super(peca,card);
 		
 	}
-	public Melee(IPecaCardBanco peca,CardJogador card) {
+	public Melee(IPecaCardBanco peca,ICardJogadorPeca card) {
 		super(peca,card);
 		
 	}

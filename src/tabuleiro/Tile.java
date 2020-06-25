@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import peca.Archer;
 import peca.IPecaCard;
+import peca.IPecaCardJogador;
 import peca.IPecaTile;
 import peca.Knight;
 import peca.Orc;
@@ -77,7 +78,7 @@ public class Tile extends JPanel implements ITile{
 		setNull();
 	}
 	
-	public void setPeca(IPecaCard peca) {
+	public void setPeca(IPecaCardJogador peca) {
 	
 		if (peca instanceof Archer)this.peca=new Archer(peca,this);
 		else if (peca instanceof Knight)this.peca=new Knight(peca,this);

@@ -86,10 +86,8 @@ public abstract class Card extends JPanel implements ICardPeca{
     	if(peca==null)retorno=true;
     	return retorno;
     }
-    public abstract void setPeca(IPecaCard peca) ;
-    public IPecaCard getPeca() {
-    	return peca;
-    }
+//    public abstract void setPeca(IPecaCard peca) ;
+   
     public void attImage(String refImgAtual) {
     	//initializeGui(refImgAtual);
     	switch(refImgAtual){

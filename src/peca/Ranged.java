@@ -19,7 +19,7 @@ public abstract class Ranged extends Peca {
 		super(peca,card);
 		
 	}
-	public Ranged(IPecaCardBanco peca,CardJogador card) {
+	public Ranged(IPecaCardBanco peca,ICardJogadorPeca card) {
 		super(peca,card);
 		
 	}

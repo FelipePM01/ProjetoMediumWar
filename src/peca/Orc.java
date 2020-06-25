@@ -24,7 +24,7 @@ public class Orc extends Melee{
 		correction[0]=14;
 		correction[1]=13;
 	}	
-	public Orc(IPecaCardBanco peca,CardJogador card) {
+	public Orc(IPecaCardBanco peca,ICardJogadorPeca card) {
 		super(peca,card);
 		correction[0]=14;
 		correction[1]=13;
