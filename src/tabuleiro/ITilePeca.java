@@ -4,6 +4,7 @@ import java.awt.Image;
 
 import peca.IPecaTile;
 import peca.Peca;
+import peca.Projectile;
 
 public interface ITilePeca {
 	public Image getImage();
@@ -18,4 +19,5 @@ public interface ITilePeca {
 	public IPecaTile getPeca();
 	public void eliminateTab(int i);
 	public void setMarcado();
+	public void addProjectile(Projectile projetil);
 }

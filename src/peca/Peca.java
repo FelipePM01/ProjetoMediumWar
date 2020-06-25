@@ -26,7 +26,7 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 	 * 
 	 */
 	private static final long serialVersionUID = 3059669044498752498L;
-	public static Tabuleiro tabuleiro;
+	
 	public static Image imgInfo;
 	protected Image[] animationFramesMove;
 	protected Image[] animationFramesAttack;

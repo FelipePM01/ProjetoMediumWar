@@ -27,6 +27,7 @@ import peca.Archer;
 import peca.Knight;
 import peca.Orc;
 import peca.Peca;
+import peca.Projectile;
 
 public class Game extends Canvas implements Runnable, IGameTabuleiro,KeyListener{
     
@@ -38,7 +39,7 @@ public class Game extends Canvas implements Runnable, IGameTabuleiro,KeyListener
 	private Image imgEndRed, imgEndBlue, imgEndEmpate;
     private boolean running = false;
     private IBanco banco = null;
-    private Tabuleiro tabuleiro= null;
+    private ITabuleiro tabuleiro= null;
     private IJogador jogador1= null;
     private IJogador jogador2= null;
     protected static Window window;
@@ -58,8 +59,8 @@ public class Game extends Canvas implements Runnable, IGameTabuleiro,KeyListener
     	gui=new GUI();
         banco=new Banco(getScale());
         tabuleiro=new Tabuleiro(this);
-        window.add(tabuleiro);
-        Peca.tabuleiro=(Tabuleiro) tabuleiro;
+        
+        Projectile.tabuleiro=tabuleiro;
         jogador1=new Jogador(this,1,tabuleiro,banco);
         jogador2=new Jogador(this,2,tabuleiro,banco);
         banco.setJogador(jogador1);

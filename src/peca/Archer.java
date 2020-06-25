@@ -70,6 +70,6 @@ public class Archer extends Ranged{
 		return getCenterPosition(12,19);
 	}
 	public Projectile create(double scale,double[] posicao,IPecaTile target,double dano,IPecaCardJogador origem) {
-		return new Arrow(scale,posicao,target,dano,tabuleiro,origem);
+		return new Arrow(scale,posicao,target,dano,origem);
 	}
 }

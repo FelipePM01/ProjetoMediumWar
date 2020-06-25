@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import tabuleiro.ITabuleiro;
 import tabuleiro.Tabuleiro;
 
 public abstract class Projectile extends JPanel{
@@ -36,18 +37,18 @@ public abstract class Projectile extends JPanel{
 	private Timer timer;
 	private IPecaTile alvo;
 	private int[] imgEdge = new int[2];
-	private Tabuleiro tabuleiro;
+	public static ITabuleiro tabuleiro;
 	private double angulo=0;
 	private IPecaCardJogador origem;
 	
-	public Projectile(double scale, double[] position, IPecaTile target, double dano,Tabuleiro tabuleiro, double speed,IPecaCardJogador origem) {
+	public Projectile(double scale, double[] position, IPecaTile target, double dano, double speed,IPecaCardJogador origem) {
 		this.scale=scale;
 		this.origem=origem;
 		this.basePosition=position;
 		this.currentPosition=position;
 		this.alvo=target;
 		this.dano=dano;
-		this.tabuleiro=tabuleiro;
+		
 		this.alvoPosition=alvo.getCenterPosition();
 	    this.speed=speed;
 		setVisible(true);

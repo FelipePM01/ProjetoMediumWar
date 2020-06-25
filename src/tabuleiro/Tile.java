@@ -13,6 +13,7 @@ import peca.IPecaTile;
 import peca.Knight;
 import peca.Orc;
 import peca.Peca;
+import peca.Projectile;
 import peca.Wizard;
 
 public class Tile extends JPanel implements ITile{
@@ -145,6 +146,12 @@ public class Tile extends JPanel implements ITile{
 	}
 	public void eliminateTab(int i) {
 		tabuleiro.eliminateInTab(i);
+	}
+
+	@Override
+	public void addProjectile(Projectile projetil) {
+		tabuleiro.addProjectiles(projetil);
+		
 	}
 	
 }

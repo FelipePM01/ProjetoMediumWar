@@ -1,6 +1,7 @@
 package tabuleiro;
 
 import Jogador.IJogador;
+import peca.Projectile;
 
 public interface ITabuleiro extends ITabuleiroTile,ITabuleiroGame,ITabuleiroJogador {
 
@@ -18,5 +19,7 @@ public interface ITabuleiro extends ITabuleiroTile,ITabuleiroGame,ITabuleiroJoga
 	public void pressedRIGHT() ;
 	public void pressedQ();
 	public void pressedAspas();
+
+	public void removeProjectiles(Projectile projectile);
 
 }
