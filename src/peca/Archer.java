@@ -25,7 +25,7 @@ public class Archer extends Ranged{
 		correction[0]=12;
 		correction[1]=14;
 	}
-	public Archer(IPecaCardBanco peca,CardJogador card) {
+	public Archer(IPecaCardBanco peca,ICardJogadorPeca card) {
 		super(peca,card);
 		correction[0]=12;
 		correction[1]=14;

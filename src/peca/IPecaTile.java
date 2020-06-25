@@ -20,7 +20,7 @@ public interface IPecaTile extends IPeca{
 	public boolean getMorto();
 	public void receberDano(double attackDamage, Peca peca);
 	public void receberDanoRanged(double dano,Projectile projetil);
-	public CardJogador getCard();
+	public ICardJogadorPeca getCard();
 	public IPecaCardJogador getOrigem();
 	public void setInBoard(boolean inBoard);
 }

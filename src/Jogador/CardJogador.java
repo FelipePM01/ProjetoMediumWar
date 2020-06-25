@@ -5,6 +5,7 @@ import java.awt.Image;
 import card.Card;
 import card.ICardJogador;
 import peca.Archer;
+import peca.ICardJogadorPeca;
 import peca.IPecaCard;
 import peca.IPecaCardJogador;
 import peca.Knight;
@@ -12,7 +13,7 @@ import peca.Orc;
 import peca.Peca;
 import peca.Wizard;
 
-public class CardJogador extends Card implements ICardJogador{
+public class CardJogador extends Card implements ICardJogador,ICardJogadorPeca{
 	/**
 	 * 
 	 */
