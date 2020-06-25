@@ -5,6 +5,7 @@ import java.awt.Image;
 
 import peca.IPeca;
 import peca.IPecaCard;
+import peca.IPecaCardJogador;
 import peca.IPecaTile;
 import peca.Peca;
 
@@ -18,6 +19,6 @@ public interface ITileTabuleiro {
 	public void actionPeca();
 	public boolean existsPeca();
 	public void setTileAtual(String cor);
-	public void setPeca(IPecaCard peca);
+	public void setPeca(IPecaCardJogador peca);
 	public void setNull();
 }

@@ -7,6 +7,7 @@ import card.ICardJogador;
 import peca.Archer;
 import peca.ICardJogadorPeca;
 import peca.IPecaCard;
+import peca.IPecaCardBanco;
 import peca.IPecaCardJogador;
 import peca.Knight;
 import peca.Orc;
@@ -38,8 +39,8 @@ public class CardJogador extends Card implements ICardJogador,ICardJogadorPeca{
 	}
 
 
-	@Override
-	public void setPeca(IPecaCard peca) {
+	
+	public void setPeca(IPecaCardBanco peca) {
 		if (peca instanceof Archer)this.peca=new Archer(peca,this);
 		else if (peca instanceof Knight)this.peca=new Knight(peca,this);
 		else if (peca instanceof Orc)this.peca=new Orc(peca,this);
@@ -47,9 +48,7 @@ public class CardJogador extends Card implements ICardJogador,ICardJogadorPeca{
 		else if(peca==null)this.peca=null;
 	}
 
-	public Peca getPeca() {
-    	return peca;
-    }
+	
 
 	public IJogadorCard getJogador() {
 		return jogador;
@@ -65,6 +64,10 @@ public class CardJogador extends Card implements ICardJogador,ICardJogadorPeca{
 		jogador.addCash(value);
 		
 	}
+
+	 public IPecaCardJogador getPeca() {
+	    	return peca;
+	    }
 
 	
 }

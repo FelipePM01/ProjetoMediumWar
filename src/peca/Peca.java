@@ -21,7 +21,7 @@ import tabuleiro.ITilePeca;
 import tabuleiro.Tabuleiro;
 import tabuleiro.Tile;
 
-public abstract class Peca extends JPanel implements IPecaCard, IPecaTile{
+public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador,IPecaCardBanco{
 	/**
 	 * 
 	 */
