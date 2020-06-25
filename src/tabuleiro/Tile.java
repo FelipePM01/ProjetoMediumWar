@@ -143,5 +143,8 @@ public class Tile extends JPanel implements ITile{
 	public boolean getMarcado() {
 		return marcado;
 	}
+	public void eliminateTab(int i) {
+		tabuleiro.eliminateInTab(i);
+	}
 	
 }

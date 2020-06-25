@@ -628,11 +628,10 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 		if(life<0&&!morto) {
 			projetil.recompensar(giftValue);
 			morto=true;
-			if(cor=="azul")tabuleiro.eliminateInTab(0);
-			if(cor=="vermelho")tabuleiro.eliminateInTab(1);
+			if(cor=="azul")tile.eliminateTab(0);
+			if(cor=="vermelho")tile.eliminateTab(1);
 			origem.getCard().setNaoColocado(true);
 			tile.clearTile();
-			
 			inBoard=false;
 		}
 		else if(!morto) {
@@ -645,8 +644,8 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 		if(life<0&&!morto) {
 			peca.recompensar(giftValue);
 			morto=true;
-			if(cor=="azul")tabuleiro.eliminateInTab(0);
-			if(cor=="vermelho")tabuleiro.eliminateInTab(1);
+			if(cor=="azul")tile.eliminateTab(0);
+			if(cor=="vermelho")tile.eliminateTab(1);
 			origem.getCard().setNaoColocado(true);
 			tile.clearTile();
 			inBoard=false;

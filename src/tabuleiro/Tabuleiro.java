@@ -89,7 +89,6 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		}
 	}
 	public void clear() {
-		projectiles.clear();
 		inTab[0]=0;
 		inTab[1]=0;
 		for(int i=0;i<10;i++) {
@@ -100,6 +99,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 				if(matriz[i][j].existsPeca())matriz[i][j].setNull();
 			}
 		}
+		projectiles.clear();
 	}
 	
 	public Tile[][] getTiles() {
