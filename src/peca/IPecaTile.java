@@ -3,6 +3,7 @@ package peca;
 import Jogador.CardJogador;
 import Jogador.IJogadorCard;
 import Jogador.Jogador;
+import card.ICardJogadorPeca;
 import excecoes.MovimentoInvalido;
 import tabuleiro.ITilePeca;
 import tabuleiro.Tile;

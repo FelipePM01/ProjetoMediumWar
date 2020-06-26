@@ -4,8 +4,8 @@ import java.awt.Image;
 
 import card.Card;
 import card.ICardJogador;
+import card.ICardJogadorPeca;
 import peca.Archer;
-import peca.ICardJogadorPeca;
 import peca.IPecaCard;
 import peca.IPecaCardBanco;
 import peca.IPecaCardJogador;

@@ -2,6 +2,7 @@ package peca;
 
 import Jogador.CardJogador;
 import card.ICardBanco;
+import card.ICardJogadorPeca;
 import tabuleiro.Tile;
 
 public abstract class Ranged extends Peca {

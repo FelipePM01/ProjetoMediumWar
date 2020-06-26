@@ -34,14 +34,42 @@ Autores | Felipe Pacheco Manoel e Cristiano Sampaio Pinheiro
 Objetivo | representar cada um dos jogadores e suas relações com os outros componenetes
 Interface | 
 ~~~
-public interface IJogadorGame {
-    public void addPontos(){};
-    public void comprarPeca(int id){};
-    public void venderPeca(int id){};
-    public void uparPeca(int id){};
-    public void receberGold(int quantia){};
-    public void colocarPeca(int id,String posicao){};
+public interface IJogador extends IJogadorCard, IJogadorBanco{
+	public void addPoint();
+	public int getPoints();
+	public int obtainCursor();
+	public void hideCursor();
+	
+	public void pressedA() ;
+	public void pressedC() ;
+	public void pressedVIRGULA();
+	public void pressedD() ;
+	public void pressedLEFT();
+	public void pressedRIGHT();
+	public void pressedZ() ;
+	public void pressedE();
+	public void pressedX();
+	public void pressedDoisPontos();
+	public void pressedPONTO() ;
+	public void pressedBARRA() ;
+	public void pressedSPACE() ;
+	public void pressedENTER() ;
+	public void paintComponent(Graphics g);	
+
 }
+public interface IJogadorBanco {
+	void receber(IPecaCardBanco peca);
+	public int getCash();
+	public void addCash(int valor);
+}
+public interface IJogadorCard {
+	public double getScale();
+
+	public String getCor();
+
+	public void addCash(int value);
+}
+
 
 ~~~
 
@@ -77,6 +105,40 @@ Autores | Felipe Pacheco Manoel e Cristiano Sampaio Pinheiro
 Objetivo | representar cada um dos cards presentes no banco e na mao do jogador
 Interface | 
 ~~~
+public interface ICardJogadorPeca extends ICardPeca{
+
+	
+
+	public IJogadorCard getJogador();
+
+	public void recompensar(int giftValue);
+
+	public void setNaoColocado(boolean value);
+	
+}
+public interface ICardPeca {
+	public int[] getGUIPosition();
+}
+public interface ICardJogador {
+	public int getWidth();
+	public void paintComponent(Graphics g, int positionX, int positionY);
+	public int getHeight();
+	public boolean ehNulo();
+	public void setCardAtual(String cor);
+	public void setPeca(IPecaCardBanco recebido);
+	public IPecaCardJogador getPeca();
+	public boolean getNaoColocado();
+	
+}
+public interface ICardBanco {
+	public void setCardAtual(String cor);
+	public void paintComponent(Graphics g, int positionX, int positionY);
+	public void setPeca(IPecaCard peca);
+	public IPecaCardBanco getPeca();
+	public int getWidth();
+	public int getHeight();
+	public int[] getGUIPosition();
+}
 
 
 

@@ -1,6 +1,7 @@
 package peca;
 
 import Jogador.CardJogador;
+import card.ICardJogadorPeca;
 
 public interface IPecaCardJogador extends IPecaCard {
 

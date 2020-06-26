@@ -3,6 +3,7 @@ package peca;
 import Jogador.CardJogador;
 import banco.CardBanco;
 import card.ICardBanco;
+import card.ICardJogadorPeca;
 import tabuleiro.Tile;
 
 public abstract class Melee extends Peca {

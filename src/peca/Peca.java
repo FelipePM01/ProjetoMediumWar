@@ -14,6 +14,7 @@ import javax.swing.Timer;
 import Jogador.CardJogador;
 import Jogador.IJogadorCard;
 import card.ICardBanco;
+import card.ICardJogadorPeca;
 import excecoes.*;
 
 import game.GUI;

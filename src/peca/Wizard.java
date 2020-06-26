@@ -4,6 +4,7 @@ import java.awt.Image;
 
 import Jogador.CardJogador;
 import card.ICardBanco;
+import card.ICardJogadorPeca;
 import tabuleiro.Tile;
 
 public class Wizard extends Ranged {
