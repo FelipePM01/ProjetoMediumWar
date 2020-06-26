@@ -14,7 +14,7 @@ public class Orc extends Melee{
 	 * 
 	 */
 	private static final long serialVersionUID = -5644930813218984359L;
-	static private String[] imagens= {"assets/orc0.png","assets/orc1.png","assets/orc2.png","assets/orc3.png","assets/orc4.png","assets/orc5.png"};
+	static private String[] refImagens= {"assets/orc0.png","assets/orc1.png","assets/orc2.png","assets/orc3.png","assets/orc4.png","assets/orc5.png"};
 	
 	public Orc(double scale) {
 		super(scale);
@@ -45,9 +45,9 @@ public class Orc extends Melee{
 		animationFramesAttack = new Image[3];
 		for(int i=0;i<6;i++){
 			if(i<3)
-				animationFramesMove[i]=adjustScale(imagens[i],x);
+				animationFramesMove[i]=adjustScale(refImagens[i],x);
 			else
-				animationFramesAttack[i-3]=adjustScale(imagens[i],x);
+				animationFramesAttack[i-3]=adjustScale(refImagens[i],x);
 		}
 		currentFrame = 0;
 		currentAnimation = animationFramesMove;

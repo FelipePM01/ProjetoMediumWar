@@ -71,6 +71,9 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 	protected boolean morto=false;
 	protected BarraDeVida barraDeVida;
 	protected double maxLife;
+	public Peca(double scale) {
+		this.scale=scale;
+	}
 	public Peca(IPecaCardJogador peca,Tile tile) {
 		set(peca);
 		this.tile=tile;
@@ -139,7 +142,7 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 		}
 	}
 	//cria uma peca que eh uma copia de outra ja existente
-	public void set(IPeca peca) {
+	protected void set(IPeca peca) {
 		this.animationFramesAttack=peca.getAnimationFramesAttack();
 		this.animationFramesMove=peca.getAnimationFramesMove();
 		this.currentAnimation=peca.getCurrentAnimation();
@@ -171,7 +174,7 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 		timer=new Timer(1, taskPerformer);
 		timer.start();	
 	}
-	public Image adjustScale(String refImg, int x){
+	protected Image adjustScale(String refImg, int x){
 		ImageIcon refimg=new ImageIcon(refImg);
         Image img=refimg.getImage();
         return img.getScaledInstance((int)(img.getWidth(null)*scale*x),(int)(img.getHeight(null)*scale*x),Image.SCALE_DEFAULT);
@@ -672,11 +675,7 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 			
 		}
 		
-	}
-	public Peca(double scale) {
-		this.scale=scale;
-	}
-	
+	}	
 	public void printFeature(Graphics g, String cor) {
 		Font font = new Font("Arial",1, 50);
 		g.setFont(font);
@@ -740,13 +739,13 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 	public void setInBoard(boolean inBoard) {
 		this.inBoard=inBoard;
 	}
-	public void setLife(double life) {
+	protected void setLife(double life) {
 		this.life=life;
 	}
 	public double getLife() {
 		return life;
 	}
-	public void setEndurance(double endurance) {
+	protected void setEndurance(double endurance) {
 		this.endurance=endurance;
 	}
 	public double getEndurance() {
@@ -767,7 +766,7 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 	public double getAlcance() {
 		return alcance;
 	}
-	public double[] getCenterPosition(int x, int y){
+	protected double[] getCenterPosition(int x, int y){
 		double[] centerPosition=new double[2];
 		if(currentAnimation!=null&&currentAnimation[currentFrame]!=null&&!flipped) {
 			centerPosition[0]=(basePosition[0]+(scale*correction[0])+(scale*translation[0])+(scale*x));

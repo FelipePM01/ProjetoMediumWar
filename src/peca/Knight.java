@@ -14,7 +14,7 @@ public class Knight extends Melee{
 	 * 
 	 */
 	private static final long serialVersionUID = -5203249539608432216L;
-	static private String[] imagens= {"assets/knight0.png","assets/knight1.png","assets/knight2.png","assets/knight3.png","assets/knight4.png","assets/knight5.png"};
+	static private String[] refImagens= {"assets/knight0.png","assets/knight1.png","assets/knight2.png","assets/knight3.png","assets/knight4.png","assets/knight5.png"};
 			
 	public Knight(double scale) {
 		super(scale);
@@ -45,9 +45,9 @@ public class Knight extends Melee{
 		animationFramesAttack = new Image[3];
 		for(int i=0;i<6;i++){
 			if(i<3)
-				animationFramesMove[i]=adjustScale(imagens[i],x);
+				animationFramesMove[i]=adjustScale(refImagens[i],x);
 			else
-				animationFramesAttack[i-3]=adjustScale(imagens[i],x);
+				animationFramesAttack[i-3]=adjustScale(refImagens[i],x);
 		}
 		currentFrame = 0;
 		currentAnimation = animationFramesMove;
