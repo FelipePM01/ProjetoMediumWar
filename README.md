@@ -230,7 +230,7 @@ getNaoColocado | Retona a variável naoColocado que indica se o card ja foi posi
 
 Interfaces associadas ao componente Peca:
 
-![Diagrama Interfaces da Peca](interfacepeca.png)
+![Diagrama Interfaces da Peca](README_Images/InterfacePeca.png)
 
 Campo | Valor
 ----- | -----
@@ -395,13 +395,28 @@ public interface ITabuleiroTile  {
 
 ## Detalhamento das Interfaces
 
-### Interface ITabuleiroGame
-Permite que Game acione(movimentar e atacar) as peças do tabuleiro e de pegar informacões da rodada referentes a quantias que os jogadores irão receber.
+### Interface ITabuleiro
+Essa interface é responsável por agrupar as outras inrfeces de tabuleiro e de fazer as interações entre o game e o tabuleiro e entre os projéteis e o tabuleiro
 
 Método | Objetivo
 -------| --------
-acionarPecas | realiza a interação entre as peças
-getQuantia |  recebe uma string que representa um jogador e retorna a quantia inteira que o jogador representado pela String receberá ao final de uma rodada
+setJogador | Conecta um jogador com o tabuleiro
+removeProjectiles | Remove um determinado projetil do tabuleiro
+paintComponent | Imprime o tabuleiro ,os seus tiles(e consequentemente as peças armazenadas por eles) , e os projéteis na tela
+start | Inicia a interação das peças
+clear | Remove todas as peças do tabuleiro
+pressedSPACE | Confirma o posicionamento da peça do jogador 1
+pressedW | Move o cursor do jogador 1 para cima
+pressedS | Move o cursor do jogador 1 para baixo
+pressedA | Move o cursor do jogador 1 para a esquerda
+pressedD | Move o cursor do jogador 1 para a direita
+pressedQ | Notifica o banco que o jogador 1 terminou de posicionar suas peças
+pressedENTER | Confirma o posicionamento da peça do jogador 2
+pressedUP | Move o cursor do jogador 2 para cima
+pressedDOWN | Move o cursor do jogador 2 para baixo
+pressedLEFT | Move o cursor do jogador 2 para a esquerda
+pressedRIGHT | Move o cursor do jogador 2 para a direita
+pressedAspas | Notifica o banco que o jogador 2 terminou de posicionar suas peças
 
 ### Interface ITabuleiroPeca
 Permite que as peças interajam entre si.
