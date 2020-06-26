@@ -96,7 +96,7 @@ colocarPeca | Permite o jogador posicionar suas peças no tabuleiro(Recebe a pos
 
 Interfaces associadas ao componente Card:
 
-![Diagrama Interfaces do Card](interfacepeca.png)
+![Diagrama Interfaces do Card](README_Images/InterfaceCard.png)
 
 Campo | Valor
 ----- | -----
@@ -419,7 +419,7 @@ getPrecoCompra | Retorna o valor de compra da peça
 
 Interfaces associadas ao componente Banco:
 
-![Diagrama Interfaces do Banco](interfacebanco.png)
+![Diagrama Interfaces do Banco](README_Images/InterfaceCard.png)
 
 Campo | Valor
 ----- | -----
