@@ -1,6 +1,8 @@
 package Jogador;
 
-public interface IJogador extends IJogadorCard, IJogadorGame,IJogadorBanco{
+import java.awt.Graphics;
+
+public interface IJogador extends IJogadorCard, IJogadorBanco{
 	public void addPoint();
 	public int getPoints();
 	public int obtainCursor();
@@ -20,6 +22,6 @@ public interface IJogador extends IJogadorCard, IJogadorGame,IJogadorBanco{
 	public void pressedBARRA() ;
 	public void pressedSPACE() ;
 	public void pressedENTER() ;
-	
+	public void paintComponent(Graphics g);	
 
 }

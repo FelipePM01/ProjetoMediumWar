@@ -6,6 +6,7 @@ import Jogador.CardJogador;
 import banco.CardBanco;
 import card.Card;
 import card.ICardBanco;
+import card.ICardJogadorPeca;
 import tabuleiro.Tile;
 
 public class Orc extends Melee{

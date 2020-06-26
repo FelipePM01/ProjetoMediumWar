@@ -1,10 +1,10 @@
-package peca;
+package card;
 
 import Jogador.IJogadorCard;
 
-public interface ICardJogadorPeca {
+public interface ICardJogadorPeca extends ICardPeca{
 
-	public int[] getGUIPosition();
+	
 
 	public IJogadorCard getJogador();
 
