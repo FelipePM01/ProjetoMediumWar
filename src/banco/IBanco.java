@@ -4,7 +4,7 @@ import java.awt.Graphics;
 
 import Jogador.IJogador;
 
-public interface IBanco extends IBancoGame,IBancoCard,IBancoJogador {
+public interface IBanco extends IBancoCard,IBancoJogador {
 	public void setJogador(IJogador jogador);
 	public void pressedLEFT();
 	public void pressedRIGHT();

@@ -25,7 +25,7 @@ O projeto será um jogo em que cada jogador posicionará as peças de sua mão n
 
 Interfaces associadas ao componente Jogador:
 
-![Diagrama Interfaces do Jogador](interfacejogador.png)
+![Diagrama Interfaces do Jogador](README_Images/InterfaceJogador.png)
 
 Campo | Valor
 ----- | -----
@@ -76,17 +76,46 @@ public interface IJogadorCard {
 
 ## Detalhamento das Interfaces
 
-### Interface Jogador
-Essa interface e responsável por gerenciar as ações dos jogares e sua interação com os demais componentes do jogo.
+### Interface IJogador
+Essa interface é responsável por agrupar as demais interfaces assim como estabelever a relação entre o jogador e o game
 
 Método | Objetivo
 -------| --------
-addPontos | Incrementa a pontuação do jogador que ganhou a rodada
-comprarPeca | Permite o jogador realiza a compra de peças(Recebe a posição da peça no Banco de peças)
-venderPeca | Permite o jogador realiza a venda de peças(Recebe a posição da peça na mão do jogador)
-uparPeca | Possibilita melhora atributos da peça e a subir de nível
-receberGold | Atualiza o gold dos jogadores após uma rodada(Recebe inteiro para indicar a quantia)
-colocarPeca | Permite o jogador posicionar suas peças no tabuleiro(Recebe a posição(id) da peça na mão do jogador e a posição(String) que a peça ocuparar no tabuleiro)
+addPoint | Incrementa a pontuação do jogador que ganhou a rodada
+getPoints | Retorna quantos pontos de terminado jogador possui
+hideCursor | Faz com que o cursor não seja mais visível
+paintComponent |Imprime a mão do jogador e as suas peças armazenadas
+pressedA | Movimenta o cursor da mão do jogador 1 para a esquerda
+pressedD | Movimenta o cursor da mão do jogador 1 para a direita
+pressedLEFT | Movimenta o cursor da mão do jogador 2 para a esquerda
+pressedRIGHT | Movimenta o cursor da mão do jogador 2 para a direita
+pressedC | Notifica o banco que o jogador 1 quer comprar uma peça
+pressedVIRGULA | Notifica o banco que o jogador 2 quer comprar uma peça
+pressedX | Coloca o cursor na mão do jogador 1 para escolher uma peça para posicioná-la e em seguida notifica o tabuleiro que o jogador 1 quer posicionar uma peça 
+pressedPONTO | Coloca o cursor na mão do jogador 2 para escolher uma peça para posicioná-la e em seguida notifica o tabuleiro que o jogador 2 quer posicionar uma peça 
+pressedZ | Coloca o cursor na mão do jogador 1 para escolher uma peça para vendê-la e em seguida a remove da mão e incrementa o dinheiro do jogador 1
+pressedBARRA | Coloca o cursor na mão do jogador 2 para escolher uma peça para vendê-la e em seguida a remove da mão e incrementa o dinheiro do jogador 2
+pressedE | Liga ou desliga a exibição dos atributos da peça do jogador 1
+pressedDoisPontos | Liga ou desliga a exibição dos atributos da peça do jogador 2
+pressedSPACE | Confirma a escolha do jogador 1 de qual peça será vendida ou posicionada
+pressedENTER | Confirma a escolha do jogador 2 de qual peça será vendida ou posicionada
+
+###Interface IJogadorBanco
+Essa interface é responsável por representar as interações do banco no jogador
+Método | Objetivo
+-------| --------
+receber | O banco passa a peça escolhida pelo jogador para o jogador
+getCash | Retorna o dinheiro que o jogador possui 
+addCash | Incrementa ou decrementa o dinheiro de um jogador a partir de um valor passado como parâmetro
+
+###Interface IJogadorCard
+Essa interface é responsável por representar as interações do card com o jogador
+Método | Objetivo
+-------| --------
+getScale | Retorna a escala da imagem 
+getCor | Retorna a cor que representa o jogador 
+addCash | Incrementa ou decrementa o dinheiro de um jogador a partir de um valor passado como parâmetro
+
 
 # Componente Card
 
@@ -419,7 +448,7 @@ getPrecoCompra | Retorna o valor de compra da peça
 
 Interfaces associadas ao componente Banco:
 
-![Diagrama Interfaces do Banco](README_Images/InterfaceCard.png)
+![Diagrama Interfaces do Banco](README_Images/InterfaceBanco.png)
 
 Campo | Valor
 ----- | -----
@@ -486,7 +515,7 @@ refresh | atualiza o vetor de peças disponíveis (trocando as peças que estar�
 Interfaces associadas ao componente Game:
 
 
-![Diagrama Interface do Game](classegame.png)
+![Diagrama Interface do Game](README_Images/InterfaceGame.png)
 
 Campo | Valor
 ----- | -----
