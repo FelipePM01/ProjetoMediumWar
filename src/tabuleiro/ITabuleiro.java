@@ -7,7 +7,7 @@ import peca.Projectile;
 
 public interface ITabuleiro extends ITabuleiroTile,ITabuleiroJogador {
 
-	public void setJogador(IJogador jogador1);
+	public void setJogador(IJogador jogador);
 
 	public void pressedSPACE();
 	public void pressedENTER() ;

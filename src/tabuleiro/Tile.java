@@ -98,9 +98,6 @@ public class Tile extends JPanel implements ITile{
 	public Tile[][] getOtherTiles() {
 		return tabuleiro.getTiles();
 	}
-	public double getScale() {
-		return scale;
-	}
 	public void setTileAtual(String cor) {
 		  switch(cor){
 		  case "azul":

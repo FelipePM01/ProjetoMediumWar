@@ -38,8 +38,8 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	private IPecaCardJogador vermelhoPeca;
 	private IPecaCardJogador azulPeca;
 	private IGameTabuleiro game;
-	boolean start1 = false;
-	boolean start2 = false;
+	private boolean start1 = false;
+	private boolean start2 = false;
 	private int[] inTab = {0,0};
 	protected ArrayList<Projectile> projectiles=new ArrayList<Projectile>();
 	
@@ -108,7 +108,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	public double getScale() {
 		return scale;
 	}
-	public void setCursor(String cor) {
+	protected void setCursor(String cor) {
 		if (cor=="azul") {
 			cursorAzul=new int[2];
 			cAzul=true;
@@ -143,7 +143,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 			cursorVermelho[1]=9;
 		}
 	}
-	public void selectTile(int xAnt, int yAnt, int x, int y, String cor) {
+	protected void selectTile(int xAnt, int yAnt, int x, int y, String cor) {
 		if(matriz[xAnt][yAnt]!=null)matriz[xAnt][yAnt].setTileAtual("padrao");
 		if(matriz[x][y]!=null)matriz[x][y].setTileAtual(cor);
 	}
@@ -257,7 +257,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	public void removeProjectiles(Projectile projectile) {
 		projectiles.remove(projectile);
 	}
-	public int[] getIntab() {
+	protected int[] getIntab() {
 		return inTab;
 	}
 	public void eliminateInTab(int i) {
