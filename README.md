@@ -418,15 +418,25 @@ pressedLEFT | Move o cursor do jogador 2 para a esquerda
 pressedRIGHT | Move o cursor do jogador 2 para a direita
 pressedAspas | Notifica o banco que o jogador 2 terminou de posicionar suas peças
 
-### Interface ITabuleiroPeca
-Permite que as peças interajam entre si.
+### Interface ITabuleiroJogador
+Essa interface é responsável pela interação entre o jogaador e o tabuleiro
 
 Método | Objetivo
 -------| --------
-setPeca | recebe uma String e um objeto da classe Peca e coloca a peça recebida na posição representada pela String
-getPeca | recebe uma String e recupera a peça na posição representada pela String
-eliminarPeca | recebe uma String e exclui a peça na posição representada pela string passada como parâmetro
-getPecas | Recebe uma String que representa um jogador e retorna um vetor de pecas que contém as pecas do jogador ,recebido como parâmetro, que estão no tabuleiro
+getCursor | Retorna a posição do cursor que é representado pela cor passada como parâmetro
+hideCursor | Faz com que o cursor de uma determinada cor não seja mais visível
+posicionarPeca | Notifica o tabuleiro que um determinado jogador quer posicionar uma determinada peça , ambos passados como parâmetro
+
+### Interface ITabuleiroJogador
+Essa interface é responsável pela interação entre o jogaador e o tabuleiro
+
+Método | Objetivo
+-------| --------
+getScale | Retorna a escala da imagem do tabuleiro
+getTiles | Retorna uma matriz de tiles que represemta as posicoes do tabuleiro
+eliminateInTab | Decrementa a variável que controla quantas peças cada joagdor tem no tabuleiro 
+addProjectiles | Adiciona um projétil passado como parâmetro no tabuleiro
+
 # Componente Tile
 
 ![Componente do Tile](README_Images/ComponenteTile.png)
