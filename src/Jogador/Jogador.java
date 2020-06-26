@@ -28,7 +28,7 @@ public class Jogador extends JPanel implements IJogador{
 	private static final long serialVersionUID = 3795017485437177600L;
 	private ICardJogador[] mao=new CardJogador[8];
 	private Image imgTrophy;
-	private static Image imgmao,imgCoin;
+	private static Image imgMao,imgCoin;
 	private double scale=1;
 	private int positionX;
 	private int positionY;
@@ -67,10 +67,10 @@ public class Jogador extends JPanel implements IJogador{
 	
 	public void initializeGui(){
         ImageIcon refimgmao=new ImageIcon("assets/mao.png");        
-        imgmao=refimgmao.getImage();
-        int WIDTH = (int)(imgmao.getWidth(null)*scale);
-        int HEIGHT = (int)(imgmao.getHeight(null)*scale);
-        imgmao=imgmao.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_DEFAULT);
+        imgMao=refimgmao.getImage();
+        int WIDTH = (int)(imgMao.getWidth(null)*scale);
+        int HEIGHT = (int)(imgMao.getHeight(null)*scale);
+        imgMao=imgMao.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_DEFAULT);
         
         ImageIcon refCoin=new ImageIcon("assets/coin.png");
 		imgCoin=refCoin.getImage();
@@ -111,7 +111,7 @@ public class Jogador extends JPanel implements IJogador{
 		
 		int newX = positionX+4+(mao[0].getWidth()/2);
 		int newY = positionY+4;
-        g.drawImage(imgmao, positionX, positionY, null);
+        g.drawImage(imgMao, positionX, positionY, null);
   
         for(int i=0;i<8;i++){
         	if(mao[i]!=null) {

@@ -17,10 +17,6 @@ import peca.Wizard;
 public class CardJogador extends Card implements ICardJogador,ICardJogadorPeca{
 	protected IPecaCardJogador peca=null;
 	private static final long serialVersionUID = 1679685899782569774L;
-	private Image cardAtual;
-	private Image cardPadrao;
-	private Image cardVermelho;
-	private Image cardAzul;
 	private IJogadorCard jogador;
 	private boolean naoColocado=true;
 	
