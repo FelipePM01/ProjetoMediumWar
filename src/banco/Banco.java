@@ -108,10 +108,6 @@ public class Banco extends JPanel implements IBanco{
 			else pecasDisponiveis[2].setCardAtual("vermelho");
 		}		
 	}
-	public int getCursor(int i) {
-		if(i==1)return cursor1;
-		return cursor2;
-	}
 	public void hideCursor(int i){
 		if(i==1) {
 			if(cursor1==cursor2)pecasDisponiveis[cursor1].setCardAtual("vermelho");

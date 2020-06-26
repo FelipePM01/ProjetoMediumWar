@@ -18,8 +18,8 @@ public abstract class Card extends JPanel implements ICardPeca{
 	 */
 	private static final long serialVersionUID = 6677974077714234653L;
 	private Image img, imgpeca, cardPadrao, cardAzul, cardVermelho, cardAmbos;
-	private int WIDTH;
-	private int HEIGHT;
+	private int width;
+	private int height;
 	private int[] startPointCard = new int[2];
 	protected double scale;
 
@@ -36,9 +36,9 @@ public abstract class Card extends JPanel implements ICardPeca{
         
     	ImageIcon refimg=new ImageIcon(refimag);        
         img=refimg.getImage();
-        WIDTH = (int)(scale*img.getWidth(null));
-        HEIGHT = (int)(scale*img.getHeight(null));
-        img=img.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_DEFAULT);
+        width = (int)(scale*img.getWidth(null));
+        height = (int)(scale*img.getHeight(null));
+        img=img.getScaledInstance(width, height, Image.SCALE_DEFAULT);
       
     	ImageIcon refCardPadrao=new ImageIcon("assets/cardPadrao.png");
     	cardPadrao=refCardPadrao.getImage();
@@ -75,10 +75,10 @@ public abstract class Card extends JPanel implements ICardPeca{
     	return startPointCard;
     }
     public int getWidth() {
-    	return WIDTH;
+    	return width;
     }
     public int getHeight() {
-    	return HEIGHT;
+    	return height;
     }
     public boolean ehNulo() {
     	boolean retorno=false;
