@@ -178,14 +178,50 @@ public interface ICardBanco {
 
 ## Detalhamento das Interfaces
 
-### Interface IPecaJogador
-Essa interface e responsável pela interação entre as peças e o jogador.
+### Interface ICardPeca
+Essa interface é responsável pela interação da peça com um card genérico
 
 Método | Objetivo
 -------| --------
-upNivel | Incrementa atributos relacionados a ataque/velocidade/vida etc
-getPrecoVenda | Retorna o valor de venda da peça
-getPrecoCompra | Retorna o valor de compra da peça
+getGUIPosition | Retorna a posição do card na tela
+
+
+### Interface ICardJogadorPeca
+Essa interface é responsável pela interação da peça com o card da mão do jogador
+
+Método | Objetivo
+-------| --------
+getJogador | Retorna o jogador o qual o card pertence
+recompensar | Notifica o card que uma peca irá recompensar o jogador com uma quantia passada como parâmetro
+setNaoColocado | Recebe um boolean e o coloca na variavel naoColocado que diz se o card ja foi posicionado no tabuleiro
+
+### Interface ICardBanco
+Essa interface é responsável pela interação do banco com o card do banco
+
+Método | Objetivo
+-------| --------
+getWidth | Retorna a largura da imagem do card
+getHeight | retorna a altura da imagem do card
+paintComponent | Imprime o card e seu conteúdo na tela passando a posição no banco como parâmetro
+setCardAtual | Atualiza a imagem do card para refletir na posição do cursor
+setPeca | Armazena uma cópia da peça passada como parâmetro
+getPeca | Retorna a peça armazenada
+getGUIPosition | Retona a posição do card na tela
+
+### Interface ICardJogador
+Essa interface é responsável pela interação do jogador com o card na mão do jogador
+
+Método | Objetivo
+-------| --------
+getWidth | Retorna a largura da imagem do card
+getHeight | retorna a altura da imagem do card
+paintComponent | Imprime o card e seu conteúdo na tela passando a posição na mão como parâmetro
+ehNulo | Verifica se o card está armazenando uma peça
+setCardAtual | Atualiza a imagem do card para refletir na posição do cursor
+setPeca | Armazena uma cópia da peça passada como parâmetro
+getPeca | Retorna a peça armazenada
+getNaoColocado | Retona a variável naoColocado que indica se o card ja foi posicionado no tabuleiro
+
 # Componente Peca
 
 ![Componente da Peca](README_Images/ComponentePeca.png)

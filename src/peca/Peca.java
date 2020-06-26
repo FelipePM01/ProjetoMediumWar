@@ -176,7 +176,7 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
         Image img=refimg.getImage();
         return img.getScaledInstance((int)(img.getWidth(null)*scale*x),(int)(img.getHeight(null)*scale*x),Image.SCALE_DEFAULT);
     }
-	void tick() {
+	protected void tick() {
 		if(!morto) {
 			if(esperando) {
 				esperando=false;
