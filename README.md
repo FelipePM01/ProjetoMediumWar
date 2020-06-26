@@ -492,15 +492,25 @@ public interface ITileTabuleiro {
 
 
 ## Detalhamento das Interfaces
-
-### Interface IPecaJogador
-Essa interface e responsável pela interação entre as peças e o jogador.
+###Interface ITile
+Essa interface é responsável por agrupar as outras interfaces do tile
+### Interface ITilePeca
+Essa interface é responsável pela interação entre as peças e o tile.
 
 Método | Objetivo
 -------| --------
-upNivel | Incrementa atributos relacionados a ataque/velocidade/vida etc
-getPrecoVenda | Retorna o valor de venda da peça
-getPrecoCompra | Retorna o valor de compra da peça
+getImage | Retorna a imagem do tile
+getGUIPosition | Retorna a posição do tile na tela
+getOtherTiles | Retorna a matriz de tiles que representa as posições do tabuleiro
+getPosition | Retorna a posição que o tile está na matriz de peças
+setNull | Coloca o valor null na variável que  guarda a peça
+setPeca | Guarda uma peça passada como parâmetro
+clearTile | Remove a peça armazenada e retira a referência do tile existente na peça
+existsPeca | Checa se o tile está ocupado por uma peça
+getPeca | Retorna a peça armazenada
+eliminateTab | Faz com que o tabuleiro decremente um a variável que guarda quantas peças um determinado jogador tem , passando um inteiro que representa o jogador
+setMarcado | Alterna a variável marcado que indica que uma peça ja está se movimentando em direção à aquele tile
+addProjectile | Adiciona um projétil passado como parâmetro no tabuleiro 
 # Componente Banco
 
 ![Componente do Banco](README_Images/ComponenteBanco.png)
