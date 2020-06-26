@@ -1,9 +1,11 @@
 package tabuleiro;
 
+import java.awt.Graphics;
+
 import Jogador.IJogador;
 import peca.Projectile;
 
-public interface ITabuleiro extends ITabuleiroTile,ITabuleiroGame,ITabuleiroJogador {
+public interface ITabuleiro extends ITabuleiroTile,ITabuleiroJogador {
 
 	public void setJogador(IJogador jogador1);
 
@@ -21,5 +23,8 @@ public interface ITabuleiro extends ITabuleiroTile,ITabuleiroGame,ITabuleiroJoga
 	public void pressedAspas();
 
 	public void removeProjectiles(Projectile projectile);
-
+	public void paintComponent(Graphics g);
+	public Tile[][] getTiles();
+	public void start();
+	public void clear();
 }

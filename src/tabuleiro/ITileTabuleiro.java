@@ -11,7 +11,7 @@ import peca.Peca;
 
 public interface ITileTabuleiro {
 	public void paintComponent(Graphics g,Image img);
-//	public void setPeca(IPecaTile peca);
+
 	public IPecaTile getPeca();
 	public void paintPeca(Graphics g);
 	public Image getImage();
