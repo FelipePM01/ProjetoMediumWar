@@ -19,7 +19,7 @@ O projeto será um jogo em que cada jogador posicionará as peças de sua mão n
 
 # Componente Jogador
 
-![Componente do Jogador](componentejogador.png)
+![Componente do Jogador](README_Images/ComponenteJogador.png)
 
 ## Interfaces
 
@@ -60,9 +60,44 @@ uparPeca | Possibilita melhora atributos da peça e a subir de nível
 receberGold | Atualiza o gold dos jogadores após uma rodada(Recebe inteiro para indicar a quantia)
 colocarPeca | Permite o jogador posicionar suas peças no tabuleiro(Recebe a posição(id) da peça na mão do jogador e a posição(String) que a peça ocuparar no tabuleiro)
 
+# Componente Card
+
+![Componente do Card](README_Images/ComponenteCard.png)
+
+## Interfaces
+
+Interfaces associadas ao componente Card:
+
+![Diagrama Interfaces do Card](interfacepeca.png)
+
+Campo | Valor
+----- | -----
+Classe | peca.Peca
+Autores | Felipe Pacheco Manoel e Cristiano Sampaio Pinheiro
+Objetivo | representar cada um dos cards presentes no banco e na mao do jogador
+Interface | 
+~~~
+
+
+
+
+
+~~~
+
+
+## Detalhamento das Interfaces
+
+### Interface IPecaJogador
+Essa interface e responsável pela interação entre as peças e o jogador.
+
+Método | Objetivo
+-------| --------
+upNivel | Incrementa atributos relacionados a ataque/velocidade/vida etc
+getPrecoVenda | Retorna o valor de venda da peça
+getPrecoCompra | Retorna o valor de compra da peça
 # Componente Peca
 
-![Componente da Peca](componentepeca.png)
+![Componente da Peca](README_Images/ComponentePeca.png)
 
 ## Interfaces
 
@@ -131,7 +166,7 @@ getPosition | Retorna a posição da peça no tabuleiro
 
 # Componente Tabuleiro
 
-![Componente do Tabuleiro](componentetabuleiro.png)
+![Componente do Tabuleiro](README_Images/ComponenteTabuleiro.png)
 
 ## Interfaces
 
@@ -188,6 +223,41 @@ setPeca | recebe uma String e um objeto da classe Peca e coloca a peça recebida
 getPeca | recebe uma String e recupera a peça na posição representada pela String
 eliminarPeca | recebe uma String e exclui a peça na posição representada pela string passada como parâmetro
 getPecas | Recebe uma String que representa um jogador e retorna um vetor de pecas que contém as pecas do jogador ,recebido como parâmetro, que estão no tabuleiro
+# Componente Tile
+
+![Componente do Tile](README_Images/ComponenteTile.png)
+
+## Interfaces
+
+Interfaces associadas ao componente Peca:
+
+![Diagrama Interfaces do Tile](interfacepeca.png)
+
+Campo | Valor
+----- | -----
+Classe | peca.Peca
+Autores | Felipe Pacheco Manoel e Cristiano Sampaio Pinheiro
+Objetivo | representar cada uma das Pecas presentes no jogo
+Interface | 
+~~~
+
+
+
+
+
+~~~
+
+
+## Detalhamento das Interfaces
+
+### Interface IPecaJogador
+Essa interface e responsável pela interação entre as peças e o jogador.
+
+Método | Objetivo
+-------| --------
+upNivel | Incrementa atributos relacionados a ataque/velocidade/vida etc
+getPrecoVenda | Retorna o valor de venda da peça
+getPrecoCompra | Retorna o valor de compra da peça
 # Componente Banco
 
 ![Componente do Banco](README_Images/ComponenteBanco.png)
@@ -256,7 +326,7 @@ getDisponiveis | retorna um vetor de peças disponíveis para a compra
 refresh | atualiza o vetor de peças disponíveis (trocando as peças que estarão disponíveis)
 # Componente Game
 
-![Componente do Tabuleiro](componentegame.png)
+![Componente do Tabuleiro](README_Images/ComponenteGame.png)
 
 
 
