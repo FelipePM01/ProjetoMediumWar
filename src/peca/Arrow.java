@@ -12,7 +12,6 @@ public class Arrow extends Projectile{
 	 * 
 	 */
 	private static final long serialVersionUID = -70153469698118573L;
-	private Image imgArrow;
 	
 	public Arrow(double scale, double[] position, IPecaTile target, double dano,IPecaCardJogador origem){
 		super(scale, position, target, dano,20,origem);
