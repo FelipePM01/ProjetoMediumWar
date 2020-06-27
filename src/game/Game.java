@@ -207,16 +207,20 @@ public class Game extends Canvas implements Runnable, IGameTabuleiro,KeyListener
 			}
 			break;
 		case KeyEvent.VK_Q:
-			commands1=false;
-			if(banco.obtainCursor("azul")!=-1)banco.hideCursor(1);
-			tabuleiro.pressedQ();
+			if(tabuleiro.getIntab()[0]>0) {
+				commands1=false;
+				if(banco.obtainCursor("azul")!=-1)banco.hideCursor(1);
+				tabuleiro.pressedQ();
+			}
 			//banco.pressedENTER();
 			//jogador2.pressedENTER();
 			break;
 		case KeyEvent.VK_QUOTE:
-			commands2=false;
-			if(banco.obtainCursor("vermelho")!=-1)banco.hideCursor(2);
-			tabuleiro.pressedAspas();
+			if(tabuleiro.getIntab()[1]>0) {
+				commands2=false;
+				if(banco.obtainCursor("vermelho")!=-1)banco.hideCursor(2);
+				tabuleiro.pressedAspas();
+			}
 			//banco.pressedENTER();
 			//jogador2.pressedENTER();
 			break;

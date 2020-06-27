@@ -257,7 +257,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 	public void removeProjectiles(Projectile projectile) {
 		projectiles.remove(projectile);
 	}
-	protected int[] getIntab() {
+	public int[] getIntab() {
 		return inTab;
 	}
 	public void eliminateInTab(int i) {

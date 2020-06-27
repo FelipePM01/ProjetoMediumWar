@@ -297,7 +297,7 @@ public class Jogador extends JPanel implements IJogador{
 	}
 	
 	public void remove() {
-		if(cursor>=0&&mao[cursor].getNaoColocado()) {
+		if(cursor>=0&&!mao[cursor].ehNulo()&&mao[cursor].getNaoColocado()) {
 			addCash(mao[cursor].getPeca().getSaleValue());
 			mao[cursor].setPeca(null);
 		}

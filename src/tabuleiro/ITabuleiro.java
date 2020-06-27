@@ -27,4 +27,6 @@ public interface ITabuleiro extends ITabuleiroTile,ITabuleiroJogador {
 	public Tile[][] getTiles();
 	public void start();
 	public void clear();
+
+	public int[] getIntab();
 }
