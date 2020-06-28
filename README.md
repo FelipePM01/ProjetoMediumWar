@@ -14,7 +14,88 @@ O projeto será um jogo em que cada jogador posicionará as peças de sua mão n
 # Slides do Projeto
 [Link para apresentação do projeto](https://drive.google.com/open?id=1aigs8xozY3tbv9r1LsFobk-ZYNi4p2eJKla_YFFc_GY)
 
-#Detalhes do Código
+# Detalhes do Código
+
+## Criação e gerenciamento do menu
+~~~
+public Menu(Window window){
+		...
+		setMenu();
+		
+		//Cria cardLayout e adiciona janelas
+		cardLayout = new CardLayout();
+	    this.setLayout(cardLayout);
+		this.add(menuPage, "home");
+		this.add(creditsPage, "credits");
+	    
+		setVisible(true);
+	}
+	public void setMenu() {
+		...
+		
+		//Cria Janelas
+		menuPage = new JLabel();
+		menuPage.setLayout(null);
+		menuPage.setIcon(imgMenu);
+		menuPage.setVisible(false);
+		
+		creditsPage = new JLabel();
+		creditsPage.setOpaque(false);
+		creditsPage.setLayout(null);
+		creditsPage.setIcon(imgCredits);
+		creditsPage.setVisible(false);
+		
+		//Cria Botoes
+		play=new JButton(imgPlay);
+		play.setBounds(1400, 400, 432, 144);
+		play.addActionListener(window);
+		menuPage.add(play);
+		
+		credits=new JButton(imgCreditsButton);
+		credits.setBounds(1400, 570, 432, 144);
+		credits.addActionListener(e -> cardLayout.show(this, "credits"));
+		menuPage.add(credits);
+		
+		...
+	}
+...
+~~~
+~~~
+public Window(int width,int height,String title,Game game) {
+		...
+		menu = new Menu(this);
+		...
+		frame.add(menu);
+	}
+	
+	 public void actionPerformed(ActionEvent evento) {
+		 	//Cria a janela principal
+		 	principal=new JPanel();
+			principal.setOpaque(false);
+			principal.setLayout(null);
+			principal.setVisible(true);
+			
+			...
+			//Janela principal adiciona o game
+			principal.add(game);
+			//Janela principal e adicionada ao cardLayout do menu 
+			menu.add(principal,"principal");
+			menu.cardLayout.show(menu,"principal");
+		 	
+		 	game.gameStart();
+		 	game.start(); 	
+	 }
+	 
+	 public void endGame() {
+		 endHome.setVisible(true);
+		 SwingUtilities.updateComponentTreeUI(this);
+	 }
+	 public void setMenu() {
+		 game.stop();
+		 menu.cardLayout.show(menu,"home");
+	 }
+~~~
+## Controle da movimentação da peça
 ~~~
 public void moveOrAttack() {
 	...
@@ -69,7 +150,7 @@ public void moveOrAttack() {
 	}
 }
 ~~~	
-
+## Diferentes maneiras de instanciar uma peça
 ~~~
 public Peca(double scale) {
 	this.scale=scale;
