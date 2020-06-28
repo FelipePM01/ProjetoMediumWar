@@ -304,7 +304,7 @@ public interface IPecaTile extends IPeca{
 
 ## Detalhamento das Interfaces
 
-###Interface IPeca
+### Interface IPeca
 Essa interface abriga os métodos genericos da peca e é herdada pelas demais interfaces.
 
 Método | Objetivo
@@ -346,10 +346,6 @@ recompensar | Retorna o valor acrescido quando a peça e derrotada
 ### Interface IPecaCardBanco
 Essa interface e responsável pela interação entre a peca e os cards do banco.
 
-Método | Objetivo
--------| --------
- | 
-
 ### Interface IPecaTile
 Essa interface e responsável pela interação entre as peças e os tiles presentes no tabuleiro.
 
@@ -378,7 +374,7 @@ setInBoard | Define se a peça esta ou não no tabuleiro
 
 Interfaces associadas ao componente Tabuleiro:
 
-![Diagrama Interfaces do Tabuleiro](interfacetabuleiro.png)
+![Diagrama Interfaces do Tabuleiro](README_Images/InterfaceTabuleiro.png)
 
 Campo | Valor
 ----- | -----
@@ -486,7 +482,7 @@ addProjectiles | Adiciona um projétil passado como parâmetro no tabuleiro
 
 Interfaces associadas ao componente Peca:
 
-![Diagrama Interfaces do Tile](interfacepeca.png)
+![Diagrama Interfaces do Tile](README_Images/InterfaceTile.png)
 
 Campo | Valor
 ----- | -----
@@ -533,7 +529,7 @@ public interface ITileTabuleiro {
 
 
 ## Detalhamento das Interfaces
-###Interface ITile
+### Interface ITile
 Essa interface é responsável por agrupar as outras interfaces do tile
 ### Interface ITilePeca
 Essa interface é responsável pela interação entre as peças e o tile.
@@ -553,7 +549,7 @@ eliminateTab | Faz com que o tabuleiro decremente um a variável que guarda quan
 setMarcado | Alterna a variável marcado que indica que uma peça ja está se movimentando em direção à aquele tile
 addProjectile | Adiciona um projétil passado como parâmetro no tabuleiro 
 
-###Interface ITileTabuleiro
+### Interface ITileTabuleiro
 Essa interface e responsável pela interação entre o tabuleiro e o tile
 Método | Objetivo
 -------| --------
@@ -635,14 +631,14 @@ pressedSPACE | Confirma a escolha do jogador 1 de qual peça será comprada
 pressedENTER | Confirma a escolha do jogador 2 de qual peça será comprada
 refresh | Troca as peças que estarão disponíveis para compra
 
-###Inteface IBancoCard
+### Inteface IBancoCard
 Essa interface é responsável pela interação entre o card e o banco
 
 Método | Objetivo
 -------| --------
 getScale | Retorna a escala da imagem do banco
 
-###Interface IBancoJogador
+### Interface IBancoJogador
 Essa interface é responsável pela interação entre o jogador e o banco 
 
 Método | Objetivo
