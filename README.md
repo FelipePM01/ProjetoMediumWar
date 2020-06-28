@@ -8,11 +8,100 @@
 # Descrição Resumida do Projeto
 O projeto será um jogo em que cada jogador posicionará as peças de sua mão no tabuleiro e em seguida as peças atacarão as peças do inimigo por meio de um determinado compartamento atribuído ao tipo da peça. Cada peça terá atributos específicos como vida , dano e alcance de ataque. A temática do jogo será baseada em classes e criaturas de um RPG.
 
-# Vídeo do Projeto
+# Vídeos do Projeto
 [Link do vídeo do projeto](https://drive.google.com/open?id=12WCLHbGfRfGYytHxSpNW-8KsJQpoNzBI)
 
-# Apresentação do Projeto
+# Slides do Projeto
 [Link para apresentação do projeto](https://drive.google.com/open?id=1aigs8xozY3tbv9r1LsFobk-ZYNi4p2eJKla_YFFc_GY)
+
+#Detalhes do Código
+~~~
+public void moveOrAttack() {
+	...
+	for(int i=0;i<matriz.length;i++) {
+		for(int j=0;j<matriz[0].length;j++) {
+			if(matriz[i][j].existsPeca()&&matriz[i][j].getPeca().getCor()!=this.cor&&Tile.dist(matriz[i][j], tile)<dist) {//achar menor distncia a peca inimiga
+				dist=Tile.dist(matriz[i][j], tile);
+				alvo=matriz[i][j];
+			}
+		}
+	}
+	if(dist<=alcance&&dist!=100) {
+		currentAction="attacking";
+		...
+	}
+	else if(dist!=100) {
+		
+		
+		try {
+			direction=chooseDirection(alvo,tried);
+			lastPosition=new int[2];
+			lastPosition[0]=-direction[0];
+			lastPosition[1]=-direction[1];
+			
+			moveTarget=tile.getOtherTiles()[tile.getPosition()[0]+direction[0]][tile.getPosition()[1]+direction[1]];
+			
+			attackTarget=null;
+			tried=new ArrayList<int[]>();//atualiza o vetor das direcoes que ja foram testadas no chooseDirection() que o utilizara para fazer novas tentativas
+			tried.add(lastPosition);
+			currentAction="moving";
+			...
+		} catch (FormatoInvalido e) {
+			System.out.println("formato invalido");
+		}catch (MovimentoInvalido e) {
+			
+			
+			if(tried.size()<4) {
+				moveOrAttack();
+				
+				
+			}
+			else {
+				
+				esperando=true;//tenta de novo no proximo tick
+				tried=new ArrayList<int[]>();
+				if(lastPosition!=null)tried.add(lastPosition);
+				
+			}
+			
+		}
+		
+	}
+}
+~~~	
+
+~~~
+public Peca(double scale) {
+	this.scale=scale;
+}
+public Peca(IPecaCardJogador peca,Tile tile) {
+	set(peca);//atribui as variaveis que toda peca devera ter a partir de uma instancia anterior e copia os atributos para a nova peca
+	this.tile=tile;
+	inBoard=true;
+	basePosition=tile.getGUIPosition();
+	origem=peca;
+	peca.getCard().setNaoColocado(false);
+	int[] start=new int[2];
+	start[0]=(int)(getCenterPosition()[0]+correction[0]*scale+scale*translation[0]);
+	start[1]=(int)(basePosition[1]+scale*correction[1]+scale*translation[1]);
+	
+	barraDeVida=new BarraDeVida(start,scale,cor);
+	
+	
+}
+public Peca(IPeca peca,ICardBanco card) {
+	set(peca);		
+	inBoard=false;
+	basePosition=card.getGUIPosition();
+}
+public Peca(IPecaCardBanco peca,ICardJogadorPeca card) {
+	set(peca);		
+	inBoard=false;
+	basePosition=card.getGUIPosition();
+	this.card=card;
+	cor=card.getJogador().getCor();
+}
+~~~
 
 # Diagrama Geral de Componentes
 ![Diagrama Geral](README_Images/DiagramaGeralComponentes.png)
