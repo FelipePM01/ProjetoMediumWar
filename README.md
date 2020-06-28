@@ -304,30 +304,71 @@ public interface IPecaTile extends IPeca{
 
 ## Detalhamento das Interfaces
 
-### Interface IPecaJogador
-Essa interface e responsável pela interação entre as peças e o jogador.
+###Interface IPeca
+Essa interface abriga os métodos genericos da peca e é herdada pelas demais interfaces.
 
 Método | Objetivo
 -------| --------
-upNivel | Incrementa atributos relacionados a ataque/velocidade/vida etc
-getPrecoVenda | Retorna o valor de venda da peça
-getPrecoCompra | Retorna o valor de compra da peça
+paintComponent | Imprime a peca corrigindo sua posição
+getAnimationFramesAttack | Retorna o vetor de imagens da animação de ataque
+getAnimationFramesMove | Retorna o vetor de imagens da animação de movimento
+getCurrentAnimation | Retorna o vetor de imagens da animação que esta sendo executada no momento
+getScale | Retorna a escala da imagem usada nas peças
+getBaseMoveAnimDuration | Retorna a duração da animação de movimento da peça
+getSpeed | Retorna a velocidade de movimentação da peça
+getLife | Retorna a vida atual da peça
+getEndurance | Retorna o valor da defesa da peça
+getAttackSpeed | Retorna a velocidade de ataque da peça
+getAttackDamage | Retorna o valor do dano causado pela peça
+getBaseAttackAnimDuration | Retorna a duração da animação de ataque da peça
+getAlcance | Retorna o alcance de ataque da peça
+getCor | Retorna a cor do jogador a qual uma determinada peça pertence
+getPurchaseValue | Retorna o valor de compra da peça
+getSaleValue | Retorna o valor de venda da peça
+getGiftValue | Retorna o valor acrescida ao oponente quando derrotar a peça
 
-### Interface IPecaPeca
-Essa interface e responsável pelas ações realizadas sobre as peças.
+### Interface IPecaCard
+Essa interface e responsável pela interação entre as peças e os cards.
 
 Método | Objetivo
 -------| --------
-receberDano | Desconta valores retirados por um ataque
-getPosition | Retorna a posição da peça no tabuleiro
+printFeature | Imprime os valores dos principais atributos da peca
+paintComponent | Imprime a peca dentro do card
 
-### Interface IPecaTabuleiro
-Essa interface e responsável pela interação entre as peças e o tabuleiro.
+### Interface IPecaCardJogador
+Essa interface e responsável pela interação entre a peca e os cards do jogador.
 
 Método | Objetivo
 -------| --------
-moverOuAtacar | Verifica se a peça realizará um ataque ou movimento e chama o metodo correspondente
-getPosition | Retorna a posição da peça no tabuleiro
+getCard | Retorna o card o qual a peça esta inserida
+recompensar | Retorna o valor acrescido quando a peça e derrotada
+
+### Interface IPecaCardBanco
+Essa interface e responsável pela interação entre a peca e os cards do banco.
+
+Método | Objetivo
+-------| --------
+ | 
+
+### Interface IPecaTile
+Essa interface e responsável pela interação entre as peças e os tiles presentes no tabuleiro.
+
+Método | Objetivo
+-------| --------
+moveOrAttack | Verifica qual ação a peça deve tomar, mover ou atacar
+setTarget | Define para qual tile a peça deve se mover
+flip | Espelha imagem da peça
+getInBoard | Retorna se a peça esta no tabuleiro
+getJogador | Retorna o jogador dono da peça
+getTile | Retorna o tile que a peça esta ocupando no momento
+getCenterPosition | Retorna a posição central da peça no frame
+setTargetNull | Define como nulo o próximo tile que a peça deve assumir
+getMorto | Retorna se peça esta viva ou morta
+receberDano | Aplica dano a peça causado por um ataque próximo
+receberDanoRanged | Aplica dano a peça causado por um ataque a distância 
+getCard | Retorna o card o qual a peça pertence
+getOrigem | Retorna a peca que esta presente no card
+setInBoard | Define se a peça esta ou não no tabuleiro
 
 # Componente Tabuleiro
 
@@ -638,13 +679,20 @@ public interface IGameTabuleiro extends IGame{
 ~~~
 ## Detalhamento das Interfaces
 
-### Interface IBancoJogador
-Permite que o jogador acesse as peças dissponíveis para a compra.
+### Interface IGame
+Permite que outras classes tenham acesso ao game
 
 Método | Objetivo
 -------| --------
-getDisponiveis | retorna um vetor de peças disponíveis para a compra
-refresh | atualiza o vetor de peças disponíveis (trocando as peças que estarão disponíveis)
+getScale | Retorna a escala da imagem usada no frame principal
+
+### Interface IGameTabuleiro
+Permite que o tabuleiro crie novos rounds e finalize o jogo
+
+Método | Objetivo
+-------| --------
+newRound | Realiza ações necessárias para iniciar um novo round
+endGame | Encerra o jogo apresentando opção de retornar ao menu
 
 
 
