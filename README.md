@@ -511,6 +511,21 @@ getPeca | Retorna a peça armazenada
 eliminateTab | Faz com que o tabuleiro decremente um a variável que guarda quantas peças um determinado jogador tem , passando um inteiro que representa o jogador
 setMarcado | Alterna a variável marcado que indica que uma peça ja está se movimentando em direção à aquele tile
 addProjectile | Adiciona um projétil passado como parâmetro no tabuleiro 
+
+###Interface ITileTabuleiro
+Essa interface e responsável pela interação entre o tabuleiro e o tile
+Método | Objetivo
+-------| --------
+getPeca | Retorna a peça armazenada
+paintPeca | Se estiver armazenada alguma peça , imprime a peça na tela
+getImage | Retorna a imagem do tile
+setNull | Coloca o valor null na variável que  guarda a peça
+setPeca | Guarda uma peça passada como parâmetro
+existsPeca | Checa se o tile está ocupado por uma peça
+nullTarget | Para o movimento da peça anulando a variável que guarda o seu destino
+actionPeca | Inicia as ações de movimento e ataque da peça
+setTileAtual | Troca a imagem do tile que será imprimida para indicar que um cursor está no tile ou não
+
 # Componente Banco
 
 ![Componente do Banco](README_Images/ComponenteBanco.png)
@@ -532,8 +547,6 @@ public interface IBanco extends IBancoCard,IBancoJogador {
 
 	void setJogador(IJogador jogador1);
 	public int obtainCursor(String cor);
-	public void hideCursor(int i);
-
 	public void pressedLEFT();
 	public void pressedRIGHT();
 	public void pressedA();
@@ -552,31 +565,51 @@ public interface IBancoCard {
 public interface IBancoJogador {
 
 	public void comprar(IJogador jogador);
-
-	public int getCursor(int i);
-	
+			
 	public void hideCursor(int i);
 
 	public int obtainCursor(String cor);
 }
 
 
-
-
-
-
 ~~~
-
 
 ## Detalhamento das Interfaces
 
-### Interface IBancoJogador
-Permite que o jogador acesse as peças dissponíveis para a compra.
+### Interface IBanco
+Essa interface é responsável por agrupar as outras interfaces e representar as interações entre o game e o banco
+
 
 Método | Objetivo
 -------| --------
-getDisponiveis | retorna um vetor de peças disponíveis para a compra
-refresh | atualiza o vetor de peças disponíveis (trocando as peças que estarão disponíveis)
+hideCursor | Faz com que o cursor de determinado jogador(representado por uma cor) não seja mais visível
+paintComponent |Imprime o banco e as suas peças armazenadas
+pressedA | Movimenta o cursor do jogador 1 para a esquerda
+pressedD | Movimenta o cursor do jogador 1 para a direita
+pressedLEFT | Movimenta o cursor do jogador 2 para a esquerda
+pressedRIGHT | Movimenta o cursor do jogador 2 para a direita
+pressedE | Liga ou desliga a exibição dos atributos da peça do jogador 1
+pressedDoisPontos | Liga ou desliga a exibição dos atributos da peça do jogador 2
+pressedSPACE | Confirma a escolha do jogador 1 de qual peça será comprada
+pressedENTER | Confirma a escolha do jogador 2 de qual peça será comprada
+refresh | Troca as peças que estarão disponíveis para compra
+
+###Inteface IBancoCard
+Essa interface é responsável pela interação entre o card e o banco
+
+Método | Objetivo
+-------| --------
+getScale | Retorna a escala da imagem do banco
+
+###Interface IBancoJogador
+Essa interface é responsável pela interação entre o jogador e o banco 
+
+Método | Objetivo
+-------| --------
+obtainCursor | Retorna a posição do cursor de um jogador representado pela sua respectiva cor
+hideCursor | Faz com que o cursor de determinado jogador(representado por uma cor) não seja mais visível
+comprar | Notifica o banco que um determinado jogador deseja comprar um peça
+
 # Componente Game
 
 ![Componente do Game](README_Images/ComponenteGame.png)
