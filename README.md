@@ -690,6 +690,22 @@ Método | Objetivo
 newRound | Realiza ações necessárias para iniciar um novo round
 endGame | Encerra o jogo apresentando opção de retornar ao menu
 
+# Plano de Exceções
+
+## Diagrama da hierarquia de exceções
+
+![Hierarquia Exceções](README_Images/EsquemaException.png)
+
+## Descrição das classes de exceção
+
+
+
+Classe | Descrição
+----- | -----
+MovimentoInvalido | Engloba todas as exceções nas quais o movimento é inválido.
+ForaDoTabuleiro | Indica que a posição pretendida não está dentro do tabuleiro.
+PosicaoOcupada | Indica que a peça não pode se mover porque a posição pretendida ja está ocupada.
+FormatoInvalido | Indica que a entrada do método de movimento é inválida.
 
 
 
