@@ -248,71 +248,72 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 	public abstract double[] getCenterPosition();
 	
 	public void moveOrAttack() {
-		
-		ITilePeca[][] matriz=tile.getOtherTiles();
-		double dist=100;
-		ITilePeca alvo=null;
-		for(int i=0;i<matriz.length;i++) {
-			for(int j=0;j<matriz[0].length;j++) {
-				if(matriz[i][j].existsPeca()&&matriz[i][j].getPeca().getCor()!=this.cor&&Tile.dist(matriz[i][j], tile)<dist) {
-					dist=Tile.dist(matriz[i][j], tile);
-					alvo=matriz[i][j];
+		if(tile!=null&& tile.getPeca()==this) {
+			ITilePeca[][] matriz=tile.getOtherTiles();
+			double dist=100;
+			ITilePeca alvo=null;
+			for(int i=0;i<matriz.length;i++) {
+				for(int j=0;j<matriz[0].length;j++) {
+					if(matriz[i][j].existsPeca()&&matriz[i][j].getPeca().getCor()!=this.cor&&Tile.dist(matriz[i][j], tile)<dist) {
+						dist=Tile.dist(matriz[i][j], tile);
+						alvo=matriz[i][j];
+					}
 				}
 			}
-		}
-		if(dist<=alcance&&dist!=100) {
-			currentAction="attacking";
-			
-			moveTarget=null;
-			
-			if(alvo!=null) {
-				attackTarget=alvo.getPeca();
-				if(alvo.getPosition()[0]>tile.getPosition()[0]&&flipped)flipped=false;
-				if(alvo.getPosition()[0]<tile.getPosition()[0]&&!flipped)flipped=true;
+			if(dist<=alcance&&dist!=100) {
+				currentAction="attacking";
 				
-			}
-			
-			currentAnimation=animationFramesAttack;
-			currentFrame=0;
-		}
-		else if(dist!=100) {
-			
-			
-			try {
-				direction=chooseDirection(alvo,tried);
-				lastPosition=new int[2];
-				lastPosition[0]=-direction[0];
-				lastPosition[1]=-direction[1];
+				moveTarget=null;
 				
-				moveTarget=tile.getOtherTiles()[tile.getPosition()[0]+direction[0]][tile.getPosition()[1]+direction[1]];
+				if(alvo!=null) {
+					attackTarget=alvo.getPeca();
+					if(alvo.getPosition()[0]>tile.getPosition()[0]&&flipped)flipped=false;
+					if(alvo.getPosition()[0]<tile.getPosition()[0]&&!flipped)flipped=true;
+					
+				}
 				
-				attackTarget=null;
-				tried=new ArrayList<int[]>();
-				tried.add(lastPosition);
-				currentAction="moving";
-				currentAnimation=animationFramesMove;
+				currentAnimation=animationFramesAttack;
 				currentFrame=0;
-				moveTarget.setMarcado();
-			} catch (FormatoInvalido e) {
-				System.out.println("formato invalido");
-			}catch (MovimentoInvalido e) {
+			}
+			else if(dist!=100) {
 				
 				
-				if(tried.size()<4) {
-					moveOrAttack();
+				try {
+					direction=chooseDirection(alvo,tried);
+					lastPosition=new int[2];
+					lastPosition[0]=-direction[0];
+					lastPosition[1]=-direction[1];
 					
+					moveTarget=tile.getOtherTiles()[tile.getPosition()[0]+direction[0]][tile.getPosition()[1]+direction[1]];
 					
-				}
-				else {
-					
-					esperando=true;
+					attackTarget=null;
 					tried=new ArrayList<int[]>();
-					if(lastPosition!=null)tried.add(lastPosition);
+					tried.add(lastPosition);
+					currentAction="moving";
+					currentAnimation=animationFramesMove;
+					currentFrame=0;
+					moveTarget.setMarcado();
+				} catch (FormatoInvalido e) {
+					System.out.println("formato invalido");
+				}catch (MovimentoInvalido e) {
+					
+					
+					if(tried.size()<4) {
+						moveOrAttack();
+						
+						
+					}
+					else {
+						
+						esperando=true;
+						tried=new ArrayList<int[]>();
+						if(lastPosition!=null)tried.add(lastPosition);
+						
+					}
 					
 				}
 				
 			}
-			
 		}
 	}
 	protected int[] chooseDirection(ITilePeca alvo,ArrayList<int[]> tried) throws MovimentoInvalido{
