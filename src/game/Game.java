@@ -165,18 +165,18 @@ public class Game extends Canvas implements Runnable, IGameTabuleiro,KeyListener
 				banco.pressedLEFT();
 				}
 			break;
-		case KeyEvent.VK_SLASH:
-			if(commands2)jogador2.pressedBARRA();
+		case KeyEvent.VK_L:
+			if(commands2)jogador2.pressedL();
 			break;
-		case KeyEvent.VK_PERIOD:
-			if(commands2)jogador2.pressedPONTO();
+		case KeyEvent.VK_K:
+			if(commands2)jogador2.pressedK();
 			break;
-		case KeyEvent.VK_COMMA:
-			if(commands2)jogador2.pressedVIRGULA();
+		case KeyEvent.VK_J:
+			if(commands2)jogador2.pressedJ();
 			break;
-		case KeyEvent.VK_SEMICOLON:
-			if(commands2&&banco.obtainCursor("vermelho")!=-1)banco.pressedDoisPontos();
-			else if(commands2)jogador2.pressedDoisPontos();
+		case KeyEvent.VK_N:
+			if(commands2&&banco.obtainCursor("vermelho")!=-1)banco.pressedN();
+			else if(commands2)jogador2.pressedN();
 			break;
 		case KeyEvent.VK_C:
 			if(commands1)jogador1.pressedC();
@@ -214,11 +214,11 @@ public class Game extends Canvas implements Runnable, IGameTabuleiro,KeyListener
 			//banco.pressedENTER();
 			//jogador2.pressedENTER();
 			break;
-		case KeyEvent.VK_QUOTE:
+		case KeyEvent.VK_M:
 			if(tabuleiro.getIntab()[1]>0) {
 				commands2=false;
 				if(banco.obtainCursor("vermelho")!=-1)banco.hideCursor(2);
-				tabuleiro.pressedAspas();
+				tabuleiro.pressedM();
 			}
 			//banco.pressedENTER();
 			//jogador2.pressedENTER();

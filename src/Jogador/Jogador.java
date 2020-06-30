@@ -165,7 +165,7 @@ public class Jogador extends JPanel implements IJogador{
 			}
 		}
 	}
-	public void pressedVIRGULA() {
+	public void pressedJ() {
 		if(cursor!=-1)hideCursor();
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
 		for(int i=0;i<8;i++) {
@@ -228,21 +228,21 @@ public class Jogador extends JPanel implements IJogador{
 		setCursor();
 		currentAction="position";
 	}
-	public void pressedPONTO() {
+	public void pressedK() {
 		if(cursor!=-1)hideCursor();
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
 		if(banco.obtainCursor(cor)!=-1)banco.hideCursor(2);
 		setCursor();
 		currentAction="position";
 	}
-	public void pressedBARRA() {
+	public void pressedL() {
 		if(cursor!=-1)hideCursor();
 		if(banco.obtainCursor(cor)!=-1)banco.hideCursor(2);
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
 		setCursor();
 		currentAction="remove";
 	}
-	public void pressedDoisPontos() {
+	public void pressedN() {
 		if(cursor!=-1)hideCursor();
 		if(banco.obtainCursor(cor)!=-1)banco.hideCursor(2);
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
@@ -307,7 +307,7 @@ public class Jogador extends JPanel implements IJogador{
 			if(mao[cursor].getPeca()!=null&&mao[cursor].getNaoColocado()) {
 				tabuleiro.positionPeca(this,mao[cursor].getPeca());
 				if(cursor!=-1)hideCursor();
-				 currentAction="posicionando";
+				 currentAction="posicionando";	
 			}
 			else hideCursor();
 		}

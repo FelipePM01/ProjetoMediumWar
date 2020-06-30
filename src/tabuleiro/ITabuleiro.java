@@ -20,7 +20,7 @@ public interface ITabuleiro extends ITabuleiroTile,ITabuleiroJogador {
 	public void pressedLEFT() ;
 	public void pressedRIGHT() ;
 	public void pressedQ();
-	public void pressedAspas();
+	public void pressedM();
 
 	public void removeProjectiles(Projectile projectile);
 	public void paintComponent(Graphics g);
