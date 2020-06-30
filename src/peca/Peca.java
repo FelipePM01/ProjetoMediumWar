@@ -11,7 +11,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import Jogador.CardJogador;
 import Jogador.IJogadorCard;
 import card.ICardBanco;
 import card.ICardJogadorPeca;
@@ -19,7 +18,6 @@ import excecoes.*;
 
 import game.GUI;
 import tabuleiro.ITilePeca;
-import tabuleiro.Tabuleiro;
 import tabuleiro.Tile;
 
 public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador,IPecaCardBanco{
@@ -318,8 +316,6 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 	}
 	protected int[] chooseDirection(ITilePeca alvo,ArrayList<int[]> tried) throws MovimentoInvalido{
 		if(alvo==tile)throw new FormatoInvalido();
-		Tile[][] tabuleiro=tile.getOtherTiles();
-		int[] position=tile.getPosition();
 		int deltaX=Tile.distX(tile, alvo);
 		int deltaY=Tile.distY(tile, alvo);
 		int[] direction=new int[2];
@@ -328,34 +324,7 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 			
 			direction[0]=(deltaX!=0)?deltaX/Math.abs(deltaX):1;
 			direction[1]=0;
-			if(direction[0]+position[0]>=tabuleiro.length||direction[0]+position[0]<0) {
-				boolean jaTestado=false;
-				for(int i=0;i<tried.size();i++) {
-					
-					if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-				}
-				if(!jaTestado) {
-					tried.add(direction);
-					
-					throw new ForaDoTabuleiro();
-				}
-				System.out.println("");
-			}
-			else if(tabuleiro[direction[0]+position[0]][direction[1]+position[1]].existsPeca()||tabuleiro[direction[0]+position[0]][direction[1]+position[1]].getMarcado()) {
-				boolean jaTestado=false;
-				for(int i=0;i<tried.size();i++) {
-					
-					if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-					
-				}
-				if(!jaTestado) {
-					tried.add(direction);
-					
-					throw new PosicaoOcupada();
-					
-				}
-				
-			}
+			if(tryDirection(direction,tried));
 			else {
 				boolean jaTestado=false;
 				for(int i=0;i<tried.size();i++) {
@@ -369,28 +338,7 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 				
 				direction[0]=0;
 				direction[1]=(deltaY!=0)?deltaY/Math.abs(deltaY):1;
-				if(direction[1]+position[1]>=tabuleiro.length||direction[1]+position[1]<0) {
-					boolean jaTestado=false;
-					for(int i=0;i<tried.size();i++) {
-						
-						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-					}
-					if(!jaTestado) {
-						tried.add(direction);
-						throw new ForaDoTabuleiro();
-					}
-				}
-				else if(tabuleiro[direction[0]+position[0]][direction[1]+position[1]].existsPeca()||tabuleiro[direction[0]+position[0]][direction[1]+position[1]].getMarcado()) {
-					boolean jaTestado=false;
-					for(int i=0;i<tried.size();i++) {
-						
-						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-					}
-					if(!jaTestado) {
-						tried.add(direction);
-						throw new PosicaoOcupada();
-					}
-				}
+				if(tryDirection(direction,tried));
 				else {
 					boolean jaTestado=false;
 					for(int i=0;i<tried.size();i++) {
@@ -405,28 +353,7 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 				
 				direction[0]=0;
 				direction[1]=(deltaY!=0)?-deltaY/Math.abs(deltaY):-1;
-				if(direction[1]+position[1]>=tabuleiro.length||direction[1]+position[1]<0) {
-					boolean jaTestado=false;
-					for(int i=0;i<tried.size();i++) {
-						
-						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-					}
-					if(!jaTestado) {
-						tried.add(direction);
-						throw new ForaDoTabuleiro();
-					}
-				}
-				else if(tabuleiro[direction[0]+position[0]][direction[1]+position[1]].existsPeca()||tabuleiro[direction[0]+position[0]][direction[1]+position[1]].getMarcado()) {
-					boolean jaTestado=false;
-					for(int i=0;i<tried.size();i++) {
-						
-						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-					}
-					if(!jaTestado) {
-						tried.add(direction);
-						throw new PosicaoOcupada();
-					}
-				}
+				if(tryDirection(direction,tried));
 				else {
 					boolean jaTestado=false;
 					for(int i=0;i<tried.size();i++) {
@@ -441,29 +368,7 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 				
 				direction[0]=(deltaX!=0)?-deltaX/Math.abs(deltaX):-1;
 				direction[1]=0;
-				if(direction[0]+position[0]>=tabuleiro.length||direction[0]+position[0]<0) {
-					boolean jaTestado=false;
-					for(int i=0;i<tried.size();i++) {
-						
-						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-					}
-					if(!jaTestado) {
-						tried.add(direction);
-						throw new ForaDoTabuleiro();
-					}
-				}
-				else if(tabuleiro[direction[0]+position[0]][direction[1]+position[1]].existsPeca()||tabuleiro[direction[0]+position[0]][direction[1]+position[1]].getMarcado()) {
-					boolean jaTestado=false;
-					for(int i=0;i<tried.size();i++) {
-						
-						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-					}
-					if(!jaTestado) {
-						tried.add(direction);
-						throw new PosicaoOcupada();
-					}
-					
-				}
+				if(tryDirection(direction,tried));
 				else {
 					boolean jaTestado=false;
 					for(int i=0;i<tried.size();i++) {
@@ -478,32 +383,7 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 		else {
 			direction[0]=0;
 			direction[1]=(deltaY!=0)?deltaY/Math.abs(deltaY):1;
-			if(direction[1]+position[1]>=tabuleiro.length||direction[1]+position[1]<0) {
-				boolean jaTestado=false;
-				for(int i=0;i<tried.size();i++) {
-					
-					if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-				}
-				if(!jaTestado) {
-					tried.add(direction);
-					
-					throw new ForaDoTabuleiro();
-				}
-				
-			}
-			else if(tabuleiro[direction[0]+position[0]][direction[1]+position[1]].existsPeca()||tabuleiro[direction[0]+position[0]][direction[1]+position[1]].getMarcado()) {
-				boolean jaTestado=false;
-				for(int i=0;i<tried.size();i++) {
-					
-					if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-				}
-				if(!jaTestado) {
-					tried.add(direction);
-					
-					throw new PosicaoOcupada();
-				}
-				
-			}
+			if(tryDirection(direction,tried));
 			else {
 				boolean jaTestado=false;
 				for(int i=0;i<tried.size();i++) {
@@ -517,28 +397,7 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 				
 				direction[0]=(deltaX!=0)?deltaX/Math.abs(deltaX):1;
 				direction[1]=0;
-				if(direction[0]+position[0]>=tabuleiro.length||direction[0]+position[0]<0) {
-					boolean jaTestado=false;
-					for(int i=0;i<tried.size();i++) {
-						
-						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-					}
-					if(!jaTestado) {
-						tried.add(direction);
-						throw new ForaDoTabuleiro();
-					}
-				}
-				else if(tabuleiro[direction[0]+position[0]][direction[1]+position[1]].existsPeca()||tabuleiro[direction[0]+position[0]][direction[1]+position[1]].getMarcado()) {
-					boolean jaTestado=false;
-					for(int i=0;i<tried.size();i++) {
-						
-						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-					}
-					if(!jaTestado) {
-						tried.add(direction);
-						throw new PosicaoOcupada();
-					}
-				}
+				if(tryDirection(direction,tried));
 				else {
 					boolean jaTestado=false;
 					for(int i=0;i<tried.size();i++) {
@@ -553,28 +412,7 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 				
 				direction[0]=(deltaX!=0)?-deltaX/Math.abs(deltaX):-1;
 				direction[1]=0;
-				if(direction[0]+position[0]>=tabuleiro.length||direction[0]+position[0]<0) {
-					boolean jaTestado=false;
-					for(int i=0;i<tried.size();i++) {
-						
-						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-					}
-					if(!jaTestado) {
-						tried.add(direction);
-						throw new ForaDoTabuleiro();
-					}
-				}
-				else if(tabuleiro[direction[0]+position[0]][direction[1]+position[1]].existsPeca()||tabuleiro[direction[0]+position[0]][direction[1]+position[1]].getMarcado()) {
-					boolean jaTestado=false;
-					for(int i=0;i<tried.size();i++) {
-						
-						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-					}
-					if(!jaTestado) {
-						tried.add(direction);
-						throw new PosicaoOcupada();
-					}
-				}
+				if(tryDirection(direction,tried));
 				else {
 					boolean jaTestado=false;
 					for(int i=0;i<tried.size();i++) {
@@ -589,28 +427,7 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 				
 				direction[0]=0;
 				direction[1]=(deltaY!=0)?-deltaY/Math.abs(deltaY):-1;
-				if(direction[1]+position[1]>=tabuleiro.length||direction[1]+position[1]<0) {
-					boolean jaTestado=false;
-					for(int i=0;i<tried.size();i++) {
-						
-						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-					}
-					if(!jaTestado) {
-						tried.add(direction);
-						throw new ForaDoTabuleiro();
-					}
-				}
-				else if(tabuleiro[direction[0]+position[0]][direction[1]+position[1]].existsPeca()||tabuleiro[direction[0]+position[0]][direction[1]+position[1]].getMarcado()) {
-					boolean jaTestado=false;
-					for(int i=0;i<tried.size();i++) {
-						
-						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-					}
-					if(!jaTestado) {
-						tried.add(direction);
-						throw new PosicaoOcupada();
-					}
-				}
+				if(tryDirection(direction,tried));
 				else {
 					boolean jaTestado=false;
 					for(int i=0;i<tried.size();i++) {
@@ -624,6 +441,68 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 		}
 		if(pronto==false)throw new MovimentoInvalido();
 		return direction;
+	}
+	private boolean tryDirection(int[] direction,ArrayList<int[]> tried) throws MovimentoInvalido{
+		boolean retorno=true;
+		Tile[][] tabuleiro=tile.getOtherTiles();
+		int[] position=tile.getPosition();
+		if(direction[0]!=0) {
+			if(direction[0]+position[0]>=tabuleiro.length||direction[0]+position[0]<0) {
+				boolean jaTestado=false;
+				for(int i=0;i<tried.size();i++) {
+					
+					if(Arrays.equals(tried.get(i),direction))jaTestado=true;
+				}
+				if(!jaTestado) {
+					tried.add(direction);
+					
+					throw new ForaDoTabuleiro();
+				}
+
+			}
+			else if(tabuleiro[direction[0]+position[0]][direction[1]+position[1]].existsPeca()||tabuleiro[direction[0]+position[0]][direction[1]+position[1]].getMarcado()) {
+				boolean jaTestado=false;
+				for(int i=0;i<tried.size();i++) {
+					
+					if(Arrays.equals(tried.get(i),direction))jaTestado=true;
+					
+				}
+				if(!jaTestado) {
+					tried.add(direction);
+					
+					throw new PosicaoOcupada();
+					
+				}
+				
+			}
+			else retorno=false;
+		}
+		else if(direction[1]!=0){
+			if(direction[1]+position[1]>=tabuleiro.length||direction[1]+position[1]<0) {
+				boolean jaTestado=false;
+				for(int i=0;i<tried.size();i++) {
+					
+					if(Arrays.equals(tried.get(i),direction))jaTestado=true;
+				}
+				if(!jaTestado) {
+					tried.add(direction);
+					throw new ForaDoTabuleiro();
+				}
+			}
+			else if(tabuleiro[direction[0]+position[0]][direction[1]+position[1]].existsPeca()||tabuleiro[direction[0]+position[0]][direction[1]+position[1]].getMarcado()) {
+				boolean jaTestado=false;
+				for(int i=0;i<tried.size();i++) {
+					
+					if(Arrays.equals(tried.get(i),direction))jaTestado=true;
+				}
+				if(!jaTestado) {
+					tried.add(direction);
+					throw new PosicaoOcupada();
+				}
+			}
+			else retorno=false;
+		}
+		return retorno;
 	}
 	
 	public void receberDanoRanged(double dano,Projectile projetil) {
