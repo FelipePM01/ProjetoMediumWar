@@ -12,10 +12,14 @@ O projeto será um jogo em que cada jogador posicionará as peças de sua mão n
 [Link do vídeo do projeto](https://drive.google.com/open?id=12WCLHbGfRfGYytHxSpNW-8KsJQpoNzBI)
 
 # Slides do Projeto
+
 ##Slides da Previa
 [Link para apresentação do projeto](https://drive.google.com/open?id=1aigs8xozY3tbv9r1LsFobk-ZYNi4p2eJKla_YFFc_GY)
+
 ##Slides da apresentação
+
 ##Relatório de Evolução
+
 Inicialmente havíamos planejado em dividir os componentes em Banco, Game, Jogador, Tabuleiro e Peça. Nosso primeiro passo no projeto foi criar a interface gráfica, dispondo as imagens na tela de maneira estática. Para isso criamos as classes Window e GUI. Ademais adicionamos os componentes Tile e Card, o primeiro para representar as posições do tabuleiro e o segundo para representar as posições do banco e do jogador.
 Na classe GUI colocamos uma imagem 960x540 que seria redimensionada para o tamanho da tela para ficar no modo fullscreen e a Window, que é um JFrame onde o  jogo ocorrerá. Inicialmente tentamos utilizar o método paint() para imprimir as imagens na tela após redimensioná-las corretamente com getScaledInstance(), mas ocorreram problemas de sobreposição de imagens, então passamos utilizar o método paintComponent(), para printar utilizamos a sequência GUI->Tabuleiro/Banco/Jogador->Card/Tile->Peça. Para testar o sistema em que nós colocamos uma imagem acima da outra incluindo a peça, instanciamos a peça em locais arbitrários.
 Em seguida foi criada a classe Menu, para gerenciar o início do jogo e para isso utilizamos o CardLayout no entanto surgiram muitos problemas quanto à classe Game ser um Canvas ao invés de um JPanel, então simplesmente adotamos a estratégia de adicionar e remover o jogo e o menu do JFrame. No menu adicionamos botões para sair do jogo, iniciar o jogo e ir para tela de créditos que continha um botão para retornar ao menu. Em seguida definimos as animações de movimento e geramos movimentos aleatórios para isso introduzimos entradas via KeyListener para instanciar peças em posições pré-definidas, começar o movimento e limpar o tabuleiro. Até esse momento tivemos que utilizar casts para instanciar peças.
