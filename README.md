@@ -107,8 +107,6 @@ public void moveOrAttack() {
 		...
 	}
 	else if(dist!=100) {
-		
-		
 		try {
 			direction=chooseDirection(alvo,tried);
 			lastPosition=new int[2];
@@ -125,19 +123,13 @@ public void moveOrAttack() {
 		} catch (FormatoInvalido e) {
 			System.out.println("formato invalido");
 		}catch (MovimentoInvalido e) {
-			
-			
 			if(tried.size()<4) {
 				moveOrAttack();
-				
-				
 			}
 			else {
-				
 				esperando=true;//tenta de novo no proximo tick
 				tried=new ArrayList<int[]>();
 				if(lastPosition!=null)tried.add(lastPosition);
-				
 			}
 			
 		}
@@ -160,10 +152,7 @@ public Peca(IPecaCardJogador peca,Tile tile) {
 	int[] start=new int[2];
 	start[0]=(int)(getCenterPosition()[0]+correction[0]*scale+scale*translation[0]);
 	start[1]=(int)(basePosition[1]+scale*correction[1]+scale*translation[1]);
-	
 	barraDeVida=new BarraDeVida(start,scale,cor);
-	
-	
 }
 public Peca(IPeca peca,ICardBanco card) {
 	set(peca);		
