@@ -153,6 +153,12 @@ public Peca(IPecaCardBanco peca,ICardJogadorPeca card) {
 	cor=card.getJogador().getCor();
 }
 ~~~
+# Diagrama Geral do Projeto
+![Diagrama Geral do Projeto](README_Images/DiagramaGeralProjeto.png)
+
+## Comandos de cada jogador
+![Diagrama Fluxo jogador azul](README_Images/FluxoJogadorAzul.png)
+![Diagrama Fluxo jogador azul](README_Images/FluxoJogadorVermelho.png)
 
 # Diagrama Geral de Componentes
 ![Diagrama Geral](README_Images/DiagramaGeralComponentes.png)
