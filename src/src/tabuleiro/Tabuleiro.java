@@ -241,7 +241,7 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		}
 		
 	}
-	public void pressedAspas() {
+	public void pressedM() {
 		if(cVermelho!=false)hideCursor("vermelho");
 		if(jogador2.obtainCursor()!=-1)jogador2.hideCursor();
 		start2=true;

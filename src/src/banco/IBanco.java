@@ -13,7 +13,7 @@ public interface IBanco extends IBancoCard,IBancoJogador {
 	public void pressedSPACE();
 	public void pressedENTER();
 	public void pressedE();
-	public void pressedDoisPontos();
+	public void pressedN();
 	public void refresh();
 	public void paintComponent(Graphics g);
 }

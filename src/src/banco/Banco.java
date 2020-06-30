@@ -182,7 +182,7 @@ public class Banco extends JPanel implements IBanco{
 		if(cursor1!=-1&&currentAction[0]!="info")currentAction[0]="info";
 		else if(cursor1!=-1)currentAction[0]=null;
 	}
-	public void pressedDoisPontos() {
+	public void pressedN() {
 		if(cursor2!=-1&&currentAction[1]!="info")currentAction[1]="info";
 		else if(cursor2!=-1)currentAction[1]=null;
 	}

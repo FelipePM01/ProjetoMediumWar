@@ -10,16 +10,16 @@ public interface IJogador extends IJogadorCard, IJogadorBanco{
 	
 	public void pressedA() ;
 	public void pressedC() ;
-	public void pressedVIRGULA();
+	public void pressedJ();
 	public void pressedD() ;
 	public void pressedLEFT();
 	public void pressedRIGHT();
 	public void pressedZ() ;
 	public void pressedE();
 	public void pressedX();
-	public void pressedDoisPontos();
-	public void pressedPONTO() ;
-	public void pressedBARRA() ;
+	public void pressedN();
+	public void pressedK() ;
+	public void pressedL() ;
 	public void pressedSPACE() ;
 	public void pressedENTER() ;
 	public void paintComponent(Graphics g);	
