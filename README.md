@@ -16,17 +16,16 @@ O projeto será um jogo em que cada jogador posicionará as peças de sua mão n
 
 # Detalhes do Código
 
-## Criação e gerenciamento do menu
+## Criação e gerenciamento do menu usando cardLayout
 ~~~
 public Menu(Window window){
 		...
 		setMenu();
 		//Cria cardLayout e adiciona janelas
 		cardLayout = new CardLayout();
-	    this.setLayout(cardLayout);
+		this.setLayout(cardLayout);
 		this.add(menuPage, "home");
 		this.add(creditsPage, "credits");
-	    
 		setVisible(true);
 	}
 	public void setMenu() {
@@ -36,23 +35,12 @@ public Menu(Window window){
 		menuPage.setLayout(null);
 		menuPage.setIcon(imgMenu);
 		menuPage.setVisible(false);
-		
-		creditsPage = new JLabel();
-		creditsPage.setOpaque(false);
-		creditsPage.setLayout(null);
-		creditsPage.setIcon(imgCredits);
-		creditsPage.setVisible(false);
-		
+		...
 		//Cria Botoes
 		play=new JButton(imgPlay);
 		play.setBounds(1400, 400, 432, 144);
 		play.addActionListener(window);
 		menuPage.add(play);
-		
-		credits=new JButton(imgCreditsButton);
-		credits.setBounds(1400, 570, 432, 144);
-		credits.addActionListener(e -> cardLayout.show(this, "credits"));
-		menuPage.add(credits);
 		...
 	}
 ~~~
@@ -63,7 +51,6 @@ public Window(int width,int height,String title,Game game) {
 		...
 		frame.add(menu);
 	}
-	
 	 public void actionPerformed(ActionEvent evento) {
 		 	//Cria a janela principal
 		 	principal=new JPanel();
@@ -79,16 +66,15 @@ public Window(int width,int height,String title,Game game) {
 		 	
 		 	game.gameStart();
 		 	game.start(); 	
-	 }
-	 
+	}
 	 public void endGame() {
-		 endHome.setVisible(true);
-		 SwingUtilities.updateComponentTreeUI(this);
-	 }
+		endHome.setVisible(true);
+		SwingUtilities.updateComponentTreeUI(this);
+	}
 	 public void setMenu() {
-		 game.stop();
-		 menu.cardLayout.show(menu,"home");
-	 }
+		game.stop();
+		menu.cardLayout.show(menu,"home");
+	}
 ~~~
 ## Controle da movimentação da peça
 ~~~
