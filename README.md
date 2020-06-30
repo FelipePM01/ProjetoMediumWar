@@ -249,7 +249,7 @@ O trecho de código acima se assemelha a um design pattern Observer, no entanto,
 Dentro do menu ha 3 botões que ao serem acionados disparam eventos, como encerra o programa e trocar o JPanel exibido pelo cardLayout. Destacando o botão play, ao ser precionado a classe window, que implementa ActionListener, recebe a atualização da ação e da inicio ao jogo.
 
 ## Diagrama 
-![Diagrama Pattern Menu](assets/README_Images/GamePattern.png)
+![Diagrama Pattern Game](assets/README_Images/GamePattern.png)
 
 ## Código do Pattern
 ~~~
