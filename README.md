@@ -13,12 +13,12 @@ O projeto será um jogo em que cada jogador posicionará as peças de sua mão n
 
 # Slides do Projeto
 
-##Slides da Previa
+## Slides da Previa
 [Link para apresentação do projeto](https://drive.google.com/open?id=1aigs8xozY3tbv9r1LsFobk-ZYNi4p2eJKla_YFFc_GY)
 
-##Slides da apresentação
+## Slides da apresentação
 
-##Relatório de Evolução
+## Relatório de Evolução
 
 Inicialmente havíamos planejado em dividir os componentes em Banco, Game, Jogador, Tabuleiro e Peça. Nosso primeiro passo no projeto foi criar a interface gráfica, dispondo as imagens na tela de maneira estática. Para isso criamos as classes Window e GUI. Ademais adicionamos os componentes Tile e Card, o primeiro para representar as posições do tabuleiro e o segundo para representar as posições do banco e do jogador.
 Na classe GUI colocamos uma imagem 960x540 que seria redimensionada para o tamanho da tela para ficar no modo fullscreen e a Window, que é um JFrame onde o  jogo ocorrerá. Inicialmente tentamos utilizar o método paint() para imprimir as imagens na tela após redimensioná-las corretamente com getScaledInstance(), mas ocorreram problemas de sobreposição de imagens, então passamos utilizar o método paintComponent(), para printar utilizamos a sequência GUI->Tabuleiro/Banco/Jogador->Card/Tile->Peça. Para testar o sistema em que nós colocamos uma imagem acima da outra incluindo a peça, instanciamos a peça em locais arbitrários.
