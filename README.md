@@ -20,24 +20,15 @@ O projeto será um jogo em que cada jogador posicionará as peças de sua mão n
 
 ## Relatório de Evolução
 
-<p>Inicialmente havíamos planejado em dividir os componentes em Banco, Game, Jogador, Tabuleiro e Peça. Nosso primeiro passo no projeto foi criar a interface gráfica, dispondo as imagens na tela de maneira estática. Para isso criamos as classes Window e GUI. Ademais adicionamos os componentes Tile e Card, o primeiro para representar as posições do tabuleiro e o segundo para representar as posições do banco e do jogador.  
-</p>
-<p>Na classe GUI colocamos uma imagem 960x540 que seria redimensionada para o tamanho da tela para ficar no modo fullscreen e a Window, que é um JFrame onde o  jogo ocorrerá. Inicialmente tentamos utilizar o método paint() para imprimir as imagens na tela após redimensioná-las corretamente com getScaledInstance(), mas ocorreram problemas de sobreposição de imagens, então passamos utilizar o método paintComponent(), para printar utilizamos a sequência GUI->Tabuleiro/Banco/Jogador->Card/Tile->Peça. Para testar o sistema em que nós colocamos uma imagem acima da outra incluindo a peça, instanciamos a peça em locais arbitrários.  
-</p>
-<p>Em seguida foi criada a classe Menu, para gerenciar o início do jogo e para isso utilizamos o CardLayout no entanto surgiram muitos problemas quanto à classe Game ser um Canvas ao invés de um JPanel, então simplesmente adotamos a estratégia de adicionar e remover o jogo e o menu do JFrame. No menu adicionamos botões para sair do jogo, iniciar o jogo e ir para tela de créditos que continha um botão para retornar ao menu. Em seguida definimos as animações de movimento e geramos movimentos aleatórios para isso introduzimos entradas via KeyListener para instanciar peças em posições pré-definidas, começar o movimento e limpar o tabuleiro. Até esse momento tivemos que utilizar casts para instanciar peças.  
-</p>
-<p>Em sequência, removemos os casts utilizando getters na interface que todas as peças herdam independente de estarem no banco, no jogador ou no tabuleiro.Após isso, foram definidas as teclas e suas respectivas ações, de forma que cada jogador interage com uma determinada região do teclado. Com isso os cursores do tabuleiro, banco e jogador começaram a ser implementados. Aqui percebemos uma certa demora de atualização da imagem envolvida pelo cursor, o que deixava a região branca por alguns segundos. Esse problema foi atenuado setando todas as imagens usadas já no construtor dos cards, não sendo necessário carregá-las enquanto o jogo já está em execução.  
-</p>
-<p>Conforme os cursores se mostraram consistentes, as ações e interações entre os componentes começaram a ser feitas, como a ação de compra e venda de peças, que relaciona o jogador e o banco. Algumas correções também foram feitas para que somente um curso seja exibido de cada vez e não haja conflito entre as ações.  
-</p>
-<p>Voltando-se para as peças, foi criado um sistema para definir o trajeto da peça até que possa atacar o alvo, utilizando um sistema de exceções em que são testadas posições com prioridades, que dependem da posição relativa entre a peça e o alvo, até que se encontre uma possibilidade de movimento ou não fazer nada no caso em que não há movimentos possíveis. Também foram criadas duas herdeiras da classe peça, Ranged(longo alcance) e Melee(corpo a corpo), assim as peças foram separadas de acordo com seu tipo de ataque. Com isso a movimentação das peças começou a ser implementada.  
-</p>
-<p>Em paralelo com isso, a parte monetária do jogo começou a ser desenvolvida, adicionando a parte gráfica que envolve as transações juntamente com os valores referentes a cada peça e suas ações.  
-</p>
-<p>Ainda nas peças, os ataques começaram a ser desenvolvidos juntamente com a classe Projectile, para representar os projéteis lançados pelas peças herdeiras de Ranged. As peças também receberam uma barra de vida interativa e que também é utilizada para diferenciar as peças de cada jogador no tabuleiro.  
-</p>
-<p>Com as peças já interagindo de maneira satisfatória foi introduzida a mecânica de rounds, marcadores de pontos e uma tela final exibindo o vencedor. Aqui tivemos grandes problemas ao finalizar o jogo e tentar retornar ao menu inicial e possibilitar uma nova partida. A ideia de rotacionar entre o menu e o game no frame principal não se mostrou viável nessa situação. Para corrigir isso, um JPanel foi criado para abrigar o game e a imagem final, isso possibilitou sua adição ao cardLayout e facilitou o gerenciamento quando o jogo chega ao final.  
-</p>
+<p>Inicialmente havíamos planejado em dividir os componentes em Banco, Game, Jogador, Tabuleiro e Peça. Nosso primeiro passo no projeto foi criar a interface gráfica, dispondo as imagens na tela de maneira estática. Para isso criamos as classes Window e GUI. Ademais adicionamos os componentes Tile e Card, o primeiro para representar as posições do tabuleiro e o segundo para representar as posições do banco e do jogador.</p>
+<p>Na classe GUI colocamos uma imagem 960x540 que seria redimensionada para o tamanho da tela para ficar no modo fullscreen e a Window, que é um JFrame onde o  jogo ocorrerá. Inicialmente tentamos utilizar o método paint() para imprimir as imagens na tela após redimensioná-las corretamente com getScaledInstance(), mas ocorreram problemas de sobreposição de imagens, então passamos utilizar o método paintComponent(), para printar utilizamos a sequência GUI->Tabuleiro/Banco/Jogador->Card/Tile->Peça. Para testar o sistema em que nós colocamos uma imagem acima da outra incluindo a peça, instanciamos a peça em locais arbitrários.</p>
+<p>Em seguida foi criada a classe Menu, para gerenciar o início do jogo e para isso utilizamos o CardLayout no entanto surgiram muitos problemas quanto à classe Game ser um Canvas ao invés de um JPanel, então simplesmente adotamos a estratégia de adicionar e remover o jogo e o menu do JFrame. No menu adicionamos botões para sair do jogo, iniciar o jogo e ir para tela de créditos que continha um botão para retornar ao menu. Em seguida definimos as animações de movimento e geramos movimentos aleatórios para isso introduzimos entradas via KeyListener para instanciar peças em posições pré-definidas, começar o movimento e limpar o tabuleiro. Até esse momento tivemos que utilizar casts para instanciar peças.</p>
+<p>Em sequência, removemos os casts utilizando getters na interface que todas as peças herdam independente de estarem no banco, no jogador ou no tabuleiro.Após isso, foram definidas as teclas e suas respectivas ações, de forma que cada jogador interage com uma determinada região do teclado. Com isso os cursores do tabuleiro, banco e jogador começaram a ser implementados. Aqui percebemos uma certa demora de atualização da imagem envolvida pelo cursor, o que deixava a região branca por alguns segundos. Esse problema foi atenuado setando todas as imagens usadas já no construtor dos cards, não sendo necessário carregá-las enquanto o jogo já está em execução.</p>
+<p>Conforme os cursores se mostraram consistentes, as ações e interações entre os componentes começaram a ser feitas, como a ação de compra e venda de peças, que relaciona o jogador e o banco. Algumas correções também foram feitas para que somente um curso seja exibido de cada vez e não haja conflito entre as ações.</p>
+<p>Voltando-se para as peças, foi criado um sistema para definir o trajeto da peça até que possa atacar o alvo, utilizando um sistema de exceções em que são testadas posições com prioridades, que dependem da posição relativa entre a peça e o alvo, até que se encontre uma possibilidade de movimento ou não fazer nada no caso em que não há movimentos possíveis. Também foram criadas duas herdeiras da classe peça, Ranged(longo alcance) e Melee(corpo a corpo), assim as peças foram separadas de acordo com seu tipo de ataque. Com isso a movimentação das peças começou a ser implementada.</p>
+<p>Em paralelo com isso, a parte monetária do jogo começou a ser desenvolvida, adicionando a parte gráfica que envolve as transações juntamente com os valores referentes a cada peça e suas ações.</p>
+<p>Ainda nas peças, os ataques começaram a ser desenvolvidos juntamente com a classe Projectile, para representar os projéteis lançados pelas peças herdeiras de Ranged. As peças também receberam uma barra de vida interativa e que também é utilizada para diferenciar as peças de cada jogador no tabuleiro.</p>
+<p>Com as peças já interagindo de maneira satisfatória foi introduzida a mecânica de rounds, marcadores de pontos e uma tela final exibindo o vencedor. Aqui tivemos grandes problemas ao finalizar o jogo e tentar retornar ao menu inicial e possibilitar uma nova partida. A ideia de rotacionar entre o menu e o game no frame principal não se mostrou viável nessa situação. Para corrigir isso, um JPanel foi criado para abrigar o game e a imagem final, isso possibilitou sua adição ao cardLayout e facilitou o gerenciamento quando o jogo chega ao final.</p>
 <p>Por fim, foi adicionada a possibilidade de ver os principais atributos das peças antes e depois de comprá-las. Vários detalhes também foram melhorados, como a movimentação dos projéteis no tabuleiro, o gerenciamento de teclas e a composição das interfaces.</p>
 
 # Destaques de Código
@@ -187,16 +178,16 @@ protected abstract <t extends IPecaCard> t getPeca();
 ~~~
 ~~~
 ...
-	public IPecaCardJogador getPeca() {
+public IPecaCardJogador getPeca() {
     	return peca;
-	}
+}
 ...
 ~~~
 ~~~
 ...
-	public IPecaCardBanco getPeca() {
+public IPecaCardBanco getPeca() {
 		return peca;
-	}
+}
 ...
 ~~~
 
@@ -254,7 +245,7 @@ public class Menu extends JPanel{
 	 ...
 }
 ~~~
-	O trecho de código acima se assemelha a um design pattern Observer, no entanto, não há um ActionSubject, o que dispara as ações para as classes ouvintes são botoes.  
+O trecho de código acima se assemelha a um design pattern Observer, no entanto, não há um ActionSubject, o que dispara as ações para as classes ouvintes são botoes.  
 Dentro do menu ha 3 botões que ao serem acionados disparam eventos, como encerra o programa e trocar o JPanel exibido pelo cardLayout. Destacando o botão play, ao ser precionado a classe window, que implementa ActionListener, recebe a atualização da ação e da inicio ao jogo.
 
 ## Diagrama 
@@ -294,17 +285,17 @@ public class Game extends Canvas implements Runnable, IGameTabuleiro,KeyListener
 		switch(code){
 		case KeyEvent.VK_W:
 			if(commands1)tabuleiro.pressedW();
-            break;
+             break;
 		case KeyEvent.VK_A:
 			if(commands1) {
 				jogador1.pressedA();
 				tabuleiro.pressedA();
 				banco.pressedA();
 			}
-            break;
+             break;
 		case KeyEvent.VK_S:
 			if(commands1)tabuleiro.pressedS();
-			break;
+			 break;
 		...
 		case KeyEvent.VK_Q:
 			if(tabuleiro.getIntab()[0]>0) {
@@ -312,14 +303,14 @@ public class Game extends Canvas implements Runnable, IGameTabuleiro,KeyListener
 				if(banco.obtainCursor("azul")!=-1)banco.hideCursor(1);
 				tabuleiro.pressedQ();
 			}
-			break;
+			 break;
 		case KeyEvent.VK_M:
 			if(tabuleiro.getIntab()[1]>0) {
 				commands2=false;
 				if(banco.obtainCursor("vermelho")!=-1)banco.hideCursor(2);
 				tabuleiro.pressedM();
 			}
-			break;
+			 break;
 		}
 	}
 	@Override
@@ -329,7 +320,7 @@ public class Game extends Canvas implements Runnable, IGameTabuleiro,KeyListener
 	...
 }
 ~~~
-Novamente temos algo que se assemelha a um pattern Observer. A classe Game e responsável por todo o gerenciamento do jogo, ela não faz nada sozinha, mas nada funciona sem ela.  
+Novamente temos algo que se assemelha a um pattern Observer. Como pode ser observado no diagrama abaixo, a classe Game é responsável por todo o gerenciamento do jogo, ela não faz nada sozinha, mas nada funciona sem ela.  
 Ao implementar KeyListener, todas as ações realizadas após o play, usando o teclado, são recebidas por ela. Tais comandos chamam metodos existentes nas classes Banco, Jogador e Tabuleiro, permitindo a interação do jogador com a interface grafica. Dessa forma, aos classes já citadas não são ouvintes diretas dos comandos recebidas pela game, no entanto, essas comandos são as responsáveis por disparar ações dentro de cada uma dessas classes.  
 Na game também abriga o Graphics responsável por imprimir a maioria das dos elementos na tela usando seu metodo render, que chama o paintComponent() das demais classes.
 
