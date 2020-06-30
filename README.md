@@ -154,24 +154,24 @@ public Peca(IPecaCardBanco peca,ICardJogadorPeca card) {
 }
 ~~~
 # Diagrama Geral do Projeto
-![Diagrama Geral do Projeto](README_Images/DiagramaGeralProjeto.png)
+![Diagrama Geral do Projeto](assets/README_Images/DiagramaGeralProjeto.png)
 
 ## Comandos de cada jogador
-![Diagrama Fluxo jogador azul](README_Images/FluxoJogadorAzul.png)
-![Diagrama Fluxo jogador azul](README_Images/FluxoJogadorVermelho.png)
+![Diagrama Fluxo jogador azul](assets/README_Images/FluxoJogadorAzul.png)
+![Diagrama Fluxo jogador azul](assets/README_Images/FluxoJogadorVermelho.png)
 
 # Diagrama Geral de Componentes
-![Diagrama Geral](README_Images/DiagramaGeralComponentes.png)
+![Diagrama Geral](assets/README_Images/DiagramaGeralComponentes.png)
 
 # Componente Jogador
 
-![Componente do Jogador](README_Images/ComponenteJogador.png)
+![Componente do Jogador](assets/README_Images/ComponenteJogador.png)
 
 ## Interfaces
 
 Interfaces associadas ao componente Jogador:
 
-![Diagrama Interfaces do Jogador](README_Images/InterfaceJogador.png)
+![Diagrama Interfaces do Jogador](assets/README_Images/InterfaceJogador.png)
 
 Campo | Valor
 ----- | -----
@@ -265,13 +265,13 @@ addCash | Incrementa ou decrementa o dinheiro de um jogador a partir de um valor
 
 # Componente Card
 
-![Componente do Card](README_Images/ComponenteCard.png)
+![Componente do Card](assets/README_Images/ComponenteCard.png)
 
 ## Interfaces
 
 Interfaces associadas ao componente Card:
 
-![Diagrama Interfaces do Card](README_Images/InterfaceCard.png)
+![Diagrama Interfaces do Card](assets/README_Images/InterfaceCard.png)
 
 Campo | Valor
 ----- | -----
@@ -370,13 +370,13 @@ getNaoColocado | Retona a variável naoColocado que indica se o card ja foi posi
 
 # Componente Peca
 
-![Componente da Peca](README_Images/ComponentePeca.png)
+![Componente da Peca](assets/README_Images/ComponentePeca.png)
 
 ## Interfaces
 
 Interfaces associadas ao componente Peca:
 
-![Diagrama Interfaces da Peca](README_Images/InterfacePeca.png)
+![Diagrama Interfaces da Peca](assets/README_Images/InterfacePeca.png)
 
 Campo | Valor
 ----- | -----
@@ -514,13 +514,13 @@ setInBoard | Define se a peça esta ou não no tabuleiro
 
 # Componente Tabuleiro
 
-![Componente do Tabuleiro](README_Images/ComponenteTabuleiro.png)
+![Componente do Tabuleiro](assets/README_Images/ComponenteTabuleiro.png)
 
 ## Interfaces
 
 Interfaces associadas ao componente Tabuleiro:
 
-![Diagrama Interfaces do Tabuleiro](README_Images/InterfaceTabuleiro.png)
+![Diagrama Interfaces do Tabuleiro](assets/README_Images/InterfaceTabuleiro.png)
 
 Campo | Valor
 ----- | -----
@@ -622,13 +622,13 @@ addProjectiles | Adiciona um projétil passado como parâmetro no tabuleiro
 
 # Componente Tile
 
-![Componente do Tile](README_Images/ComponenteTile.png)
+![Componente do Tile](assets/README_Images/ComponenteTile.png)
 
 ## Interfaces
 
 Interfaces associadas ao componente Peca:
 
-![Diagrama Interfaces do Tile](README_Images/InterfaceTile.png)
+![Diagrama Interfaces do Tile](assets/README_Images/InterfaceTile.png)
 
 Campo | Valor
 ----- | -----
@@ -711,13 +711,13 @@ setTileAtual | Troca a imagem do tile que será imprimida para indicar que um cu
 
 # Componente Banco
 
-![Componente do Banco](README_Images/ComponenteBanco.png)
+![Componente do Banco](assets/README_Images/ComponenteBanco.png)
 
 ## Interfaces
 
 Interfaces associadas ao componente Banco:
 
-![Diagrama Interfaces do Banco](README_Images/InterfaceBanco.png)
+![Diagrama Interfaces do Banco](assets/README_Images/InterfaceBanco.png)
 
 Campo | Valor
 ----- | -----
@@ -795,14 +795,14 @@ comprar | Notifica o banco que um determinado jogador deseja comprar um peça
 
 # Componente Game
 
-![Componente do Game](README_Images/ComponenteGame.png)
+![Componente do Game](assets/README_Images/ComponenteGame.png)
 
 ## Interfaces
 
 Interfaces associadas ao componente Game:
 
 
-![Diagrama Interface do Game](README_Images/InterfaceGame.png)
+![Diagrama Interface do Game](assets/README_Images/InterfaceGame.png)
 
 Campo | Valor
 ----- | -----
@@ -840,7 +840,7 @@ endGame | Encerra o jogo apresentando opção de retornar ao menu
 
 ## Diagrama da hierarquia de exceções
 
-![Hierarquia Exceções](README_Images/EsquemaException.png)
+![Hierarquia Exceções](assets/README_Images/EsquemaException.png)
 
 ## Descrição das classes de exceção
 
