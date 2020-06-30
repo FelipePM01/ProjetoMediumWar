@@ -21,7 +21,6 @@ O projeto será um jogo em que cada jogador posicionará as peças de sua mão n
 public Menu(Window window){
 		...
 		setMenu();
-		
 		//Cria cardLayout e adiciona janelas
 		cardLayout = new CardLayout();
 	    this.setLayout(cardLayout);
@@ -32,7 +31,6 @@ public Menu(Window window){
 	}
 	public void setMenu() {
 		...
-		
 		//Cria Janelas
 		menuPage = new JLabel();
 		menuPage.setLayout(null);
@@ -55,10 +53,8 @@ public Menu(Window window){
 		credits.setBounds(1400, 570, 432, 144);
 		credits.addActionListener(e -> cardLayout.show(this, "credits"));
 		menuPage.add(credits);
-		
 		...
 	}
-...
 ~~~
 ~~~
 public Window(int width,int height,String title,Game game) {
@@ -74,7 +70,6 @@ public Window(int width,int height,String title,Game game) {
 			principal.setOpaque(false);
 			principal.setLayout(null);
 			principal.setVisible(true);
-			
 			...
 			//Janela principal adiciona o game
 			principal.add(game);

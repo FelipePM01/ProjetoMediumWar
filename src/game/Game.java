@@ -63,7 +63,6 @@ public class Game extends Canvas implements Runnable, IGameTabuleiro,KeyListener
 		imgEndBlue=refimgEndBlue.getImage();
 		imgEndBlue=imgEndBlue.getScaledInstance((int)(imgEndBlue.getWidth(null)*gui.getScale()),(int) (imgEndBlue.getHeight(null)*gui.getScale()), Image.SCALE_DEFAULT);
 		
-
 		ImageIcon refimgEmpate=new ImageIcon("assets/empate.png");
 		imgEndEmpate=refimgEmpate.getImage();
 		imgEndEmpate=imgEndEmpate.getScaledInstance((int)(imgEndEmpate.getWidth(null)*gui.getScale()),(int) (imgEndEmpate.getHeight(null)*gui.getScale()), Image.SCALE_DEFAULT);

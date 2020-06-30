@@ -122,8 +122,8 @@ public abstract class Projectile extends JPanel{
 			//Atualiza a currentPosition para a nova posicao
 			currentPosition[0]+=translation[0];
 			currentPosition[1]+=translation[1];
-	
-			if(dano!=0&&Math.abs(currentPosition[0]-alvoPosition[0])<(scale*imgEdge[0])&&Math.abs(currentPosition[1]-alvoPosition[1])<(1.3*scale*imgEdge[1])) {
+			if(dano!=0&&getDistancia()<((Math.abs(Math.pow(imgEdge[0], 2)+Math.pow(imgEdge[1],2))))){
+			//if(dano!=0&&Math.abs(currentPosition[0]-alvoPosition[0])<(scale*imgEdge[0])&&Math.abs(currentPosition[1]-alvoPosition[1])<(1.3*scale*imgEdge[1])) {
 				alvo.receberDanoRanged(dano,this);
 				dano=0;
 				tabuleiro.removeProjectiles(this);
