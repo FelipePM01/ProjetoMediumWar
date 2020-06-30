@@ -33,7 +33,7 @@ public class Menu extends JPanel{
 	    
 		setVisible(true);
 	}
-	public void setMenu() {
+	private void setMenu() {
 		//Adiciona e ajusta imagens usadas    
 		imgPlay = resize(new ImageIcon("assets/playButton.png"));
 		imgCreditsButton = resize(new ImageIcon("assets/creditsButton.png"));

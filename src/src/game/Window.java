@@ -12,28 +12,27 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class Window extends JFrame implements ActionListener{
-	public JFrame frame;
 	private Game game;
 	private ImageIcon imgReturn;
 	private JButton endHome;
 	private JPanel principal;
-	Menu menu;
+	private Menu menu;
 
 	private static final long serialVersionUID = -4369730830015653927L;
 	public Window(int width,int height,String title,Game game) {
 		this.game=game;
 		menu = new Menu(this);
 		
-		frame=new JFrame(title);
-		frame.setSize(width,height);
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);  
-		frame.setUndecorated(true);	//false apresenta opcoes no canto da janela(no linux)
-		frame.setVisible(true);
-		frame.setLocationRelativeTo(null);
-		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setTitle(title);
+		this.setSize(width,height);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);  
+		this.setUndecorated(true);	//false apresenta opcoes no canto da janela(no linux)
+		this.setVisible(true);
+		this.setLocationRelativeTo(null);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setIgnoreRepaint(true);
 		
-		frame.add(menu);
+		this.add(menu);
 	}
 	
 	 public void actionPerformed(ActionEvent evento) {
@@ -44,7 +43,7 @@ public class Window extends JFrame implements ActionListener{
 			
 			imgReturn=menu.resize(new ImageIcon("assets/returnButton.png"));
 			endHome=new JButton(imgReturn);
-			endHome.setBounds((frame.getWidth()/2)-(imgReturn.getIconWidth()/2), (HEIGHT/2)+450, 432, 144);
+			endHome.setBounds((this.getWidth()/2)-(imgReturn.getIconWidth()/2), (HEIGHT/2)+450, 432, 144);
 			endHome.addActionListener(e->setMenu());
 			endHome.setVisible(false);
 			principal.add(endHome);
