@@ -14,8 +14,9 @@ O projeto será um jogo em que cada jogador posicionará as peças de sua mão n
 [Link do vídeo do projeto](https://drive.google.com/open?id=12WCLHbGfRfGYytHxSpNW-8KsJQpoNzBI)
 
 ## Vídeo do Jogo
-<p>[MediumWar Demo](https://drive.google.com/file/d/154s7CXjp4dG9Yf8y6I6eRETXDytXXkru/view?usp=sharing)</p>
-<p>[MediumWar SpeedRun](https://drive.google.com/file/d/10O7YF57NPsBakSjG8R0hhniX1L93Q8Jn/view?usp=sharing)</p>
+[MediumWar Demo](https://drive.google.com/file/d/154s7CXjp4dG9Yf8y6I6eRETXDytXXkru/view?usp=sharing)
+
+[MediumWar SpeedRun](https://drive.google.com/file/d/10O7YF57NPsBakSjG8R0hhniX1L93Q8Jn/view?usp=sharing)
 
 # Slides do Projeto
 
@@ -339,7 +340,7 @@ Na game também abriga o Graphics responsável por imprimir a maioria das dos el
 
 ## Recomendações
 O jogo deve ser executado em uma resolução de 1920x1080, pode ser necessário alterar o Ajuste de Escala e Layput do Windows.  
-E possível jogar multiplayer online fazendo uso do ![parsec](https://parsecgaming.com/), um aplicativo de captura de desktop.
+E possível jogar multiplayer online fazendo uso do [parsec](https://parsecgaming.com/), um aplicativo de captura de desktop.
 
 # Diagrama Geral de Componentes
 ![Diagrama Geral](assets/README_Images/DiagramaGeralComponentes.png)
