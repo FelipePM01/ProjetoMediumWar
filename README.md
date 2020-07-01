@@ -359,16 +359,16 @@ public interface IJogador extends IJogadorCard, IJogadorBanco{
 	
 	public void pressedA() ;
 	public void pressedC() ;
-	public void pressedVIRGULA();
+	public void pressedJ();
 	public void pressedD() ;
 	public void pressedLEFT();
 	public void pressedRIGHT();
 	public void pressedZ() ;
 	public void pressedE();
 	public void pressedX();
-	public void pressedDoisPontos();
-	public void pressedPONTO() ;
-	public void pressedBARRA() ;
+	public void pressedN();
+	public void pressedK() ;
+	public void pressedL() ;
 	public void pressedSPACE() ;
 	public void pressedENTER() ;
 	public void paintComponent(Graphics g);	
@@ -407,13 +407,13 @@ pressedD | Movimenta o cursor da mão do jogador 1 para a direita
 pressedLEFT | Movimenta o cursor da mão do jogador 2 para a esquerda
 pressedRIGHT | Movimenta o cursor da mão do jogador 2 para a direita
 pressedC | Notifica o banco que o jogador 1 quer comprar uma peça
-pressedVIRGULA | Notifica o banco que o jogador 2 quer comprar uma peça
+pressedJ | Notifica o banco que o jogador 2 quer comprar uma peça
 pressedX | Coloca o cursor na mão do jogador 1 para escolher uma peça para posicioná-la e em seguida notifica o tabuleiro que o jogador 1 quer posicionar uma peça 
-pressedPONTO | Coloca o cursor na mão do jogador 2 para escolher uma peça para posicioná-la e em seguida notifica o tabuleiro que o jogador 2 quer posicionar uma peça 
+pressedK | Coloca o cursor na mão do jogador 2 para escolher uma peça para posicioná-la e em seguida notifica o tabuleiro que o jogador 2 quer posicionar uma peça 
 pressedZ | Coloca o cursor na mão do jogador 1 para escolher uma peça para vendê-la e em seguida a remove da mão e incrementa o dinheiro do jogador 1
-pressedBARRA | Coloca o cursor na mão do jogador 2 para escolher uma peça para vendê-la e em seguida a remove da mão e incrementa o dinheiro do jogador 2
+pressedL | Coloca o cursor na mão do jogador 2 para escolher uma peça para vendê-la e em seguida a remove da mão e incrementa o dinheiro do jogador 2
 pressedE | Liga ou desliga a exibição dos atributos da peça do jogador 1
-pressedDoisPontos | Liga ou desliga a exibição dos atributos da peça do jogador 2
+pressedN | Liga ou desliga a exibição dos atributos da peça do jogador 2
 pressedSPACE | Confirma a escolha do jogador 1 de qual peça será vendida ou posicionada
 pressedENTER | Confirma a escolha do jogador 2 de qual peça será vendida ou posicionada
 
@@ -715,7 +715,7 @@ public interface ITabuleiro extends ITabuleiroTile,ITabuleiroJogador {
 	public void pressedLEFT() ;
 	public void pressedRIGHT() ;
 	public void pressedQ();
-	public void pressedAspas();
+	public void pressedM();
 
 	public void removeProjectiles(Projectile projectile);
 	public void paintComponent(Graphics g);
@@ -770,7 +770,7 @@ pressedUP | Move o cursor do jogador 2 para cima
 pressedDOWN | Move o cursor do jogador 2 para baixo
 pressedLEFT | Move o cursor do jogador 2 para a esquerda
 pressedRIGHT | Move o cursor do jogador 2 para a direita
-pressedAspas | Notifica o banco que o jogador 2 terminou de posicionar suas peças
+pressedM | Notifica o banco que o jogador 2 terminou de posicionar suas peças
 
 ### Interface ITabuleiroJogador
 Essa interface é responsável pela interação entre o jogaador e o tabuleiro
@@ -908,7 +908,7 @@ public interface IBanco extends IBancoCard,IBancoJogador {
 	public void pressedSPACE();
 	public void pressedENTER();
 	public void pressedE();
-	public void pressedDoisPontos();
+	public void pressedN();
 	public void refresh();
 	public void paintComponent(Graphics g);
 }
@@ -943,7 +943,7 @@ pressedD | Movimenta o cursor do jogador 1 para a direita
 pressedLEFT | Movimenta o cursor do jogador 2 para a esquerda
 pressedRIGHT | Movimenta o cursor do jogador 2 para a direita
 pressedE | Liga ou desliga a exibição dos atributos da peça do jogador 1
-pressedDoisPontos | Liga ou desliga a exibição dos atributos da peça do jogador 2
+pressedN | Liga ou desliga a exibição dos atributos da peça do jogador 2
 pressedSPACE | Confirma a escolha do jogador 1 de qual peça será comprada
 pressedENTER | Confirma a escolha do jogador 2 de qual peça será comprada
 refresh | Troca as peças que estarão disponíveis para compra
