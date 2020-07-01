@@ -9,7 +9,13 @@
 O projeto será um jogo em que cada jogador posicionará as peças de sua mão no tabuleiro e em seguida as peças atacarão as peças do inimigo por meio de um determinado compartamento atribuído ao tipo da peça. Cada peça terá atributos específicos como vida , dano e alcance de ataque. A temática do jogo será baseada em classes e criaturas de um RPG.
 
 # Vídeos do Projeto
+
+## Vídeo da Prévia
 [Link do vídeo do projeto](https://drive.google.com/open?id=12WCLHbGfRfGYytHxSpNW-8KsJQpoNzBI)
+
+## Vídeo do Jogo
+[MediumWar Demo](https://drive.google.com/file/d/154s7CXjp4dG9Yf8y6I6eRETXDytXXkru/view?usp=sharing)
+[MediumWar SpeedRun](https://drive.google.com/file/d/10O7YF57NPsBakSjG8R0hhniX1L93Q8Jn/view?usp=sharing)
 
 # Slides do Projeto
 
@@ -200,24 +206,24 @@ public IPecaCardBanco getPeca() {
 public class Window extends JFrame implements ActionListener{
 	 ...
 	 public void actionPerformed(ActionEvent evento) {
-		 	principal=new JPanel();
-			principal.setOpaque(false);
-			principal.setLayout(null);
-			principal.setVisible(true);
+		principal=new JPanel();
+		principal.setOpaque(false);
+		principal.setLayout(null);
+		principal.setVisible(true);
 			
-			imgReturn=menu.resize(new ImageIcon("assets/returnButton.png"));
-			endHome=new JButton(imgReturn);
-			endHome.setBounds((this.getWidth()/2)-(imgReturn.getIconWidth()/2), (HEIGHT/2)+450, 432, 144);
-			endHome.addActionListener(e->setMenu());
-			endHome.setVisible(false);
-			principal.add(endHome);
-			principal.add(game);
-			
-			menu.add(principal,"principal");
-			menu.cardLayout.show(menu,"principal");
+		imgReturn=menu.resize(new ImageIcon("assets/returnButton.png"));
+		endHome=new JButton(imgReturn);
+		endHome.setBounds((this.getWidth()/2)-(imgReturn.getIconWidth()/2), (HEIGHT/2)+450, 432, 144);
+		endHome.addActionListener(e->setMenu());
+		endHome.setVisible(false);
+		principal.add(endHome);
+		principal.add(game);
+		
+		menu.add(principal,"principal");
+		menu.cardLayout.show(menu,"principal");
 		 	
-		 	game.gameStart();
-		 	game.start(); 	
+		game.gameStart();
+		game.start(); 	
 	 }
 	 ...
 }
@@ -256,37 +262,37 @@ Dentro do menu ha 3 botões que ao serem acionados disparam eventos, como encerr
 public class Game extends Canvas implements Runnable, IGameTabuleiro,KeyListener{
 	...
 	private void render(){
-        BufferStrategy bs = this.getBufferStrategy();
-        if(bs==null){
-            this.createBufferStrategy(3);
-            return;
-        }
-        Graphics g = bs.getDrawGraphics();
+         BufferStrategy bs = this.getBufferStrategy();
+         if(bs==null){
+             this.createBufferStrategy(3);
+             return;
+         }
+         Graphics g = bs.getDrawGraphics();
         
-        if(gui!=null)gui.paintComponent(g);
-        if(tabuleiro!=null)tabuleiro.paintComponent(g);
-        if(banco!=null)banco.paintComponent(g);
-        if(jogador1!=null)jogador1.paintComponent(g);
-        if(jogador2!=null)jogador2.paintComponent(g);
-        if(redWins&&blueWins)g.drawImage(imgEndEmpate,((int)(this.getWidth()/2)-(imgEndEmpate.getWidth(null)/2)), ((int)(this.getHeight()/2)-(imgEndEmpate.getHeight(null)/2))-250, this);
-        else if(redWins)g.drawImage(imgEndRed,((int)(this.getWidth()/2)-(imgEndRed.getWidth(null)/2)), ((int)(this.getHeight()/2)-(imgEndRed.getHeight(null)/2))-250, this);
-        else if(blueWins)g.drawImage(imgEndBlue,((int) (this.getWidth()/2)-(imgEndBlue.getWidth(null)/2)),((int) (this.getHeight()/2)-(imgEndBlue.getHeight(null)/2))-250, this);
+         if(gui!=null)gui.paintComponent(g);
+         if(tabuleiro!=null)tabuleiro.paintComponent(g);
+         if(banco!=null)banco.paintComponent(g);
+         if(jogador1!=null)jogador1.paintComponent(g);
+         if(jogador2!=null)jogador2.paintComponent(g);
+         if(redWins&&blueWins)g.drawImage(imgEndEmpate,((int)(this.getWidth()/2)-(imgEndEmpate.getWidth(null)/2)), ((int)(this.getHeight()/2)-(imgEndEmpate.getHeight(null)/2))-250, this);
+         else if(redWins)g.drawImage(imgEndRed,((int)(this.getWidth()/2)-(imgEndRed.getWidth(null)/2)), ((int)(this.getHeight()/2)-(imgEndRed.getHeight(null)/2))-250, this);
+         else if(blueWins)g.drawImage(imgEndBlue,((int) (this.getWidth()/2)-(imgEndBlue.getWidth(null)/2)),((int) (this.getHeight()/2)-(imgEndBlue.getHeight(null)/2))-250, this);
 
-        g.dispose();
-        bs.show();
-    }
-    @Override
-	public void keyTyped(KeyEvent e) {
+         g.dispose();
+         bs.show();
+     }
+     @Override
+	 public void keyTyped(KeyEvent e) {
 		
-	}
-	@Override
-	public void keyPressed(KeyEvent e) {
-		int code = e.getKeyCode();
-		switch(code){
-		case KeyEvent.VK_W:
-			if(commands1)tabuleiro.pressedW();
+	 }
+	 @Override
+	 public void keyPressed(KeyEvent e) {
+		 int code = e.getKeyCode();
+		 switch(code){
+		 case KeyEvent.VK_W:
+			 if(commands1)tabuleiro.pressedW();
              break;
-		case KeyEvent.VK_A:
+		 case KeyEvent.VK_A:
 			if(commands1) {
 				jogador1.pressedA();
 				tabuleiro.pressedA();
