@@ -13,9 +13,10 @@ O projeto será um jogo em que cada jogador posicionará as peças de sua mão n
 ## Vídeo da Prévia
 [Link do vídeo do projeto](https://drive.google.com/open?id=12WCLHbGfRfGYytHxSpNW-8KsJQpoNzBI)
 
-## Vídeo do Jogo
+## Vídeos do Jogo
+### Vídeo da demosntração
 [MediumWar Demo](https://drive.google.com/file/d/154s7CXjp4dG9Yf8y6I6eRETXDytXXkru/view?usp=sharing)
-
+### Vídeo do Speedrun de uma partida completa
 [MediumWar SpeedRun](https://drive.google.com/file/d/10O7YF57NPsBakSjG8R0hhniX1L93Q8Jn/view?usp=sharing)
 
 # Slides do Projeto
