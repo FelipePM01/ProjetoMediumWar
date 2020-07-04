@@ -1,23 +1,16 @@
 package tabuleiro;
 
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Jogador.IJogador;
 import Jogador.Jogador;
-import game.Game;
-import game.IGame;
 import game.IGameTabuleiro;
-import peca.IPecaCard;
 import peca.IPecaCardJogador;
-import peca.Peca;
 import peca.Projectile;
 
 public class Tabuleiro extends JPanel implements ITabuleiro{
@@ -101,7 +94,6 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		}
 		projectiles.clear();
 	}
-	
 	public Tile[][] getTiles() {
 		return (Tile[][])matriz;
 	}
@@ -134,7 +126,6 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 			cAzul=false;
 			cursorAzul[0]=0;
 			cursorAzul[1]=0;
-			
 		}
 		else if(cor=="vermelho") {
 			selectTile(cursorVermelho[0],cursorVermelho[1],9,9,"padrao");
@@ -239,7 +230,6 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 			start1=false;
 			start2=false;
 		}
-		
 	}
 	public void pressedM() {
 		if(cVermelho!=false)hideCursor("vermelho");
@@ -261,7 +251,6 @@ public class Tabuleiro extends JPanel implements ITabuleiro{
 		return inTab;
 	}
 	public void eliminateInTab(int i) {
-		
 		if(inTab[i]!=0)inTab[i]=inTab[i]-1;
 		if(inTab[i]==0) {
 			if(i==0){

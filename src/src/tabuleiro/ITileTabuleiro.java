@@ -3,15 +3,11 @@ package tabuleiro;
 import java.awt.Graphics;
 import java.awt.Image;
 
-import peca.IPeca;
-import peca.IPecaCard;
 import peca.IPecaCardJogador;
 import peca.IPecaTile;
-import peca.Peca;
 
 public interface ITileTabuleiro {
 	public void paintComponent(Graphics g,Image img);
-
 	public IPecaTile getPeca();
 	public void paintPeca(Graphics g);
 	public Image getImage();

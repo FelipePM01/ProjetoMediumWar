@@ -2,7 +2,6 @@ package peca;
 
 import java.awt.Image;
 
-import Jogador.CardJogador;
 import card.ICardBanco;
 import card.ICardJogadorPeca;
 import tabuleiro.Tile;
@@ -37,10 +36,10 @@ public class Wizard extends Ranged {
 		projectileCorrection[0]=18;
 		projectileCorrection[1]=14;
 	}
+	
 	public String toString(){
 		return "Wizard ";
 	}
-	
 	private void setup(int x) {
 		animationFramesMove = new Image[3];
 		animationFramesAttack = new Image[4];
@@ -71,5 +70,4 @@ public class Wizard extends Ranged {
 	public Projectile create(double scale,double[] posicao,IPecaTile target,double dano,IPecaCardJogador origem) {
 		return new Magic(scale,posicao,target,dano,origem);
 	}
-	
 }

@@ -2,10 +2,8 @@ package card;
 
 import java.awt.Graphics;
 
-import peca.IPecaCard;
 import peca.IPecaCardBanco;
 import peca.IPecaCardJogador;
-import peca.Peca;
 
 public interface ICardJogador {
 	public int getWidth();
@@ -16,5 +14,4 @@ public interface ICardJogador {
 	public void setPeca(IPecaCardBanco recebido);
 	public IPecaCardJogador getPeca();
 	public boolean getNaoColocado();
-	
 }

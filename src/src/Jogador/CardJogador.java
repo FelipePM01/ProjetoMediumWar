@@ -15,11 +15,10 @@ import peca.Peca;
 import peca.Wizard;
 
 public class CardJogador extends Card implements ICardJogador,ICardJogadorPeca{
-	protected IPecaCardJogador peca=null;
 	private static final long serialVersionUID = 1679685899782569774L;
+	protected IPecaCardJogador peca=null;
 	private IJogadorCard jogador;
 	private boolean naoColocado=true;
-	
 	static private String[] refImagens = {"assets/cardPadrao.png","assets/cardAzul.png","assets/cardVermelho.png"};
 	
 	public CardJogador(IJogadorCard jogador, int i){
@@ -29,11 +28,7 @@ public class CardJogador extends Card implements ICardJogador,ICardJogadorPeca{
 	
 	public void setCardAtual(String cor) {
 		 attImage(cor);
-
 	}
-
-
-	
 	public void setPeca(IPecaCardBanco peca) {
 		if (peca instanceof Archer)this.peca=new Archer(peca,this);
 		else if (peca instanceof Knight)this.peca=new Knight(peca,this);
@@ -41,9 +36,6 @@ public class CardJogador extends Card implements ICardJogador,ICardJogadorPeca{
 		else if (peca instanceof Wizard)this.peca=new Wizard(peca,this);
 		else if(peca==null)this.peca=null;
 	}
-
-	
-
 	public IJogadorCard getJogador() {
 		return jogador;
 	}
@@ -53,15 +45,10 @@ public class CardJogador extends Card implements ICardJogador,ICardJogadorPeca{
 	public void setNaoColocado(boolean naoColocado) {
 		this.naoColocado=naoColocado;
 	}
-
 	public void recompensar(int value) {
-		jogador.addCash(value);
-		
+		jogador.addCash(value);	
 	}
-
 	 public IPecaCardJogador getPeca() {
-	    	return peca;
-	    }
-
-	
+		 return peca;
+	 }
 }

@@ -23,7 +23,6 @@ public class GUI extends JPanel {
 		Dimension d1=new Dimension(background.getWidth(null),background.getHeight(null));
 		Dimension correct=getScaledDimension(d1, screenSize);
 		background=background.getScaledInstance(correct.width,correct.height, Image.SCALE_DEFAULT);
-		//Dimension d2=new Dimension(background.getWidth(null),background.getHeight(null));	
 	}
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);

@@ -2,9 +2,6 @@ package peca;
 
 import java.awt.Image;
 
-import Jogador.CardJogador;
-import banco.CardBanco;
-import card.Card;
 import card.ICardBanco;
 import card.ICardJogadorPeca;
 import tabuleiro.Tile;
@@ -14,6 +11,7 @@ public class Knight extends Melee{
 	 * 
 	 */
 	private static final long serialVersionUID = -5203249539608432216L;
+	
 	static private String[] refImagens= {"assets/knight0.png","assets/knight1.png","assets/knight2.png","assets/knight3.png","assets/knight4.png","assets/knight5.png"};
 			
 	public Knight(double scale) {
@@ -37,6 +35,7 @@ public class Knight extends Melee{
 		correction[1]=4;
 		flipCorrection=10;
 	}
+	
 	public String toString(){
 		return "Knight ";
 	}
@@ -66,7 +65,5 @@ public class Knight extends Melee{
 	}
 	public double[] getCenterPosition() {
 		return getCenterPosition(11,19);
-	}
-
-	
+	}	
 }

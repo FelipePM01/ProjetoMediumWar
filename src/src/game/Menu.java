@@ -1,12 +1,10 @@
 package game;
 
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -30,7 +28,6 @@ public class Menu extends JPanel{
 	    this.setLayout(cardLayout);
 		this.add(menuPage, "home");
 		this.add(creditsPage, "credits");
-	    
 		setVisible(true);
 	}
 	private void setMenu() {
@@ -75,7 +72,6 @@ public class Menu extends JPanel{
 		home.addActionListener(e -> cardLayout.show(this, "home"));
 		creditsPage.add(home);
 	}
-	
 	public ImageIcon resize(ImageIcon img) {
 		Image auxImg = img.getImage();
 		Image newImg = auxImg.getScaledInstance((int)(img.getIconWidth()*2),(int)(img.getIconHeight()*2),java.awt.Image.SCALE_SMOOTH);

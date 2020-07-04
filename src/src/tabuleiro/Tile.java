@@ -7,7 +7,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import peca.Archer;
-import peca.IPecaCard;
 import peca.IPecaCardJogador;
 import peca.IPecaTile;
 import peca.Knight;
@@ -19,6 +18,7 @@ import peca.Wizard;
 public class Tile extends JPanel implements ITile{
 
 	private static final long serialVersionUID = 4878418849447188406L;
+	
 	private static int[] startPositionScreen= {282,122};
 	private int[] position=new int[2];
 	private double scale;
@@ -42,10 +42,8 @@ public class Tile extends JPanel implements ITile{
 		ImageIcon refTileAzul=new ImageIcon("assets/tileAzul.png");
 		tileAzul=refTileAzul.getImage();
 		tileAzul=tileAzul.getScaledInstance((int)(tileAzul.getWidth(null)*scale),(int) (tileAzul.getHeight(null)*scale), Image.SCALE_DEFAULT);
-		
 		this.position=position;
-		tileAtual=tilePadrao;
-		
+		tileAtual=tilePadrao;	
 	}
 	
 	public void paintComponent(Graphics g,Image img) {
@@ -73,14 +71,11 @@ public class Tile extends JPanel implements ITile{
 	public void nullTarget() {
 		if(peca!=null)peca.setTargetNull();
 	}
-	
 	public void clearTile() {
 		nullTarget();
 		setNull();
 	}
-	
 	public void setPeca(IPecaCardJogador peca) {
-	
 		if (peca instanceof Archer)this.peca=new Archer(peca,this);
 		else if (peca instanceof Knight)this.peca=new Knight(peca,this);
 		else if (peca instanceof Orc)this.peca=new Orc(peca,this);
@@ -111,11 +106,8 @@ public class Tile extends JPanel implements ITile{
 			  break;
 		  	}
 	  }
-
-	
 	public void setPeca(Peca peca) {
 		this.peca=peca;
-		
 	}
 	public void setNull() {
 		peca=null;
@@ -123,17 +115,14 @@ public class Tile extends JPanel implements ITile{
 	public static double dist(ITilePeca tile1,ITilePeca tile2) {
 		int[] pos1=tile1.getPosition(),pos2=tile2.getPosition();
 		return Math.sqrt(Math.pow(pos1[0]-pos2[0],2)+Math.pow(pos1[1]-pos2[1],2));
-		
 	}
 	public static int distX(ITilePeca tile1,ITilePeca tile2) {
 		int[] pos1=tile1.getPosition(),pos2=tile2.getPosition();
-		return pos2[0]-pos1[0];
-		
+		return pos2[0]-pos1[0];	
 	}
 	public static int distY(ITilePeca tile1,ITilePeca tile2) {
 		int[] pos1=tile1.getPosition(),pos2=tile2.getPosition();
 		return pos2[1]-pos1[1];
-		
 	}
 	public void setMarcado() {
 		marcado=!marcado;
@@ -144,11 +133,8 @@ public class Tile extends JPanel implements ITile{
 	public void eliminateTab(int i) {
 		tabuleiro.eliminateInTab(i);
 	}
-
 	@Override
 	public void addProjectile(Projectile projetil) {
 		tabuleiro.addProjectiles(projetil);
-		
 	}
-	
 }

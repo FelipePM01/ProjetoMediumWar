@@ -34,8 +34,7 @@ public class Game extends Canvas implements Runnable, IGameTabuleiro,KeyListener
     private boolean commands2;
     private boolean redWins;
     private boolean blueWins;
-
-        
+ 
     public Game() {
     	window = new Window(WIDTH, HEIGHT, "MediumWar", this);
     	this.setBounds(0,0,WIDTH,HEIGHT);
@@ -156,14 +155,14 @@ public class Game extends Canvas implements Runnable, IGameTabuleiro,KeyListener
 				jogador2.pressedRIGHT();
 				tabuleiro.pressedRIGHT();
 				banco.pressedRIGHT();
-				}
+			}
             break;
 		case KeyEvent.VK_LEFT:
 			if(commands2) {
 				jogador2.pressedLEFT();
 				tabuleiro.pressedLEFT();
 				banco.pressedLEFT();
-				}
+			}
 			break;
 		case KeyEvent.VK_L:
 			if(commands2)jogador2.pressedL();
@@ -211,8 +210,6 @@ public class Game extends Canvas implements Runnable, IGameTabuleiro,KeyListener
 				if(banco.obtainCursor("azul")!=-1)banco.hideCursor(1);
 				tabuleiro.pressedQ();
 			}
-			//banco.pressedENTER();
-			//jogador2.pressedENTER();
 			break;
 		case KeyEvent.VK_M:
 			if(tabuleiro.getIntab()[1]>0) {
@@ -220,8 +217,6 @@ public class Game extends Canvas implements Runnable, IGameTabuleiro,KeyListener
 				if(banco.obtainCursor("vermelho")!=-1)banco.hideCursor(2);
 				tabuleiro.pressedM();
 			}
-			//banco.pressedENTER();
-			//jogador2.pressedENTER();
 			break;
 		}
 	}

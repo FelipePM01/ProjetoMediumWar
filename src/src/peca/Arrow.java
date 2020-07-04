@@ -1,12 +1,5 @@
 package peca;
 
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-
-import javax.swing.ImageIcon;
-
-import tabuleiro.Tabuleiro;
-
 public class Arrow extends Projectile{
 	/**
 	 * 

@@ -1,27 +1,18 @@
 package Jogador;
 
-import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import banco.Banco;
 import banco.IBanco;
 import banco.IBancoJogador;
 import card.ICardJogador;
 import game.IGame;
-import peca.IPecaCard;
 import peca.IPecaCardBanco;
 import tabuleiro.ITabuleiro;
 import tabuleiro.ITabuleiroJogador;
-import peca.IPecaCardJogador;
-import peca.Knight;
-import peca.Orc;
-import peca.Peca;
-import tabuleiro.ITabuleiroJogador;
-import tabuleiro.Tabuleiro;
 
 public class Jogador extends JPanel implements IJogador{
 	
@@ -41,8 +32,7 @@ public class Jogador extends JPanel implements IJogador{
 	private String currentAction;
 	private int cash = 10;
 	private int points = 0;
-	
-	
+
 	public Jogador(IGame game, int j,ITabuleiro tabuleiro,IBanco banco){
 		scale=game.getScale();
 		this.tabuleiro=tabuleiro;
@@ -51,20 +41,17 @@ public class Jogador extends JPanel implements IJogador{
 			positionX=(int)(scale*20);
 			positionY=(int)(scale*240);
 			cor="azul";
-
 		}
 		else {
 			positionX=(int)(scale*696);
 			positionY=(int)(scale*240);
 			cor="vermelho";
 		}
-		
 		initializeGui();
 		for(int i=0;i<8;i++) {
 			mao[i]= new CardJogador(this, i%3);
 		}
 	}
-	
 	public void initializeGui(){
         ImageIcon refimgmao=new ImageIcon("assets/mao.png");        
         imgMao=refimgmao.getImage();
@@ -78,19 +65,12 @@ public class Jogador extends JPanel implements IJogador{
     
     	ImageIcon refTrophy=new ImageIcon("assets/trophy.png");
  		imgTrophy=refTrophy.getImage();
-     	imgTrophy=imgTrophy.getScaledInstance((int)(1.6*scale*imgTrophy.getWidth(null)), (int)(1.5*scale*imgTrophy.getHeight(null)), Image.SCALE_DEFAULT);    	
-//     
-//     	ImageIcon refStats=new ImageIcon("assets/stats.png");
-// 		imgInfo=refStats.getImage();
-//     	imgInfo=imgInfo.getScaledInstance((int)(5*scale*imgInfo.getWidth(null)), (int)(3.5*scale*imgInfo.getHeight(null)), Image.SCALE_DEFAULT);    	
-//	
+     	imgTrophy=imgTrophy.getScaledInstance((int)(1.6*scale*imgTrophy.getWidth(null)), (int)(1.5*scale*imgTrophy.getHeight(null)), Image.SCALE_DEFAULT);    		
 	}
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		
 		if(imgCoin!=null)g.drawImage(imgCoin,10,10,this);	
 		if(imgCoin!=null)g.drawImage(imgCoin,1920-10-imgCoin.getWidth(null),10,this);
-		
 		g.setFont(new Font("Arial",1, 55));
 		if(cor=="azul") {
 			g.drawString(String.valueOf(cash), (int)(15+imgCoin.getWidth(null)),imgCoin.getHeight(null)+6);
@@ -104,15 +84,11 @@ public class Jogador extends JPanel implements IJogador{
 		}
 		
 		if(currentAction=="info"&&cursor!=-1&&mao[cursor].getPeca()!=null) {
-//			if(cor=="azul")g.drawImage(imgInfo,50,100,null);
-//			if(cor=="vermelho")g.drawImage(imgInfo,1380,100,null);
 			mao[cursor].getPeca().printFeature(g, cor);
 		}
-		
 		int newX = positionX+4+(mao[0].getWidth()/2);
 		int newY = positionY+4;
         g.drawImage(imgMao, positionX, positionY, null);
-  
         for(int i=0;i<8;i++){
         	if(mao[i]!=null) {
         		mao[i].paintComponent(g, newX, newY);
@@ -170,10 +146,8 @@ public class Jogador extends JPanel implements IJogador{
 		if(tabuleiro.getCursor(cor))tabuleiro.hideCursor(cor);
 		for(int i=0;i<8;i++) {
 			if(mao[i].ehNulo()) {
-				
 				banco.comprar(this);
 				colocar=i;
-				
 				break;
 			}
 		}
@@ -266,13 +240,11 @@ public class Jogador extends JPanel implements IJogador{
 	}
 	public void pressedSPACE() {
 		if(currentAction=="remove") {
-			
 			remove();
 			currentAction=null;
 			if(cursor!=-1)hideCursor();
 		}
 		else if(currentAction=="position") {
-			
 			position();
 		}
 		else if(currentAction=="info") {
@@ -288,14 +260,12 @@ public class Jogador extends JPanel implements IJogador{
 		}
 		else if(currentAction=="position") {
 			position();
-			//currentAction=null;
 		}
 		else if(currentAction=="info") {
 			hideCursor();
 			currentAction=null;
 		}
 	}
-	
 	public void remove() {
 		if(cursor>=0&&!mao[cursor].ehNulo()&&mao[cursor].getNaoColocado()) {
 			addCash(mao[cursor].getPeca().getSaleValue());
@@ -314,22 +284,17 @@ public class Jogador extends JPanel implements IJogador{
 	}
 	public void receber(IPecaCardBanco peca) {
 		recebido=peca;
-		
 		mao[colocar].setPeca(recebido);
-		
 		colocar=-1;
 	}
 	public void posicionado() {
 		currentAction=null;
 		setCursor();
 	}
-
 	@Override
 	public String getCor() {
-		
 		return cor;
 	}
-
 	public int getCash() {
 		return cash;
 	}

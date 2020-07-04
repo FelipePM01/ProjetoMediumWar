@@ -8,7 +8,6 @@ import peca.Projectile;
 
 public interface ITilePeca {
 	public Image getImage();
-
 	public int[] getGUIPosition();
 	public int[] getPosition();
 	public Tile[][] getOtherTiles();

@@ -7,7 +7,6 @@ public interface IJogador extends IJogadorCard, IJogadorBanco{
 	public int getPoints();
 	public int obtainCursor();
 	public void hideCursor();
-	
 	public void pressedA() ;
 	public void pressedC() ;
 	public void pressedJ();
@@ -23,5 +22,4 @@ public interface IJogador extends IJogadorCard, IJogadorBanco{
 	public void pressedSPACE() ;
 	public void pressedENTER() ;
 	public void paintComponent(Graphics g);	
-
 }

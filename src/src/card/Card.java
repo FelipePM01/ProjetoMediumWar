@@ -8,9 +8,8 @@ import javax.swing.JPanel;
 
 import Jogador.IJogadorCard;
 import banco.IBancoCard;
-import peca.Archer;
 import peca.IPecaCard;
-import peca.Peca;
+
 
 public abstract class Card extends JPanel implements ICardPeca{
 	/**
@@ -33,7 +32,6 @@ public abstract class Card extends JPanel implements ICardPeca{
     }
 
     public void initializeGui(String refimag){
-        
     	ImageIcon refimg=new ImageIcon(refimag);        
         img=refimg.getImage();
         width = (int)(scale*img.getWidth(null));
@@ -55,8 +53,6 @@ public abstract class Card extends JPanel implements ICardPeca{
     	ImageIcon refCardAmbos=new ImageIcon("assets/cardAmbos.png");
     	cardAmbos=refCardAmbos.getImage();
     	cardAmbos=cardAmbos.getScaledInstance((int)(scale*cardAmbos.getWidth(null)), (int)(scale*cardAmbos.getHeight(null)), Image.SCALE_DEFAULT);
-   
-    	//attImage(refimag);
     }
     public void initializeGuiPeca(String refimag){
         ImageIcon refimg=new ImageIcon(refimag);        
@@ -85,10 +81,7 @@ public abstract class Card extends JPanel implements ICardPeca{
     	if(getPeca()==null)retorno=true;
     	return retorno;
     }
-//    public abstract void setPeca(IPecaCard peca) ;
-   
     public void attImage(String refImgAtual) {
-    	//initializeGui(refImgAtual);
     	switch(refImgAtual){
 		  case "ambos":
 			  img=cardAmbos;
@@ -104,7 +97,5 @@ public abstract class Card extends JPanel implements ICardPeca{
 			  break;
 		  }
     }
-    protected abstract <t extends IPecaCard> t getPeca();
-    	
-    
+    protected abstract <t extends IPecaCard> t getPeca();   
 }

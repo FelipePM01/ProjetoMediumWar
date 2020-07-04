@@ -2,9 +2,6 @@ package peca;
 
 import java.awt.Image;
 
-import Jogador.CardJogador;
-import banco.CardBanco;
-import card.Card;
 import card.ICardBanco;
 import card.ICardJogadorPeca;
 import tabuleiro.Tile;
@@ -37,6 +34,7 @@ public class Orc extends Melee{
 		correction[1]=3;
 		flipCorrection=7;
 	}
+	
 	public String toString(){
 		return "Orc ";
 	}

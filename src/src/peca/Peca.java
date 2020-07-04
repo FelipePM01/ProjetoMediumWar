@@ -37,7 +37,6 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 	protected int currentFrame;
 	protected GUI gui;
 	protected double scale;
-	
 	protected double[] translation={0.0,0.0};
 	protected int[] basePosition = {0,0};
 	protected String currentAction=null;
@@ -53,7 +52,6 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 	protected double endurance;
 	protected IPecaCardJogador origem;
 	protected String cor=null;
-	
 	protected int[] lastPositionDirection=null;
 	protected int purchaseValue;
 	protected int saleValue;
@@ -69,6 +67,7 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 	protected boolean morto=false;
 	protected BarraDeVida barraDeVida;
 	protected double maxLife;
+	
 	public Peca(double scale) {
 		this.scale=scale;
 	}
@@ -82,10 +81,7 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 		int[] start=new int[2];
 		start[0]=(int)(getCenterPosition()[0]+correction[0]*scale+scale*translation[0]);
 		start[1]=(int)(basePosition[1]+scale*correction[1]+scale*translation[1]);
-		
 		barraDeVida=new BarraDeVida(start,scale,cor);
-		
-		
 	}
 	public Peca(IPeca peca,ICardBanco card) {
 		set(peca);		
@@ -108,7 +104,6 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 			start[1]=(int)(basePosition[1]+scale*correction[1]+scale*translation[1]);
 			g.drawImage(currentAnimation[currentFrame], start[0], start[1],null);
 			if(tile!=null) {
-				
 				barraDeVida.paintComponent(g,start);
 			}
 		}
@@ -117,12 +112,10 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 			start[0]=(basePosition[0]+(int)(scale*correction[0])+(int)(translation[0]));
 			start[1]=(int)(basePosition[1]+scale*correction[1]+scale*translation[1]);
 			g.drawImage(currentAnimation[currentFrame], start[0]+currentAnimation[currentFrame].getWidth(null),start[1],-currentAnimation[currentFrame].getWidth(null),currentAnimation[currentFrame].getHeight(null),null);
-			
 			if(tile!=null) {
 				barraDeVida.paintComponent(g,start);
 			}
 		}
-		
 	}
 	public void paintComponent(Graphics g, int positionX, int positionY) {
 		super.paintComponent(g);
@@ -135,7 +128,6 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 			start[0]+=flipCorrection;
 		}
 		if(tile!=null) {
-			
 			barraDeVida.paintComponent(g,start);
 		}
 	}
@@ -181,15 +173,12 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 		if(!morto) {
 			if(esperando) {
 				esperando=false;
-				moveOrAttack();
-				
-				
+				moveOrAttack();	
 			}
 			else if(currentAction=="moving"&&moveTarget!=null) move();
 			else if(currentAction=="attacking")attack();
 		}
 	}
-
 	protected void move() {
 
 		frameCounter+=1;
@@ -259,23 +248,18 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 				}
 			}
 			if(dist<=alcance&&dist!=100) {
-				currentAction="attacking";
-				
+				currentAction="attacking";				
 				moveTarget=null;
-				
+			
 				if(alvo!=null) {
 					attackTarget=alvo.getPeca();
 					if(alvo.getPosition()[0]>tile.getPosition()[0]&&flipped)flipped=false;
 					if(alvo.getPosition()[0]<tile.getPosition()[0]&&!flipped)flipped=true;
-					
 				}
-				
 				currentAnimation=animationFramesAttack;
 				currentFrame=0;
 			}
 			else if(dist!=100) {
-				
-				
 				try {
 					direction=chooseDirection(alvo,tried);
 					lastPosition=new int[2];
@@ -283,7 +267,7 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 					lastPosition[1]=-direction[1];
 					
 					moveTarget=tile.getOtherTiles()[tile.getPosition()[0]+direction[0]][tile.getPosition()[1]+direction[1]];
-					
+
 					attackTarget=null;
 					tried=new ArrayList<int[]>();
 					tried.add(lastPosition);
@@ -294,23 +278,15 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 				} catch (FormatoInvalido e) {
 					System.out.println("formato invalido");
 				}catch (MovimentoInvalido e) {
-					
-					
 					if(tried.size()<4) {
-						moveOrAttack();
-						
-						
+						moveOrAttack();			
 					}
-					else {
-						
+					else {						
 						esperando=true;
 						tried=new ArrayList<int[]>();
 						if(lastPosition!=null)tried.add(lastPosition);
-						
 					}
-					
-				}
-				
+				}	
 			}
 		}
 	}
@@ -321,60 +297,48 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 		int[] direction=new int[2];
 		boolean pronto=false;
 		if(Math.abs(deltaX)>Math.abs(deltaY) ){
-			
 			direction[0]=(deltaX!=0)?deltaX/Math.abs(deltaX):1;
 			direction[1]=0;
 			if(tryDirection(direction,tried));
 			else {
 				boolean jaTestado=false;
-				for(int i=0;i<tried.size();i++) {
-					
-					if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-					
+				for(int i=0;i<tried.size();i++) {	
+					if(Arrays.equals(tried.get(i),direction))jaTestado=true;	
 				}
 				if(!jaTestado)pronto=true;
 			}
-			if(!pronto) {
-				
+			if(!pronto) {				
 				direction[0]=0;
 				direction[1]=(deltaY!=0)?deltaY/Math.abs(deltaY):1;
 				if(tryDirection(direction,tried));
 				else {
 					boolean jaTestado=false;
-					for(int i=0;i<tried.size();i++) {
-						
-						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-						
+					for(int i=0;i<tried.size();i++) {						
+						if(Arrays.equals(tried.get(i),direction))jaTestado=true;						
 					}
 					if(!jaTestado)pronto=true;
 				}
 			}
 			if(!pronto) {
-				
 				direction[0]=0;
 				direction[1]=(deltaY!=0)?-deltaY/Math.abs(deltaY):-1;
 				if(tryDirection(direction,tried));
 				else {
 					boolean jaTestado=false;
-					for(int i=0;i<tried.size();i++) {
-						
+					for(int i=0;i<tried.size();i++) {	
 						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-						
 					}
 					if(!jaTestado)pronto=true;
 				}
 			}
 			if(!pronto) {
-				
 				direction[0]=(deltaX!=0)?-deltaX/Math.abs(deltaX):-1;
 				direction[1]=0;
 				if(tryDirection(direction,tried));
 				else {
 					boolean jaTestado=false;
-					for(int i=0;i<tried.size();i++) {
-						
+					for(int i=0;i<tried.size();i++) {	
 						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-						
 					}
 					if(!jaTestado)pronto=true;
 				}
@@ -387,53 +351,42 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 			else {
 				boolean jaTestado=false;
 				for(int i=0;i<tried.size();i++) {
-					
 					if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-					
 				}
 				if(!jaTestado)pronto=true;
 			}
 			if(!pronto) {
-				
 				direction[0]=(deltaX!=0)?deltaX/Math.abs(deltaX):1;
 				direction[1]=0;
 				if(tryDirection(direction,tried));
 				else {
 					boolean jaTestado=false;
-					for(int i=0;i<tried.size();i++) {
-						
+					for(int i=0;i<tried.size();i++) {	
 						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-						
 					}
 					if(!jaTestado)pronto=true;
 				}
 			}
 			if(!pronto) {
-				
 				direction[0]=(deltaX!=0)?-deltaX/Math.abs(deltaX):-1;
 				direction[1]=0;
 				if(tryDirection(direction,tried));
 				else {
 					boolean jaTestado=false;
 					for(int i=0;i<tried.size();i++) {
-						
 						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-						
 					}
 					if(!jaTestado)pronto=true;
 				}
 			}
 			if(!pronto) {
-				
 				direction[0]=0;
 				direction[1]=(deltaY!=0)?-deltaY/Math.abs(deltaY):-1;
 				if(tryDirection(direction,tried));
 				else {
 					boolean jaTestado=false;
 					for(int i=0;i<tried.size();i++) {
-						
 						if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-						
 					}
 					if(!jaTestado)pronto=true;
 				}
@@ -450,30 +403,22 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 			if(direction[0]+position[0]>=tabuleiro.length||direction[0]+position[0]<0) {
 				boolean jaTestado=false;
 				for(int i=0;i<tried.size();i++) {
-					
 					if(Arrays.equals(tried.get(i),direction))jaTestado=true;
 				}
 				if(!jaTestado) {
 					tried.add(direction);
-					
 					throw new ForaDoTabuleiro();
 				}
-
 			}
 			else if(tabuleiro[direction[0]+position[0]][direction[1]+position[1]].existsPeca()||tabuleiro[direction[0]+position[0]][direction[1]+position[1]].getMarcado()) {
 				boolean jaTestado=false;
 				for(int i=0;i<tried.size();i++) {
-					
 					if(Arrays.equals(tried.get(i),direction))jaTestado=true;
-					
 				}
 				if(!jaTestado) {
 					tried.add(direction);
-					
 					throw new PosicaoOcupada();
-					
 				}
-				
 			}
 			else retorno=false;
 		}
@@ -481,7 +426,6 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 			if(direction[1]+position[1]>=tabuleiro.length||direction[1]+position[1]<0) {
 				boolean jaTestado=false;
 				for(int i=0;i<tried.size();i++) {
-					
 					if(Arrays.equals(tried.get(i),direction))jaTestado=true;
 				}
 				if(!jaTestado) {
@@ -492,7 +436,6 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 			else if(tabuleiro[direction[0]+position[0]][direction[1]+position[1]].existsPeca()||tabuleiro[direction[0]+position[0]][direction[1]+position[1]].getMarcado()) {
 				boolean jaTestado=false;
 				for(int i=0;i<tried.size();i++) {
-					
 					if(Arrays.equals(tried.get(i),direction))jaTestado=true;
 				}
 				if(!jaTestado) {
@@ -504,11 +447,8 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 		}
 		return retorno;
 	}
-	
 	public void receberDanoRanged(double dano,Projectile projetil) {
 		life=life-(dano-(dano*(endurance/100)));
-		
-
 		if(life<0&&!morto) {
 			projetil.recompensar(giftValue);
 			morto=true;
@@ -521,7 +461,6 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 		else if(!morto) {
 			barraDeVida.atualizar(life/maxLife);
 		}
-		
 	}
 	public void receberDano(double dano,Peca peca) {
 		life=life-(dano-(dano*(endurance/100)));
@@ -532,8 +471,7 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 			if(cor=="vermelho")tile.eliminateTab(1);
 			origem.getCard().setNaoColocado(true);
 			tile.clearTile();
-			inBoard=false;
-			
+			inBoard=false;	
 		}
 		else if(!morto&&life!=0) {
 			barraDeVida.atualizar(life/maxLife);
@@ -541,27 +479,21 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 		if(currentAction=="moving") {
 			if(moveTarget!=null)moveTarget.setMarcado();
 			moveOrAttack();
-			
 		}
 	}
-	
 	public void recompensar(int giftValue) {
 		if(origem!=null) {
-			origem.recompensar(giftValue);
-			
+			origem.recompensar(giftValue);	
 		}
 		else if (card!=null) {
-			card.recompensar(giftValue);
-			
+			card.recompensar(giftValue);	
 		}
-		
 	}	
 	public void printFeature(Graphics g, String cor) {
 		Font font = new Font("Arial",1, 50);
 		g.setFont(font);
 		if(cor=="azul") {
 			g.drawImage(imgInfo,50,100,null);
-			
 			g.drawString(toString()/*+" level "+String.valueOf(level)*/,70,150);
 			g.setFont(font.deriveFont(40));
 			g.drawString("Life: "+String.valueOf(life),70,200);
@@ -586,17 +518,14 @@ public abstract class Peca extends JPanel implements  IPecaTile,IPecaCardJogador
 			g.drawString("Sale Value: "+String.valueOf(saleValue),1400,440);
 		}
 	}
-	
 	public ITilePeca getTile() {
 		return tile;
 	}
 	public void setTarget(Tile tile) {
 		moveTarget=tile;
-		
 	}
 	public void setTargetNull() {
 		moveTarget=null;
-		
 	}
 	public Image[] getAnimationFramesAttack() {
 		return animationFramesAttack;

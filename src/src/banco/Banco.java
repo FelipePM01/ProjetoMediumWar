@@ -16,7 +16,6 @@ import javax.swing.JPanel;
 
 import Jogador.IJogador;
 import Jogador.IJogadorBanco;
-import Jogador.Jogador;
 import card.ICardBanco;
 	
 public class Banco extends JPanel implements IBanco{
@@ -33,7 +32,6 @@ public class Banco extends JPanel implements IBanco{
 	protected int cursor2=-1;
 	private IJogadorBanco jogador1,jogador2;
 	private String[] currentAction=new String[2];
-
 	
 	public Banco(double scale){
 		this.scale=scale;
@@ -53,7 +51,6 @@ public class Banco extends JPanel implements IBanco{
         banco=banco.getScaledInstance(WIDTH, HEIGHT, Image.SCALE_DEFAULT);
     }
 	public void paintComponent(Graphics g){
-		
 		super.paintComponent(g);
 		int positionX = (int)(scale*356);
 		int positionY = (int)(scale*16);

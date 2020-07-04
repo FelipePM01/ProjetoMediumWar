@@ -2,12 +2,8 @@ package peca;
 
 import java.awt.Image;
 
-import Jogador.CardJogador;
-import banco.CardBanco;
-import card.Card;
 import card.ICardBanco;
 import card.ICardJogadorPeca;
-import tabuleiro.Tabuleiro;
 import tabuleiro.Tile;
 
 public class Archer extends Ranged{
@@ -40,6 +36,7 @@ public class Archer extends Ranged{
 		projectileCorrection[0]=22;
 		projectileCorrection[1]=16;
 	}
+	
 	public String toString(){
 		return "Archer ";
 	}

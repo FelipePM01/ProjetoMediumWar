@@ -28,21 +28,18 @@ public class CardBanco extends Card implements ICardBanco{
     	imgCoin=imgCoin.getScaledInstance((int)(scale*imgCoin.getWidth(null)), (int)(scale*imgCoin.getHeight(null)), Image.SCALE_DEFAULT);    	
     } 
 
-	
 	public void setCardAtual(String cor) {
 		 attImage(cor);
 	}
-	
 	public void paintComponent(Graphics g, int positionX, int positionY){
 		super.paintComponent(g, positionX, positionY);
 		if(imgCoin!=null)g.drawImage(imgCoin,(int)(positionX+(getWidth()/2)-imgCoin.getWidth(null)),(int)(positionY+getHeight()-imgCoin.getHeight(null)-5), this);	
 		g.setFont(new Font("Arial",1, 30));
 		g.drawString(String.valueOf(peca.getPurchaseValue()), positionX+(getWidth()/2)+10,(int)(positionY+getHeight())-10);
 	}
-	 public IPecaCardBanco getPeca() {
-	    	return peca;
-	    }
-	
+	public IPecaCardBanco getPeca() {
+		return peca;
+	}
 	@Override
 	public void setPeca(IPecaCard peca) {
 		if (peca instanceof Archer)this.peca=new Archer(peca,this);

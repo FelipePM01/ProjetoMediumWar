@@ -1,10 +1,7 @@
 package peca;
 
-import Jogador.CardJogador;
 import Jogador.IJogadorCard;
-import Jogador.Jogador;
 import card.ICardJogadorPeca;
-import excecoes.MovimentoInvalido;
 import tabuleiro.ITilePeca;
 import tabuleiro.Tile;
 
@@ -15,7 +12,6 @@ public interface IPecaTile extends IPeca{
 	public boolean getInBoard();
 	public IJogadorCard getJogador();
 	public ITilePeca getTile();
-	
 	public abstract double[] getCenterPosition();
 	public void setTargetNull();
 	public boolean getMorto();

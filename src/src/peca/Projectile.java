@@ -5,20 +5,12 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.awt.geom.AffineTransform;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import tabuleiro.ITabuleiro;
-import tabuleiro.Tabuleiro;
 
 public abstract class Projectile extends JPanel{
 	/**
@@ -27,10 +19,8 @@ public abstract class Projectile extends JPanel{
 	private static final long serialVersionUID = -8344947528531167804L;
 	protected Image img;
 	private double[] translation={0.0,0.0};
-	//private double[] basePosition = {0,0};
 	private double[] currentPosition;
 	private double[] alvoPosition;
-	//private double scale;
 	private double speed;
 	private double dano;
 	private int[] centerCorrection = new int[2];
@@ -42,13 +32,10 @@ public abstract class Projectile extends JPanel{
 	private IPecaCardJogador origem;
 	
 	public Projectile(double scale, double[] position, IPecaTile target, double dano, double speed,IPecaCardJogador origem) {
-		//this.scale=scale;
 		this.origem=origem;
-		//this.basePosition=position;
 		this.currentPosition=position;
 		this.alvo=target;
 		this.dano=dano;
-		
 		this.alvoPosition=alvo.getCenterPosition();
 	    this.speed=speed;
 		setVisible(true);
@@ -69,33 +56,25 @@ public abstract class Projectile extends JPanel{
 			g2d.drawImage(img,0,0,null);
 		}
 	}
-	
 	public void track() {
 		if(alvo.getTile().getPeca()!=null) {
 			alvoPosition=alvo.getCenterPosition();
-			
 			if(alvoPosition[0]-currentPosition[0]<0&&alvoPosition[1]-currentPosition[1]<0) {
-				
 				translation[0]=-Math.abs(((alvoPosition[0]-currentPosition[0])/(alvoPosition[1]-currentPosition[1])));
 				translation[1]=-Math.abs(((alvoPosition[1]-currentPosition[1])/(alvoPosition[0]-currentPosition[0])));
 				angulo=Math.atan2(translation[1], translation[0]);
 			}
-			
 			else if(alvoPosition[0]-currentPosition[0]<0&&alvoPosition[1]-currentPosition[1]>0){
-				
 				translation[0]=-Math.abs(((alvoPosition[0]-currentPosition[0])/(alvoPosition[1]-currentPosition[1])));
 				translation[1]=Math.abs(((alvoPosition[1]-currentPosition[1])/(alvoPosition[0]-currentPosition[0])));
 				angulo=Math.atan2(translation[1], translation[0]);
 			}
-			
 			else if(alvoPosition[0]-currentPosition[0]>0&&alvoPosition[1]-currentPosition[1]<0) {
-				
 				translation[0]=Math.abs(((alvoPosition[0]-currentPosition[0])/(alvoPosition[1]-currentPosition[1])));
 				translation[1]=-Math.abs(((alvoPosition[1]-currentPosition[1])/(alvoPosition[0]-currentPosition[0])));
 				angulo=Math.atan2(translation[1], translation[0]);
 			}
 			else if(alvoPosition[0]-currentPosition[0]>0&&alvoPosition[0]-currentPosition[0]>0) {
-				
 				translation[0]=Math.abs(((alvoPosition[0]-currentPosition[0])/(alvoPosition[1]-currentPosition[1])));
 				translation[1]=Math.abs(((alvoPosition[1]-currentPosition[1])/(alvoPosition[0]-currentPosition[0])));
 				angulo=Math.atan2(translation[1], translation[0]);
@@ -123,14 +102,12 @@ public abstract class Projectile extends JPanel{
 			currentPosition[0]+=translation[0];
 			currentPosition[1]+=translation[1];
 			if(dano!=0&&getDistancia()<((Math.abs(Math.pow(imgEdge[0], 2)+Math.pow(imgEdge[1],2))))){
-			//if(dano!=0&&Math.abs(currentPosition[0]-alvoPosition[0])<(scale*imgEdge[0])&&Math.abs(currentPosition[1]-alvoPosition[1])<(1.3*scale*imgEdge[1])) {
 				alvo.receberDanoRanged(dano,this);
 				dano=0;
 				tabuleiro.removeProjectiles(this);
 			}
 		}
 	}
-	
 	public double getDistancia() {
 		double cOposto = alvoPosition[0]-currentPosition[0];
 		double cAdjascente = alvoPosition[1]-currentPosition[1];
@@ -139,8 +116,7 @@ public abstract class Projectile extends JPanel{
 	public void setGUI(double scale, String imgReferencia) {
 		ImageIcon refimg=new ImageIcon(imgReferencia);
 		Image auxImg=refimg.getImage();
-		img=auxImg.getScaledInstance((int)(2*scale*auxImg.getWidth(null)),(int)(2*scale*auxImg.getHeight(null)), Image.SCALE_DEFAULT);//.getScaledInstance((int)(2*scale*auxImg.getWidth(null)),(int)(2*scale*auxImg.getHeight(null)),Image.SCALE_DEFAULT);
-	
+		img=auxImg.getScaledInstance((int)(2*scale*auxImg.getWidth(null)),(int)(2*scale*auxImg.getHeight(null)), Image.SCALE_DEFAULT);
 	}
 	public void setCenterCorrection(int x, int y) {
 		centerCorrection[0]=x;

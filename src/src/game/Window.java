@@ -1,24 +1,22 @@
 package game;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class Window extends JFrame implements ActionListener{
+	private static final long serialVersionUID = -4369730830015653927L;
 	private Game game;
 	private ImageIcon imgReturn;
 	private JButton endHome;
 	private JPanel principal;
 	private Menu menu;
 
-	private static final long serialVersionUID = -4369730830015653927L;
 	public Window(int width,int height,String title,Game game) {
 		this.game=game;
 		menu = new Menu(this);
@@ -31,10 +29,8 @@ public class Window extends JFrame implements ActionListener{
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setIgnoreRepaint(true);
-		
 		this.add(menu);
 	}
-	
 	 public void actionPerformed(ActionEvent evento) {
 		 	principal=new JPanel();
 			principal.setOpaque(false);
@@ -55,7 +51,6 @@ public class Window extends JFrame implements ActionListener{
 		 	game.gameStart();
 		 	game.start(); 	
 	 }
-	 
 	 public void endGame() {
 		 endHome.setVisible(true);
 		 SwingUtilities.updateComponentTreeUI(this);
