@@ -40,7 +40,7 @@ public class Orc extends Melee{
 	public String toString(){
 		return "Orc ";
 	}
-	public void setup(int x) {
+	private void setup(int x) {
 		animationFramesMove = new Image[3];
 		animationFramesAttack = new Image[3];
 		for(int i=0;i<6;i++){

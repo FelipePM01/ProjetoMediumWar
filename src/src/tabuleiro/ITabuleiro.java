@@ -24,7 +24,7 @@ public interface ITabuleiro extends ITabuleiroTile,ITabuleiroJogador {
 
 	public void removeProjectiles(Projectile projectile);
 	public void paintComponent(Graphics g);
-	public Tile[][] getTiles();
+	//public Tile[][] getTiles();
 	public void start();
 	public void clear();
 

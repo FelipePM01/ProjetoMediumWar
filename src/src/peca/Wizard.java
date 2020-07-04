@@ -41,7 +41,7 @@ public class Wizard extends Ranged {
 		return "Wizard ";
 	}
 	
-	public void setup(int x) {
+	private void setup(int x) {
 		animationFramesMove = new Image[3];
 		animationFramesAttack = new Image[4];
 		for(int i=0;i<7;i++){

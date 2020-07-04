@@ -27,10 +27,10 @@ public abstract class Projectile extends JPanel{
 	private static final long serialVersionUID = -8344947528531167804L;
 	protected Image img;
 	private double[] translation={0.0,0.0};
-	private double[] basePosition = {0,0};
+	//private double[] basePosition = {0,0};
 	private double[] currentPosition;
 	private double[] alvoPosition;
-	private double scale;
+	//private double scale;
 	private double speed;
 	private double dano;
 	private int[] centerCorrection = new int[2];
@@ -42,9 +42,9 @@ public abstract class Projectile extends JPanel{
 	private IPecaCardJogador origem;
 	
 	public Projectile(double scale, double[] position, IPecaTile target, double dano, double speed,IPecaCardJogador origem) {
-		this.scale=scale;
+		//this.scale=scale;
 		this.origem=origem;
-		this.basePosition=position;
+		//this.basePosition=position;
 		this.currentPosition=position;
 		this.alvo=target;
 		this.dano=dano;

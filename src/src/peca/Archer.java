@@ -43,7 +43,7 @@ public class Archer extends Ranged{
 	public String toString(){
 		return "Archer ";
 	}
-	public void setup(int x) {
+	private void setup(int x) {
 		animationFramesMove = new Image[3];
 		animationFramesAttack = new Image[6];
 		for(int i=0;i<9;i++){

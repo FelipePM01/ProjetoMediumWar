@@ -16,7 +16,7 @@ public interface IPecaTile extends IPeca{
 	public IJogadorCard getJogador();
 	public ITilePeca getTile();
 	
-	public double[] getCenterPosition();
+	public abstract double[] getCenterPosition();
 	public void setTargetNull();
 	public boolean getMorto();
 	public void receberDano(double attackDamage, Peca peca);
