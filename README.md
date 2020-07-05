@@ -6,7 +6,12 @@
 * Cristiano Sampaio Pinheiro - 256352
 
 # Descrição Resumida do Projeto
-O projeto será um jogo em que cada jogador posicionará as peças de sua mão no tabuleiro e em seguida as peças atacarão as peças do inimigo por meio de um determinado compartamento atribuído ao tipo da peça. Cada peça terá atributos específicos como vida , dano e alcance de ataque. A temática do jogo será baseada em classes e criaturas de um RPG.
+O projeto será um jogo em que cada jogador posicionará as peças de sua mão no tabuleiro(10x10) e em seguida as peças atacarão as peças do inimigo por meio de um determinado comportamento atribuído ao tipo da peça. Cada peça terá atributos específicos como vida, dano e alcance de ataque. Os jogadores iniciam com uma determinada quantia, a cada peça derotada e acrescido um valor que varia de acordo com a peça, após cada rodada um valor é distribuido para os dois jogadores. Aquele que vencer 5 rodadas primeiro é o ganhador. A temática do jogo é baseada em classes e criaturas de um RPG.
+
+## Recomendações
+O jogo deve ser executado em uma resolução de 1920x1080, pode ser necessário alterar o Ajuste de Escala e Layput do Windows. 
+Os controles podem ser encontrados a baixo, na seção Controles de Cada Jogador. 
+E possível jogar multiplayer online fazendo uso do [parsec](https://parsecgaming.com/), um aplicativo de captura de desktop.
 
 # Vídeos do Projeto
 
@@ -24,13 +29,14 @@ O projeto será um jogo em que cada jogador posicionará as peças de sua mão n
 [Link para apresentação do projeto](https://drive.google.com/open?id=1aigs8xozY3tbv9r1LsFobk-ZYNi4p2eJKla_YFFc_GY)
 
 ## Slides da apresentação
+[Link para apresentação final do projeto](https://docs.google.com/presentation/d/1wyCw-Nrq4YdHtgQ6M5RnuIhx0iS2nM7ka7SVzWV9_lE/edit?usp=sharing)
 
 ## Relatório de Evolução
 
 <p>Inicialmente havíamos planejado em dividir os componentes em Banco, Game, Jogador, Tabuleiro e Peça. Nosso primeiro passo no projeto foi criar a interface gráfica, dispondo as imagens na tela de maneira estática. Para isso criamos as classes Window e GUI. Ademais adicionamos os componentes Tile e Card, o primeiro para representar as posições do tabuleiro e o segundo para representar as posições do banco e do jogador.</p>
 <p>Na classe GUI colocamos uma imagem 960x540 que seria redimensionada para o tamanho da tela para ficar no modo fullscreen e a Window, que é um JFrame onde o  jogo ocorrerá. Inicialmente tentamos utilizar o método paint() para imprimir as imagens na tela após redimensioná-las corretamente com getScaledInstance(), mas ocorreram problemas de sobreposição de imagens, então passamos utilizar o método paintComponent(), para printar utilizamos a sequência GUI->Tabuleiro/Banco/Jogador->Card/Tile->Peça. Para testar o sistema em que nós colocamos uma imagem acima da outra incluindo a peça, instanciamos a peça em locais arbitrários.</p>
-<p>Em seguida foi criada a classe Menu, para gerenciar o início do jogo e para isso utilizamos o CardLayout no entanto surgiram muitos problemas quanto à classe Game ser um Canvas ao invés de um JPanel, então simplesmente adotamos a estratégia de adicionar e remover o jogo e o menu do JFrame. No menu adicionamos botões para sair do jogo, iniciar o jogo e ir para tela de créditos que continha um botão para retornar ao menu. Em seguida definimos as animações de movimento e geramos movimentos aleatórios para isso introduzimos entradas via KeyListener para instanciar peças em posições pré-definidas, começar o movimento e limpar o tabuleiro. Até esse momento tivemos que utilizar casts para instanciar peças.</p>
-<p>Em sequência, removemos os casts utilizando getters na interface que todas as peças herdam independente de estarem no banco, no jogador ou no tabuleiro.Após isso, foram definidas as teclas e suas respectivas ações, de forma que cada jogador interage com uma determinada região do teclado. Com isso os cursores do tabuleiro, banco e jogador começaram a ser implementados. Aqui percebemos uma certa demora de atualização da imagem envolvida pelo cursor, o que deixava a região branca por alguns segundos. Esse problema foi atenuado setando todas as imagens usadas já no construtor dos cards, não sendo necessário carregá-las enquanto o jogo já está em execução.</p>
+<p>Em seguida foi criada a classe Menu, para gerenciar o início do jogo e para isso utilizamos o CardLayout no entanto surgiram muitos problemas quanto à classe Game ser um Canvas ao invés de um JPanel, então simplesmente adotamos a estratégia de adicionar e remover o jogo e o menu do JFrame. No menu adicionamos botões para sair do jogo, iniciar e ir para tela de créditos que continha um botão para retornar ao menu. Em seguida definimos as animações de movimento e geramos movimentos aleatórios para isso introduzimos entradas via KeyListener para instanciar peças em posições pré-definidas, começar o movimento e limpar o tabuleiro. Até esse momento tivemos que utilizar casts para instanciar peças.</p>
+<p>Em sequência, removemos os casts utilizando getters na interface que todas as peças herdam independente de estarem no banco, no jogador ou no tabuleiro. Após isso, foram definidas as teclas e suas respectivas ações, de forma que cada jogador interage com uma determinada região do teclado. Com isso os cursores do tabuleiro, banco e jogador começaram a ser implementados. Aqui percebemos uma certa demora de atualização da imagem envolvida pelo cursor, o que deixava a região branca por alguns segundos. Esse problema foi atenuado setando todas as imagens usadas já no construtor dos cards, não sendo necessário carregá-las enquanto o jogo já está em execução.</p>
 <p>Conforme os cursores se mostraram consistentes, as ações e interações entre os componentes começaram a ser feitas, como a ação de compra e venda de peças, que relaciona o jogador e o banco. Algumas correções também foram feitas para que somente um curso seja exibido de cada vez e não haja conflito entre as ações.</p>
 <p>Voltando-se para as peças, foi criado um sistema para definir o trajeto da peça até que possa atacar o alvo, utilizando um sistema de exceções em que são testadas posições com prioridades, que dependem da posição relativa entre a peça e o alvo, até que se encontre uma possibilidade de movimento ou não fazer nada no caso em que não há movimentos possíveis. Também foram criadas duas herdeiras da classe peça, Ranged(longo alcance) e Melee(corpo a corpo), assim as peças foram separadas de acordo com seu tipo de ataque. Com isso a movimentação das peças começou a ser implementada.</p>
 <p>Em paralelo com isso, a parte monetária do jogo começou a ser desenvolvida, adicionando a parte gráfica que envolve as transações juntamente com os valores referentes a cada peça e suas ações.</p>
@@ -140,10 +146,8 @@ public void moveOrAttack() {
 				esperando=true;//tenta de novo no proximo tick
 				tried=new ArrayList<int[]>();
 				if(lastPosition!=null)tried.add(lastPosition);
-			}
-			
-		}
-		
+			}	
+		}	
 	}
 }
 ~~~	
@@ -186,14 +190,14 @@ protected abstract <t extends IPecaCard> t getPeca();
 ~~~
 ...
 public IPecaCardJogador getPeca() {
-    	return peca;
+    return peca;
 }
 ...
 ~~~
 ~~~
 ...
 public IPecaCardBanco getPeca() {
-		return peca;
+	return peca;
 }
 ...
 ~~~
@@ -252,8 +256,8 @@ public class Menu extends JPanel{
 	 ...
 }
 ~~~
-O trecho de código acima se assemelha a um design pattern Observer, no entanto, não há um ActionSubject, o que dispara as ações para as classes ouvintes são botoes.  
-Dentro do menu ha 3 botões que ao serem acionados disparam eventos, como encerra o programa e trocar o JPanel exibido pelo cardLayout. Destacando o botão play, ao ser precionado a classe window, que implementa ActionListener, recebe a atualização da ação e da inicio ao jogo.
+O trecho de código acima se assemelha a um design pattern Observer, no entanto, não há um ActionSubject, o que dispara as ações para as classes ouvintes são botões.  
+Dentro do menu há 3 botões que ao serem acionados disparam eventos, como encerra o programa e trocar o JPanel exibido pelo cardLayout. Destacando o botão play, ao ser precionado a classe window, que implementa ActionListener, recebe a atualização da ação e da inicio ao jogo.
 
 ## Diagrama 
 ![Diagrama Pattern Game](assets/README_Images/GamePattern.png)
@@ -328,8 +332,12 @@ public class Game extends Canvas implements Runnable, IGameTabuleiro,KeyListener
 }
 ~~~
 Novamente temos algo que se assemelha a um pattern Observer. Como pode ser observado no diagrama abaixo, a classe Game é responsável por todo o gerenciamento do jogo, ela não faz nada sozinha, mas nada funciona sem ela.  
-Ao implementar KeyListener, todas as ações realizadas após o play, usando o teclado, são recebidas por ela. Tais comandos chamam metodos existentes nas classes Banco, Jogador e Tabuleiro, permitindo a interação do jogador com a interface grafica. Dessa forma, aos classes já citadas não são ouvintes diretas dos comandos recebidas pela game, no entanto, essas comandos são as responsáveis por disparar ações dentro de cada uma dessas classes.  
-Na game também abriga o Graphics responsável por imprimir a maioria das dos elementos na tela usando seu metodo render, que chama o paintComponent() das demais classes.
+Ao implementar KeyListener, todas as ações realizadas após o play, usando o teclado, são recebidas por ela. Tais comandos chamam metodos existentes nas classes Banco, Jogador e Tabuleiro, permitindo a interação do jogador com a interface grafica. Dessa forma, as classes já citadas não são ouvintes diretas dos comandos recebidas pela game, no entanto, esses comandos são os responsáveis por disparar ações dentro de cada uma dessas classes.  
+A game também abriga o Graphics responsável por imprimir a maioria dos elementos na tela usando seu método render, que chama o paintComponent() das demais classes.
+
+# Conclusões e Trabalhos Futuros
+Para o futuro seria interessante fazer a leitura do teclado de maneira mais elegante, o método usado é prático mas é possével deixar essa mecânica mais apresentável, fazendo uso de um pattern e deixando a classe Game mais limpa. 
+
 
 # Diagrama Geral do Projeto
 ![Diagrama Geral do Projeto](assets/README_Images/DiagramaGeralProjeto.png)
@@ -337,10 +345,6 @@ Na game também abriga o Graphics responsável por imprimir a maioria das dos el
 ## Controles de Cada Jogador
 ![Diagrama Fluxo jogador azul](assets/README_Images/FluxoJogadorAzul.png)
 ![Diagrama Fluxo jogador azul](assets/README_Images/FluxoJogadorVermelho.png)
-
-## Recomendações
-O jogo deve ser executado em uma resolução de 1920x1080, pode ser necessário alterar o Ajuste de Escala e Layput do Windows.  
-E possível jogar multiplayer online fazendo uso do [parsec](https://parsecgaming.com/), um aplicativo de captura de desktop.
 
 # Diagrama Geral de Componentes
 ![Diagrama Geral](assets/README_Images/DiagramaGeralComponentes.png)
@@ -367,7 +371,6 @@ public interface IJogador extends IJogadorCard, IJogadorBanco{
 	public int getPoints();
 	public int obtainCursor();
 	public void hideCursor();
-	
 	public void pressedA() ;
 	public void pressedC() ;
 	public void pressedJ();
@@ -383,7 +386,6 @@ public interface IJogador extends IJogadorCard, IJogadorBanco{
 	public void pressedSPACE() ;
 	public void pressedENTER() ;
 	public void paintComponent(Graphics g);	
-
 }
 public interface IJogadorBanco {
 	void receber(IPecaCardBanco peca);
@@ -392,15 +394,10 @@ public interface IJogadorBanco {
 }
 public interface IJogadorCard {
 	public double getScale();
-
 	public String getCor();
-
 	public void addCash(int value);
 }
-
-
 ~~~
-
 
 ## Detalhamento das Interfaces
 
@@ -412,6 +409,7 @@ Método | Objetivo
 addPoint | Incrementa a pontuação do jogador que ganhou a rodada
 getPoints | Retorna quantos pontos de terminado jogador possui
 hideCursor | Faz com que o cursor não seja mais visível
+obtainCursor | Retorna a posição atual do curso na mão do jogador
 paintComponent |Imprime a mão do jogador e as suas peças armazenadas
 pressedA | Movimenta o cursor da mão do jogador 1 para a esquerda
 pressedD | Movimenta o cursor da mão do jogador 1 para a direita
@@ -462,19 +460,13 @@ Autores | Felipe Pacheco Manoel e Cristiano Sampaio Pinheiro
 Objetivo | representar cada um dos cards presentes no banco e na mao do jogador
 Interface | 
 ~~~
-public interface ICardJogadorPeca extends ICardPeca{
-
-	
-
-	public IJogadorCard getJogador();
-
-	public void recompensar(int giftValue);
-
-	public void setNaoColocado(boolean value);
-	
-}
 public interface ICardPeca {
 	public int[] getGUIPosition();
+}
+public interface ICardJogadorPeca extends ICardPeca{
+	public IJogadorCard getJogador();
+	public void recompensar(int giftValue);
+	public void setNaoColocado(boolean value);
 }
 public interface ICardJogador {
 	public int getWidth();
@@ -485,7 +477,6 @@ public interface ICardJogador {
 	public void setPeca(IPecaCardBanco recebido);
 	public IPecaCardJogador getPeca();
 	public boolean getNaoColocado();
-	
 }
 public interface ICardBanco {
 	public void setCardAtual(String cor);
@@ -496,13 +487,7 @@ public interface ICardBanco {
 	public int getHeight();
 	public int[] getGUIPosition();
 }
-
-
-
-
-
 ~~~
-
 
 ## Detalhamento das Interfaces
 
@@ -587,23 +572,15 @@ public interface IPeca {
 	public int getGiftValue();
 }
 public interface IPecaCard extends IPeca{
-
 	void printFeature(Graphics g, String string);
-
 	void paintComponent(Graphics g);
-
 }
 public interface IPecaCardBanco extends IPecaCard{
 	
 }
 public interface IPecaCardJogador extends IPecaCard {
-
 	public ICardJogadorPeca getCard();
-
 	public void recompensar(int giftValue);
-
-	
-	
 }
 public interface IPecaTile extends IPeca{
 	public void moveOrAttack() ;
@@ -612,7 +589,6 @@ public interface IPecaTile extends IPeca{
 	public boolean getInBoard();
 	public IJogadorCard getJogador();
 	public ITilePeca getTile();
-	
 	public double[] getCenterPosition();
 	public void setTargetNull();
 	public boolean getMorto();
@@ -622,13 +598,7 @@ public interface IPecaTile extends IPeca{
 	public IPecaCardJogador getOrigem();
 	public void setInBoard(boolean inBoard);
 }
-
-
-
-
-
 ~~~
-
 
 ## Detalhamento das Interfaces
 
@@ -712,36 +682,29 @@ Objetivo | representar o tabuleiro do jogo
 Interface | 
 ~~~
 public interface ITabuleiro extends ITabuleiroTile,ITabuleiroJogador {
-
-	public void setJogador(IJogador jogador1);
-
+	public void setJogador(IJogador jogador);
 	public void pressedSPACE();
-	public void pressedENTER() ;
-	public void pressedW() ;
-	public void pressedS() ;
-	public void pressedA() ;
-	public void pressedD() ;
-	public void pressedUP() ;
+	public void pressedENTER();
+	public void pressedW();
+	public void pressedS();
+	public void pressedA();
+	public void pressedD();
+	public void pressedUP();
 	public void pressedDOWN();
-	public void pressedLEFT() ;
-	public void pressedRIGHT() ;
+	public void pressedLEFT();
+	public void pressedRIGHT();
 	public void pressedQ();
 	public void pressedM();
-
 	public void removeProjectiles(Projectile projectile);
 	public void paintComponent(Graphics g);
-	
 	public void start();
 	public void clear();
+	public int[] getIntab();
 }
 public interface ITabuleiroJogador {
-
 	public boolean getCursor(String cor);
-
 	public void hideCursor(String cor);
-
 	public void positionPeca(Jogador jogador, IPecaCardJogador peca);
-
 }
 public interface ITabuleiroTile  {
 	public double getScale();
@@ -749,14 +712,7 @@ public interface ITabuleiroTile  {
 	public void eliminateInTab(int i);
 	public void addProjectiles(Projectile projetil);
 }
-
-
-
-
-
-
 ~~~
-
 
 ## Detalhamento das Interfaces
 
@@ -767,9 +723,10 @@ Método | Objetivo
 -------| --------
 setJogador | Conecta um jogador com o tabuleiro
 removeProjectiles | Remove um determinado projetil do tabuleiro
-paintComponent | Imprime o tabuleiro ,os seus tiles(e consequentemente as peças armazenadas por eles) , e os projéteis na tela
+paintComponent | Imprime o tabuleiro, os seus tiles(e consequentemente as peças armazenadas por eles) , e os projéteis na tela
 start | Inicia a interação das peças
 clear | Remove todas as peças do tabuleiro
+getIntab | Retorna quantas peças cada jogador ainda possui no tabuleiro
 pressedSPACE | Confirma o posicionamento da peça do jogador 1
 pressedW | Move o cursor do jogador 1 para cima
 pressedS | Move o cursor do jogador 1 para baixo
@@ -790,16 +747,16 @@ Método | Objetivo
 -------| --------
 getCursor | Retorna a posição do cursor que é representado pela cor passada como parâmetro
 hideCursor | Faz com que o cursor de uma determinada cor não seja mais visível
-posicionarPeca | Notifica o tabuleiro que um determinado jogador quer posicionar uma determinada peça , ambos passados como parâmetro
+posicionarPeca | Notifica o tabuleiro que um determinado jogador quer posicionar uma determinada peça, ambos passados como parâmetro
 
-### Interface ITabuleiroJogador
+### Interface ITabuleiroTile
 Essa interface é responsável pela interação entre o jogaador e o tabuleiro
 
 Método | Objetivo
 -------| --------
 getScale | Retorna a escala da imagem do tabuleiro
 getTiles | Retorna uma matriz de tiles que represemta as posicoes do tabuleiro
-eliminateInTab | Decrementa a variável que controla quantas peças cada joagdor tem no tabuleiro 
+eliminateInTab | Decrementa a variável que controla quantas peças cada jogador tem no tabuleiro 
 addProjectiles | Adiciona um projétil passado como parâmetro no tabuleiro
 
 # Componente Tile
@@ -822,7 +779,6 @@ Interface |
 public interface ITile extends ITileTabuleiro, ITilePeca{}
 public interface ITilePeca {
 	public Image getImage();
-
 	public int[] getGUIPosition();
 	public int[] getPosition();
 	public Tile[][] getOtherTiles();
@@ -837,7 +793,6 @@ public interface ITilePeca {
 }
 public interface ITileTabuleiro {
 	public void paintComponent(Graphics g,Image img);
-
 	public IPecaTile getPeca();
 	public void paintPeca(Graphics g);
 	public Image getImage();
@@ -848,11 +803,6 @@ public interface ITileTabuleiro {
 	public void setPeca(IPecaCardJogador peca);
 	public void setNull();
 }
-
-
-
-
-
 ~~~
 
 
@@ -873,7 +823,7 @@ setPeca | Guarda uma peça passada como parâmetro
 clearTile | Remove a peça armazenada e retira a referência do tile existente na peça
 existsPeca | Checa se o tile está ocupado por uma peça
 getPeca | Retorna a peça armazenada
-eliminateTab | Faz com que o tabuleiro decremente um a variável que guarda quantas peças um determinado jogador tem , passando um inteiro que representa o jogador
+eliminateTab | Faz com que o tabuleiro decremente um a variável que guarda quantas peças um determinado jogador tem, passando um inteiro que representa o jogador
 setMarcado | Alterna a variável marcado que indica que uma peça ja está se movimentando em direção à aquele tile
 addProjectile | Adiciona um projétil passado como parâmetro no tabuleiro 
 
@@ -881,6 +831,7 @@ addProjectile | Adiciona um projétil passado como parâmetro no tabuleiro
 Essa interface e responsável pela interação entre o tabuleiro e o tile
 Método | Objetivo
 -------| --------
+paintComponent | Imprime o Tile
 getPeca | Retorna a peça armazenada
 paintPeca | Se estiver armazenada alguma peça , imprime a peça na tela
 getImage | Retorna a imagem do tile
@@ -909,7 +860,6 @@ Objetivo | representar o tabuleiro do jogo
 Interface | 
 ~~~
 public interface IBanco extends IBancoCard,IBancoJogador {
-
 	void setJogador(IJogador jogador1);
 	public int obtainCursor(String cor);
 	public void pressedLEFT();
@@ -923,27 +873,20 @@ public interface IBanco extends IBancoCard,IBancoJogador {
 	public void refresh();
 	public void paintComponent(Graphics g);
 }
-
 public interface IBancoCard {
 	public double getScale();
 }
 public interface IBancoJogador {
-
-	public void comprar(IJogador jogador);
-			
+	public void comprar(IJogador jogador);	
 	public void hideCursor(int i);
-
 	public int obtainCursor(String cor);
 }
-
-
 ~~~
 
 ## Detalhamento das Interfaces
 
 ### Interface IBanco
 Essa interface é responsável por agrupar as outras interfaces e representar as interações entre o game e o banco
-
 
 Método | Objetivo
 -------| --------
