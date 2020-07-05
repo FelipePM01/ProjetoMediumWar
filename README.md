@@ -337,7 +337,7 @@ Ao implementar KeyListener, todas as ações realizadas após o play, usando o t
 A game também abriga o Graphics responsável por imprimir a maioria dos elementos na tela usando seu método render, que chama o paintComponent() das demais classes.
 
 # Conclusões e Trabalhos Futuros
-Para o futuro seria interessante fazer a leitura do teclado de maneira mais elegante, o método usado é prático mas é possével deixar essa mecânica mais apresentável, fazendo uso de um pattern e deixando a classe Game mais limpa. 
+Para o futuro seria interessante fazer a leitura do teclado de maneira mais elegante, o método usado é prático mas é possével deixar essa mecânica mais apresentável, fazendo uso de um pattern e deixando a classe Game mais limpa. Isso poderia ser feito separando o view do control , no contexto do estilo arquitetural Model-View-Control.
 
 
 # Diagrama Geral do Projeto
