@@ -9,7 +9,7 @@
 O projeto será um jogo em que cada jogador posicionará as peças de sua mão no tabuleiro(10x10) e em seguida as peças atacarão as peças do inimigo por meio de um determinado comportamento atribuído ao tipo da peça. Cada peça terá atributos específicos como vida, dano e alcance de ataque. Os jogadores iniciam com uma determinada quantia, a cada peça derotada e acrescido um valor que varia de acordo com a peça, após cada rodada um valor é distribuido para os dois jogadores. Aquele que vencer 5 rodadas primeiro é o ganhador. A temática do jogo é baseada em classes e criaturas de um RPG.
 
 ## Recomendações
-O jogo deve ser executado em uma resolução de 1920x1080, pode ser necessário alterar o Ajuste de Escala e Layput do Windows. 
+O jogo deve ser executado em uma resolução de 1920x1080, pode ser necessário alterar o Ajuste de Escala e Layout do Windows.  
 Os controles podem ser encontrados a baixo, na seção Controles de Cada Jogador. 
 E possível jogar multiplayer online fazendo uso do [parsec](https://parsecgaming.com/), um aplicativo de captura de desktop.
 
@@ -426,7 +426,7 @@ pressedN | Liga ou desliga a exibição dos atributos da peça do jogador 2
 pressedSPACE | Confirma a escolha do jogador 1 de qual peça será vendida ou posicionada
 pressedENTER | Confirma a escolha do jogador 2 de qual peça será vendida ou posicionada
 
-###Interface IJogadorBanco
+### Interface IJogadorBanco
 Essa interface é responsável por representar as interações do banco no jogador
 Método | Objetivo
 -------| --------
@@ -434,7 +434,7 @@ receber | O banco passa a peça escolhida pelo jogador para o jogador
 getCash | Retorna o dinheiro que o jogador possui 
 addCash | Incrementa ou decrementa o dinheiro de um jogador a partir de um valor passado como parâmetro
 
-###Interface IJogadorCard
+### Interface IJogadorCard
 Essa interface é responsável por representar as interações do card com o jogador
 Método | Objetivo
 -------| --------
